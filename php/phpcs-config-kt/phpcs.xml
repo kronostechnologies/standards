@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="phpcs-kt">
+    <description>/application folder code standard. PSR-1/2 compliant.</description>
+
+    <arg name="basepath" value="."/>
+    <arg name="extensions" value="php"/>
+    <arg name="tab-width" value="4"/>
+    <arg name="parallel" value="10"/>
+    <arg name="bootstrap" value="phpcs.bootstrap.php"/>
+
+    <rule ref="PSR2"/>
+</ruleset>
+
+<!-- Sample config file to add to your project (phpcs.xml):
+
+<?xml version="1.0"?>
+<ruleset>
+    <file>folder</file>
+
+    <rule ref="./vendor/kronostechnologies/standards/phpcs-kt.xml"/>
+</ruleset>
+
+-->
