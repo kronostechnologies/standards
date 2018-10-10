@@ -17,7 +17,7 @@
 <ruleset>
     <file>folder</file>
 
-    <rule ref="./vendor/kronostechnologies/php-coding-standard/phpcs-kt.xml"/>
+    <rule ref="./vendor/kronostechnologies/php-coding-standard/phpcs.xml"/>
 </ruleset>
 
 -->
