@@ -2,5 +2,9 @@
     "name": "kronostechnologies/php-coding-standard",
     "version": "1.0.0",
     "description": "Kronos Technologies PHP coding standard",
-    "type": "library"
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "squizlabs/php_codesniffer": "^3.2.0"
+    }
 }
