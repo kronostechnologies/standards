@@ -1,5 +1,6 @@
 {
     "name": "kronostechnologies/php-coding-standard",
+    "version": "1.0.0",
     "description": "Kronos Technologies PHP coding standard",
     "type": "library"
 }
