@@ -9,6 +9,7 @@ then
     exit 1
 fi
 
+ROOT_FOLDER=$PWD
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 for REMOTE in php-coding-standard 
@@ -17,7 +18,7 @@ do
     echo ""
     echo "Releasing $REMOTE";
 
-    TMP_DIR="/tmp/laravel-split"
+    TMP_DIR="/tmp/standards-split"
     REMOTE_URL="git@github.com:kronostechnologies/$REMOTE.git"
 
     rm -rf $TMP_DIR;
@@ -30,6 +31,10 @@ do
         git checkout "$CURRENT_BRANCH";
 
         git tag $1
+
+        echo $1 > $ROOT_FOLDER/php/$REMOTE/.tag 
+        echo $1 > $TMP_DIR/.tag
+        
         git push origin --tags
     )
 done
