@@ -34,7 +34,11 @@ do
 
         echo $1 > $ROOT_FOLDER/php/$REMOTE/.tag 
         echo $1 > $TMP_DIR/.tag
-        
+
+        git add $TMP_DIR/.tag
+        git commit -m "Push tag $1"
+
+        git push origin
         git push origin --tags
     )
 done
