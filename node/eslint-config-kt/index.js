@@ -1,12 +1,13 @@
 module.exports = {
   extends: [
-    './rules/best-practices',
-    './rules/errors',
+    './airbnb-rules/best-practices',
+    './airbnb-rules/errors',
+    './airbnb-rules/node',
+    './airbnb-rules/style',
+    './airbnb-rules/variables',
+    './airbnb-rules/es6',
+    './airbnb-rules/imports',
     './rules/node',
-    './rules/style',
-    './rules/variables',
-    './rules/es6',
-    './rules/imports',
   ].map(require.resolve),
   parserOptions: {
     ecmaVersion: 2017,

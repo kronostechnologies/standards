@@ -1,9 +1,9 @@
 module.exports = {
   extends: [
     '../../node/eslint-config-kt',
+    './airbnb-rules/react',
+    './airbnb-rules/react-a11y',
     './rules/react',
-    './rules/react-a11y',
-    './rules/react-kronos',
   ].map(require.resolve),
   parserOptions: {
     ecmaVersion: 2018,
