@@ -1,0 +1,13 @@
+{
+  "extends": [ "stylelint-config-standard" ],
+  "plugins": [ "stylelint-order" ],
+  "rules": {
+    "font-weight-notation": "numeric",
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-alphabetical-order": true
+  },
+  "syntax": "scss"
+}
