@@ -1,13 +1,13 @@
 {
   "name": "@equisoft/tslint-config",
-  "version": "1.0.0",
-  "description": "Kronos Technologies' TSLint config",
-  "author": "Kronos Technologies inc.",
+  "version": "0.0.3",
+  "description": "Equisoft's TSLint configuration.",
+  "author": "Equisoft Inc.",
   "license": "MIT",
+  "main": "tslint.json",
   "engines": {
     "node": ">= 8"
   },
-  "main": "tslint.json",
   "keywords": [
     "tslint",
     "tslint-config"
