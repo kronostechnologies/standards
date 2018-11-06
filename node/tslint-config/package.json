@@ -8,9 +8,18 @@
   "engines": {
     "node": ">= 8"
   },
+  "homepage": "https://github.com/kronostechnologies/standards/tree/master/node/tslint-config",
+  "bugs": {
+    "url": "https://github.com/kronostechnologies/standards/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kronostechnologies/standards.git"
+  },
   "keywords": [
     "tslint",
-    "tslint-config"
+    "tslint-config",
+    "equisoft"
   ],
   "scripts": {
     "compile": "tsc"
