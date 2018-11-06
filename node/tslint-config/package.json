@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "tslint.json",
   "engines": {
-    "node": ">= 8"
+    "node": ">= 10.13"
   },
   "homepage": "https://github.com/kronostechnologies/standards/tree/master/node/tslint-config",
   "bugs": {
