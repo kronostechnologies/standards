@@ -1,6 +1,6 @@
 # Equisoft's TSLint configuration
 
-This projects hosts Equisoft's [TSLint](https://palantir.github.io/tslint/) configuration. It is versatile enough to be used with NodeJS or Web projects.
+This project hosts Equisoft's [TSLint](https://palantir.github.io/tslint/) configuration. It is versatile enough to be used with NodeJS or Web projects.
 
 When using frameworks or libraries, you can augment it with the use of flavors, such as [@equisoft/tslint-config-react](https://www.npmjs.com/package/@equisoft/tslint-config-react).
 

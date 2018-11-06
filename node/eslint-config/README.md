@@ -1,6 +1,6 @@
 # Equisoft's ESLint configuration
 
-This projects hosts Equisoft's [ESLint](https://eslint.org/) configuration. It is versatile enough to be used with NodeJS or Web projects.
+This project hosts Equisoft's [ESLint](https://eslint.org/) configuration. It is versatile enough to be used with NodeJS or Web projects.
 
 When using frameworks or libraries, you can augment it with the use of flavors, such as [@equisoft/eslint-config-react](https://www.npmjs.com/package/@equisoft/eslint-config-react).
 
@@ -13,7 +13,7 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/eslint-config
+yarn add --dev @equisoft/eslint-config eslint
 ```
 
 Then create a _.eslintrc_ file that uses Equisoft's configuration:
@@ -35,7 +35,7 @@ Finally create a script in your _package.json_ to easily run ESLint:
 }
 ```
 
-Now you can use `yarn eslint` to validate the code style of your TypeScript files!
+Now you can use `yarn eslint` to validate the code style of your Javascript files!
 
 ## Continuous Integration
 We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:

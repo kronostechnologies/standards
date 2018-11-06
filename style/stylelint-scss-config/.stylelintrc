@@ -1,6 +1,6 @@
 {
-  "extends": [ "stylelint-config-standard" ],
-  "plugins": [ "stylelint-order" ],
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
   "rules": {
     "font-weight-notation": "numeric",
     "order/order": [
