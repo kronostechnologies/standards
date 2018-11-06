@@ -4,3 +4,4 @@ vendor/
 
 # Temporary files
 tmp/
+*.log
