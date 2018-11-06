@@ -68,7 +68,7 @@ TSLint supports exclusion of globs in _tsconfig.json_. One way to gradually migr
   "linterOptions": {
     "ecxlude": [
       "src/**/*.ts",
-      "!src/contacts/*.ts"
+      "!src/contacts/**/*.ts"
     ]
   }
 }
