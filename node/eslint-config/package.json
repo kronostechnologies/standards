@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "engines": {
-    "node": ">= 10.13"
+    "node": ">= 8.12"
   },
   "homepage": "https://github.com/kronostechnologies/standards/tree/master/node/eslint-config",
   "bugs": {
