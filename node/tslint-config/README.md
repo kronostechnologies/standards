@@ -29,7 +29,7 @@ Finally create a script in your _package.json_ to easily run TSLint:
 ```json
 {
   "scripts": {
-    "tslint": "tslint -p tsconfig.json 'src/**/*.{ts,tsx}'",
+    "tslint": "tslint -p tsconfig.json 'src/**/*.ts'",
     "tslint:ci": "yarn tslint --format junit -o build/tests/tslint/junit.xml"
   }
 }
