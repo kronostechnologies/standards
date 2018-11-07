@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": ".stylelintrc",
   "engines": {
-    "node": ">= 10.13"
+    "node": ">= 8.12"
   },
   "homepage": "https://github.com/kronostechnologies/standards/tree/master/style/stylelint-scss-config",
   "bugs": {
