@@ -91,7 +91,6 @@
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-this-assignment": true,
-    "no-unsafe-any": true,
     "no-unsafe-finally": true,
     "no-unused-expression": {
       "options": "allow-fast-null-checks"
