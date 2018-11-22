@@ -33,7 +33,11 @@
     "no-unnecessary-type-assertion": true,
     "prefer-for-of": true,
     "promise-function-async": true,
-    "typedef": true,
+    "typedef": [
+      true, 
+      "call-signature", 
+      "property-declaration"
+    ],
     "typedef-whitespace": {
       "options": [
         {
