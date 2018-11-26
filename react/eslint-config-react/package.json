@@ -1,7 +1,7 @@
 {
-  "name": "eslint-config-react",
-  "version": "0.0.1",
-  "description": "Kronos Technologies' React ESLint config, based on eslint-config-airbnb",
+  "name": "@equisoft/eslint-config-react",
+  "version": "0.0.2",
+  "description": "Equisoft's React ESLint config, based on eslint-config-airbnb",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
