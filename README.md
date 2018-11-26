@@ -11,13 +11,13 @@ Supports Squizlab's [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniff
 
 ### JavaScript (NodeJS)
 
-For use in a NodeJS environment without TypeScript. Located under [node/eslint-config-kt](node/eslint-config-kt).
+For use in a NodeJS environment without TypeScript. Located under [node/eslint-config](node/eslint-config-kt).
 
 Applied through [ESLint](https://eslint.org/).
 
 #### React flavor
 
-Use the configuration located under [react/eslint-config-react-kt](react/eslint-config-react-kt) instead.
+Use the configuration located under [react/eslint-config-react](react/eslint-config-react) instead.
 
 
 ### TypeScript (NodeJS + Web)

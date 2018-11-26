@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-react-kt",
+  "name": "eslint-config-react",
   "version": "0.0.1",
   "description": "Kronos Technologies' React ESLint config, based on eslint-config-airbnb",
   "main": "index.js",
