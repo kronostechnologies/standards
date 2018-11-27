@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    '../../node/eslint-config',
+    '@equisoft/eslint-config',
     './airbnb-rules/react',
     './rules/react',
   ].map(require.resolve),
