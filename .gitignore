@@ -5,3 +5,6 @@ vendor/
 # Temporary files
 tmp/
 *.log
+
+#IDE
+.idea
