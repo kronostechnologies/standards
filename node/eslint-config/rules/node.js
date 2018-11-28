@@ -1,8 +1,7 @@
-module.export = {
+module.exports = {
   rules: {
     "import/extensions": "off",
-    "indent": ["error", "tab", {"SwitchCase": 1}],
-    "jsx-a11y/label-has-for": "off",
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "max-len": [2, 220, 2, {"ignoreUrls": true, "ignoreComments": false}],
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "no-param-reassign": "warn",
