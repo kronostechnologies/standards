@@ -115,7 +115,7 @@
     },
     "eofline": true,
     "indent": {
-      "options": ["spaces", 2]
+      "options": ["spaces", 4]
     },
     "linebreak-style": {
       "options": "LF"
