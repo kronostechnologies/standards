@@ -1,7 +1,7 @@
 module.exports = {
   rules: {
     "import/extensions": "off",
-    "indent": ["error", 2, {"SwitchCase": 1}],
+    "indent": ["error", 4, {"SwitchCase": 1}],
     "max-len": [2, 220, 2, {"ignoreUrls": true, "ignoreComments": false}],
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "no-param-reassign": "warn",
