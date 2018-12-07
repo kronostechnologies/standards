@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/tslint-config",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Equisoft's TSLint configuration.",
   "author": "Equisoft Inc.",
   "license": "MIT",
