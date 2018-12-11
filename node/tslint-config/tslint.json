@@ -34,8 +34,8 @@
     "prefer-for-of": true,
     "promise-function-async": true,
     "typedef": [
-      true, 
-      "call-signature", 
+      true,
+      "call-signature",
       "property-declaration"
     ],
     "typedef-whitespace": {
@@ -118,9 +118,6 @@
       "severity": "warning"
     },
     "eofline": true,
-    "indent": {
-      "options": ["spaces", 4]
-    },
     "linebreak-style": {
       "options": "LF"
     },
@@ -230,6 +227,26 @@
     // Custom rules
     "object-curly-spacing": {
       "options": "always"
+    },
+    "ter-indent": {
+      "options": [
+        4,
+        {
+          "SwitchCase": 1,
+          "MemberExpression": 1,
+          "FunctionDeclaration": {
+            "parameters": 1,
+            "body": 1
+          },
+          "FunctionExpression": {
+            "parameters": 1,
+            "body": 1
+          },
+          "CallExpression": {
+            "arguments": 1
+          }
+        }
+      ]
     }
   }
 }

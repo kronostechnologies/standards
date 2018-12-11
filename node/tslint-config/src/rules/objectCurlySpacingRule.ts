@@ -1,4 +1,9 @@
-// Copied from https://github.com/buzinas/tslint-eslint-rules, 5.4.0
+/**
+ * This rule is a copy of tslint-eslint-rules:
+ *
+ * source file: https://github.com/buzinas/tslint-eslint-rules/blob/master/src/rules/objectCurlySpacingRule.ts
+ * git commit hash: 24190b7059b8c947d7df5b731434566fdd6b5468
+ */
 
 import * as Lint from 'tslint';
 import * as ts from 'typescript';
