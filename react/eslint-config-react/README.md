@@ -13,7 +13,7 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/eslint-config eslint
+yarn add --dev @equisoft/eslint-config-react eslint
 ```
 
 Then create a _.eslintrc_ file that uses Equisoft's configuration:
