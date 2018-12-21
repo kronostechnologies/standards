@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@equisoft/eslint-config": "^0.0.3",
+    "@equisoft/eslint-config": "^0.0.4",
     "object.assign": "^4.1.0",
     "object.entries": "^1.0.4"
   },
