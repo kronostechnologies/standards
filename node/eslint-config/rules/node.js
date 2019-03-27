@@ -10,5 +10,6 @@ module.exports = {
     "no-return-assign": ["error", "except-parens"],
     "no-undef": "warn",
     "object-shorthand": "warn",
+    "prefer-destructuring": "off",
   }
 };
