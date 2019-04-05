@@ -11,7 +11,7 @@ Supports Squizlab's [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniff
 
 ### JavaScript (NodeJS)
 
-For use in a NodeJS environment without TypeScript. Located under [node/eslint-config](node/eslint-config-kt).
+For use in a NodeJS environment without TypeScript. Located under [node/eslint-config](node/eslint-config).
 
 Applied through [ESLint](https://eslint.org/).
 
