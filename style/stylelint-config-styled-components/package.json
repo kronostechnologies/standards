@@ -1,0 +1,36 @@
+{
+  "name": "@equisoft/stylelint-config-styled-components",
+  "version": "0.1.0",
+  "description": "Equisoft's stylelint configuration for styled-components.",
+  "license": "MIT",
+  "main": ".stylelintrc",
+  "files": [
+    ".stylelintrc"
+  ],
+  "author": "Equisoft Design",
+  "maintainers": [
+    "Pierre-Luc Paquin <pierre-luc.paquin@equisoft.com> (https://github.com/plpaquin)"
+  ],
+  "contributors": [
+    "Pierre-Luc Paquin <pierre-luc.paquin@equisoft.com> (https://github.com/plpaquin)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kronostechnologies/standards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kronostechnologies/standards/issues"
+  },
+  "dependencies": {
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^3.0.0",
+    "stylelint-processor-styled-components": "^1.6.0"
+  },
+  "keywords": [
+    "styled-components",
+    "stylelint",
+    "stylelint-config"
+  ]
+}
