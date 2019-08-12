@@ -13,6 +13,7 @@
     "jsx-wrap-multiline": true,
     "jsx-no-bind": true,
     "jsx-no-lambda": true,
-    "jsx-no-multiline-js": true
+    "jsx-no-multiline-js": true,
+    "jsx-space-before-trailing-slash": true
   }
 }
