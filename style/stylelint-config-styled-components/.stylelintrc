@@ -25,6 +25,7 @@
   ],
   "plugins": ["stylelint-order"],
   "rules": {
+    "indentation": 4,
     "font-weight-notation": "numeric",
     "order/order": [
       "custom-properties",
