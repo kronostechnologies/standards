@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config-styled-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Equisoft's stylelint configuration for styled-components.",
   "license": "MIT",
   "main": ".stylelintrc",
