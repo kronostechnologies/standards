@@ -1,0 +1,6 @@
+* text=auto filter=tabspace
+*.bat text eol=crlf
+gradlew text eol=lf
+*.sh text eol=lf
+*.md whitespace=-trailing-space
+Makefile whitespace=indent-with-non-tab,space-before-tab,tabwidth=4,-tab-in-indent -filter
