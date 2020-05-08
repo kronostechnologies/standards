@@ -1,15 +1,16 @@
-package com.equisoft.standards.kotlin.gradleplugin
+package com.equisoft.standards.kotlin
 
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.resources.TextResource
+import org.jmailen.gradle.kotlinter.KotlinterPlugin
 import java.io.InputStream
 
 class KotlinStandardsPlugin : Plugin<Project> {
     override fun apply(project: Project) = with(project) {
-        plugins.apply(org.jmailen.gradle.kotlinter.KotlinterPlugin::class.java)
+        plugins.apply(KotlinterPlugin::class.java)
         plugins.apply(DetektPlugin::class.java)
 
         afterEvaluate {
@@ -21,6 +22,11 @@ class KotlinStandardsPlugin : Plugin<Project> {
                 it.config = files(file(configResource))
                 it.input = files(file("src/main/kotlin"), file("src/test/kotlin"))
             }
+        }
+
+        tasks.register("checkStatic").configure { check ->
+            check.dependsOn("lintKotlin")
+            check.dependsOn("detekt")
         }
     }
 
