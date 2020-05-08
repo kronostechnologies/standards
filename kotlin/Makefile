@@ -28,3 +28,11 @@ package:
 .PHONY: package.image
 package.image:
 	# No container image to build here.
+
+.PHONY: clean
+clean:
+	$ ./gradlew clean
+
+.PHONY: publish
+publish: clean package
+	$ ./gradlew publishPlugins

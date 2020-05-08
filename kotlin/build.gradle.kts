@@ -8,8 +8,9 @@ plugins {
 
     id("java-gradle-plugin")
 
-    id("org.jmailen.kotlinter") version "2.3.2"
+    id("com.gradle.plugin-publish") version "0.11.0"
     id("io.gitlab.arturbosch.detekt") version "1.8.0"
+    id("org.jmailen.kotlinter") version "2.3.2"
 }
 
 repositories {
@@ -28,29 +29,27 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
-//pluginBundle {
-//    website = "https://www.github.com/kronostechnologies/standards"
-//    vcsUrl = "https://www.github.com/kronostechnologies/standards"
-//    description = "Kotlin standards at Equisoft"
-//    tags = listOf("equisoft", "kotlin", "standards")
-//}
+pluginBundle {
+    website = "https://www.github.com/kronostechnologies/standards"
+    vcsUrl = "https://www.github.com/kronostechnologies/standards.git"
+    tags = listOf("equisoft", "kotlin", "lint", "check")
+}
 
 gradlePlugin {
     plugins {
-        create("kotlinStandards") {
+        create("kotlinStandardsPlugin") {
             id = "com.equisoft.standards.kotlin"
             displayName = "Equisoft Kotlin Standards"
             description = "Kotlin standards at Equisoft"
-            version = version
             implementationClass = "com.equisoft.standards.kotlin.KotlinStandardsPlugin"
         }
     }
 }
 
 val functionalTestSourceSet = sourceSets.create("functionalTest") {
+    gradlePlugin.testSourceSets(this)
 }
 
-gradlePlugin.testSourceSets(functionalTestSourceSet)
 configurations
     .getByName("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
@@ -71,5 +70,9 @@ val check by tasks.getting(Task::class) {
 
 configure<DetektExtension> {
     config = files(file("src/main/resources/detekt.yml"))
-    input = files(file("src/main/kotlin"), file("src/test/kotlin"))
+    input = files(
+        file("src/main/kotlin"),
+        file("src/test/kotlin"),
+        functionalTestSourceSet.allSource.files
+    )
 }

@@ -4,7 +4,7 @@ import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class KotlinStandardsPluginTest {
     private lateinit var project: Project
@@ -17,11 +17,11 @@ class KotlinStandardsPluginTest {
 
     @Test
     fun `detekt plugin should be registered`() {
-        assertNotNull(project.plugins.hasPlugin("io.gitlab.arturbosch.detekt"))
+        assertTrue(project.plugins.hasPlugin("io.gitlab.arturbosch.detekt"))
     }
 
     @Test
     fun `kotlinter plugin should be registered`() {
-        assertNotNull(project.plugins.hasPlugin("org.jmailen.kotlinter"))
+        assertTrue(project.plugins.hasPlugin("org.jmailen.kotlinter"))
     }
 }

@@ -16,8 +16,7 @@ class KotlinStandardsPluginFunctionalTest {
         projectDir = File("build/functionalTest")
         projectDir.mkdirs()
         projectDir.resolve("settings.gradle.kts").writeText("")
-        projectDir.resolve("build.gradle.kts").writeText(
-            """
+        projectDir.resolve("build.gradle.kts").writeText("""
             plugins {
                 kotlin("jvm") version "1.3.71"
                 id("com.equisoft.standards.kotlin")
@@ -25,13 +24,12 @@ class KotlinStandardsPluginFunctionalTest {
             repositories {
                 jcenter()
             }
-        """
-        )
+        """.trimIndent())
 
         runner = GradleRunner.create()
-        runner.forwardOutput()
-        runner.withPluginClasspath()
-        runner.withProjectDir(projectDir)
+            .forwardOutput()
+            .withPluginClasspath()
+            .withProjectDir(projectDir)
     }
 
     @Test
