@@ -1,7 +1,7 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
 group = "com.equisoft.standards"
-version = "0.1.0"
+version = "0.2.0"
 
 plugins {
     kotlin("jvm") version "1.3.71"
