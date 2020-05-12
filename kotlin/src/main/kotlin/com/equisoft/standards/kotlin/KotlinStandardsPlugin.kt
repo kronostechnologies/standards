@@ -5,6 +5,7 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.resources.TextResource
+import org.jmailen.gradle.kotlinter.KotlinterExtension
 import org.jmailen.gradle.kotlinter.KotlinterPlugin
 import java.io.InputStream
 
@@ -22,6 +23,10 @@ class KotlinStandardsPlugin : Plugin<Project> {
                 it.config = files(file(configResource))
                 it.input = files(file("src/main/kotlin"), file("src/test/kotlin"))
             }
+
+            convention.configure(KotlinterExtension::class.java) {
+                it.disabledRules = arrayOf("import-ordering")
+            }
         }
 
         tasks.register("checkStatic").configure { check ->
@@ -32,7 +37,7 @@ class KotlinStandardsPlugin : Plugin<Project> {
 
     private fun getDetektConfigInputStream(): InputStream {
         val detektConfigInputStream: InputStream? = this.javaClass.classLoader
-                .getResourceAsStream(DETEKT_CONFIG_FILENAME)
+            .getResourceAsStream(DETEKT_CONFIG_FILENAME)
 
         checkNotNull(detektConfigInputStream, { "Detekt config file not found" })
 

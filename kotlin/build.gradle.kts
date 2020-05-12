@@ -18,6 +18,10 @@ repositories {
     gradlePluginPortal()
 }
 
+val functionalTestImplementation = configurations
+    .create("functionalTestImplementation")
+    .extendsFrom(configurations.getByName("testImplementation"))
+
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -26,7 +30,11 @@ dependencies {
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.8.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+
+    val junit5Version = "5.6.2"
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }
 
 pluginBundle {
@@ -50,10 +58,6 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
     gradlePlugin.testSourceSets(this)
 }
 
-configurations
-    .getByName("functionalTestImplementation")
-    .extendsFrom(configurations.getByName("testImplementation"))
-
 val functionalTest by tasks.creating(Test::class) {
     testClassesDirs = functionalTestSourceSet.output.classesDirs
     classpath = functionalTestSourceSet.runtimeClasspath
@@ -75,4 +79,14 @@ configure<DetektExtension> {
         file("src/test/kotlin"),
         functionalTestSourceSet.allSource.files
     )
+}
+
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+    }
+}
+
+if (project.hasProperty("local")) {
+    apply(from = rootProject.file("./profiles/local.gradle.kts"))
 }

@@ -2,19 +2,24 @@ package com.equisoft.standards.kotlin
 
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
+import org.gradle.testkit.runner.TaskOutcome
+import org.junit.jupiter.api.Nested
 import java.io.File
+import java.nio.file.Files
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
+import kotlin.test.assertEquals
 
 class KotlinStandardsPluginFunctionalTest {
     private lateinit var projectDir: File
+    private lateinit var sourcesDir: File
+    private lateinit var testsDir: File
     private lateinit var runner: GradleRunner
 
     @BeforeTest
     fun setUp() {
-        projectDir = File("build/functionalTest")
-        projectDir.mkdirs()
+        projectDir = Files.createTempDirectory("kotlin-standards").toFile()
         projectDir.resolve("settings.gradle.kts").writeText("")
         projectDir.resolve("build.gradle.kts").writeText("""
             plugins {
@@ -26,47 +31,90 @@ class KotlinStandardsPluginFunctionalTest {
             }
         """.trimIndent())
 
+        sourcesDir = createProjectSubDirectory("src/main/kotlin")
+        testsDir = createProjectSubDirectory("src/test/kotlin")
+
+        // Create a file in each source directory to prevent task outcome of NO-SOURCE
+        writeSource("Main.kt", "class Main")
+        writeTest("MainTest.kt", "class MainTest")
+
         runner = GradleRunner.create()
             .forwardOutput()
             .withPluginClasspath()
             .withProjectDir(projectDir)
     }
 
-    @Test
-    fun `check should run kotlinter`() {
-        val result = runner.withArguments("check").build()
-
-        assertOutputContainsKotlinter(result)
+    @AfterTest
+    fun tearDown() {
+        projectDir.deleteRecursively()
     }
 
-    @Test
-    fun `checkStatic should run kotlinter`() {
-        val result = runner.withArguments("checkStatic").build()
+    @Nested
+    inner class Kotlinter {
+        @Test
+        fun `check should run kotlinter`() {
+            val result = runner.withArguments("check").build()
 
-        assertOutputContainsKotlinter(result)
+            assertKotlinterSuccess(result)
+        }
+
+        @Test
+        fun `checkStatic should run kotlinter`() {
+            val result = runner.withArguments("checkStatic").build()
+
+            assertKotlinterSuccess(result)
+        }
+
+        @Test
+        fun `kotlinter should ignore import-ordering`() {
+            writeSource("IgnoreImportOrder.kt", """
+            /* ktlint-disable no-unused-imports */
+            import io.micronaut.test.annotation.MicronautTest
+            import org.junit.jupiter.api.Assertions.assertEquals
+            import org.junit.jupiter.api.Test
+            import javax.inject.Inject
+
+            class IgnoreImportOrder
+        """.trimIndent())
+
+            val result = runner.withArguments("checkStatic").build()
+
+            assertKotlinterSuccess(result)
+        }
+
+        private fun assertKotlinterSuccess(result: BuildResult) {
+            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlinMain")?.outcome, ":lintKotlinMain")
+            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlinTest")?.outcome, ":lintKotlinTest")
+            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlin")?.outcome, ":lintKotlin")
+        }
     }
 
-    private fun assertOutputContainsKotlinter(result: BuildResult) {
-        assertTrue(result.output.contains("> Task :lintKotlinMain"))
-        assertTrue(result.output.contains("> Task :lintKotlinTest"))
-        assertTrue(result.output.contains("> Task :lintKotlin"))
+    @Nested
+    inner class Detekt {
+        @Test
+        fun `check should run detekt`() {
+            val result = runner.withArguments("check").build()
+
+            assertDetektSuccess(result)
+        }
+
+        @Test
+        fun `checkStatic should run detekt`() {
+            val result = runner.withArguments("checkStatic").build()
+
+            assertDetektSuccess(result)
+        }
+
+        private fun assertDetektSuccess(result: BuildResult) {
+            assertEquals(TaskOutcome.SUCCESS, result.task(":detekt")?.outcome)
+        }
     }
 
-    @Test
-    fun `check should run detekt`() {
-        val result = runner.withArguments("check").build()
+    private fun writeSource(file: String, content: String) =
+        sourcesDir.resolve(file).writeText(content + "\n")
 
-        assertOutputContainsDetekt(result)
-    }
+    private fun writeTest(file: String, content: String) =
+        testsDir.resolve(file).writeText(content + "\n")
 
-    @Test
-    fun `checkStatic should run detekt`() {
-        val result = runner.withArguments("checkStatic").build()
-
-        assertOutputContainsDetekt(result)
-    }
-
-    private fun assertOutputContainsDetekt(result: BuildResult) {
-        assertTrue(result.output.contains("> Task :detekt"))
-    }
+    private fun createProjectSubDirectory(path: String): File = File(projectDir, path).apply { mkdirs() }
 }
