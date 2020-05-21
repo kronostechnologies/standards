@@ -2,19 +2,21 @@
   "name": "@equisoft/eslint-config",
   "version": "0.0.5",
   "description": "Equisoft's ESLint configuration. Based on eslint-config-airbnb-base",
-  "author": "Equisoft Inc.",
   "license": "MIT",
   "main": "index.js",
-  "engines": {
-    "node": ">= 8.12"
-  },
-  "homepage": "https://github.com/kronostechnologies/standards/tree/master/node/eslint-config",
-  "bugs": {
-    "url": "https://github.com/kronostechnologies/standards/issues"
+  "homepage": "https://github.com/kronostechnologies/standards#readme",
+  "author": {
+    "name": "Equisoft inc.",
+    "url": "https://www.equisoft.com/",
+    "email": "services.administratifs@equisoft.com"
   },
   "repository": {
+    "directory": "node/eslint-config",
     "type": "git",
-    "url": "git+https://github.com/kronostechnologies/standards.git"
+    "url": "https://github.com/kronostechnologies/standards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
     "eslint",

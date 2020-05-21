@@ -7,14 +7,14 @@
   "files": [
     ".stylelintrc"
   ],
-  "author": "Equisoft Design",
-  "maintainers": [
-    "Pierre-Luc Paquin <pierre-luc.paquin@equisoft.com> (https://github.com/plpaquin)"
-  ],
-  "contributors": [
-    "Pierre-Luc Paquin <pierre-luc.paquin@equisoft.com> (https://github.com/plpaquin)"
-  ],
+  "homepage": "https://github.com/kronostechnologies/standards#readme",
+  "author": {
+    "name": "Equisoft inc.",
+    "url": "https://www.equisoft.com/",
+    "email": "services.administratifs@equisoft.com"
+  },
   "repository": {
+    "directory": "style/stylelint-config-styled-components",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
