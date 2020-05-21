@@ -2,7 +2,9 @@
 
 This project hosts Equisoft's [ESLint](https://eslint.org/) configuration. It is versatile enough to be used with NodeJS or Web projects.
 
-When using frameworks or libraries, you can augment it with the use of flavors, such as [@equisoft/eslint-config-react](https://www.npmjs.com/package/@equisoft/eslint-config-react).
+The rules of this ESLint configuration uses [AirBnB](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)'s packages, with some small overrides to make up Equisoft's flavor.
+
+For react, you should instead look at [@equisoft/eslint-config-react](https://www.npmjs.com/package/@equisoft/eslint-config-react) which comes with additional validations.
 
 ## Versioning
 
@@ -16,7 +18,7 @@ Install the libraries in your project:
 yarn add --dev @equisoft/eslint-config eslint
 ```
 
-Then create a _.eslintrc_ file that uses Equisoft's configuration:
+Then create a _.eslintrc.json_ file that uses Equisoft's configuration:
 
 ```json
 {
@@ -24,7 +26,7 @@ Then create a _.eslintrc_ file that uses Equisoft's configuration:
 }
 ```
 
-Finally create a script in your _package.json_ to easily run ESLint:
+Finally, create a script in your _package.json_ to easily run ESLint:
 
 ```json
 {
@@ -41,13 +43,19 @@ Now you can use `yarn eslint` to validate the code style of your Javascript file
 We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
 
 ```yaml
-eslint:
-  executor: 'node'
-  steps:
-    - run: 'mkdir -p build/tests/eslint/'
-    - run: 'yarn eslint:ci'
-    - store_test_results:
-        path: 'build/tests'
+orbs:
+  eq: equisoft/build-tools@latest
+
+jobs:
+  eslint:
+    executor: node
+    steps:
+      - eq/with-yarn-cache
+      - run:
+          name: ESLint
+          command: yarn eslint:ci
+      - store_test_results:
+          path: build/tests
 ```
 
 ## Migrating an existing codebase

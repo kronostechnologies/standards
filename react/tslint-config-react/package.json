@@ -2,19 +2,21 @@
   "name": "@equisoft/tslint-config-react",
   "version": "0.0.3",
   "description": "Equisoft's TSLint configuration, React flavor.",
-  "author": "Equisoft Inc.",
   "license": "MIT",
   "main": "tslint.json",
-  "engines": {
-    "node": ">= 8.12"
-  },
-  "homepage": "https://github.com/kronostechnologies/standards/tree/master/react/tslint-config-react",
-  "bugs": {
-    "url": "https://github.com/kronostechnologies/standards/issues"
+  "homepage": "https://github.com/kronostechnologies/standards#readme",
+  "author": {
+    "name": "Equisoft inc.",
+    "url": "https://www.equisoft.com/",
+    "email": "services.administratifs@equisoft.com"
   },
   "repository": {
+    "directory": "react/tslint-config-react",
     "type": "git",
-    "url": "git+https://github.com/kronostechnologies/standards.git"
+    "url": "https://github.com/kronostechnologies/standards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
     "tslint",

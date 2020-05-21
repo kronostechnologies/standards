@@ -6,6 +6,12 @@ vendor/
 tmp/
 *.log
 
-#IDE
+# IDE
 .idea
 *.iml
+
+# Yarn (not using zero-install)
+**/.yarn/*
+!**/.yarn/releases
+!**/.yarn/plugins
+.pnp.*
