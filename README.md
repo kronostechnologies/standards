@@ -2,30 +2,33 @@
 
 ## Supported languages
 
+### Kotlin
+
+Located in [kotlin](kotlin/README.md).
+
+The plugin is available on the Gradle Plugins Portal: [com.equisoft.standards.kotlin](https://plugins.gradle.org/plugin/com.equisoft.standards.kotlin)
+
 ### PHP
 
 Located in [php/php-coding-standard](php/php-coding-standard).
 
 Supports Squizlab's [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
-
 ### JavaScript (NodeJS)
 
-For use in a NodeJS environment without TypeScript. Located under [node/eslint-config](node/eslint-config).
+For use in a NodeJS environment without TypeScript. Located under [node/eslint-config](node/eslint-config/README.md).
 
 Applied through [ESLint](https://eslint.org/).
 
 #### React flavor
 
-Use the configuration located under [react/eslint-config-react](react/eslint-config-react) instead.
-
+Use the configuration located under [react/eslint-config-react](react/eslint-config-react/README.md) instead.
 
 ### TypeScript (NodeJS + Web)
 
-For use in a NodeJS or Web environment with TypeScript. Located under [node/tslint-config](node/tslint-config).
+For use in a NodeJS or Web environment with TypeScript. Located under [node/tslint-config](node/tslint-config/README.md).
 
 Applied through [TSLint](https://palantir.github.io/tslint/).
-
 
 ## Building & Publishing
 
