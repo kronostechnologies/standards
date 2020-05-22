@@ -6,9 +6,13 @@ vendor/
 tmp/
 *.log
 
+# OS
+.DS_Store
+
 # IDE
 .idea
 *.iml
+*.swp
 
 # Yarn (not using zero-install)
 **/.yarn/*
