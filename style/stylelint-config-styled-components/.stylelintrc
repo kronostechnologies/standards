@@ -1,38 +1,36 @@
 {
   "processors": [
     [
-      "stylelint-processor-styled-components", {
-      "parserPlugins": [
-        "jsx",
-        "objectRestSpread",
-        ["decorators", {"decoratorsBeforeExport": true}],
-        "classProperties",
-        "exportExtensions",
-        "asyncGenerators",
-        "functionBind",
-        "functionSent",
-        "dynamicImport",
-        "optionalCatchBinding",
-        "optionalChaining",
-        "nullishCoalescingOperator",
-        "numericSeparator"
-      ]
-    }
+      "stylelint-processor-styled-components",
+      {
+        "parserPlugins": [
+          "jsx",
+          "objectRestSpread",
+          [
+            "decorators",
+            {
+              "decoratorsBeforeExport": true
+            }
+          ],
+          "classProperties",
+          "exportExtensions",
+          "asyncGenerators",
+          "functionBind",
+          "functionSent",
+          "dynamicImport",
+          "optionalCatchBinding",
+          "optionalChaining",
+          "nullishCoalescingOperator",
+          "numericSeparator"
+        ]
+      }
     ]
   ],
   "extends": [
-    "stylelint-config-standard",
+    "@equisoft/stylelint-scss-config",
     "stylelint-config-styled-components"
   ],
   "plugins": ["stylelint-order"],
-  "rules": {
-    "indentation": 4,
-    "font-weight-notation": "numeric",
-    "order/order": [
-      "custom-properties",
-      "declarations"
-    ],
-    "order/properties-alphabetical-order": true
-  },
+  "rules": { },
   "syntax": "scss"
 }

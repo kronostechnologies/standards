@@ -2,6 +2,8 @@
 
 This project hosts Equisoft's [stylelint](https://stylelint.io/) configuration for SASS.
 
+Because this package comes with its own [stylelint](https://stylelint.io) dependency, your project only needs this package. It doesn't need to have [stylelint](https://stylelint.io) as a dependency.
+
 ## Versioning
 
 The versioning of this project respects [semver](https://semver.org/). That means your project's package.json can caret (`^`) import it.
@@ -11,7 +13,7 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/stylelint-scss-config stylelint
+yarn add --dev @equisoft/stylelint-scss-config 
 ```
 
 Then create a _.stylelintrc_ file that uses Equisoft's configuration:
