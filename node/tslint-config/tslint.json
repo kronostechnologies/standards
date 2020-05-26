@@ -4,6 +4,12 @@
   "rules": {
     // TypeScript
     "adjacent-overload-signatures": true,
+    "invalid-void": [
+      true,
+      {
+        "allow-generics": ["Promise", "PromiseLike"]
+      }
+    ],
     "member-ordering": {
       "options": {
         "order": [
@@ -35,8 +41,14 @@
     "promise-function-async": true,
     "typedef": [
       true,
+      "arrow-call-signature",
+      "arrow-parameter",
       "call-signature",
-      "property-declaration"
+      "member-variable-declaration",
+      "object-destructuring",
+      "parameter",
+      "property-declaration",
+      "variable-declaration"
     ],
     "typedef-whitespace": {
       "options": [
@@ -57,6 +69,12 @@
       ]
     },
     "unified-signatures": true,
+    "unnecessary-constructor": [
+      true,
+      {
+        "check-super-calls": true
+      }
+    ],
 
     // Functionality
     // These rules catch common errors in JS programming or otherwise confusing constructs that are prone to producing bugs
@@ -67,8 +85,10 @@
     "curly": {
       "options": "ignore-same-line"
     },
+    "function-constructor": true,
     "label-position": true,
     "no-arg": true,
+    "no-async-without-await": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-console": {
@@ -84,18 +104,27 @@
     },
     "no-eval": true,
     "no-floating-promises": true,
+    "no-for-in": true,
     "no-for-in-array": true,
     "no-implicit-dependencies": {
-      "options": "dev"
+      "options": ["dev"]
     },
     "no-inferred-empty-object-type": true,
     "no-invalid-template-strings": true,
-    "no-object-literal-type-assertion": true,
+    "no-null-undefined-union": true,
+    "no-object-literal-type-assertion": [
+      true,
+      {
+        "allow-arguments": true
+      }
+    ],
+    "no-promise-as-boolean": true,
     "no-return-await": true,
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
+    "no-tautology-expression": true,
     "no-this-assignment": true,
     "no-unsafe-finally": true,
     "no-unused-expression": {
@@ -107,9 +136,18 @@
     },
     "prefer-object-spread": true,
     "radix": true,
+    "static-this": true,
+    "strict-comparisons": [
+      true,
+      {
+        "allow-object-equal-comparison": true,
+        "allow-string-order-comparison": true
+      }
+    ],
     "triple-equals": {
       "options": "allow-null-check"
     },
+    "unnecessary-bind": true,
     "use-isnan": true,
 
     // Maintainability
@@ -152,9 +190,10 @@
       "options": "check-space"
     },
     "encoding": true,
-    "file-name-casing": {
-      "options": "kebab-case"
-    },
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
     "import-spacing": true,
     "interface-name": {
       "options": "never-prefix"
@@ -208,14 +247,31 @@
     "space-within-parens": {
       "options": 0
     },
+    "type-literal-delimiter": [
+      true,
+      {
+        "singleLine": "always"
+      }
+    ],
+    "unnecessary-else": [
+      true,
+      {
+        "allow-else-if": true
+      }
+    ],
     "variable-name": {
-      "options": ["check-format", "ban-keywords"]
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "require-const-for-all-caps"
+      ]
     },
     "whitespace": {
       "options": [
         "check-branch",
         "check-decl",
         "check-operator",
+        "check-postbrace",
         "check-preblock",
         "check-rest-spread",
         "check-separator",

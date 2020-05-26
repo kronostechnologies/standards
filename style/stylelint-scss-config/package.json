@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-scss-config",
-  "version": "0.0.2",
+  "version": "1.0.0-alpha.0",
   "description": "Equisoft's stylelint SASS configuration.",
   "license": "MIT",
   "main": ".stylelintrc",
@@ -24,13 +24,8 @@
     "equisoft"
   ],
   "dependencies": {
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^1.0.0"
-  },
-  "peerDependencies": {
-    "stylelint": "^9.7.1"
-  },
-  "devDependencies": {
-    "stylelint": "9.7.1"
+    "stylelint": "~13.5.0",
+    "stylelint-config-standard": "~20.0.0",
+    "stylelint-order": "~4.0.0"
   }
 }

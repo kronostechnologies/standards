@@ -1,19 +1,26 @@
 {
+  "extends": [
+    "@equisoft/tslint-config",
+    "tslint-react"
+  ],
   "defaultSeverity": "error",
-  // tslint-react will be installed as a transitive dependency
-  "rulesDirectory": "../../tslint-react/rules",
   "rules": {
     "jsx-alignment": true,
+    "jsx-ban-elements": false,
+    "jsx-ban-props": false,
     "jsx-boolean-value": true,
+    "jsx-curly-brace-presence": [true, "never"],
     "jsx-curly-spacing": [true, "never"],
     "jsx-equals-spacing": [true, "never"],
     "jsx-key": true,
-    "jsx-no-string-ref": true,
-    "jsx-self-close": true,
-    "jsx-wrap-multiline": true,
     "jsx-no-bind": true,
     "jsx-no-lambda": true,
     "jsx-no-multiline-js": true,
-    "jsx-space-before-trailing-slash": true
+    "jsx-no-string-ref": true,
+    "jsx-self-close": true,
+    "jsx-space-before-trailing-slash": false,
+    "jsx-whitespace-literal": true,
+    "jsx-wrap-multiline": true,
+    "react-no-unnecessary-fragment": true
   }
 }
