@@ -2,7 +2,7 @@
 
 This project hosts Equisoft's [TSLint](https://palantir.github.io/tslint/) configuration. It is versatile enough to be used with NodeJS or Web projects.
 
-When using frameworks or libraries, you can augment it with the use of flavors, such as [@equisoft/tslint-config-react](https://www.npmjs.com/package/@equisoft/tslint-config-react).
+For react, you should instead look at [@equisoft/tslint-config-react](https://www.npmjs.com/package/@equisoft/tslint-config-react) which comes with additional validations.
 
 ## Versioning
 
@@ -10,10 +10,10 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 
 ## Installation
 
-Install the libraries in your project:
+Install the library in your project:
 
 ```bash
-yarn add --dev @equisoft/tslint-config tslint
+yarn add --dev @equisoft/tslint-config
 ```
 
 Then create a _tslint.json_ file that uses Equisoft's configuration:
@@ -50,13 +50,19 @@ This repository additionally exports a `tsconfig.standards.json` file that you s
 We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
 
 ```yaml
-tslint:
-  executor: 'node'
-  steps:
-    - run: 'mkdir -p build/tests/tslint/'
-    - run: 'yarn tslint:ci'
-    - store_test_results:
-        path: 'build/tests'
+orbs:
+  eq: equisoft/build-tools@latest
+
+jobs:
+  tslint:
+    executor: node
+    steps:
+      - eq/with-yarn-cache
+      - run:
+          name: TSLint
+          command: yarn tslint:ci
+      - store_test_results:
+          path: build/tests
 ```
 
 ## Migrating an existing codebase
