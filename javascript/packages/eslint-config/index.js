@@ -10,6 +10,8 @@ module.exports = {
         'arrow-parens': ['error', 'always'],
         'class-methods-use-this': 'off',
         'import/extensions': 'off',
+        'import/prefer-default-export': 'off',
+        'import/no-default-export': ['error'],
         'indent': ['error', 4, { 'SwitchCase': 1 }],
         'max-len': ['error', 120, 2,
             {
