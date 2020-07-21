@@ -57,7 +57,7 @@ jobs:
 
 1. Make sure you have the `gradle.publish.key` and `gradle.publish.secret` variables set in your `~/.gradle/gradle.properties` file. They are available on LastPass.
 1. Bump the version
-2. Build and publish
+1. Build and publish
     ```bash
-    ./gradlew clean publish
+    make publish
     ```
