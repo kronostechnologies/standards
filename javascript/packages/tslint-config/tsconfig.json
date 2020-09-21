@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.standards.json",
+  "extends": "@equisoft/typescript-config/tsconfig.standards.json",
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",

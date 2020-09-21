@@ -26,3 +26,7 @@ package:
 .PHONY: all
 all: setup check test compile package
 .DEFAULT_GOAL := all
+
+.PHONY: publish-javascript
+publish-javascript:
+	cd javascript && yarn workspaces foreach -tv --include '@equisoft/*' npm publish --access public --tag next

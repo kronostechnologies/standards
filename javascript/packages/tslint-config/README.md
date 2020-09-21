@@ -42,7 +42,7 @@ This repository additionally exports a `tsconfig.standards.json` file that you s
 
 ```json
 {
-  "extends": "./node_modules/@equisoft/tslint-config/tsconfig.standards.json"
+  "extends": "@equisoft/typescript-config/tsconfig.standards.json"
 }
 ```
 

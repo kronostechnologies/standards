@@ -1,11 +1,14 @@
 module.exports = {
     extends: [
         'eslint-config-airbnb-base',
-    ].map(require.resolve),
+    ],
     parserOptions: {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
+    plugins: [
+        'eslint-plugin-import',
+    ],
     rules: {
         'arrow-parens': ['error', 'always'],
         'class-methods-use-this': 'off',
