@@ -19,10 +19,10 @@
     "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
-    "tslint",
-    "tslint-config",
+    "equisoft",
     "react",
-    "equisoft"
+    "tslint",
+    "tslint-config"
   ],
   "dependencies": {
     "@equisoft/tslint-config": "workspace:*",

@@ -22,8 +22,8 @@
     "eslint",
     "eslint-config",
     "equisoft",
-    "typescipt",
-    "react"
+    "react",
+    "typescript"
   ],
   "dependencies": {
     "@equisoft/eslint-config-react": "workspace:*",

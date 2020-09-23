@@ -22,7 +22,7 @@
     "eslint",
     "eslint-config",
     "equisoft",
-    "typescipt"
+    "typescript"
   ],
   "dependencies": {
     "@equisoft/eslint-config": "workspace:*"

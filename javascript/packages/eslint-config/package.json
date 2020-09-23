@@ -28,12 +28,12 @@
   },
   "devDependencies": {
     "eslint": "^7.9.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-import-resolver-node": "^0.3.4"
+    "eslint-import-resolver-node": "^0.3.4",
+    "eslint-plugin-import": "^2.22.0"
   },
   "peerDependencies": {
     "eslint": "^7.9.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-import-resolver-node": "^0.3.4"
+    "eslint-import-resolver-node": "^0.3.4",
+    "eslint-plugin-import": "^2.22.0"
   }
 }

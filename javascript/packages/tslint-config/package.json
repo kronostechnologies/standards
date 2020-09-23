@@ -19,9 +19,9 @@
     "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
+    "equisoft",
     "tslint",
-    "tslint-config",
-    "equisoft"
+    "tslint-config"
   ],
   "scripts": {
     "compile": "tsc"
