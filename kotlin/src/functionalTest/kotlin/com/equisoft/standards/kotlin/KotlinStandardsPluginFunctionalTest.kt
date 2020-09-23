@@ -20,16 +20,7 @@ class KotlinStandardsPluginFunctionalTest {
     @BeforeTest
     fun setUp() {
         projectDir = Files.createTempDirectory("kotlin-standards").toFile()
-        projectDir.resolve("settings.gradle.kts").writeText("")
-        projectDir.resolve("build.gradle.kts").writeText("""
-            plugins {
-                kotlin("jvm") version "1.3.71"
-                id("com.equisoft.standards.kotlin")
-            }
-            repositories {
-                jcenter()
-            }
-        """.trimIndent())
+        createGradleFiles()
 
         sourcesDir = createProjectSubDirectory("src/main/kotlin")
         testsDir = createProjectSubDirectory("src/test/kotlin")
@@ -44,6 +35,19 @@ class KotlinStandardsPluginFunctionalTest {
             .withProjectDir(projectDir)
     }
 
+    private fun createGradleFiles() {
+        projectDir.resolve("settings.gradle.kts").writeText("")
+        projectDir.resolve("build.gradle.kts").writeText("""
+                plugins {
+                    kotlin("jvm") version "1.4.10"
+                    id("com.equisoft.standards.kotlin")
+                }
+                repositories {
+                    jcenter()
+                }
+            """.trimIndent())
+    }
+
     @AfterTest
     fun tearDown() {
         projectDir.deleteRecursively()
@@ -53,14 +57,14 @@ class KotlinStandardsPluginFunctionalTest {
     inner class Kotlinter {
         @Test
         fun `check should run kotlinter`() {
-            val result = runner.withArguments("check").build()
+            val result = runner.withArguments("check", "-xdetekt").build()
 
             assertKotlinterSuccess(result)
         }
 
         @Test
         fun `checkStatic should run kotlinter`() {
-            val result = runner.withArguments("checkStatic").build()
+            val result = runner.withArguments("checkStatic", "-xdetekt").build()
 
             assertKotlinterSuccess(result)
         }
@@ -77,7 +81,7 @@ class KotlinStandardsPluginFunctionalTest {
             class IgnoreImportOrder
         """.trimIndent())
 
-            val result = runner.withArguments("checkStatic").build()
+            val result = runner.withArguments("checkStatic", "-xdetekt").build()
 
             assertKotlinterSuccess(result)
         }
@@ -93,14 +97,14 @@ class KotlinStandardsPluginFunctionalTest {
     inner class Detekt {
         @Test
         fun `check should run detekt`() {
-            val result = runner.withArguments("check").build()
+            val result = runner.withArguments("check", "-xlintKotlin").build()
 
             assertDetektSuccess(result)
         }
 
         @Test
         fun `checkStatic should run detekt`() {
-            val result = runner.withArguments("checkStatic").build()
+            val result = runner.withArguments("checkStatic", "-xlintKotlin").build()
 
             assertDetektSuccess(result)
         }

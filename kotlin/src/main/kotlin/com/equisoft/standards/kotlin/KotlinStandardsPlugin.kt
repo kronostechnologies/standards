@@ -15,23 +15,33 @@ class KotlinStandardsPlugin : Plugin<Project> {
         plugins.apply(DetektPlugin::class.java)
 
         afterEvaluate {
-            convention.configure(DetektExtension::class.java) {
-                val detektConfigInputStream: InputStream = getDetektConfigInputStream()
-                val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
-                val configResource: TextResource = project.resources.text.fromString(configuration)
-
-                it.config = files(file(configResource))
-                it.input = files(file("src/main/kotlin"), file("src/test/kotlin"))
-            }
-
-            convention.configure(KotlinterExtension::class.java) {
-                it.disabledRules = arrayOf("import-ordering")
-            }
+            configureDetekt()
+            configureKotlinter()
         }
 
         tasks.register("checkStatic").configure { check ->
             check.dependsOn("lintKotlin")
             check.dependsOn("detekt")
+        }
+    }
+
+    private fun Project.configureKotlinter() {
+        convention.configure(KotlinterExtension::class.java) {
+            it.disabledRules = arrayOf(
+                "import-ordering",
+                "indent" // https://github.com/pinterest/ktlint/issues/764
+            )
+        }
+    }
+
+    private fun Project.configureDetekt() {
+        convention.configure(DetektExtension::class.java) {
+            val detektConfigInputStream: InputStream = getDetektConfigInputStream()
+            val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
+            val configResource: TextResource = project.resources.text.fromString(configuration)
+
+            it.config = files(file(configResource))
+            it.input = files(file("src/main/kotlin"), file("src/test/kotlin"))
         }
     }
 

@@ -1,16 +1,17 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+import org.jmailen.gradle.kotlinter.KotlinterExtension
 
 group = "com.equisoft.standards"
-version = "0.2.0"
+version = "0.4.0"
 
 plugins {
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.4.10"
 
     id("java-gradle-plugin")
 
     id("com.gradle.plugin-publish") version "0.11.0"
-    id("io.gitlab.arturbosch.detekt") version "1.8.0"
-    id("org.jmailen.kotlinter") version "2.3.2"
+    id("io.gitlab.arturbosch.detekt") version "1.13.1"
+    id("org.jmailen.kotlinter") version "3.2.0"
 }
 
 repositories {
@@ -26,8 +27,12 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.jmailen.gradle:kotlinter-gradle:2.3.2")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.8.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.2.0")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.13.1")
+
+    // Custom rule dependency because of https://github.com/pinterest/ktlint/issues/764
+    implementation("com.pinterest.ktlint:ktlint-core:0.39.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -79,6 +84,10 @@ configure<DetektExtension> {
         file("src/test/kotlin"),
         functionalTestSourceSet.allSource.files
     )
+}
+
+configure<KotlinterExtension> {
+    disabledRules = arrayOf("indent") // https://github.com/pinterest/ktlint/issues/764
 }
 
 tasks {

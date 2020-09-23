@@ -235,6 +235,7 @@ formatting:
   ImportOrdering:
     active: true
     autoCorrect: true
+    layout: 'idea'
   Indentation:
     active: false
     autoCorrect: true
@@ -303,6 +304,9 @@ formatting:
   SpacingAroundDot:
     active: true
     autoCorrect: true
+  SpacingAroundDoubleColon:
+    active: true
+    autoCorrect: true
   SpacingAroundKeyword:
     active: true
     autoCorrect: true
@@ -313,6 +317,12 @@ formatting:
     active: true
     autoCorrect: true
   SpacingAroundRangeOperator:
+    active: true
+    autoCorrect: true
+  SpacingBetweenDeclarationsWithAnnotations:
+    active: true
+    autoCorrect: true
+  SpacingBetweenDeclarationsWithComments:
     active: true
     autoCorrect: true
   StringTemplate:
@@ -361,7 +371,7 @@ naming:
     excludeClassPattern: '$^'
     ignoreOverridden: true
   InvalidPackageDeclaration:
-    active: true
+    active: false
     rootPackage: ''
   MatchingDeclarationName:
     active: true
@@ -369,6 +379,9 @@ naming:
   MemberNameEqualsClassName:
     active: true
     ignoreOverridden: true
+  NonBooleanPropertyPrefixedWithIs:
+    active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
   ObjectPropertyNaming:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
@@ -427,6 +440,10 @@ potential-bugs:
     active: true
   HasPlatformType:
     active: false
+  IgnoredReturnValue:
+    active: false
+    restrictToAnnotatedMethods: true
+    returnValueAnnotations: ['*.CheckReturnValue', '*.CheckResult']
   ImplicitDefaultLocale:
     active: false
   InvalidRange:
@@ -435,6 +452,9 @@ potential-bugs:
     active: true
   IteratorNotThrowingNoSuchElementException:
     active: true
+  ImplicitUnitReturnType:
+    active: false
+    allowExplicitReturnType: true
   LateinitUsage:
     active: false
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
@@ -443,6 +463,8 @@ potential-bugs:
   MapGetWithNotNullAssertionOperator:
     active: false
   MissingWhenCase:
+    active: true
+  NullableToStringCall:
     active: true
   RedundantElseInWhen:
     active: true
@@ -508,6 +530,8 @@ style:
     excludeAnnotatedFunction: ['dagger.Provides']
   LibraryCodeMustSpecifyReturnType:
     active: true
+  LibraryEntitiesShouldNotBePublic:
+    active: true
   LoopWithTooManyJumpStatements:
     active: true
     maxJumpCount: 1
@@ -526,6 +550,8 @@ style:
     ignoreRanges: false
   MandatoryBracesIfStatements:
     active: false
+  MandatoryBracesLoops:
+    active: true
   MaxLineLength:
     active: true
     maxLineLength: 120
@@ -601,15 +627,21 @@ style:
     allowedNames: '(_|ignored|expected|serialVersionUID)'
   UseArrayLiteralsInAnnotations:
     active: true
+  UseCheckNotNull:
+    active: true
   UseCheckOrError:
     active: false
   UseDataClass:
     active: false
     excludeAnnotatedClasses: []
     allowVars: false
+  UseEmptyCounterpart:
+    active: true
   UseIfInsteadOfWhen:
     active: false
   UseRequire:
+    active: true
+  UseRequireNotNull:
     active: true
   UselessCallOnNotNull:
     active: true
