@@ -7,4 +7,12 @@ module.exports = {
     rules: {
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     },
+    overrides: [
+        {
+            files: ['**/*.@(test|spec).tsx'],
+            rules: {
+                'react/jsx-props-no-spreading': 'off',
+            },
+        }
+    ],
 };
