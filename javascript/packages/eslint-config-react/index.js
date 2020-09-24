@@ -16,7 +16,6 @@ module.exports = {
     rules: {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': ['error', { 'allowAfterThis': true }],
-        'react/require-default-props': 'off',
         'react/destructuring-assignment': 'off',
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
@@ -28,6 +27,7 @@ module.exports = {
         },
         ],
         'react/prop-types': 'off',
+        'react/require-default-props': 'off',
     },
     overrides: [
         { files: ['*.js', '*.jsx'] },
