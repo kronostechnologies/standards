@@ -21,7 +21,7 @@ module.exports = {
         'react/jsx-indent-props': ['error', 4],
         'react/jsx-tag-spacing': ['error', {
             closingSlash: 'never',
-            beforeSelfClosing: 'never',
+            beforeSelfClosing: 'always',
             afterOpening: 'never',
             beforeClosing: 'never',
         },
