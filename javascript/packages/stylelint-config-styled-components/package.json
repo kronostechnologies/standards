@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config-styled-components",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.3",
   "description": "Equisoft's stylelint configuration for styled-components.",
   "license": "MIT",
   "main": ".stylelintrc",
@@ -19,13 +19,23 @@
     "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
+    "equisoft",
     "styled-components",
     "stylelint",
     "stylelint-config"
   ],
   "dependencies": {
     "@equisoft/stylelint-scss-config": "workspace:*",
-    "stylelint-config-styled-components": "~0.1.1",
+    "stylelint-config-styled-components": "~0.1.1"
+  },
+  "devDependencies": {
+    "stylelint": "~13.7.1",
+    "stylelint-order": "~4.1.0",
+    "stylelint-processor-styled-components": "~1.10.0"
+  },
+  "peerDependencies": {
+    "stylelint": "~13.7.1",
+    "stylelint-order": "~4.1.0",
     "stylelint-processor-styled-components": "~1.10.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.10",
   "description": "Equisoft's ESLint configuration. Based on eslint-config-airbnb-base",
   "license": "MIT",
   "main": "index.js",
@@ -24,13 +24,16 @@
     "equisoft"
   ],
   "dependencies": {
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2"
+    "eslint-config-airbnb-base": "^14.2.0"
   },
   "devDependencies": {
-    "eslint": "~7.0.0"
+    "eslint": "^7.9.0",
+    "eslint-import-resolver-node": "^0.3.4",
+    "eslint-plugin-import": "^2.22.0"
   },
   "peerDependencies": {
-    "eslint": "^7.0.0"
+    "eslint": "^7.9.0",
+    "eslint-import-resolver-node": "^0.3.4",
+    "eslint-plugin-import": "^2.22.0"
   }
 }

@@ -348,7 +348,7 @@ ij_javascript_use_semicolon_after_statement = true
 ij_javascript_var_declaration_wrap = split_into_lines
 
 ; JSON
-[{*.json,*.json5,.eslintrc,.stylelintrc}]
+[{*.json,*.json5,.babelrc,.eslintrc,.stylelintrc}]
 indent_size = 2
 tab_width = 2
 

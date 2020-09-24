@@ -5,7 +5,7 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["extend", "each", "for", "if", "else"]
+        "ignoreAtRules": ["extend", "each", "else", "for", "if", "include"]
       }
     ],
     "font-weight-notation": "numeric",

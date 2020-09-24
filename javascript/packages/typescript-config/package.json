@@ -1,7 +1,7 @@
 {
-  "name": "@equisoft/tslint-config-react",
+  "name": "@equisoft/typescript-config",
   "version": "2.0.0-alpha.1",
-  "description": "Equisoft's TSLint configuration, React flavor.",
+  "description": "Equisoft's standard Typescript configuration.",
   "license": "MIT",
   "main": "tslint.json",
   "homepage": "https://github.com/kronostechnologies/standards#readme",
@@ -11,7 +11,7 @@
     "email": "services.administratifs@equisoft.com"
   },
   "repository": {
-    "directory": "packages/javascript/tslint-config-react",
+    "directory": "packages/javascript/typescript-config",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
@@ -20,20 +20,6 @@
   },
   "keywords": [
     "equisoft",
-    "react",
-    "tslint",
-    "tslint-config"
-  ],
-  "dependencies": {
-    "@equisoft/tslint-config": "workspace:*",
-    "tslint": "~6.1.3",
-    "tslint-react": "~5.0.0"
-  },
-  "peerDependencies": {
-    "typescript": "^3.8.3 || ^4.0.0"
-  },
-  "devDependencies": {
-    "tslint": "6.1.3",
-    "typescript": "4.0.3"
-  }
+    "typescript"
+  ]
 }

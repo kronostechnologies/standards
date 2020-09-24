@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/tslint-config",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Equisoft's TSLint configuration.",
   "license": "MIT",
   "main": "tslint.json",
@@ -19,21 +19,23 @@
     "url": "https://github.com/kronostechnologies/standards/issues"
   },
   "keywords": [
+    "equisoft",
     "tslint",
-    "tslint-config",
-    "equisoft"
+    "tslint-config"
   ],
   "scripts": {
     "compile": "tsc"
   },
   "dependencies": {
-    "tslint": "6.1.2"
+    "@equisoft/typescript-config": "workspace:*"
   },
   "peerDependencies": {
-    "typescript": "^3.8.3"
+    "tslint": "6.1.3",
+    "typescript": "^3.8.3 || ^4.0.0"
   },
   "devDependencies": {
     "@types/node": "12.12.6",
-    "typescript": "3.9.3"
+    "tslint": "6.1.3",
+    "typescript": "4.0.3"
   }
 }

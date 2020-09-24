@@ -13,6 +13,18 @@ module.exports = {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_$' }],
 
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error',
+            {
+                'classes': true,
+                'enums': true,
+                'functions': true,
+                'ignoreTypeReferences': false,
+                'typedefs': true,
+                'variables': true,
+            },
+        ],
+
         'no-useless-constructor': 'off',
         '@typescript-eslint/no-useless-constructor': 'error',
 
@@ -21,9 +33,11 @@ module.exports = {
 
         '@typescript-eslint/explicit-function-return-type': 'off', // See overrides
         '@typescript-eslint/ban-types': 'off',
-        '@typescript-eslint/ban-ts-comment': ['error', {
-            'ts-ignore': 'allow-with-description',
-        }],
+        '@typescript-eslint/ban-ts-comment': ['error',
+            {
+                'ts-ignore': 'allow-with-description',
+            },
+        ],
 
         // Useless in TypeScript
         'consistent-return': 'off',
