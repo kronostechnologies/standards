@@ -31,5 +31,11 @@ module.exports = {
     },
     overrides: [
         { files: ['*.js', '*.jsx'] },
+        {
+            files: ['**/*.@(test|spec).jsx'],
+            rules: {
+                'react/jsx-props-no-spreading': 'off',
+            },
+        }
     ],
 };
