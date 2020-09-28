@@ -2,6 +2,7 @@ module.exports = {
     extends: [
         '@equisoft/eslint-config',
         'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
     ],
     parser: '@typescript-eslint/parser',
     settings: {
