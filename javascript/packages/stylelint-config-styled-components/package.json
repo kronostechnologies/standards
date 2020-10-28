@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config-styled-components",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0",
   "description": "Equisoft's stylelint configuration for styled-components.",
   "license": "MIT",
   "main": ".stylelintrc",
@@ -29,13 +29,13 @@
     "stylelint-config-styled-components": "~0.1.1"
   },
   "devDependencies": {
-    "stylelint": "~13.7.1",
+    "stylelint": "~13.7.2",
     "stylelint-order": "~4.1.0",
     "stylelint-processor-styled-components": "~1.10.0"
   },
   "peerDependencies": {
-    "stylelint": "~13.7.1",
-    "stylelint-order": "~4.1.0",
-    "stylelint-processor-styled-components": "~1.10.0"
+    "stylelint": "^13.7.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-processor-styled-components": "^1.10.0"
   }
 }
