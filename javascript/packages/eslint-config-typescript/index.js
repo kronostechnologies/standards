@@ -32,6 +32,9 @@ module.exports = {
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
 
+        "space-infix-ops": "off",
+        "@typescript-eslint/space-infix-ops": ["error"],
+
         '@typescript-eslint/explicit-function-return-type': 'off', // See overrides
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/ban-ts-comment': ['error',
