@@ -328,7 +328,7 @@ __metadata:
   resolution: "@equisoft/stylelint-config-styled-components@workspace:packages/stylelint-config-styled-components"
   dependencies:
     "@equisoft/stylelint-scss-config": "workspace:*"
-    stylelint: ~13.7.1
+    stylelint: ~13.7.2
     stylelint-config-styled-components: ~0.1.1
     stylelint-order: ~4.1.0
     stylelint-processor-styled-components: ~1.10.0
@@ -343,7 +343,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@equisoft/stylelint-scss-config@workspace:packages/stylelint-scss-config"
   dependencies:
-    stylelint: ~13.7.1
+    stylelint: ~13.7.2
     stylelint-config-standard: ~20.0.0
     stylelint-order: ~4.1.0
   peerDependencies:
@@ -3585,9 +3585,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:~13.7.1":
-  version: 13.7.1
-  resolution: "stylelint@npm:13.7.1"
+"stylelint@npm:~13.7.2":
+  version: 13.7.2
+  resolution: "stylelint@npm:13.7.2"
   dependencies:
     "@stylelint/postcss-css-in-js": ^0.37.2
     "@stylelint/postcss-markdown": ^0.36.1
@@ -3639,7 +3639,7 @@ __metadata:
     write-file-atomic: ^3.0.3
   bin:
     stylelint: bin/stylelint.js
-  checksum: 09111dd7a84ec640c68f73e33e3791a7129706a384bbb581bac575b336bf290debd89b25a452d6b4fc85ed8abe97acf750e5807ddf8d970e09cbe2f7714b8427
+  checksum: 9c9de5ba60ca8e0ccae7a4b44698724fde4dd6aca897389e0e39d7749dad7e083bc52f1fa03f4bcbc438cba758ce759db8415735c8e30cf5d4db5ccf7c510aff
   languageName: node
   linkType: hard
 
