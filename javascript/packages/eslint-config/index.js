@@ -28,6 +28,7 @@ module.exports = {
         'no-mixed-operators': ['error', { 'allowSamePrecedence': true }],
         'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
         'no-cond-assign': ['error', 'except-parens'],
+        'no-console': ['error', { allow: ['info', 'warn', 'error', 'trace'] }],
         'no-return-assign': ['error', 'except-parens'],
         'prefer-destructuring': 'off',
     },
