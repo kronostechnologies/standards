@@ -16,20 +16,46 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'import/no-default-export': ['error'],
         'indent': ['error', 4, { 'SwitchCase': 1 }],
-        'max-len': ['error', 120, 2,
+        'max-len': [
+            'error',
             {
-                ignoreUrls: true,
-                ignoreComments: false,
-                ignoreRegExpLiterals: true,
-                ignoreStrings: true,
-                ignoreTemplateLiterals: true,
+                'code': 120,
+                'tabWidth': 2,
+                'ignoreComments': false,
+                'ignoreRegExpLiterals': true,
+                'ignoreStrings': false, // this otherwise includes imports which we want included
+                'ignoreTemplateLiterals': true,
+                'ignoreTrailingComments': false,
+                'ignoreUrls': true,
             },
         ],
         'no-mixed-operators': ['error', { 'allowSamePrecedence': true }],
         'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
         'no-cond-assign': ['error', 'except-parens'],
-        'no-console': ['error', { allow: ['info', 'warn', 'error', 'trace'] }],
+        'no-console': ['error', { 'allow': ['info', 'warn', 'error', 'trace'] }],
         'no-return-assign': ['error', 'except-parens'],
+        'object-curly-newline': [
+            // No max-property
+            'error', {
+                'ObjectExpression': {
+                    'minProperties': 4,
+                    'multiline': true,
+                    'consistent': true,
+                },
+                'ObjectPattern': {
+                    'minProperties': 4,
+                    'multiline': true,
+                    'consistent': true,
+                },
+                'ImportDeclaration': {
+                    'consistent': true,
+                },
+                'ExportDeclaration': {
+                    'minProperties': 4,
+                    'consistent': true,
+                },
+            },
+        ],
         'prefer-destructuring': 'off',
     },
 };
