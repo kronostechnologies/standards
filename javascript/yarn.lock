@@ -335,9 +335,9 @@ __metadata:
     stylelint-order: ~4.1.0
     stylelint-processor-styled-components: ~1.10.0
   peerDependencies:
-    stylelint: ~13.7.1
-    stylelint-order: ~4.1.0
-    stylelint-processor-styled-components: ~1.10.0
+    stylelint: ^13.7.0
+    stylelint-order: ^4.1.0
+    stylelint-processor-styled-components: ^1.10.0
   languageName: unknown
   linkType: soft
 
@@ -349,8 +349,8 @@ __metadata:
     stylelint-config-standard: ~20.0.0
     stylelint-order: ~4.1.0
   peerDependencies:
-    stylelint: ~13.7.1
-    stylelint-order: ~4.1.0
+    stylelint: ^13.7.0
+    stylelint-order: ^4.1.0
   languageName: unknown
   linkType: soft
 
