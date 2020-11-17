@@ -1,9 +1,9 @@
 {
-  "name": "@equisoft/stylelint-scss-config",
+  "name": "@equisoft/stylelint-config",
   "version": "1.0.0",
-  "description": "Equisoft's stylelint SASS configuration.",
+  "description": "Equisoft's stylelint configuration",
   "license": "MIT",
-  "main": ".stylelintrc",
+  "main": "index.js",
   "homepage": "https://github.com/kronostechnologies/standards#readme",
   "author": {
     "name": "Equisoft inc.",
@@ -11,7 +11,7 @@
     "email": "services.administratifs@equisoft.com"
   },
   "repository": {
-    "directory": "packages/javascript/stylelint-scss-config",
+    "directory": "packages/javascript/stylelint-config",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
@@ -23,15 +23,12 @@
     "stylelint",
     "stylelint-config"
   ],
-  "dependencies": {
-    "stylelint-config-standard": "~20.0.0"
-  },
   "devDependencies": {
-    "stylelint": "~13.7.2",
+    "stylelint": "~13.8.0",
     "stylelint-order": "~4.1.0"
   },
   "peerDependencies": {
-    "stylelint": "^13.7.0",
+    "stylelint": "^13.8.0",
     "stylelint-order": "^4.1.0"
   }
 }

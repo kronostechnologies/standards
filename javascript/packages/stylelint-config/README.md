@@ -1,8 +1,6 @@
-# @equisoft/stylelint-config-styled-components
+# @equisoft/stylelint-config
 
-This is [Equisoft](https://equisoft.com)'s [stylelint](https://stylelint.io) config for use in projects that rely on [styled-components](https://www.styled-components.com).
-
-Because this package comes with its own [stylelint](https://stylelint.io) dependency, your project only needs this package. It doesn't need to have [stylelint](https://stylelint.io) as a dependency.
+This is [Equisoft](https://equisoft.com)'s [stylelint](https://stylelint.io) config. This can be used with projects that rely on [styled-components](https://www.styled-components.com) as stylelint now supports css-in-js syntax.
 
 ## Versioning
 
@@ -13,14 +11,14 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/stylelint-config-styled-components
+yarn add --dev stylelint stylelint-order @equisoft/stylelint-config
 ```
 
 Then create a _.stylelintrc_ file that uses Equisoft's configuration:
 
 ```json
 {
-  "extends": ["@equisoft/stylelint-config-styled-components"]
+  "extends": ["@equisoft/stylelint-config"]
 }
 ```
 
@@ -29,13 +27,13 @@ Finally create a script in your _package.json_ to easily run stylelint:
 ```json
 {
   "scripts": {
-    "stylelint": "stylelint 'src/**/*.{css,scss}'",
+    "stylelint": "stylelint 'src/**/*.{css,scss,js,jsx,ts,tsx}'",
     "stylelint:ci": "yarn stylelint"
   }
 }
 ```
 
-Now you can use `yarn stylelint` to validate the code style of your CSS files!
+Now you can use `yarn stylelint` to validate the code style of your files!
 
 ## Continuous Integration
 We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
@@ -65,4 +63,4 @@ src/**/*.scss
 
 Note how an entry prefixed by `!` is added to re-include some source files.
 
-For more information on this technique, you can read the [stylelint documentation](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md#stylelintignore).
+For more information on this technique, you can read the [stylelint documentation](https://stylelint.io/user-guide/ignore-code#files-entirely).
