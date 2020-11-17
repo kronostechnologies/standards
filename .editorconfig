@@ -289,7 +289,7 @@ ij_java_use_fq_class_names = false
 ij_java_use_single_class_imports = true
 
 ; Javascript
-[{*.js,*.jsx}]
+[{*.js,*.jsx,*.mjs}]
 ij_javascript_align_imports = false
 ij_javascript_align_object_properties = 0
 ij_javascript_align_union_types = false
