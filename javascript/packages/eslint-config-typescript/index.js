@@ -42,6 +42,9 @@ module.exports = {
                 'ts-ignore': 'allow-with-description',
             },
         ],
+        
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
 
         // Useless in TypeScript
         'consistent-return': 'off',
