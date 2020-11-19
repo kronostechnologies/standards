@@ -32,8 +32,8 @@ module.exports = {
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
 
-        "space-infix-ops": "off",
-        "@typescript-eslint/space-infix-ops": ["error"],
+        'space-infix-ops': 'off',
+        '@typescript-eslint/space-infix-ops': ['error'],
 
         '@typescript-eslint/explicit-function-return-type': 'off', // See overrides
         '@typescript-eslint/ban-types': 'off',
@@ -42,9 +42,9 @@ module.exports = {
                 'ts-ignore': 'allow-with-description',
             },
         ],
-        
-        "no-shadow": "off",
-        "@typescript-eslint/no-shadow": ["error"]
+
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': ['error'],
 
         // Useless in TypeScript
         'consistent-return': 'off',
