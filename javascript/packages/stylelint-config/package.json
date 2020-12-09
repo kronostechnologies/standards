@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Equisoft's stylelint configuration",
   "license": "MIT",
   "main": "index.js",
@@ -23,6 +23,9 @@
     "stylelint",
     "stylelint-config"
   ],
+  "dependencies": {
+    "stylelint-config-standard": "~20.0.0"
+  },
   "devDependencies": {
     "stylelint": "~13.8.0",
     "stylelint-order": "~4.1.0"

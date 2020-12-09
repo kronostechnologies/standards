@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config-typescript-react",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Equisoft's TypeScript ESLint configuration for React. Based on eslint-config-react",
   "license": "MIT",
   "main": "index.js",

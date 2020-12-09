@@ -330,6 +330,7 @@ __metadata:
   resolution: "@equisoft/stylelint-config@workspace:packages/stylelint-config"
   dependencies:
     stylelint: ~13.8.0
+    stylelint-config-standard: ~20.0.0
     stylelint-order: ~4.1.0
   peerDependencies:
     stylelint: ^13.8.0
@@ -3581,6 +3582,26 @@ __metadata:
   version: 0.1.0
   resolution: "style-search@npm:0.1.0"
   checksum: 8246f020593a76a6bfdd10d2e5d4ab7ad0ff8da44ab0086e0e3a44e6a75b8bafa4a025bfb7836eb1a056e71581a60f0ca23e39fff7a0e9718200d42d54122d90
+  languageName: node
+  linkType: hard
+
+"stylelint-config-recommended@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stylelint-config-recommended@npm:3.0.0"
+  peerDependencies:
+    stylelint: ">=10.1.0"
+  checksum: 455fcb427786528495f66c2de1fbcb7cc7e8007aca303d21ad8f34b7150a3f4b7669a46d2b1c69ea7ac7f4f446c43b94c0920a3619b4a8d4dc5f3eee9df7cfa2
+  languageName: node
+  linkType: hard
+
+"stylelint-config-standard@npm:~20.0.0":
+  version: 20.0.0
+  resolution: "stylelint-config-standard@npm:20.0.0"
+  dependencies:
+    stylelint-config-recommended: ^3.0.0
+  peerDependencies:
+    stylelint: ">=10.1.0"
+  checksum: 3d70090294bad0ce2841a64feb97cd3985be8f51cdf4ed5e67c1f1c1578a15755a22dd2f8d63dce0f7db46607005b5a321fcbc2b0cbf4c636b9fd48ec35e82b2
   languageName: node
   linkType: hard
 
