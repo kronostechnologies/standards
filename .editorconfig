@@ -202,8 +202,6 @@ ij_editorconfig_space_before_colon = false
 
 ; CSS
 [*.css]
-indent_size = 2
-tab_width = 2
 ij_css_align_closing_brace_with_properties = false
 ij_css_blank_lines_around_nested_selector = 1
 ij_css_blank_lines_between_blocks = 1
@@ -514,8 +512,6 @@ ij_properties_spaces_around_key_value_delimiter = true
 
 ; SCSS
 [*.scss]
-indent_size = 2
-tab_width = 2
 ij_scss_align_closing_brace_with_properties = false
 ij_scss_blank_lines_around_nested_selector = 1
 ij_scss_blank_lines_between_blocks = 1
