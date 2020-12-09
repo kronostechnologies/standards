@@ -502,6 +502,10 @@ ij_php_var_weight = 28
 ij_php_variable_naming_style = mixed
 ij_php_version_weight = 28
 
+; Python
+[*.py]
+ij_python_align_multiline_parameters_in_calls = true
+
 ; Properties
 [*.properties]
 ij_properties_keep_blank_lines = true
