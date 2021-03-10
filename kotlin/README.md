@@ -1,10 +1,13 @@
 # Equisoft's Kotlin Standards
 
-This project is a plugin to validate Equisoft's Kotlin code style. The plugin wraps [Detekt](https://detekt.github.io/detekt/) and [Kotlinter](https://github.com/jeremymailen/kotlinter-gradle) to validate the code style.
+This project is a plugin to validate Equisoft's Kotlin code style. The plugin
+wraps [Detekt](https://detekt.github.io/detekt/) and [Kotlinter](https://github.com/jeremymailen/kotlinter-gradle) to
+validate the code style.
 
 ## Installation
 
-Available on the Gradle Plugins Portal: [com.equisoft.standards.kotlin](https://plugins.gradle.org/plugin/com.equisoft.standards.kotlin)
+Available on the Gradle Plugins
+Portal: [com.equisoft.standards.kotlin](https://plugins.gradle.org/plugin/com.equisoft.standards.kotlin)
 
 Add the plugin to your project's `gradle.kts` configuration:
 
@@ -17,7 +20,9 @@ plugins {
 The code style validations can now be performed with `./gradlew check` or `./gradlew checkStatic`.
 
 ## Continuous Integration
-We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
+
+We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration
+similar to this one to your _.circleci/config.yml_:
 
 ```yaml
 orbs:
@@ -55,7 +60,8 @@ jobs:
 
 ## Publication
 
-1. Make sure you have the `gradle.publish.key` and `gradle.publish.secret` variables set in your `~/.gradle/gradle.properties` file. They are available on LastPass.
+1. Make sure you have the `gradle.publish.key` and `gradle.publish.secret` variables set in
+   your `~/.gradle/gradle.properties` file. They are available on LastPass.
 1. Bump the version
 1. Build and publish
     ```bash

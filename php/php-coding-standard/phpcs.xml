@@ -1,23 +1,16 @@
 <?xml version="1.0"?>
-<ruleset name="phpcs-kt">
-    <description>/application folder code standard. PSR-1/2 compliant.</description>
+<ruleset name="equisoft-phpcs">
+    <description>PSR-12 compliant</description>
 
     <arg name="basepath" value="."/>
     <arg name="extensions" value="php"/>
-    <arg name="tab-width" value="4"/>
+    <arg name="ignore" value="vendor"/>
     <arg name="parallel" value="10"/>
     <arg name="bootstrap" value="phpcs.bootstrap.php"/>
 
-    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
+
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
 </ruleset>
-
-<!-- Sample config file to add to your project (phpcs.xml):
-
-<?xml version="1.0"?>
-<ruleset>
-    <file>folder</file>
-
-    <rule ref="./vendor/kronostechnologies/php-coding-standard/phpcs.xml"/>
-</ruleset>
-
--->
