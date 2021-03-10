@@ -23,8 +23,7 @@
 
 ## Building & Publishing
 
-Apply your changes, merge in `master` branch, then execute the following commands from the root
-of `php-coding-standard`:
+Apply your changes, merge in `master` branch, then execute the following commands from the root:
 
 ```bash
 # Mirrors php-coding-standard repository in kronostechnologies/php-coding-standard

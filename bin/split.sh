@@ -5,10 +5,15 @@ set -e
 set -x
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$(uname)" == "Darwin" ]; then
+    SPLITSH=./bin/splitsh-lite_darwin_amd64
+else
+    SPLITSH=./bin/splitsh-lite_linux_amd64
+fi
 
 function split()
 {
-    SHA1=`./bin/splitsh-lite --prefix=$1`
+    SHA1=`$SPLITSH --prefix=$1`
     git push $2 "$SHA1:refs/heads/$CURRENT_BRANCH" -f
 }
 
