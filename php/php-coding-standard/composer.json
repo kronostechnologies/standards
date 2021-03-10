@@ -1,9 +1,9 @@
 {
     "name": "kronostechnologies/php-coding-standard",
-    "description": "Kronos Technologies PHP coding standard",
+    "description": "Equisoft PHP coding standard",
     "type": "library",
     "license": "MIT",
     "require": {
-        "squizlabs/php_codesniffer": "^3.2.0"
+        "squizlabs/php_codesniffer": "^3.5"
     }
 }
