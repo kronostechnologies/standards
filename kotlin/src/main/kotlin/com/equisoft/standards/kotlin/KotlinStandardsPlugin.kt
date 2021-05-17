@@ -1,5 +1,6 @@
 package com.equisoft.standards.kotlin
 
+import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
@@ -10,7 +11,13 @@ import org.jmailen.gradle.kotlinter.KotlinterPlugin
 import java.io.InputStream
 
 class KotlinStandardsPlugin : Plugin<Project> {
-    override fun apply(project: Project) = with(project) {
+    private val staticChecks = listOf(
+        "lintKotlin",
+        "detektMain",
+        "detektTest",
+    )
+
+    override fun apply(project: Project): Unit = with(project) {
         plugins.apply(KotlinterPlugin::class.java)
         plugins.apply(DetektPlugin::class.java)
 
@@ -19,9 +26,16 @@ class KotlinStandardsPlugin : Plugin<Project> {
             configureKotlinter()
         }
 
-        tasks.register("checkStatic").configure { check ->
-            check.dependsOn("lintKotlin")
-            check.dependsOn("detekt")
+        tasks.register("checkStatic").configure {
+            staticChecks.forEach(it::dependsOn)
+        }
+
+        tasks.named("check").configure {
+            it.dependsOn("checkStatic")
+        }
+
+        tasks.withType(Detekt::class.java).all {
+            it.jvmTarget = "1.8"
         }
     }
 
@@ -49,7 +63,7 @@ class KotlinStandardsPlugin : Plugin<Project> {
         val detektConfigInputStream: InputStream? = this.javaClass.classLoader
             .getResourceAsStream(DETEKT_CONFIG_FILENAME)
 
-        checkNotNull(detektConfigInputStream, { "Detekt config file not found" })
+        checkNotNull(detektConfigInputStream) { "Detekt config file not found" }
 
         return detektConfigInputStream
     }

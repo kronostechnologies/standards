@@ -96,6 +96,8 @@ complexity:
   NestedBlockDepth:
     active: true
     threshold: 4
+  ReplaceSafeCallChainWithRun:
+    active: true
   StringLiteralDuplication:
     active: false
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
@@ -487,6 +489,8 @@ potential-bugs:
 
 style:
   active: true
+  ClassOrdering:
+    active: true
   CollapsibleIfStatements:
     active: false
   DataClassContainsFunctions:
@@ -529,9 +533,9 @@ style:
     excludedFunctions: 'describeContents'
     excludeAnnotatedFunction: ['dagger.Provides']
   LibraryCodeMustSpecifyReturnType:
-    active: true
+    active: false
   LibraryEntitiesShouldNotBePublic:
-    active: true
+    active: false
   LoopWithTooManyJumpStatements:
     active: true
     maxJumpCount: 1
@@ -580,6 +584,8 @@ style:
     active: true
   RedundantExplicitType:
     active: false
+  RedundantHigherOrderMapUsage:
+    active: true
   RedundantVisibilityModifierRule:
     active: true
   ReturnCount:

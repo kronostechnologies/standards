@@ -12,6 +12,7 @@ class KotlinStandardsPluginTest {
     @BeforeTest
     fun setUp() {
         project = ProjectBuilder.builder().build()
+        project.plugins.apply("application")
         project.plugins.apply("com.equisoft.standards.kotlin")
     }
 
