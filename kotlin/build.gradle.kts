@@ -2,7 +2,7 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.jmailen.gradle.kotlinter.KotlinterExtension
 
 group = "com.equisoft.standards"
-version = "0.5.0"
+version = "0.6.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "1.4.32"
