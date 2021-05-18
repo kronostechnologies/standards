@@ -5,17 +5,19 @@ group = "com.equisoft.standards"
 version = "0.5.0"
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.4.32"
 
     id("java-gradle-plugin")
+    id("maven-publish")
 
-    id("com.gradle.plugin-publish") version "0.11.0"
-    id("io.gitlab.arturbosch.detekt") version "1.13.1"
-    id("org.jmailen.kotlinter") version "3.2.0"
+    id("com.github.ben-manes.versions") version "0.38.0"
+    id("com.gradle.plugin-publish") version "0.14.0"
+    id("io.gitlab.arturbosch.detekt") version "1.17.0"
+    id("org.jmailen.kotlinter") version "3.4.4"
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     gradlePluginPortal()
 }
 
@@ -24,20 +26,20 @@ val functionalTestImplementation = configurations
     .extendsFrom(configurations.getByName("testImplementation"))
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.4.32"))
+    kotlin("kotlin-stdlib-jdk8")
 
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.2.0")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.13.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.4.4")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.0")
 
     // Custom rule dependency because of https://github.com/pinterest/ktlint/issues/764
-    implementation("com.pinterest.ktlint:ktlint-core:0.39.0")
+    implementation("com.pinterest.ktlint:ktlint-core:0.41.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
-    val junit5Version = "5.6.2"
+    val junit5Version = "5.7.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }
@@ -64,13 +66,17 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
 }
 
 val functionalTest by tasks.creating(Test::class) {
+    group = "verification"
     testClassesDirs = functionalTestSourceSet.output.classesDirs
     classpath = functionalTestSourceSet.runtimeClasspath
 }
 
 val checkStatic by tasks.creating(Task::class) {
+    group = "verification"
     dependsOn("lintKotlin")
-    dependsOn("detekt")
+    dependsOn("detektMain")
+    dependsOn("detektTest")
+    dependsOn("detektFunctionalTest")
 }
 
 val check by tasks.getting(Task::class) {
@@ -86,6 +92,10 @@ configure<DetektExtension> {
     )
 }
 
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    jvmTarget = "1.8"
+}
+
 configure<KotlinterExtension> {
     disabledRules = arrayOf("indent") // https://github.com/pinterest/ktlint/issues/764
 }
@@ -93,6 +103,26 @@ configure<KotlinterExtension> {
 tasks {
     withType<Test> {
         useJUnitPlatform()
+    }
+
+    dependencyUpdates {
+        fun isStable(version: String): Boolean {
+            val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+            val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+            return stableKeyword || regex.matches(version)
+        }
+
+        checkConstraints = true
+        gradleReleaseChannel = "current"
+        outputFormatter = "json,html"
+
+        rejectVersionIf {
+            !isStable(candidate.version) && isStable(currentVersion)
+        }
+    }
+
+    wrapper {
+        distributionType = Wrapper.DistributionType.ALL
     }
 }
 

@@ -33,17 +33,22 @@ class KotlinStandardsPluginFunctionalTest {
             .forwardOutput()
             .withPluginClasspath()
             .withProjectDir(projectDir)
+            .withArguments("--stacktrace")
     }
 
     private fun createGradleFiles() {
         projectDir.resolve("settings.gradle.kts").writeText("")
         projectDir.resolve("build.gradle.kts").writeText("""
                 plugins {
-                    kotlin("jvm") version "1.4.10"
+                    kotlin("jvm") version "1.4.31"
                     id("com.equisoft.standards.kotlin")
                 }
+                dependencies {
+                    implementation("io.micronaut.test:micronaut-test-junit5:2.3.3")
+                    implementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+                }
                 repositories {
-                    jcenter()
+                    mavenCentral()
                 }
             """.trimIndent())
     }
@@ -55,16 +60,21 @@ class KotlinStandardsPluginFunctionalTest {
 
     @Nested
     inner class Kotlinter {
+        @BeforeTest
+        fun setUp() {
+            runner = runner.appendArguments("-xdetektMain", "-xdetektTest")
+        }
+
         @Test
         fun `check should run kotlinter`() {
-            val result = runner.withArguments("check", "-xdetekt").build()
+            val result = runner.build("check")
 
             assertKotlinterSuccess(result)
         }
 
         @Test
         fun `checkStatic should run kotlinter`() {
-            val result = runner.withArguments("checkStatic", "-xdetekt").build()
+            val result = runner.build("checkStatic")
 
             assertKotlinterSuccess(result)
         }
@@ -81,7 +91,7 @@ class KotlinStandardsPluginFunctionalTest {
             class IgnoreImportOrder
         """.trimIndent())
 
-            val result = runner.withArguments("checkStatic", "-xdetekt").build()
+            val result = runner.build("checkStatic")
 
             assertKotlinterSuccess(result)
         }
@@ -95,22 +105,28 @@ class KotlinStandardsPluginFunctionalTest {
 
     @Nested
     inner class Detekt {
+        @BeforeTest
+        fun setUp() {
+            runner = runner.appendArguments("-xlintKotlin")
+        }
+
         @Test
         fun `check should run detekt`() {
-            val result = runner.withArguments("check", "-xlintKotlin").build()
+            val result = runner.build("check")
 
             assertDetektSuccess(result)
         }
 
         @Test
         fun `checkStatic should run detekt`() {
-            val result = runner.withArguments("checkStatic", "-xlintKotlin").build()
+            val result = runner.build("checkStatic")
 
             assertDetektSuccess(result)
         }
 
         private fun assertDetektSuccess(result: BuildResult) {
-            assertEquals(TaskOutcome.SUCCESS, result.task(":detekt")?.outcome)
+            assertEquals(TaskOutcome.SUCCESS, result.task(":detektMain")?.outcome)
+            assertEquals(TaskOutcome.SUCCESS, result.task(":detektTest")?.outcome)
         }
     }
 
@@ -121,4 +137,12 @@ class KotlinStandardsPluginFunctionalTest {
         testsDir.resolve(file).writeText(content + "\n")
 
     private fun createProjectSubDirectory(path: String): File = File(projectDir, path).apply { mkdirs() }
+
+    private fun GradleRunner.appendArguments(vararg arguments: String): GradleRunner {
+        return withArguments(getArguments() + arguments)
+    }
+
+    private fun GradleRunner.build(vararg arguments: String): BuildResult {
+        return appendArguments(*arguments).build()
+    }
 }
