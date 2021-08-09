@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
 group = "com.equisoft.standards"
@@ -90,11 +91,11 @@ configure<DetektExtension> {
     )
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    jvmTarget = "1.8"
-}
-
 tasks {
+    withType<Detekt>().configureEach {
+        jvmTarget = "1.8"
+    }
+
     withType<Test> {
         useJUnitPlatform()
     }
@@ -113,12 +114,6 @@ tasks {
         rejectVersionIf {
             !isStable(candidate.version) && isStable(currentVersion)
         }
-    }
-
-    wrapper {
-        distributionType = Wrapper.DistributionType.ALL
-        distributionSha256Sum = "9bb8bc05f562f2d42bdf1ba8db62f6b6fa1c3bf6c392228802cc7cb0578fe7e0"
-        gradleVersion = "7.1.1"
     }
 }
 
