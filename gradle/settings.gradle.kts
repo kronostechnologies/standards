@@ -1,4 +1,6 @@
 rootProject.name = "gradle-plugins"
 
-include("kotlin")
-
+include(
+    "conventions",
+    "kotlin",
+)
