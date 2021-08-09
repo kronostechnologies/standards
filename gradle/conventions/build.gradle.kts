@@ -1,5 +1,5 @@
 group = "com.equisoft.standards"
-version = "0.0.1"
+version = "0.0.2"
 
 plugins {
     `kotlin-dsl`
@@ -16,6 +16,8 @@ repositories {
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
     implementation("net.linguica.gradle:maven-settings-plugin:0.5")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
+    implementation("org.openapitools:openapi-generator-gradle-plugin:5.2.0")
 }
 
 publishing {
@@ -25,10 +27,10 @@ publishing {
             url = uri("https://maven.pkg.github.com/kronostechnologies/standards")
             credentials {
                 name = "gprWrite"
-                username = project.findProperty("gpr.user")?.toString()
+                username = project.findProperty("gpr.write.user")?.toString()
                     ?: System.getenv("GPR_USER")
                     ?: System.getenv("GHCR_USER")
-                password = project.findProperty("gpr.key")?.toString()
+                password = project.findProperty("gpr.write.key")?.toString()
                     ?: System.getenv("GPR_TOKEN")
                     ?: System.getenv("GHCR_TOKEN")
             }
