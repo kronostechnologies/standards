@@ -38,7 +38,8 @@ class KotlinStandardsPluginFunctionalTest {
 
     private fun createGradleFiles() {
         projectDir.resolve("settings.gradle.kts").writeText("")
-        projectDir.resolve("build.gradle.kts").writeText("""
+        projectDir.resolve("build.gradle.kts").writeText(
+            """
                 plugins {
                     kotlin("jvm") version "1.4.31"
                     id("com.equisoft.standards.kotlin")
@@ -50,7 +51,8 @@ class KotlinStandardsPluginFunctionalTest {
                 repositories {
                     mavenCentral()
                 }
-            """.trimIndent())
+            """.trimIndent()
+        )
     }
 
     @AfterTest
@@ -81,15 +83,18 @@ class KotlinStandardsPluginFunctionalTest {
 
         @Test
         fun `kotlinter should ignore import-ordering`() {
-            writeSource("IgnoreImportOrder.kt", """
-            /* ktlint-disable no-unused-imports */
-            import io.micronaut.test.annotation.MicronautTest
-            import org.junit.jupiter.api.Assertions.assertEquals
-            import org.junit.jupiter.api.Test
-            import javax.inject.Inject
+            writeSource(
+                "IgnoreImportOrder.kt",
+                """
+                /* ktlint-disable no-unused-imports */
+                import io.micronaut.test.annotation.MicronautTest
+                import org.junit.jupiter.api.Assertions.assertEquals
+                import org.junit.jupiter.api.Test
+                import javax.inject.Inject
 
-            class IgnoreImportOrder
-        """.trimIndent())
+                class IgnoreImportOrder
+                """.trimIndent()
+            )
 
             val result = runner.build("checkStatic")
 

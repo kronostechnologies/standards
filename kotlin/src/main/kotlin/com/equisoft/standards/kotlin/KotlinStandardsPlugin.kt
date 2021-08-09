@@ -40,16 +40,15 @@ class KotlinStandardsPlugin : Plugin<Project> {
     }
 
     private fun Project.configureKotlinter() {
-        convention.configure(KotlinterExtension::class.java) {
+        extensions.configure(KotlinterExtension::class.java) {
             it.disabledRules = arrayOf(
-                "import-ordering",
-                "indent" // https://github.com/pinterest/ktlint/issues/764
+                "import-ordering"
             )
         }
     }
 
     private fun Project.configureDetekt() {
-        convention.configure(DetektExtension::class.java) {
+        extensions.configure(DetektExtension::class.java) {
             val detektConfigInputStream: InputStream = getDetektConfigInputStream()
             val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
             val configResource: TextResource = project.resources.text.fromString(configuration)

@@ -1,19 +1,18 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
-import org.jmailen.gradle.kotlinter.KotlinterExtension
 
 group = "com.equisoft.standards"
 version = "0.6.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.5.21"
 
     id("java-gradle-plugin")
     id("maven-publish")
 
-    id("com.github.ben-manes.versions") version "0.38.0"
-    id("com.gradle.plugin-publish") version "0.14.0"
-    id("io.gitlab.arturbosch.detekt") version "1.17.0"
-    id("org.jmailen.kotlinter") version "3.4.4"
+    id("com.github.ben-manes.versions") version "0.39.0"
+    id("com.gradle.plugin-publish") version "0.15.0"
+    id("io.gitlab.arturbosch.detekt") version "1.17.1"
+    id("org.jmailen.kotlinter") version "3.4.5"
 }
 
 repositories {
@@ -26,15 +25,14 @@ val functionalTestImplementation = configurations
     .extendsFrom(configurations.getByName("testImplementation"))
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.4.32"))
-    kotlin("kotlin-stdlib-jdk8")
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.5.21"))
+    kotlin("stdlib-jdk8")
 
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.4.4")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.4.5")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.1")
 
-    // Custom rule dependency because of https://github.com/pinterest/ktlint/issues/764
-    implementation("com.pinterest.ktlint:ktlint-core:0.41.0")
+    implementation("com.pinterest.ktlint:ktlint-core:0.42.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -94,10 +92,6 @@ configure<DetektExtension> {
 
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     jvmTarget = "1.8"
-}
-
-configure<KotlinterExtension> {
-    disabledRules = arrayOf("indent") // https://github.com/pinterest/ktlint/issues/764
 }
 
 tasks {
