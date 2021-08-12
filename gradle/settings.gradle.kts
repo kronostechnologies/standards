@@ -1,6 +1,7 @@
 rootProject.name = "gradle-plugins"
 
 include(
-    "conventions",
+    "conventions:global-conventions",
+    "conventions:openapi-sdk",
     "kotlin",
 )

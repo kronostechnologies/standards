@@ -1,24 +1,18 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-group = "com.equisoft.standards"
 version = "0.6.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "1.5.21"
 
-    id("java-gradle-plugin")
     id("maven-publish")
+    id("java-gradle-plugin")
 
     id("com.github.ben-manes.versions") version "0.39.0"
     id("com.gradle.plugin-publish") version "0.15.0"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
     id("org.jmailen.kotlinter") version "3.4.5"
-}
-
-repositories {
-    mavenCentral()
-    gradlePluginPortal()
 }
 
 val functionalTestImplementation = configurations
@@ -52,7 +46,7 @@ pluginBundle {
 gradlePlugin {
     plugins {
         create("kotlinStandardsPlugin") {
-            id = "com.equisoft.standards.kotlin"
+            id = "$group.kotlin"
             displayName = "Equisoft Kotlin Standards"
             description = "Kotlin standards at Equisoft"
             implementationClass = "com.equisoft.standards.kotlin.KotlinStandardsPlugin"

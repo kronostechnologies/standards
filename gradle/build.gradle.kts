@@ -1,3 +1,18 @@
+plugins {
+    id("net.linguica.maven-settings") version "0.5"
+}
+
+subprojects {
+    group = "com.equisoft.standards"
+
+    apply(plugin = "net.linguica.maven-settings")
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 tasks {
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
