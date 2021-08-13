@@ -1,0 +1,46 @@
+--- tmp/openapi-templates/kotlin-client/build.gradle.mustache	2021-08-13 18:14:06.149137328 -0400
++++ resources/patches/kotlin-client/build.gradle.mustache	2021-08-16 11:32:03.401578815 -0400
+@@ -1,11 +1,6 @@
+ group '{{groupId}}'
+ version '{{artifactVersion}}'
+ 
+-wrapper {
+-    gradleVersion = '6.8.3'
+-    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+-}
+-
+ buildscript {
+     ext.kotlin_version = '1.5.10'
+     {{#jvm-retrofit2}}
+@@ -43,6 +38,12 @@
+ apply plugin: 'kotlinx-serialization'
+ {{/kotlinx_serialization}}
+ 
++files(
++    "local.build.gradle",
++    "local.build.gradle.kts",
++).filter({ it.exists() } as Spec)
++    .forEach({ apply from: it })
++
+ repositories {
+     maven { url "https://repo1.maven.org/maven2" }
+ }
+@@ -114,6 +115,11 @@
+     {{/jvm-retrofit2}}
+     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
+ }
++
++wrapper {
++    gradleVersion = '6.8.3'
++    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
++}
+ {{#kotlinx_serialization}}
+ 
+ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+@@ -121,4 +127,4 @@
+         freeCompilerArgs += "-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi"
+     }
+ }
+-{{/kotlinx_serialization}}
+\ No newline at end of file
++{{/kotlinx_serialization}}
