@@ -4,6 +4,7 @@ import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
 
 abstract class OpenApiSdkExtension(layout: ProjectLayout) {
     abstract val customResourcesDir: DirectoryProperty
@@ -24,5 +25,15 @@ abstract class OpenApiSdkExtension(layout: ProjectLayout) {
             .finalizeValueOnRead()
         specFile.finalizeValueOnRead()
         swaggerVersion.finalizeValueOnRead()
+    }
+
+    fun generatorOutputDir(generatorName: String): Provider<String> =
+        outputDir.dir(generatorName).map { it.asFile.path }
+
+    fun generatorOutputDir(generatorName: Provider<String>): Provider<String> =
+        outputDir.dir(generatorName).map { it.asFile.path }
+
+    companion object {
+        const val PLUGIN_GROUP = "OpenAPI SDK"
     }
 }

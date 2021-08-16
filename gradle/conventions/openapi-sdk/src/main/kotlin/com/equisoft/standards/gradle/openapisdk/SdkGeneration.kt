@@ -1,35 +1,30 @@
 package com.equisoft.standards.gradle.openapisdk
 
-import com.equisoft.standards.gradle.openapisdk.generators.configureKotlinSdkTask
-import com.equisoft.standards.gradle.openapisdk.generators.configureMicronautSdkTask
-import com.equisoft.standards.gradle.openapisdk.generators.configurePhpSdkTask
-import com.equisoft.standards.gradle.openapisdk.generators.configureTypescriptSdkTask
-import org.gradle.internal.logging.text.StyledTextOutput.Style.Header
+import com.equisoft.standards.gradle.openapisdk.generators.KotlinSdkGenerator
+import com.equisoft.standards.gradle.openapisdk.generators.MicronautSdkGenerator
+import com.equisoft.standards.gradle.openapisdk.generators.PhpSdkGenerator
+import com.equisoft.standards.gradle.openapisdk.generators.TypescriptSdkGenerator
 import org.gradle.internal.logging.text.StyledTextOutput.Style.Success
 import org.gradle.kotlin.dsl.TaskContainerScope
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
-import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 import kotlin.collections.Map.Entry
 
-private val taskMappings: Map<String, ConfigureSdkTask> = mapOf(
-    "kotlin" to GenerateTask::configureKotlinSdkTask,
-    "micronaut" to GenerateTask::configureMicronautSdkTask,
-    "php" to GenerateTask::configurePhpSdkTask,
-    "typeScript" to GenerateTask::configureTypescriptSdkTask,
-);
-
-internal typealias ConfigureSdkTask = GenerateTask.(openApiSdk: OpenApiSdkExtension) -> Unit
-
 internal fun TaskContainerScope.createSdkGenerationTasks(openApiSdk: OpenApiSdkExtension) {
     configureGenerateTaskDefaults(openApiSdk)
-    taskMappings.forEach(registerGenerateTask(openApiSdk))
+
+    mapOf(
+        "kotlin" to KotlinSdkGenerator(),
+        "micronaut" to MicronautSdkGenerator(),
+        "php" to PhpSdkGenerator(),
+        "typescript" to TypescriptSdkGenerator(),
+    ).forEach(registerSdkTasks(openApiSdk))
 }
 
 private fun TaskContainerScope.configureGenerateTaskDefaults(openApiSdk: OpenApiSdkExtension) = withType<GenerateTask> {
     inputSpec.set(openApiSdk.specFile.map { it.asFile.path })
-    outputDir.set(openApiSdk.outputDir.dir(generatorName).map { it.asFile.path })
+    outputDir.set(openApiSdk.generatorOutputDir(generatorName))
 
     id.set("${project.rootProject.name}-sdk")
     groupId.set("${project.group}.sdk")
@@ -45,24 +40,30 @@ private fun TaskContainerScope.configureGenerateTaskDefaults(openApiSdk: OpenApi
     })
 }
 
-private fun TaskContainerScope.registerGenerateTask(
+private fun TaskContainerScope.registerSdkTasks(
     openApiSdk: OpenApiSdkExtension
-): (Entry<String, ConfigureSdkTask>) -> Unit = { (name, configure) ->
+): (Entry<String, SdkGenerator>) -> Unit = { (name, generator) ->
     val displayName = name.capitalize()
 
-    register<GenerateTask>("generate${displayName}Sdk") {
-        group = OpenApiGeneratorPlugin.pluginGroup
-        val output = createOutput()
+    register<GenerateTask>("assemble${displayName}Sdk") {
+        group = OpenApiSdkExtension.PLUGIN_GROUP
+
+        generator.configureGenerateTask(this, openApiSdk)
 
         doLast {
-            output.style(Header).println("Building ${generatorName.get()} SDK")
-        }
-
-        configure(openApiSdk)
-
-        doLast {
-            output.style(Success).println("$displayName SDK generated to: ${outputDir.get()}")
+            createOutput().style(Success).println("$displayName SDK generated to: ${outputDir.get()}")
         }
     }
-}
 
+    register("check${displayName}Sdk") {
+        group = OpenApiSdkExtension.PLUGIN_GROUP
+        mustRunAfter("assemble${displayName}Sdk")
+
+        generator.configureChecks(this, openApiSdk)
+    }
+
+    register("build${displayName}Sdk") {
+        group = OpenApiSdkExtension.PLUGIN_GROUP
+        dependsOn("assemble${displayName}Sdk", "check${displayName}Sdk")
+    }
+}
