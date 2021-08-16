@@ -2,7 +2,7 @@ group = "com.equisoft.standards"
 
 subprojects {
     group = "com.equisoft.standards"
-    version = "0.0.4-SNAPSHOT"
+    version = "0.0.5-SNAPSHOT"
 
     apply(plugin = "maven-publish")
 
