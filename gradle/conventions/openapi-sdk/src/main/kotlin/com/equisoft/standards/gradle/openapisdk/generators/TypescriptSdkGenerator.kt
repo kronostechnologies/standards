@@ -7,7 +7,10 @@ import org.gradle.api.Task
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 class TypescriptSdkGenerator : SdkGenerator {
-    private val generatorName = "typescript-fetch"
+    override val displayName: String
+        get() = "Typescript"
+    override val generatorName: String
+        get() = "typescript-fetch"
 
     override fun configureGenerateTask(
         task: GenerateTask,
@@ -15,8 +18,8 @@ class TypescriptSdkGenerator : SdkGenerator {
     ): Unit = with(task) {
         generatorName.set(this@TypescriptSdkGenerator.generatorName)
 
-        packageName.set("${project.rootProject.name.kebabToUpperCamelCase()} SDK")
-        invokerPackage.set("${project.rootProject.name}-sdk")
+        packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
+        invokerPackage.set(id)
 
         configOptions.set(project.provider {
             mapOf(

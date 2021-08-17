@@ -7,7 +7,10 @@ import org.gradle.api.Task
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 class PhpSdkGenerator : SdkGenerator {
-    private val generatorName = "php"
+    override val displayName: String
+        get() = "PHP"
+    override val generatorName: String
+        get() = "php"
 
     override fun configureGenerateTask(
         task: GenerateTask,
@@ -15,9 +18,9 @@ class PhpSdkGenerator : SdkGenerator {
     ): Unit = with(task) {
         generatorName.set(this@PhpSdkGenerator.generatorName)
 
-        val camelCaseName = project.rootProject.name.kebabToUpperCamelCase()
-        packageName.set("$camelCaseName SDK")
-        invokerPackage.set("Equisoft\\SDK\\$camelCaseName")
+        val camelCaseName = openApiSdk.projectKey.map { it.kebabToUpperCamelCase() }
+        packageName.set(camelCaseName.map { "$it SDK" })
+        invokerPackage.set(camelCaseName.map { "Equisoft\\SDK\\$it" })
 
         configOptions.put("variableNamingConvention", "camelCase")
 

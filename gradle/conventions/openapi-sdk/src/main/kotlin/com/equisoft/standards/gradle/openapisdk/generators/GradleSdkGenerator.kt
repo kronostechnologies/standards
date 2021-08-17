@@ -5,9 +5,7 @@ import com.equisoft.standards.gradle.openapisdk.SdkGenerator
 import org.gradle.api.Task
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
-abstract class GradleSdkGenerator(
-    private val generatorName: String
-) : SdkGenerator {
+abstract class GradleSdkGenerator : SdkGenerator {
     override fun configureGenerateTask(
         task: GenerateTask,
         openApiSdk: OpenApiSdkExtension
