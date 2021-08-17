@@ -5,7 +5,9 @@ import com.equisoft.standards.gradle.openapisdk.exec
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
@@ -13,7 +15,14 @@ import org.gradle.internal.logging.text.StyledTextOutput.Style.Error
 
 abstract class SyncRepositoryTask : DefaultTask() {
     @get:Input
-    abstract val uri: Property<String>
+    abstract val host: Property<String>
+    @get:Input
+    abstract val userId: Property<String>
+    @get:Input
+    abstract val repoId: Property<String>
+
+    @get:Internal
+    val uri: Provider<String> = host.map { "git@$it:${userId.get()}/${repoId.get()}.git" }
 
     @get:Optional
     @get:Input

@@ -1,11 +1,11 @@
 package com.equisoft.standards.gradle.openapisdk
 
+import org.apache.commons.io.output.TeeOutputStream
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.internal.logging.text.StyledTextOutputFactory
 import org.gradle.kotlin.dsl.support.serviceOf
 import java.io.ByteArrayOutputStream
-import java.io.File
 
 private val kebabRegex = "-[a-zA-Z]".toRegex()
 
@@ -24,13 +24,18 @@ internal fun Task.createOutput() =
 
 fun Project.exec(vararg commandLine: String): String = exec(projectDir, *commandLine)
 
-fun Project.exec(workingDir: File, vararg commandLine: String): String =
+/**
+ * Execute a command line and returns the standard output.
+ *
+ * @see Project.exec
+ */
+fun Project.exec(workingDir: Any, vararg commandLine: String): String =
     ByteArrayOutputStream().use {
         project.exec {
             workingDir(workingDir)
             commandLine(*commandLine)
             isIgnoreExitValue = false
-            standardOutput = it
+            standardOutput = TeeOutputStream(it, System.out)
         }
         it.toString().trimEnd()
     }

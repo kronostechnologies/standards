@@ -27,7 +27,7 @@ class OpenApiSdkPlugin : Plugin<Project> {
                 inputSpec.set(openApiSdk.specFile.map { it.asFile.path })
             }
 
-            createSdkGenerationTasks(openApiSdk)
+            registerSdkTasks(openApiSdk)
         }
     }
 }

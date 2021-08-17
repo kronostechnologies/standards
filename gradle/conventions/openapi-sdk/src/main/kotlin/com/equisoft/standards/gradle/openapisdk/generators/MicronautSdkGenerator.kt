@@ -3,17 +3,15 @@ package com.equisoft.standards.gradle.openapisdk.generators
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
-class MicronautSdkGenerator : GradleSdkGenerator() {
-    override val displayName: String
-        get() = "Micronaut"
-    override val generatorName: String
-        get() = "micronaut"
-
-    override fun configureGenerateTask(
-        task: GenerateTask,
-        openApiSdk: OpenApiSdkExtension
-    ): Unit = with(task) {
-        super.configureGenerateTask(task, openApiSdk)
+class MicronautSdkGenerator(
+    openApiSdk: OpenApiSdkExtension
+) : GradleSdkGenerator(
+    displayName = "Micronaut",
+    generatorName = "micronaut",
+    openApiSdk
+) {
+    override fun assembleSdk(task: GenerateTask): Unit = with(task) {
+        super.assembleSdk(this)
 
         id.set(openApiSdk.projectKey.map { "$it-sdk-micronaut" })
 

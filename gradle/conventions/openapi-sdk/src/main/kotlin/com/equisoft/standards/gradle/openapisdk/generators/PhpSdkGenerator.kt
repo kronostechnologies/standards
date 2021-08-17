@@ -1,26 +1,26 @@
 package com.equisoft.standards.gradle.openapisdk.generators
 
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
-import com.equisoft.standards.gradle.openapisdk.SdkGenerator
+import com.equisoft.standards.gradle.openapisdk.exec
 import com.equisoft.standards.gradle.openapisdk.kebabToUpperCamelCase
-import org.gradle.api.Task
+import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
-class PhpSdkGenerator : SdkGenerator {
-    override val displayName: String
-        get() = "PHP"
-    override val generatorName: String
-        get() = "php"
-
-    override fun configureGenerateTask(
-        task: GenerateTask,
-        openApiSdk: OpenApiSdkExtension
-    ): Unit = with(task) {
-        generatorName.set(this@PhpSdkGenerator.generatorName)
-
-        val camelCaseName = openApiSdk.projectKey.map { it.kebabToUpperCamelCase() }
-        packageName.set(camelCaseName.map { "$it SDK" })
-        invokerPackage.set(camelCaseName.map { "Equisoft\\SDK\\$it" })
+class PhpSdkGenerator(
+    openApiSdk: OpenApiSdkExtension
+) : SdkGenerator(
+    displayName = "PHP",
+    generatorName = "php",
+    openApiSdk
+) {
+    override fun assembleSdk(task: GenerateTask): Unit = with(task) {
+        packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
+        invokerPackage.set(groupId.map { groupId ->
+            groupId
+                .split(".")
+                .dropWhile { it.length <= 4 } // Attempt to drop usual TLDs
+                .joinToString("\\")
+        })
 
         configOptions.put("variableNamingConvention", "camelCase")
 
@@ -30,21 +30,10 @@ class PhpSdkGenerator : SdkGenerator {
         }
     }
 
-    override fun configureChecks(
-        task: Task,
-        openApiSdk: OpenApiSdkExtension
-    ): Unit = with(task) {
+    override fun checkSdk(task: CheckSdkTask): Unit = with(task) {
         doLast {
-            val path = openApiSdk.generatorOutputDir(generatorName).get()
-
-            project.exec {
-                workingDir(path)
-                commandLine("composer", "install")
-            }
-            project.exec {
-                workingDir(path)
-                commandLine("./vendor/bin/phpunit")
-            }
+            project.exec(directory, "composer", "install")
+            project.exec(directory, "./vendor/bin/phpunit")
         }
     }
 }
