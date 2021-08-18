@@ -100,7 +100,7 @@ be available:
 | `assembleKotlinSdk` | [GenerateTask](. "org.openapitools.generator.gradle.plugin.tasks.GenerateTask") | Generates the SDK project code and files. |
 | `checkKotlinSdk` | [CheckSdkTask](. "com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask") | Compiles the generated project and/or executes its tests. Depends on the language and the features supported by the underlying generator. |
 | `buildKotlinSdk` | N/D | `assembleKotlinSdk` + `checkKotlinSdk` |
-| `publishKotlinSdk` | [PublishSdkTask](. "com.equisoft.standards.gradle.openapisdk.tasks.PublishSdkTask") | Prints a code fence describing the publish process. In the future this may perform the publication automacally. |
+| `publishKotlinSdk` | [PublishSdkTask](. "com.equisoft.standards.gradle.openapisdk.tasks.PublishSdkTask") | Prints a code fence describing the publish process. In the future this may perform the publication automatically. |
 
 > While it is possible to alter the different tasks, it is recommended to use the defaults to facilitate maintenance and promote consistency across our plethora of SDK projects.
 
