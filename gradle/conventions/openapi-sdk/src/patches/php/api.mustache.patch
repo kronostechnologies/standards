@@ -1,0 +1,34 @@
+--- tmp/openapi-templates/php/api.mustache	2021-08-13 16:06:22.637671813 -0400
++++ resources/patches/php/api.mustache	2021-08-13 17:33:39.912689134 -0400
+@@ -479,15 +479,18 @@
+         {{#style}}
+             if('form' === '{{style}}' && is_array(${{paramName}})) {
+                 foreach(${{paramName}} as $key => $value) {
+-                    $queryParams[$key] = $value;
++                    {{! Equisoft added ObjectSerializer::toString() to fix boolean encoding }}
++                    $queryParams[$key] = ObjectSerializer::toString($value);
+                 }
+             }
+             else {
+-                $queryParams['{{baseName}}'] = ${{paramName}};
++                {{! Equisoft added ObjectSerializer::toString() to fix boolean encoding }}
++                $queryParams['{{baseName}}'] = ObjectSerializer::toString(${{paramName}});
+             }
+         {{/style}}
+         {{^style}}
+-            $queryParams['{{baseName}}'] = ${{paramName}};
++            {{! Equisoft added ObjectSerializer::toString() to fix boolean encoding }}
++            $queryParams['{{baseName}}'] = ObjectSerializer::toString(${{paramName}});
+         {{/style}}
+         }
+         {{/isExplode}}
+@@ -496,7 +499,8 @@
+             ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, '{{#style}}{{style}}{{/style}}{{^style}}{{#collectionFormat}}{{collectionFormat}}{{/collectionFormat}}{{/style}}', true);
+         }
+         if (${{paramName}} !== null) {
+-            $queryParams['{{baseName}}'] = ${{paramName}};
++            {{! Equisoft added ObjectSerializer::toString() to fix boolean encoding }}
++            $queryParams['{{baseName}}'] = ObjectSerializer::toString(${{paramName}});
+         }
+         {{/isExplode}}
+         {{/queryParams}}

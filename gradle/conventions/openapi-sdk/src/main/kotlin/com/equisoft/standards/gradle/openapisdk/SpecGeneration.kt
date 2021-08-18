@@ -8,6 +8,7 @@ import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
+import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 import org.openapitools.generator.gradle.plugin.tasks.ValidateTask
 
@@ -36,6 +37,7 @@ private fun configureMicronautOpenApi(project: Project, openApiSdk: OpenApiSdkEx
 
     tasks {
         register<WriteProperties>("generateOpenapiProperties") {
+            group = OpenApiGeneratorPlugin.pluginGroup
             outputFile = openApiSdk.openApiPropertiesFile.get().asFile
 
             property("micronaut.openapi.expand.api.version", version)
