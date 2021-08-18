@@ -3,67 +3,47 @@ package com.equisoft.standards.gradle.openapisdk
 import com.equisoft.standards.gradle.openapisdk.generators.KotlinSdkGenerator
 import com.equisoft.standards.gradle.openapisdk.generators.MicronautSdkGenerator
 import com.equisoft.standards.gradle.openapisdk.generators.PhpSdkGenerator
+import com.equisoft.standards.gradle.openapisdk.generators.SdkTask
+import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.ASSEMBLE
 import com.equisoft.standards.gradle.openapisdk.generators.TypescriptSdkGenerator
-import org.gradle.internal.logging.text.StyledTextOutput.Style.Success
-import org.gradle.kotlin.dsl.TaskContainerScope
-import org.gradle.kotlin.dsl.register
-import org.gradle.kotlin.dsl.withType
-import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
-import kotlin.collections.Map.Entry
+import org.gradle.api.GradleException
+import org.gradle.api.Task
+import org.gradle.api.tasks.TaskContainer
+import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 
-internal fun TaskContainerScope.createSdkGenerationTasks(openApiSdk: OpenApiSdkExtension) {
-    configureGenerateTaskDefaults(openApiSdk)
-
-    mapOf(
-        "kotlin" to KotlinSdkGenerator(),
-        "micronaut" to MicronautSdkGenerator(),
-        "php" to PhpSdkGenerator(),
-        "typescript" to TypescriptSdkGenerator(),
-    ).forEach(registerSdkTasks(openApiSdk))
-}
-
-private fun TaskContainerScope.configureGenerateTaskDefaults(openApiSdk: OpenApiSdkExtension) = withType<GenerateTask> {
-    inputSpec.set(openApiSdk.specFile.map { it.asFile.path })
-    outputDir.set(openApiSdk.generatorOutputDir(generatorName))
-
-    id.set("${project.rootProject.name}-sdk")
-    groupId.set("${project.group}.sdk")
-    version.set("${project.version}")
-
-    templateDir.set(project.provider {
-        val file = openApiSdk.customResourcesDir.dir(generatorName).map { it.asFile }.orNull
-        if (file?.exists() == true) {
-            file.path
-        } else {
-            null
+internal fun TaskContainer.registerSdkTasks(openApiSdk: OpenApiSdkExtension) {
+    listOf(
+        KotlinSdkGenerator(openApiSdk),
+        MicronautSdkGenerator(openApiSdk),
+        PhpSdkGenerator(openApiSdk),
+        TypescriptSdkGenerator(openApiSdk),
+    ).map {
+        it.registerTasks(this)
+    }.let { tasks ->
+        tasks.mapNotNull { it[ASSEMBLE] }.forEach {
+            // This has to be done inside every task because they each have their own classloader
+            it.get().doFirst { validateClasspath(this) }
         }
-    })
-}
 
-private fun TaskContainerScope.registerSdkTasks(
-    openApiSdk: OpenApiSdkExtension
-): (Entry<String, SdkGenerator>) -> Unit = { (name, generator) ->
-    val displayName = name.capitalize()
-
-    register<GenerateTask>("assemble${displayName}Sdk") {
-        group = OpenApiSdkExtension.PLUGIN_GROUP
-
-        generator.configureGenerateTask(this, openApiSdk)
-
-        doLast {
-            createOutput().style(Success).println("$displayName SDK generated to: ${outputDir.get()}")
+        SdkTask.values().forEach { type ->
+            register(type.toTaskName()) {
+                group = "${OpenApiGeneratorPlugin.pluginGroup}/sdk"
+                dependsOn(tasks.map { it[type] })
+            }
         }
     }
+}
 
-    register("check${displayName}Sdk") {
-        group = OpenApiSdkExtension.PLUGIN_GROUP
-        mustRunAfter("assemble${displayName}Sdk")
+private fun validateClasspath(task: Task) {
+    val sampleFile = "/kotlin-client/build.gradle.mustache"
+    val sampleResource = task.javaClass.getResource(sampleFile)
+    val regex = Regex("""file:(/[^/]+)+/openapi-sdk-[^/]+\.jar!${sampleFile.replace(".", "\\.")}""")
 
-        generator.configureChecks(this, openApiSdk)
-    }
-
-    register("build${displayName}Sdk") {
-        group = OpenApiSdkExtension.PLUGIN_GROUP
-        dependsOn("assemble${displayName}Sdk", "check${displayName}Sdk")
+    if (sampleResource?.path?.matches(regex) != true) {
+        throw GradleException(
+            "OpenApi SDK does not appear high enough in your classpath. " +
+                "This will cause monkey-patches to not be loaded. " +
+                "Make sure that OpenAPI generator is not explicitly specified or that it appears AFTER OpenAPI SDK."
+        )
     }
 }

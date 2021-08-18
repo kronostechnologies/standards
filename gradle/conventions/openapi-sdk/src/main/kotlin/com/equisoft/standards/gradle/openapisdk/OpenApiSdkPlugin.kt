@@ -12,7 +12,7 @@ class OpenApiSdkPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
         plugins.apply(OpenApiGeneratorPlugin::class.java)
 
-        val openApiSdk = extensions.create<OpenApiSdkExtension>("openApiSdk", layout)
+        val openApiSdk = extensions.create<OpenApiSdkExtension>("openApiSdk", project)
 
         afterEvaluate {
             configureOpenApiSpecGeneration(openApiSdk)
@@ -27,7 +27,7 @@ class OpenApiSdkPlugin : Plugin<Project> {
                 inputSpec.set(openApiSdk.specFile.map { it.asFile.path })
             }
 
-            createSdkGenerationTasks(openApiSdk)
+            registerSdkTasks(openApiSdk)
         }
     }
 }

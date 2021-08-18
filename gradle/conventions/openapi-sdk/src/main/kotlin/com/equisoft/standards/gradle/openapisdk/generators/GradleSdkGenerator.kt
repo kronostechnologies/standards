@@ -1,19 +1,16 @@
 package com.equisoft.standards.gradle.openapisdk.generators
 
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
-import com.equisoft.standards.gradle.openapisdk.SdkGenerator
-import org.gradle.api.Task
+import com.equisoft.standards.gradle.openapisdk.exec
+import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 abstract class GradleSdkGenerator(
-    private val generatorName: String
-) : SdkGenerator {
-    override fun configureGenerateTask(
-        task: GenerateTask,
-        openApiSdk: OpenApiSdkExtension
-    ): Unit = with(task) {
-        generatorName.set(this@GradleSdkGenerator.generatorName)
-
+    displayName: String,
+    generatorName: String,
+    openApiSdk: OpenApiSdkExtension
+) : SdkGenerator(displayName, generatorName, openApiSdk) {
+    override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         packageName.set(groupId)
         apiPackage.set(packageName)
         invokerPackage.set(packageName.map { "$it.invoker" })
@@ -25,22 +22,13 @@ abstract class GradleSdkGenerator(
         }
 
         doLast {
-            project.exec {
-                workingDir(outputDir.get())
-                commandLine("chmod", "+x", "gradlew")
-            }
+            project.exec(outputDir, "chmod", "+x", "gradlew")
         }
     }
 
-    override fun configureChecks(
-        task: Task,
-        openApiSdk: OpenApiSdkExtension
-    ): Unit = with(task) {
+    override fun checkSdk(task: CheckSdkTask): Unit = with(task) {
         doLast {
-            project.exec {
-                workingDir(openApiSdk.generatorOutputDir(generatorName).get())
-                commandLine("./gradlew", "build")
-            }
+            project.exec(directory, "./gradlew", "build")
         }
     }
 }
