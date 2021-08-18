@@ -2,7 +2,6 @@ package com.equisoft.standards.gradle.openapisdk
 
 import org.gradle.api.Action
 import org.gradle.api.Project
-import org.gradle.api.file.Directory
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.file.RegularFileProperty
@@ -19,15 +18,15 @@ abstract class OpenApiSdkExtension @Inject constructor(
     project: Project,
     private val providerFactory: ProviderFactory
 ) {
-    val customResourcesDir: DirectoryProperty = objectFactory.directoryProperty().apply {
-        convention(layout.buildDirectory.dir("sdk"))
-        finalizeValueOnRead()
-    }
     val openApiPropertiesFile: RegularFileProperty = objectFactory.fileProperty().apply {
         convention(layout.buildDirectory.file("openapi.properties"))
         finalizeValueOnRead()
     }
-    val projectKey: Property<String?> = objectFactory.property(String::class.java).apply {
+    val outputDir: DirectoryProperty = objectFactory.directoryProperty().apply {
+        convention(layout.buildDirectory.dir("sdk"))
+        finalizeValueOnRead()
+    }
+    val projectKey: Property<String> = objectFactory.property(String::class.java).apply {
         convention(project.rootProject.name)
         finalizeValueOnRead()
     }
@@ -35,10 +34,6 @@ abstract class OpenApiSdkExtension @Inject constructor(
         finalizeValueOnRead()
     }
     val swaggerVersion: Property<String> = objectFactory.property(String::class.java).apply {
-        finalizeValueOnRead()
-    }
-    val outputDir: DirectoryProperty = objectFactory.directoryProperty().apply {
-        convention(layout.buildDirectory.dir("sdk"))
         finalizeValueOnRead()
     }
 
