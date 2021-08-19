@@ -161,3 +161,33 @@ Here's a complete list of the plugin extension properties:
 | git.enable | Boolean | `false` | Enable the sync and publish SDK tasks.
 | git.host | String | `github.com` | The GIT host used to generate the repository URI.
 | git.userId | String | - | The GIT organization or user name used to generate the repository URI.
+
+## Patches
+
+Rather than monkey patching the templates, the build process will apply patches stored in `/src/patches`. There are a couple restrictions:
+
+- The patches must be in the same directory structure than the OpenAPI generator.
+- The name of the patch file must be the same as the OpenAPI template, followed by the `.patch` extension.
+- Only one file per diff file is possible.
+
+### Create a new patch 
+
+To create a new patch, you can follow this procedure:
+
+1. Copy OpenAPI templates locally to `build/tmp/openapi-templates`:
+    ```shell
+    ./gradlew :openapi-sdk:syncTemplates
+    ```
+1. Make a second copy of the files to be patched in `build/resources/patches`:
+    ```shell
+    cp build/tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/infrastructure/ApiClient.kt.mustache \
+       build/resources/patches/kotlin-client/libraries/jvm-okhttp/infrastructure/ApiClient.kt.mustache
+    ```
+1. Modify the second copy according to your needs. To help future yourself in the future, you can include `{{! musdtache comments }} to detail why and what your changes are about.
+1. Create a patch file, taking care to preserve the original file path.
+    ```shell
+    mkdir -p src/patches/kotlin-client/libraries/jvm-okhttp/infrastructure
+    diff -Naur build/tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/infrastructure/ApiClient.kt.mustache \
+               build/resources/patches/kotlin-client/libraries/jvm-okhttp/infrastructure/ApiClient.kt.mustache \
+               > src/patches/kotlin-client/libraries/jvm-okhttp/infrastructure/ApiClient.kt.mustache.patch
+    ```

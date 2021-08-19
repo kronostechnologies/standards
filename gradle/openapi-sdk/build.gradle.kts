@@ -16,7 +16,7 @@ dependencies {
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
-    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.1.0")
+    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.2.0-SNAPSHOT")
 
     openApiGenerator("org.openapitools:openapi-generator:$openApiVersion")
 }
@@ -75,10 +75,10 @@ tasks {
 }
 
 fun applyPatch(patch: File) {
-    val parentName = patch.parentFile.name
+    val parentPath = patch.parentFile.relativeTo(openApiPatchesSourceDirectory.asFile).path
     val templateName = patch.nameWithoutExtension
-    val originalFile = openApiTemplatesDirectory.get().dir(parentName).dir(templateName).asFile
-    val targetFile = openApiPatchedTargetDirectory.get().dir(parentName).dir(templateName).asFile
+    val originalFile = openApiTemplatesDirectory.get().dir(parentPath).dir(templateName).asFile
+    val targetFile = openApiPatchedTargetDirectory.get().dir(parentPath).dir(templateName).asFile
 
     val targetDirectory = targetFile.parentFile
     if (!targetDirectory.exists()) {

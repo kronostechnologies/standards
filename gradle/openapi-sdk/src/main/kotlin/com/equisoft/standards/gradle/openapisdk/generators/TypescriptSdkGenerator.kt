@@ -37,8 +37,8 @@ class TypescriptSdkGenerator(
 
     override fun checkSdk(task: CheckSdkTask): Unit = with(task) {
         doLast {
-            project.exec(directory, "yarn", "install", "--immutable")
-            project.exec(directory, "yarn", "build")
+            project.exec(directory, "yarn", "install", "--immutable", displayResult = true)
+            project.exec(directory, "yarn", "build", displayResult = true)
         }
     }
 }

@@ -16,6 +16,8 @@ abstract class GradleSdkGenerator(
         invokerPackage.set(packageName.map { "$it.invoker" })
         modelPackage.set(packageName.map { "$it.models" })
 
+        configOptions.put("enumPropertyNaming", "UPPERCASE")
+
         doFirst {
             val path = outputDir.get()
             project.delete("$path/src", "$path/docs", "$path/build")
@@ -28,7 +30,7 @@ abstract class GradleSdkGenerator(
 
     override fun checkSdk(task: CheckSdkTask): Unit = with(task) {
         doLast {
-            project.exec(directory, "./gradlew", "build")
+            project.exec(directory, "./gradlew", "build", displayResult = true)
         }
     }
 }
