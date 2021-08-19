@@ -26,22 +26,22 @@ class KotlinStandardsPlugin : Plugin<Project> {
             configureKotlinter()
         }
 
-        tasks.register("checkStatic").configure {
-            staticChecks.forEach(it::dependsOn)
+        tasks.register("checkStatic") {
+            staticChecks.forEach(::dependsOn)
         }
 
-        tasks.named("check").configure {
-            it.dependsOn("checkStatic")
+        tasks.named("check") {
+            dependsOn("checkStatic")
         }
 
-        tasks.withType(Detekt::class.java).all {
-            it.jvmTarget = "1.8"
+        tasks.withType(Detekt::class.java) {
+            jvmTarget = "1.8"
         }
     }
 
     private fun Project.configureKotlinter() {
         extensions.configure(KotlinterExtension::class.java) {
-            it.disabledRules = arrayOf(
+            disabledRules = arrayOf(
                 "import-ordering"
             )
         }
@@ -53,8 +53,8 @@ class KotlinStandardsPlugin : Plugin<Project> {
             val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
             val configResource: TextResource = project.resources.text.fromString(configuration)
 
-            it.config = files(file(configResource))
-            it.input = files(file("src/main/kotlin"), file("src/test/kotlin"))
+            config = files(file(configResource))
+            input = files(file("src/main/kotlin"), file("src/test/kotlin"))
         }
     }
 

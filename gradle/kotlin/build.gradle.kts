@@ -4,10 +4,9 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 version = "0.6.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "1.5.21"
-
-    id("maven-publish")
-    id("java-gradle-plugin")
+    `kotlin-dsl`
+    `java-gradle-plugin`
+    `maven-publish`
 
     id("com.github.ben-manes.versions") version "0.39.0"
     id("com.gradle.plugin-publish") version "0.15.0"
