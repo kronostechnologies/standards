@@ -57,8 +57,8 @@ abstract class SdkGenerator(
         dependsOn(sync)
 
         id.set(openApiSdk.projectKey.map { "$it-sdk" })
-        groupId.set("${project.group}.sdk")
-        version.set("${project.version}")
+        groupId.set(project.provider { "${project.group}.sdk" })
+        version.set(project.provider { "${project.version}" })
 
         assembleSdk(this)
 
