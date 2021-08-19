@@ -1,5 +1,7 @@
 import org.apache.tools.ant.taskdefs.Patch
 
+version = "0.0.7-SNAPSHOT"
+
 val openApiPatchesSourceDirectory = layout.projectDirectory.dir("src/patches")
 val openApiTemplatesDirectory = layout.buildDirectory.dir("tmp/openapi-templates")
 val openApiPatchedTargetDirectory = layout.buildDirectory.dir("resources/patches")

@@ -3,6 +3,7 @@ package com.equisoft.standards.gradle.openapisdk
 import org.gradle.api.Project
 import org.gradle.api.tasks.PathSensitivity.RELATIVE
 import org.gradle.api.tasks.WriteProperties
+import org.gradle.kotlin.dsl.TaskContainerScope
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.register
@@ -31,7 +32,7 @@ internal fun Project.configureOpenApiSpecGeneration(openApiSdk: OpenApiSdkExtens
 private fun configureMicronautOpenApi(project: Project, openApiSdk: OpenApiSdkExtension) = with(project) {
     dependencies {
         // micronaut-bom defines swagger-annotations but we allow overriding the version
-        val swaggerVersionQualifier = openApiSdk.swaggerVersion.map { ":${it}" }.orElse("").get()
+        val swaggerVersionQualifier = openApiSdk.swaggerVersion.map { ":$it" }.orElse("").get()
         "implementation"("io.swagger.core.v3:swagger-annotations$swaggerVersionQualifier")
     }
 
@@ -61,15 +62,7 @@ private fun Project.configureKapt(openApiSdk: OpenApiSdkExtension) {
     }
 
     tasks {
-        matching {
-            it.name == "kaptKotlin"
-        }.all {
-            dependsOn("generateOpenapiProperties")
-
-            inputs.file(openApiSdk.openApiPropertiesFile)
-                .withPropertyName("openApiProperties")
-                .withPathSensitivity(RELATIVE)
-        }
+        addOpenApiPropertiesToKaptKotlin(openApiSdk)
 
         withType<ValidateTask> {
             dependsOn("kaptKotlin")
@@ -78,5 +71,17 @@ private fun Project.configureKapt(openApiSdk: OpenApiSdkExtension) {
         withType<GenerateTask> {
             dependsOn("kaptKotlin")
         }
+    }
+}
+
+private fun TaskContainerScope.addOpenApiPropertiesToKaptKotlin(openApiSdk: OpenApiSdkExtension) {
+    matching {
+        it.name == "kaptKotlin"
+    }.all {
+        dependsOn("generateOpenapiProperties")
+
+        inputs.file(openApiSdk.openApiPropertiesFile)
+            .withPropertyName("openApiProperties")
+            .withPathSensitivity(RELATIVE)
     }
 }

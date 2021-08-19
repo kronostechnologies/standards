@@ -1,12 +1,9 @@
-import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
 version = "0.6.0-SNAPSHOT"
 
 plugins {
     id("com.gradle.plugin-publish") version "0.15.0"
-    id("io.gitlab.arturbosch.detekt") version "1.17.1"
-    id("org.jmailen.kotlinter") version "3.4.5"
 }
 
 val functionalTestImplementation = configurations
@@ -15,7 +12,6 @@ val functionalTestImplementation = configurations
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.5.21"))
-    kotlin("stdlib-jdk8")
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation("org.jmailen.gradle:kotlinter-gradle:3.4.5")
@@ -52,26 +48,7 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
     gradlePlugin.testSourceSets(this)
 }
 
-val functionalTest by tasks.creating(Test::class) {
-    group = "verification"
-    testClassesDirs = functionalTestSourceSet.output.classesDirs
-    classpath = functionalTestSourceSet.runtimeClasspath
-}
-
-val checkStatic by tasks.creating(Task::class) {
-    group = "verification"
-    dependsOn("lintKotlin")
-    dependsOn("detektMain")
-    dependsOn("detektTest")
-    dependsOn("detektFunctionalTest")
-}
-
-val check by tasks.getting(Task::class) {
-    dependsOn(functionalTest)
-}
-
 configure<DetektExtension> {
-    config = files(file("src/main/resources/detekt.yml"))
     input = files(
         file("src/main/kotlin"),
         file("src/test/kotlin"),
@@ -80,12 +57,22 @@ configure<DetektExtension> {
 }
 
 tasks {
-    withType<Detekt>().configureEach {
-        jvmTarget = "1.8"
+    named("checkStatic") {
+        dependsOn("detektFunctionalTest")
     }
 
     withType<Test> {
         useJUnitPlatform()
+    }
+
+    val functionalTest = register<Test>("functionalTest") {
+        group = "verification"
+        testClassesDirs = functionalTestSourceSet.output.classesDirs
+        classpath = functionalTestSourceSet.runtimeClasspath
+    }
+
+    check {
+        dependsOn(functionalTest)
     }
 }
 

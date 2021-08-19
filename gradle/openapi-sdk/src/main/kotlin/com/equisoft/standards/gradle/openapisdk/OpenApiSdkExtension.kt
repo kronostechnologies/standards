@@ -51,7 +51,7 @@ abstract class OpenApiSdkExtension @Inject constructor(
     }
 }
 
-abstract class GitInfo @Inject constructor(
+open class GitInfo @Inject constructor(
     objectFactory: ObjectFactory
 ) {
     val enable: Property<Boolean> = objectFactory.property(Boolean::class.java).apply {

@@ -26,6 +26,10 @@ abstract class SdkGenerator(
     private val taskGroup = "${OpenApiGeneratorPlugin.pluginGroup}/$displayName SDK"
     private val outputDirectory = openApiSdk.outputDir.dir(displayName.toLowerCase())
 
+    abstract fun assembleSdk(task: GenerateTask)
+
+    abstract fun checkSdk(task: CheckSdkTask)
+
     fun registerTasks(tasks: TaskContainer): Map<SdkTask, TaskProvider<*>> = with(tasks) {
         val sync = registerSync()
         val assemble = registerAssemble(sync.second)
@@ -44,11 +48,7 @@ abstract class SdkGenerator(
         host.set(openApiSdk.git.host)
         userId.set(openApiSdk.git.userId)
         repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
-
-        syncSdk(this)
     }
-
-    protected open fun syncSdk(task: SyncRepositoryTask) {}
 
     private fun TaskContainer.registerAssemble(
         sync: TaskProvider<SyncRepositoryTask>
@@ -75,8 +75,6 @@ abstract class SdkGenerator(
         }
     }
 
-    protected open fun assembleSdk(task: GenerateTask) {}
-
     private fun TaskContainer.registerCheck(
         assemble: TaskProvider<GenerateTask>
     ) = registerSdkTask<CheckSdkTask>(CHECK) {
@@ -88,18 +86,13 @@ abstract class SdkGenerator(
         directory.set(outputDirectory)
     }
 
-    protected open fun checkSdk(task: CheckSdkTask) {}
-
     private fun TaskContainer.registerBuild(
         assemble: TaskProvider<GenerateTask>,
         check: TaskProvider<CheckSdkTask>
     ) = registerSdkTask<Task>(BUILD) {
         group = taskGroup
         dependsOn(assemble, check)
-        buildSdk(this)
     }
-
-    protected open fun buildSdk(task: Task) {}
 
     private fun TaskContainer.registerPublish(
         assemble: TaskProvider<GenerateTask>,
@@ -110,12 +103,8 @@ abstract class SdkGenerator(
         mustRunAfter(check)
         onlyIf { openApiSdk.git.enable.get() }
 
-        publishSdk(this)
-
         directory.set(outputDirectory)
     }
-
-    protected open fun publishSdk(task: PublishSdkTask) {}
 
     private inline fun <reified T : Task> TaskContainer.registerSdkTask(
         type: SdkTask,

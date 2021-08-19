@@ -56,8 +56,7 @@ abstract class SyncRepositoryTask : DefaultTask() {
         val repositoryRoot = project.exec(directory, "git", "rev-parse", "--show-toplevel")
         val repositoryRemoteUri = project.exec(directory, "git", "remote", "get-url", "origin")
 
-        return repositoryRoot == directory.path
-            && repositoryRemoteUri == uri.get()
+        return repositoryRoot == directory.path && repositoryRemoteUri == uri.get()
     }
 
     private fun cleanupRepository() {

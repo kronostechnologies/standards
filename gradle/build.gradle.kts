@@ -3,6 +3,8 @@ plugins {
 
     id("net.linguica.maven-settings") version "0.5"
     id("com.github.ben-manes.versions") version "0.39.0"
+    id("io.gitlab.arturbosch.detekt") version "1.17.1" apply false
+    id("org.jmailen.kotlinter") version "3.4.5" apply false
 }
 
 subprojects {
@@ -12,6 +14,8 @@ subprojects {
     apply(plugin = "org.gradle.kotlin.kotlin-dsl")
     apply(plugin = "org.gradle.maven-publish")
     apply(plugin = "net.linguica.maven-settings")
+    apply(plugin = "io.gitlab.arturbosch.detekt")
+    apply(plugin = "org.jmailen.kotlinter")
 
     repositories {
         gradlePluginPortal()
@@ -29,6 +33,10 @@ subprojects {
         }
     }
 
+    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        config = files("$rootDir/kotlin/src/main/resources/detekt.yml")
+    }
+
     configure<PublishingExtension> {
         repositories {
             maven {
@@ -38,18 +46,31 @@ subprojects {
                     name = "gprWrite"
                     username = project.findProperty("gpr.write.user")?.toString()
                         ?: System.getenv("GPR_USER")
-                            ?: System.getenv("GHCR_USER")
+                        ?: System.getenv("GHCR_USER")
                     password = project.findProperty("gpr.write.key")?.toString()
                         ?: System.getenv("GPR_TOKEN")
-                            ?: System.getenv("GHCR_TOKEN")
+                        ?: System.getenv("GHCR_TOKEN")
                 }
             }
         }
     }
 
     tasks {
+        withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+            jvmTarget = "1.8"
+        }
+
+        register("checkStatic") {
+            group = "verification"
+            dependsOn("lintKotlin", "detekt")
+        }
+
+        named("build") {
+            dependsOn("checkStatic")
+        }
+
         named("publish") {
-            dependsOn("check")
+            dependsOn("check", "checkStatic")
         }
     }
 }

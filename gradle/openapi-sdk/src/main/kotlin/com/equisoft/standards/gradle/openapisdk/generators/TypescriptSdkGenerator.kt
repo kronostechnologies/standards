@@ -17,15 +17,17 @@ class TypescriptSdkGenerator(
         packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
         invokerPackage.set(id)
 
-        configOptions.set(project.provider {
-            mapOf(
-                "enumPropertyNaming" to "original",
-                "npmName" to id.get(), // npmName is required for the project's structure to be generated (src/, ...)
-                "supportsES6" to "true",
-                "typescriptThreePlus" to "true",
-                "variableNamingConvention" to "camelCase",
-            )
-        })
+        configOptions.set(
+            project.provider {
+                mapOf(
+                    "enumPropertyNaming" to "original",
+                    "npmName" to id.get(), // npmName is required for the project's structure to be generated (ie src/)
+                    "supportsES6" to "true",
+                    "typescriptThreePlus" to "true",
+                    "variableNamingConvention" to "camelCase",
+                )
+            }
+        )
 
         doFirst {
             val path = outputDir.get()

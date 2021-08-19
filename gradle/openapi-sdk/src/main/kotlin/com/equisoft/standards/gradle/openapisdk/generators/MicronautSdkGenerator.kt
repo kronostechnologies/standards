@@ -15,16 +15,18 @@ class MicronautSdkGenerator(
 
         id.set(openApiSdk.projectKey.map { "$it-sdk-micronaut" })
 
-        configOptions.set(project.provider {
-            mapOf(
-                "clientId" to openApiSdk.projectKey.get(),
-                "introspected" to "true",
-                "jacksonDatabindNullable" to "false",
-                "supportAsync" to "false",
-                "useGenericResponse" to "true",
-                "useOptional" to "false",
-                "useReferencedSchemaAsDefault" to "false"
-            )
-        })
+        configOptions.set(
+            project.provider {
+                mapOf(
+                    "clientId" to openApiSdk.projectKey.get(),
+                    "introspected" to "true",
+                    "jacksonDatabindNullable" to "false",
+                    "supportAsync" to "false",
+                    "useGenericResponse" to "true",
+                    "useOptional" to "false",
+                    "useReferencedSchemaAsDefault" to "false"
+                )
+            }
+        )
     }
 }

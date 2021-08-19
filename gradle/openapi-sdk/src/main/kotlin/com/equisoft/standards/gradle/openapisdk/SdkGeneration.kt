@@ -9,6 +9,7 @@ import com.equisoft.standards.gradle.openapisdk.generators.TypescriptSdkGenerato
 import org.gradle.api.GradleException
 import org.gradle.api.Task
 import org.gradle.api.tasks.TaskContainer
+import org.gradle.api.tasks.TaskProvider
 import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 
 internal fun TaskContainer.registerSdkTasks(openApiSdk: OpenApiSdkExtension) {
@@ -20,17 +21,15 @@ internal fun TaskContainer.registerSdkTasks(openApiSdk: OpenApiSdkExtension) {
     ).map {
         it.registerTasks(this)
     }.let { tasks ->
-        tasks.mapNotNull { it[ASSEMBLE] }.forEach {
-            // This has to be done inside every task because they each have their own classloader
-            it.get().doFirst { validateClasspath(this) }
-        }
+        addClasspathVerification(tasks)
+        registerCompoundSdkTasks(tasks)
+    }
+}
 
-        SdkTask.values().forEach { type ->
-            register(type.toTaskName()) {
-                group = "${OpenApiGeneratorPlugin.pluginGroup}/sdk"
-                dependsOn(tasks.map { it[type] })
-            }
-        }
+private fun addClasspathVerification(tasks: List<Map<SdkTask, TaskProvider<*>>>) {
+    tasks.mapNotNull { it[ASSEMBLE] }.forEach {
+        // This has to be done inside every task because they each have their own classloader
+        it.get().doFirst { validateClasspath(this) }
     }
 }
 
@@ -45,5 +44,14 @@ private fun validateClasspath(task: Task) {
                 "This will cause monkey-patches to not be loaded. " +
                 "Make sure that OpenAPI generator is not explicitly specified or that it appears AFTER OpenAPI SDK."
         )
+    }
+}
+
+private fun TaskContainer.registerCompoundSdkTasks(tasks: List<Map<SdkTask, TaskProvider<*>>>) {
+    SdkTask.values().forEach { type ->
+        register(type.toTaskName()) {
+            group = "${OpenApiGeneratorPlugin.pluginGroup}/sdk"
+            dependsOn(tasks.map { it[type] })
+        }
     }
 }
