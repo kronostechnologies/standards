@@ -4,11 +4,6 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 version = "0.6.0-SNAPSHOT"
 
 plugins {
-    `kotlin-dsl`
-    `java-gradle-plugin`
-    `maven-publish`
-
-    id("com.github.ben-manes.versions") version "0.39.0"
     id("com.gradle.plugin-publish") version "0.15.0"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
     id("org.jmailen.kotlinter") version "3.4.5"
@@ -91,22 +86,6 @@ tasks {
 
     withType<Test> {
         useJUnitPlatform()
-    }
-
-    dependencyUpdates {
-        fun isStable(version: String): Boolean {
-            val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
-            val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-            return stableKeyword || regex.matches(version)
-        }
-
-        checkConstraints = true
-        gradleReleaseChannel = "current"
-        outputFormatter = "json,html"
-
-        rejectVersionIf {
-            !isStable(candidate.version) && isStable(currentVersion)
-        }
     }
 }
 

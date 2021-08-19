@@ -1,10 +1,5 @@
 import org.apache.tools.ant.taskdefs.Patch
 
-plugins {
-    `kotlin-dsl`
-    `java-gradle-plugin`
-}
-
 val openApiPatchesSourceDirectory = layout.projectDirectory.dir("src/patches")
 val openApiTemplatesDirectory = layout.buildDirectory.dir("tmp/openapi-templates")
 val openApiPatchedTargetDirectory = layout.buildDirectory.dir("resources/patches")
