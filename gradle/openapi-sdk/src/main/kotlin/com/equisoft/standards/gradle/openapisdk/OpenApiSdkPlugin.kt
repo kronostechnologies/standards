@@ -10,6 +10,7 @@ import org.openapitools.generator.gradle.plugin.tasks.ValidateTask
 
 class OpenApiSdkPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
+        plugins.apply("base")
         plugins.apply(OpenApiGeneratorPlugin::class.java)
 
         val openApiSdk = extensions.create<OpenApiSdkExtension>("openApiSdk", project)
