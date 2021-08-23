@@ -75,12 +75,14 @@ abstract class SyncRepositoryTask : DefaultTask() {
         project.exec(directory, "git", "reset", "--hard", "origin/$defaultBranch")
     }
 
-    private fun defaultBranch(): String = this.defaultBranch.orElse(target.asFile.map { directory ->
-        project.exec(directory, "git", "remote", "show", "origin").lines()
-            .first { it.trim().startsWith("HEAD branch: ") }
-            .replace("HEAD branch: ", "")
-            .trim()
-    }).get()
+    private fun defaultBranch(): String = this.defaultBranch.orElse(
+        target.asFile.map { directory ->
+            project.exec(directory, "git", "remote", "show", "origin").lines()
+                .first { it.trim().startsWith("HEAD branch: ") }
+                .replace("HEAD branch: ", "")
+                .trim()
+        }
+    ).get()
 
     private fun recreateRepository() {
         val directory = target.get().asFile
