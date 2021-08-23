@@ -196,5 +196,5 @@ To create a new patch, you can follow this procedure:
 
 1. Make sure you have the `gradle.write.user` and `gradle.write.key` variables set in
    your `~/.gradle/gradle.properties` file.  `user` is your github username and `key` is a github personal access token generated with `package:write` access.
-2. Set the `version` in `build.gradle.kts`. To publish a pre-release bump the version number and add `-SNAPSHOT` suffix.
+2. Set the `version` in `build.gradle.kts`.  To create an non-snapshot version, remove the `-SNAPSHOT` then publish.  After that, set the version to the next SNAPSHOT version. 
 3. Publish with `./gradlew :openapi-sdk:publish` on the parent folder (`project-root:gradle`)
