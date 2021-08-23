@@ -15,7 +15,7 @@ class MicronautSdkGenerator(
 
         id.set(openApiSdk.projectKey.map { "$it-sdk-micronaut" })
 
-        configOptions.set(
+        configOptions.putAll(
             project.provider {
                 mapOf(
                     "clientId" to openApiSdk.projectKey.get(),

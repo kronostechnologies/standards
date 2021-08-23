@@ -16,13 +16,19 @@ import org.gradle.internal.logging.text.StyledTextOutput.Style.Error
 abstract class SyncRepositoryTask : DefaultTask() {
     @get:Input
     abstract val host: Property<String>
+
     @get:Input
     abstract val userId: Property<String>
+
     @get:Input
     abstract val repoId: Property<String>
 
     @get:Internal
     val uri: Provider<String> = host.map { "git@$it:${userId.get()}/${repoId.get()}.git" }
+
+    @get:Optional
+    @get:Input
+    abstract val defaultBranch: Property<String?>
 
     @get:Optional
     @get:Input
@@ -61,13 +67,22 @@ abstract class SyncRepositoryTask : DefaultTask() {
 
     private fun cleanupRepository() {
         val directory = target.get().asFile
-        val defaultBranch = project.exec(directory, "git", "symbolic-ref", "refs/remotes/origin/HEAD").split("/").last()
+        val defaultBranch = defaultBranch()
 
         project.exec(directory, "git", "stash", "save", "--keep-index", "--include-untracked")
         project.exec(directory, "git", "checkout", defaultBranch)
         project.exec(directory, "git", "fetch")
         project.exec(directory, "git", "reset", "--hard", "origin/$defaultBranch")
     }
+
+    private fun defaultBranch(): String = this.defaultBranch.orElse(
+        target.asFile.map { directory ->
+            project.exec(directory, "git", "remote", "show", "origin").lines()
+                .first { it.trim().startsWith("HEAD branch: ") }
+                .replace("HEAD branch: ", "")
+                .trim()
+        }
+    ).get()
 
     private fun recreateRepository() {
         val directory = target.get().asFile

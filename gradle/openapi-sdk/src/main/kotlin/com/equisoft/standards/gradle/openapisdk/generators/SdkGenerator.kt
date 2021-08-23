@@ -50,6 +50,11 @@ abstract class SdkGenerator(
         repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
     }
 
+    /**
+     * Configure global options and settings on the OpenAPI generate task.
+     *
+     * See https://openapi-generator.tech/docs/globals/ for available options.
+     */
     private fun TaskContainer.registerAssemble(
         sync: TaskProvider<SyncRepositoryTask>
     ) = registerSdkTask<GenerateTask>(ASSEMBLE) {
@@ -57,8 +62,8 @@ abstract class SdkGenerator(
         dependsOn(sync)
 
         id.set(openApiSdk.projectKey.map { "$it-sdk" })
-        groupId.set("${project.group}.sdk")
-        version.set("${project.version}")
+        groupId.set(project.provider { "${project.group}.sdk" })
+        version.set(project.provider { "${project.version}" })
 
         assembleSdk(this)
 
@@ -68,7 +73,7 @@ abstract class SdkGenerator(
 
         gitHost.set(openApiSdk.withGitEnabled { sync.get().host.get() })
         gitUserId.set(openApiSdk.withGitEnabled { sync.get().userId.get() })
-        gitRepoId.set(openApiSdk.withGitEnabled { sync.get().uri.get() })
+        gitRepoId.set(openApiSdk.withGitEnabled { sync.get().repoId.get() })
 
         doLast {
             createOutput().style(Success).println("$displayName SDK generated to: ${outputDir.get()}")

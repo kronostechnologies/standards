@@ -34,8 +34,8 @@ class PhpSdkGenerator(
 
     override fun checkSdk(task: CheckSdkTask): Unit = with(task) {
         doLast {
-            project.exec(directory, "composer", "install")
-            project.exec(directory, "./vendor/bin/phpunit")
+            project.exec(directory, "composer", "install", displayResult = true)
+            project.exec(directory, "./vendor/bin/phpunit", displayResult = true)
         }
     }
 }

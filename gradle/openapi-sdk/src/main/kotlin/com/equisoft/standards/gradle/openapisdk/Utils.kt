@@ -22,20 +22,24 @@ internal fun String.kebabToUpperCamelCase(): String {
 internal fun Task.createOutput() =
     project.serviceOf<StyledTextOutputFactory>().create(OpenApiSdkPlugin::class.qualifiedName)
 
-fun Project.exec(vararg commandLine: String): String = exec(projectDir, *commandLine)
+fun Project.exec(vararg commandLine: String, displayResult: Boolean = false): String = exec(
+    workingDir = projectDir,
+    displayResult = displayResult,
+    commandLine = commandLine
+)
 
 /**
  * Execute a command line and returns the standard output.
- *
- * @see Project.exec
  */
-fun Project.exec(workingDir: Any, vararg commandLine: String): String =
+fun Project.exec(workingDir: Any, vararg commandLine: String, displayResult: Boolean = false): String =
     ByteArrayOutputStream().use {
+        val output = if (displayResult) TeeOutputStream(it, System.out) else it
+
         project.exec {
             workingDir(workingDir)
             commandLine(*commandLine)
             isIgnoreExitValue = false
-            standardOutput = TeeOutputStream(it, System.out)
+            standardOutput = output
         }
         it.toString().trimEnd()
     }

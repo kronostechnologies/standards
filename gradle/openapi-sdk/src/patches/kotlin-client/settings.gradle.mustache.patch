@@ -1,0 +1,13 @@
+--- tmp/openapi-templates/kotlin-client/settings.gradle.mustache	2021-08-18 20:34:55.438069514 -0400
++++ resources/patches/kotlin-client/settings.gradle.mustache	2021-08-19 19:24:03.100314253 -0400
+@@ -1,2 +1,8 @@
+ {{#multiplatform}}enableFeaturePreview('GRADLE_METADATA'){{/multiplatform}}
+-rootProject.name = '{{artifactId}}'
+\ No newline at end of file
++rootProject.name = '{{artifactId}}'
++
++files(
++    "local.settings.gradle",
++    "local.settings.gradle.kts",
++).filter({ it.exists() } as Spec)
++    .forEach({ apply from: it })
