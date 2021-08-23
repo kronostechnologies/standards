@@ -16,7 +16,7 @@ dependencies {
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
-    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.2.0-SNAPSHOT")
+    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.2.0")
 
     openApiGenerator("org.openapitools:openapi-generator:$openApiVersion")
 }
