@@ -1,5 +1,5 @@
---- tmp/openapi-templates/php/model_generic.mustache	2021-08-18 20:34:55.494735013 -0400
-+++ resources/patches/php/model_generic.mustache	2021-08-20 11:49:59.582839952 -0400
+--- build/tmp/openapi-templates/php/model_generic.mustache	2021-08-23 10:49:46.666089368 -0400
++++ build/resources/patches/php/model_generic.mustache	2021-08-24 09:56:41.793815286 -0400
 @@ -1,6 +1,15 @@
  class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^parentSchema}}implements ModelInterface, ArrayAccess, \JsonSerializable{{/parentSchema}}
  {
@@ -13,6 +13,16 @@
 +    ];
 +{{/discriminator}}
 +{{! END Equisoft fix to handle mapped models }}
-
+ 
      /**
        * The original name of the model.
+@@ -172,7 +181,8 @@
+ 
+         {{/parentSchema}}
+         {{#vars}}
+-        $this->container['{{name}}'] = $data['{{name}}'] ?? {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}};
++        {{! Equisoft isEnum is a workaround for issue https://github.com/OpenAPITools/openapi-generator/issues/10244 }}
++        $this->container['{{name}}'] = $data['{{name}}'] ?? {{#defaultValue}}{{#isEnum}}self::{{/isEnum}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}};
+         {{/vars}}
+         {{#discriminator}}
+ 
