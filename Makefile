@@ -1,15 +1,11 @@
 BASE_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
+setup_asdf = ./bin/setup_asdf.bash
 exit_error = (>&2 echo -e ">> \x1B[31m$1\x1B[39m" && exit 1)
 
 .PHONY: setup
 setup:
-	@command -v asdf &> /dev/null || $(call exit_error,asdf-vm is required)
-	@asdf plugin update java || asdf plugin add java
-	@asdf plugin update nodejs || (asdf plugin add nodejs && ~/.asdf/plugins/nodejs/bin/import-release-team-keyring)
-	@asdf plugin update yarn || asdf plugin add yarn
-	@asdf install
-	@yarn --cwd "$(BASE_DIR)/javascript" install
+	@$(setup_asdf)
 
 .PHONY: check
 check:
