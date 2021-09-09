@@ -47,6 +47,7 @@ abstract class SdkGenerator(
         target.set(outputDirectory)
         host.set(openApiSdk.git.host)
         userId.set(openApiSdk.git.userId)
+        token.set(openApiSdk.git.token)
         repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
     }
 

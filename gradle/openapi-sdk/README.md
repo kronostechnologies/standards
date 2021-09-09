@@ -124,6 +124,8 @@ and `projectKey = rootProject.name`.
 For example, the current repository would use the following
 URI: `git@github.com:kronostechnologies/gradle-plugins-sdk-kotlin.git`.
 
+Optionally a github token can be passed in git options to be used by the ci.
+
 Many of these variables can be modified. If a specific SDK uses a non-default URI, the `sync` task can be altered:
 
 ```kotlin

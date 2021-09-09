@@ -23,8 +23,17 @@ abstract class SyncRepositoryTask : DefaultTask() {
     @get:Input
     abstract val repoId: Property<String>
 
+    @get:Input
+    @get:Optional
+    abstract val token: Property<String>
+
     @get:Internal
-    val uri: Provider<String> = host.map { "git@$it:${userId.get()}/${repoId.get()}.git" }
+    val uri: Provider<String> = host.map {
+        if (token.isPresent)
+            "https://${token.get()}@$it/${userId.get()}/${repoId.get()}.git"
+        else
+            "git@$it:${userId.get()}/${repoId.get()}.git"
+    }
 
     @get:Optional
     @get:Input
