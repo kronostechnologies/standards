@@ -45,6 +45,6 @@ abstract class PublishSdkTask : GitTask() {
         val repoHandle = project.exec("git", "remote", "get-url", "origin")
             .replace(Regex(""".+@.+:([\w\d.-]+/[\w\d.-]+)\.git"""), "$1")
         val lastCommit = project.exec("git", "rev-parse", "--short", "HEAD")
-        return "chore: generate from $repoHandle@$lastCommit"
+        return "chore: generated from $repoHandle/commit/$lastCommit"
     }
 }
