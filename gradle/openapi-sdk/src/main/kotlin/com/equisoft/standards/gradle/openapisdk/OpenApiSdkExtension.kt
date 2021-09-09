@@ -65,4 +65,7 @@ open class GitInfo @Inject constructor(
     val userId: Property<String?> = objectFactory.property(String::class.java).apply {
         finalizeValueOnRead()
     }
+    val token: Property<String?> = objectFactory.property(String::class.java).apply {
+        finalizeValueOnRead()
+    }
 }
