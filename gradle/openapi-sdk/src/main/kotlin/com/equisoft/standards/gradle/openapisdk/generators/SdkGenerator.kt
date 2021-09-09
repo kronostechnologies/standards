@@ -14,6 +14,7 @@ import org.gradle.api.Task
 import org.gradle.api.tasks.TaskContainer
 import org.gradle.api.tasks.TaskProvider
 import org.gradle.internal.logging.text.StyledTextOutput.Style.Success
+import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.register
 import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
@@ -110,6 +111,13 @@ abstract class SdkGenerator(
         onlyIf { openApiSdk.git.enable.get() }
 
         directory.set(outputDirectory)
+        host.set(openApiSdk.git.host)
+        userId.set(openApiSdk.git.userId)
+        token.set(openApiSdk.git.token)
+        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        if (project.extra.has("is-release") && project.extra.get("is-release") == "true") {
+            tag.set("v${project.version}")
+        }
     }
 
     private inline fun <reified T : Task> TaskContainer.registerSdkTask(
