@@ -22,10 +22,12 @@ abstract class GitTask : DefaultTask() {
     abstract val repoId: Property<String>
 
     @get:Internal
-    val uri: Provider<String> = host.map {
-        if (token.isPresent)
-            "https://${token.get()}@$it/${userId.get()}/${repoId.get()}.git"
-        else
-            "git@$it:${userId.get()}/${repoId.get()}.git"
-    }
+    val uri: Provider<String>
+        get() = host.map {
+            if (token.isPresent) {
+                "https://${token.get()}@$it/${userId.get()}/${repoId.get()}.git"
+            } else {
+                "git@$it:${userId.get()}/${repoId.get()}.git"
+            }
+        }
 }

@@ -6,7 +6,7 @@ val openApiPatchesSourceDirectory = layout.projectDirectory.dir("src/patches")
 val openApiTemplatesDirectory = layout.buildDirectory.dir("tmp/openapi-templates")
 val openApiPatchedTargetDirectory = layout.buildDirectory.dir("resources/patches")
 
-val openApiGenerator by configurations.creating {
+val openApiGenerator: Configuration by configurations.creating {
     isCanBeResolved = true
     isTransitive = false
 }

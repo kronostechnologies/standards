@@ -22,15 +22,26 @@ abstract class SyncRepositoryTask : GitTask() {
     @get:Input
     abstract val defaultBranch: Property<String?>
 
+    init {
+        outputs.upToDateWhen {
+            if (isSdkCloned()) {
+                sdkGit("fetch", "origin", displayResult = true)
+                sdkGit("rev-parse", "HEAD") == sdkGit("rev-parse", "origin/HEAD")
+            } else {
+                false
+            }
+        }
+    }
+
     @TaskAction
     fun cloneRepository() {
         val isValid = runCatching {
-            val isRemoteValid = validateRepository()
-            if (isRemoteValid) {
+            val valid = isSdkCloned()
+            if (valid) {
                 cleanupRepository()
             }
 
-            isRemoteValid
+            valid
         }.onFailure {
             createOutput()
                 .style(Error).text("Failed to sync repository in '$target'.")
@@ -42,22 +53,16 @@ abstract class SyncRepositoryTask : GitTask() {
         }
     }
 
-    private fun validateRepository(): Boolean {
-        val directory = target.get().asFile
-        val repositoryRoot = project.exec(directory, "git", "rev-parse", "--show-toplevel")
-        val repositoryRemoteUri = project.exec(directory, "git", "remote", "get-url", "origin")
-
-        return repositoryRoot == directory.path && repositoryRemoteUri == uri.get()
-    }
+    private fun isSdkCloned() =
+        target.get().asFile.path == sdkGit("rev-parse", "--show-toplevel")
+            && uri.get() == sdkGit("remote", "get-url", "origin")
 
     private fun cleanupRepository() {
-        val directory = target.get().asFile
         val defaultBranch = defaultBranch()
 
-        project.exec(directory, "git", "stash", "save", "--keep-index", "--include-untracked")
-        project.exec(directory, "git", "checkout", defaultBranch)
-        project.exec(directory, "git", "fetch")
-        project.exec(directory, "git", "reset", "--hard", "origin/$defaultBranch")
+        sdkGit("stash", "save", "--keep-index", "--include-untracked")
+        sdkGit("checkout", defaultBranch)
+        sdkGit("reset", "--hard", "origin/$defaultBranch")
     }
 
     private fun defaultBranch(): String = this.defaultBranch.orElse(
@@ -81,4 +86,7 @@ abstract class SyncRepositoryTask : GitTask() {
                 .style(Error).text("Repository at ${directory.path} is invalid but overwrite is set to 'false'.")
         }
     }
+
+    private fun sdkGit(vararg arguments: String, displayResult: Boolean = false): String =
+        project.exec(target.get().asFile, "git", *arguments, displayResult = displayResult)
 }
