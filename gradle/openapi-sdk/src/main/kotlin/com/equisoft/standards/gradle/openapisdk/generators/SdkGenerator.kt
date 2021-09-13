@@ -36,7 +36,7 @@ abstract class SdkGenerator(
         val assemble = registerAssemble(sync.second)
         val check = registerCheck(assemble.second)
         val build = registerBuild(assemble.second, check.second)
-        val publish = registerPublish(assemble.second, check.second)
+        val publish = registerPublish(assemble.second, check.second, sync.second)
 
         return mapOf(sync, assemble, check, build, publish)
     }
@@ -48,8 +48,8 @@ abstract class SdkGenerator(
         target.set(outputDirectory)
         host.set(openApiSdk.git.host)
         userId.set(openApiSdk.git.userId)
-        token.set(openApiSdk.git.token)
         repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        token.set(openApiSdk.git.token)
     }
 
     /**
@@ -103,7 +103,8 @@ abstract class SdkGenerator(
 
     private fun TaskContainer.registerPublish(
         assemble: TaskProvider<GenerateTask>,
-        check: TaskProvider<CheckSdkTask>
+        check: TaskProvider<CheckSdkTask>,
+        sync: TaskProvider<SyncRepositoryTask>
     ) = registerSdkTask<PublishSdkTask>(PUBLISH) {
         group = taskGroup
         dependsOn(assemble)
@@ -111,10 +112,11 @@ abstract class SdkGenerator(
         onlyIf { openApiSdk.git.enable.get() }
 
         directory.set(outputDirectory)
-        host.set(openApiSdk.git.host)
-        userId.set(openApiSdk.git.userId)
-        token.set(openApiSdk.git.token)
-        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        host.set(sync.get().host)
+        userId.set(sync.get().userId)
+        repoId.set(sync.get().repoId)
+        token.set(sync.get().token)
+
         if (project.extra.has("is-release") && project.extra.get("is-release") == "true") {
             tag.set("v${project.version}")
         }
