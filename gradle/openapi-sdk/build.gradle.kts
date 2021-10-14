@@ -1,6 +1,6 @@
 import org.apache.tools.ant.taskdefs.Patch
 
-version = "0.0.13-SNAPSHOT"
+version = "0.0.14-SNAPSHOT"
 
 val openApiPatchesSourceDirectory = layout.projectDirectory.dir("src/patches")
 val openApiTemplatesDirectory = layout.buildDirectory.dir("tmp/openapi-templates")
@@ -12,7 +12,7 @@ val openApiGenerator by configurations.creating {
 }
 
 dependencies {
-    val openApiVersion = "5.2.0"
+    val openApiVersion = "5.2.1"
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
