@@ -4,7 +4,7 @@
 
 ### Kotlin
 
-Located under [kotlin](kotlin/README.md).
+Located under [kotlin](gradle/kotlin/README.md).
 
 The plugin is available on the Gradle Plugins Portal: 
 [com.equisoft.standards.kotlin](https://plugins.gradle.org/plugin/com.equisoft.standards.kotlin)

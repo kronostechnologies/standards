@@ -9,12 +9,16 @@ import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.repositories
+import org.owasp.dependencycheck.gradle.DependencyCheckPlugin
+import org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension
+import org.owasp.dependencycheck.reporting.ReportGenerator.Format
 
 @Suppress("LongMethod")
 class GlobalConventionsPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
         plugins.apply(VersionsPlugin::class.java)
         plugins.apply(MavenSettingsPlugin::class.java)
+        plugins.apply(DependencyCheckPlugin::class.java)
 
         repositories {
             mavenCentral()
@@ -28,6 +32,17 @@ class GlobalConventionsPlugin : Plugin<Project> {
                         ?: System.getenv("GPR_TOKEN")
                         ?: System.getenv("GHCR_TOKEN")
                 }
+            }
+        }
+
+        afterEvaluate {
+            extensions.configure(DependencyCheckExtension::class.java) {
+                formats = listOf(Format.SARIF, Format.HTML)
+
+                suppressionFiles = listOf(
+                    OWASP_COMMON_SUPPRESSIONS_FILE,
+                    "owasp-suppressions.xml"
+                )
             }
         }
 
@@ -48,5 +63,10 @@ class GlobalConventionsPlugin : Plugin<Project> {
                 }
             }
         }
+    }
+
+    companion object {
+        private const val OWASP_COMMON_SUPPRESSIONS_FILE =
+            "https://raw.githubusercontent.com/kronostechnologies/standards/master/gradle/owasp-suppressions.xml"
     }
 }

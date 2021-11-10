@@ -1,8 +1,10 @@
-version = "0.0.7-SNAPSHOT"
+version = "0.0.8"
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
     implementation("net.linguica.gradle:maven-settings-plugin:0.5")
+    implementation("org.owasp:dependency-check-gradle:6.4.1.1")
+    implementation("org.owasp:dependency-check-core:6.4.1")
 }
 
 gradlePlugin {
