@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# This file is read by external tools. Do not move.
 # Usage example in external projects:
 #  curl -sSL https://raw.githubusercontent.com/kronostechnologies/standards/master/bin/setup_asdf.bash | bash
 

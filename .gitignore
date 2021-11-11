@@ -20,3 +20,6 @@ tmp/
 !**/.yarn/plugins
 !**/.yarn/versions
 .pnp.*
+
+# Output
+build/
