@@ -2,10 +2,6 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
 version = "0.6.0-SNAPSHOT"
 
-plugins {
-    id("com.gradle.plugin-publish") version "0.15.0"
-}
-
 val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
@@ -25,12 +21,6 @@ dependencies {
     val junit5Version = "5.7.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
-}
-
-pluginBundle {
-    website = "https://www.github.com/kronostechnologies/standards"
-    vcsUrl = "https://www.github.com/kronostechnologies/standards.git"
-    tags = listOf("equisoft", "kotlin", "lint", "check")
 }
 
 gradlePlugin {
@@ -74,8 +64,4 @@ tasks {
     check {
         dependsOn(functionalTest)
     }
-}
-
-if (project.hasProperty("local")) {
-    apply(from = rootProject.file("./profiles/local.gradle.kts"))
 }

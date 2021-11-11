@@ -34,10 +34,11 @@ A set of Gradle plugins.
 
 ### Publication
 
-1. Make sure you have the `gradle.publish.key` and `gradle.publish.secret` variables set in
-   your `~/.gradle/gradle.properties` file. They are available on LastPass.
+1. Make sure you have the `gpr.write.user` and `gpr.write.key` variables set in
+   your `~/.gradle/gradle.properties` file. A PAT with the `write:packages` scope is required.
 1. Bump the version
 1. Build and publish
     ```bash
+    cd the-plugin-to-publish
     make publish
     ```
