@@ -8,7 +8,7 @@ set -e
 
 BUILD_OUTPUT=build/gitleaks
 CONTAINER_PATH=/repo
-OPTIONS=()
+OPTIONS=("--verbose")
 REMOTE_CONFIG=https://raw.githubusercontent.com/kronostechnologies/standards/master/gitleaks.toml
 
 rm -rf $BUILD_OUTPUT
@@ -34,14 +34,19 @@ scan () {
         "$@"
 }
 
-curl -s "$REMOTE_CONFIG" -o "$BUILD_OUTPUT/gitleaks.toml"
+if [ -f "$1" ]; then
+    cp -f "$1" "$BUILD_OUTPUT/gitleaks.toml"
+else
+    [[ -n "$1" ]] && echo "$1 is not a file"
+    curl -s "$REMOTE_CONFIG" -o "$BUILD_OUTPUT/gitleaks.toml"
+fi
 OPTIONS+=("--additional-config=$CONTAINER_PATH/$BUILD_OUTPUT/gitleaks.toml")
 
 if [[ -v CI ]]; then
     OPTIONS+=("--redact")
 
     if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
-        list_commits "$GITHUB_BASE_REF"
+        list_commits "origin/$GITHUB_BASE_REF"
     fi
 else
     echo "Scanning unstaged files"
@@ -51,4 +56,4 @@ else
 fi
 
 echo "Scanning commits"
-scan --verbose  -f sarif -o "$BUILD_OUTPUT/gitleaks.sarif" "${OPTIONS[@]}"
+scan  -f sarif -o "$BUILD_OUTPUT/gitleaks.sarif" "${OPTIONS[@]}"

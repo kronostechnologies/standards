@@ -26,3 +26,7 @@ all: setup check test compile package
 .PHONY: publish-javascript
 publish-javascript:
 	cd javascript && yarn workspaces foreach -tv --include '@equisoft/*' npm publish --access public --tag next
+
+.PHONY: scan_secrets
+scan_secrets:
+	@./bin/gitleaks.bash gitleaks.toml
