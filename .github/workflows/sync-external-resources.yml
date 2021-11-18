@@ -1,0 +1,36 @@
+name: Sync External Resources
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run GitHub File Sync
+        uses: BetaHuhn/repo-file-sync-action@v1
+        with:
+          GH_PAT: ${{ secrets.GHCR_TOKEN }}
+          PR_LABELS: standards
+          COMMIT_PREFIX: 🎶
+          COMMIT_EACH_FILE: false
+          OVERWRITE_EXISTING_PR: true
+
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+    if: needs.setup.outputs.publishable == 'true'
+    needs:
+      - sync
+
+    steps:
+      - name: Post workflow status
+        uses: kronostechnologies/actions/notify-workflow-status@v0.0.14
+        with:
+          needs: ${{ toJSON(needs) }}
+          slack-webhook-url: ${{ secrets.OPS_CI_WEBHOOK_URL }}
