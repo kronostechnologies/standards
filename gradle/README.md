@@ -22,7 +22,7 @@ A set of Gradle plugins.
     ```
     pluginManagement {
         repositories {
-            mavenLocal() {
+            mavenLocal {
                 content {
                     includeGroupByRegex("com.equisoft\\..*")
                 }
