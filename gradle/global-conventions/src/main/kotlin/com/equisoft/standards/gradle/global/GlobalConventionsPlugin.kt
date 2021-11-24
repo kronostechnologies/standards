@@ -2,6 +2,9 @@ package com.equisoft.standards.gradle.global
 
 import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.github.jk1.license.LicenseReportExtension
+import com.github.jk1.license.LicenseReportPlugin
+import com.github.jk1.license.render.InventoryHtmlReportRenderer
 import net.linguica.gradle.maven.settings.MavenSettingsPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -12,6 +15,7 @@ import org.gradle.kotlin.dsl.repositories
 import org.owasp.dependencycheck.gradle.DependencyCheckPlugin
 import org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension
 import org.owasp.dependencycheck.reporting.ReportGenerator.Format
+import java.net.URL
 
 @Suppress("LongMethod")
 class GlobalConventionsPlugin : Plugin<Project> {
@@ -19,6 +23,7 @@ class GlobalConventionsPlugin : Plugin<Project> {
         plugins.apply(VersionsPlugin::class.java)
         plugins.apply(MavenSettingsPlugin::class.java)
         plugins.apply(DependencyCheckPlugin::class.java)
+        plugins.apply(LicenseReportPlugin::class.java)
 
         repositories {
             mavenCentral()
@@ -44,6 +49,16 @@ class GlobalConventionsPlugin : Plugin<Project> {
                     "owasp-suppressions.xml"
                 )
             }
+
+            extensions.configure(LicenseReportExtension::class.java) {
+                allowedLicensesFile = URL(ALLOWED_LICENSES_FILE)
+                renderers = arrayOf(
+                    InventoryHtmlReportRenderer("license-inventory-report.html"),
+                )
+                excludeBoms = true
+                excludeOwnGroup = true
+                excludeGroups = arrayOf("com.equisoft.*")
+            }
         }
 
         tasks {
@@ -68,5 +83,7 @@ class GlobalConventionsPlugin : Plugin<Project> {
     companion object {
         private const val OWASP_COMMON_SUPPRESSIONS_FILE =
             "https://raw.githubusercontent.com/kronostechnologies/standards/master/gradle/owasp-suppressions.xml"
+        private const val ALLOWED_LICENSES_FILE =
+            "https://raw.githubusercontent.com/kronostechnologies/standards/master/gradle/allowed-licenses.json"
     }
 }

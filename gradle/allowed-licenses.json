@@ -1,0 +1,52 @@
+{
+  "allowedLicenses": [
+    {
+      "moduleLicense": "MIT"
+    },
+    {
+      "moduleLicense": "MIT License"
+    },
+    {
+      "moduleLicense": "Apache 2.0"
+    },
+    {
+      "moduleLicense": "Apache License 2.0"
+    },
+    {
+      "moduleLicense": "Apache License, Version 2.0"
+    },
+    {
+      "moduleLicense": "The Apache License, Version 2.0"
+    },
+    {
+      "moduleLicense": "The Apache Software License, Version 2.0"
+    },
+    {
+      "moduleLicense": "BSD-2-Clause"
+    },
+    {
+      "moduleLicense": "BSD-3-Clause"
+    },
+    {
+      "moduleLicense": "CC0"
+    },
+    {
+      "moduleLicense": "Public Domain, per Creative Commons CC0"
+    },
+    {
+      "moduleLicense": "GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1",
+      "moduleName": "com.github.spotbugs*"
+    },
+    {
+      "moduleLicense": "GNU Lesser General Public License",
+      "moduleName": "ch.qos.logback*"
+    },
+    {
+      "moduleLicense": "CDDL + GPLv2 with classpath exception",
+      "moduleName": "javax.*"
+    },
+    {
+      "moduleLicense": "Eclipse Public License - v 1.0"
+    }
+  ]
+}

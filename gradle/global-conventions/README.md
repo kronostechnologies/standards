@@ -1,8 +1,9 @@
 # Equisoft's Global Conventions
 
-This project is a plugin that wraps
-[gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) and
-OWASP's [DependencyCheck](https://github.com/jeremylong/DependencyCheck).
+This project is a plugin that wraps :
+- [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin)
+- OWASP's [DependencyCheck](https://github.com/jeremylong/DependencyCheck)
+- [gradle-license-report](https://github.com/jk1/Gradle-License-Report)
 
 ## Installation
 
@@ -54,6 +55,7 @@ configured [here](https://github.com/kronostechnologies/standards/blob/master/gr
 ## Usage
 
 - Scan dependencies for known vulnerabilities: `./gradlew dependencyCheckAggregate`
+- Scan dependencies licenses: `./gradlew checkLicense`
 - List outdated dependencies: `./gradlew dependencyUpdates`
 
 ## Continuous Integration
