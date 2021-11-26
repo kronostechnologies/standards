@@ -33,14 +33,11 @@ class KotlinStandardsPlugin : Plugin<Project> {
         tasks.named("check") {
             dependsOn("checkStatic")
         }
-
-        tasks.withType(Detekt::class.java) {
-            jvmTarget = "1.8"
-        }
     }
 
     private fun Project.configureKotlinter() {
         extensions.configure(KotlinterExtension::class.java) {
+            reporters = arrayOf("checkstyle", "plain", "sarif")
             disabledRules = arrayOf(
                 "import-ordering"
             )
@@ -53,8 +50,17 @@ class KotlinStandardsPlugin : Plugin<Project> {
             val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
             val configResource: TextResource = project.resources.text.fromString(configuration)
 
+            buildUponDefaultConfig = true
             config = files(file(configResource))
-            input = files(file("src/main/kotlin"), file("src/test/kotlin"))
+            source = files(file("src/main/kotlin"), file("src/test/kotlin"))
+        }
+
+        tasks.withType(Detekt::class.java) {
+            jvmTarget = "13"
+            reports {
+                html.required.set(true)
+                sarif.required.set(true)
+            }
         }
     }
 
@@ -62,9 +68,7 @@ class KotlinStandardsPlugin : Plugin<Project> {
         val detektConfigInputStream: InputStream? = this.javaClass.classLoader
             .getResourceAsStream(DETEKT_CONFIG_FILENAME)
 
-        checkNotNull(detektConfigInputStream) { "Detekt config file not found" }
-
-        return detektConfigInputStream
+        return checkNotNull(detektConfigInputStream) { "Detekt config file not found" }
     }
 
     companion object {

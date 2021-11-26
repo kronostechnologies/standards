@@ -1,22 +1,24 @@
-plugins {
-    `kotlin-dsl` apply false // It needs to be imported first by the root project for some obscure Gradle-ish reason
+val javaVersion = JavaVersion.VERSION_13
 
-    id("net.linguica.maven-settings") version "0.5"
+plugins {
+    `kotlin-dsl` apply false
+
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.owasp.dependencycheck") version "6.4.1.1"
-    id("io.gitlab.arturbosch.detekt") version "1.17.1" apply false
-    id("org.jmailen.kotlinter") version "3.4.5" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.19.0-RC2" apply false
+    id("org.jmailen.kotlinter") version "3.7.0" apply false
 }
 
 subprojects {
     group = "com.equisoft.standards"
 
-    apply(plugin = "org.gradle.java-gradle-plugin")
-    apply(plugin = "org.gradle.kotlin.kotlin-dsl")
-    apply(plugin = "org.gradle.maven-publish")
-    apply(plugin = "net.linguica.maven-settings")
-    apply(plugin = "io.gitlab.arturbosch.detekt")
-    apply(plugin = "org.jmailen.kotlinter")
+    apply {
+        plugin("org.gradle.java-gradle-plugin")
+        plugin("org.gradle.kotlin.kotlin-dsl")
+        plugin("org.gradle.maven-publish")
+        plugin("io.gitlab.arturbosch.detekt")
+        plugin("org.jmailen.kotlinter")
+    }
 
     repositories {
         gradlePluginPortal()
@@ -34,8 +36,26 @@ subprojects {
         }
     }
 
+    configure<JavaPluginExtension> {
+        withSourcesJar()
+
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
+
+    configure<KotlinDslPluginOptions> {
+        jvmTarget.set(javaVersion.majorVersion)
+    }
+
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        buildUponDefaultConfig = true
         config = files("$rootDir/kotlin/src/main/resources/detekt.yml")
+    }
+
+
+    configure<org.jmailen.gradle.kotlinter.KotlinterExtension> {
+        reporters = arrayOf("checkstyle", "plain", "sarif")
+        disabledRules = arrayOf("import-ordering")
     }
 
     configure<PublishingExtension> {
@@ -57,8 +77,19 @@ subprojects {
     }
 
     tasks {
+        withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            kotlinOptions {
+                jvmTarget = javaVersion.majorVersion
+                languageVersion = "1.5"
+            }
+        }
+
         withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-            jvmTarget = "1.8"
+            jvmTarget = javaVersion.majorVersion
+            reports {
+                html.required.set(true)
+                sarif.required.set(true)
+            }
         }
 
         register("checkStatic") {
@@ -95,7 +126,7 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        distributionSha256Sum = "a8da5b02437a60819cad23e10fc7e9cf32bcb57029d9cb277e26eeff76ce014b"
-        gradleVersion = "7.2"
+        distributionSha256Sum = "00b273629df4ce46e68df232161d5a7c4e495b9a029ce6e0420f071e21316867"
+        gradleVersion = "7.3"
     }
 }

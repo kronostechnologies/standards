@@ -7,18 +7,18 @@ val functionalTestImplementation = configurations
     .extendsFrom(configurations.getByName("testImplementation"))
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.5.21"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.5.31"))
 
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.4.5")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.7.0")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0-RC2")
 
-    implementation("com.pinterest.ktlint:ktlint-core:0.42.1")
+    implementation("com.pinterest.ktlint:ktlint-core:0.43.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
-    val junit5Version = "5.7.2"
+    val junit5Version = "5.8.1"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }
@@ -39,7 +39,7 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
 }
 
 configure<DetektExtension> {
-    input = files(
+    source = files(
         file("src/main/kotlin"),
         file("src/test/kotlin"),
         functionalTestSourceSet.allSource.files
