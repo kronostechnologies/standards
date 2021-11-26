@@ -34,19 +34,19 @@
       "moduleLicense": "Public Domain, per Creative Commons CC0"
     },
     {
-      "moduleLicense": "GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1",
-      "moduleName": "com.github.spotbugs*"
-    },
-    {
-      "moduleLicense": "GNU Lesser General Public License",
-      "moduleName": "ch.qos.logback*"
-    },
-    {
       "moduleLicense": "CDDL + GPLv2 with classpath exception",
       "moduleName": "javax.*"
     },
     {
       "moduleLicense": "Eclipse Public License - v 1.0"
+    },
+    {
+      "moduleLicense": "GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1",
+      "moduleName": "com.github.spotbugs.*"
+    },
+    {
+      "moduleLicense": "GNU Lesser General Public License",
+      "moduleName": "ch.qos.logback.*"
     }
   ]
 }
