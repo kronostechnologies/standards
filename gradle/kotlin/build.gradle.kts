@@ -1,6 +1,6 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-version = "0.6.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
