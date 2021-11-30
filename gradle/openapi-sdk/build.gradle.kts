@@ -1,6 +1,6 @@
 import org.apache.tools.ant.taskdefs.Patch
 
-version = "0.0.15-SNAPSHOT"
+version = "0.0.16-SNAPSHOT"
 
 val openApiPatchesSourceDirectory = layout.projectDirectory.dir("src/patches")
 val openApiTemplatesDirectory = layout.buildDirectory.dir("tmp/openapi-templates")
@@ -16,7 +16,7 @@ dependencies {
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
-    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.2.1")
+    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.3.0")
 
     openApiGenerator("org.openapitools:openapi-generator:$openApiVersion")
 }
