@@ -28,7 +28,6 @@ class GlobalConventionsPlugin : Plugin<Project> {
         repositories {
             mavenCentral()
             maven("https://maven.pkg.github.com/kronostechnologies/*/") {
-                name = "github"
                 credentials {
                     username = project.findProperty("gpr.user")?.toString()
                         ?: System.getenv("GPR_USER")

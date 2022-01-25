@@ -126,7 +126,7 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        distributionSha256Sum = "00b273629df4ce46e68df232161d5a7c4e495b9a029ce6e0420f071e21316867"
-        gradleVersion = "7.3"
+        distributionSha256Sum = "c9490e938b221daf0094982288e4038deed954a3f12fb54cbf270ddf4e37d879"
+        gradleVersion = "7.3.3"
     }
 }
