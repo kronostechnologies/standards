@@ -1,4 +1,4 @@
-version = "0.0.10"
+version = "0.0.11"
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
