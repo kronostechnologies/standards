@@ -4,20 +4,22 @@ plugins {
     `kotlin-dsl` apply false
 
     id("com.github.ben-manes.versions") version "0.39.0"
+    id("org.cyclonedx.bom") version "1.4.1"
     id("org.owasp.dependencycheck") version "6.4.1.1"
-    id("io.gitlab.arturbosch.detekt") version "1.19.0-RC2" apply false
     id("org.jmailen.kotlinter") version "3.7.0" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.19.0-RC2" apply false
 }
 
 subprojects {
     group = "com.equisoft.standards"
 
     apply {
+        plugin("org.cyclonedx.bom")
         plugin("org.gradle.java-gradle-plugin")
         plugin("org.gradle.kotlin.kotlin-dsl")
         plugin("org.gradle.maven-publish")
-        plugin("io.gitlab.arturbosch.detekt")
         plugin("org.jmailen.kotlinter")
+        plugin("io.gitlab.arturbosch.detekt")
     }
 
     repositories {

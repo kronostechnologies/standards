@@ -6,6 +6,7 @@ import com.github.jk1.license.LicenseReportExtension
 import com.github.jk1.license.LicenseReportPlugin
 import com.github.jk1.license.render.InventoryHtmlReportRenderer
 import net.linguica.gradle.maven.settings.MavenSettingsPlugin
+import org.cyclonedx.gradle.CycloneDxPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.invoke
@@ -24,6 +25,7 @@ class GlobalConventionsPlugin : Plugin<Project> {
         plugins.apply(MavenSettingsPlugin::class.java)
         plugins.apply(DependencyCheckPlugin::class.java)
         plugins.apply(LicenseReportPlugin::class.java)
+        plugins.apply(CycloneDxPlugin::class.java)
 
         repositories {
             mavenCentral()

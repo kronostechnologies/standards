@@ -1,4 +1,4 @@
-version = "0.0.10"
+version = "0.0.11"
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
@@ -6,6 +6,7 @@ dependencies {
     implementation("org.owasp:dependency-check-gradle:6.4.1.1")
     implementation("org.owasp:dependency-check-core:6.4.1")
     implementation("com.github.jk1:gradle-license-report:2.0")
+    implementation("com.cyclonedx:cyclonedx-gradle-plugin:1.4.1")
 }
 
 gradlePlugin {
