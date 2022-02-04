@@ -1,0 +1,3 @@
+equisoft-actions/semgrep:
+  - source: bin/semgrep.sh
+    dest: files/semgrep.bash
