@@ -8,6 +8,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    environment: repo-sync
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
