@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Sync files to kronostechnologies/*"
-        uses: BetaHuhn/repo-file-sync-action@v1
+        uses: BetaHuhn/repo-file-sync-action@v1.17.0
         with:
-          ASSIGNEES: kronostechnologies/harmonie
+          TEAM_REVIEWERS: kronostechnologies/harmonie
           CONFIG_PATH: .github/sync/kronostechnologies.yml
           COMMIT_EACH_FILE: false
           COMMIT_PREFIX: 🎶
@@ -25,9 +25,9 @@ jobs:
           PR_LABELS: standards
 
       - name: "Sync files to equisoft-actions/*"
-        uses: BetaHuhn/repo-file-sync-action@v1
+        uses: BetaHuhn/repo-file-sync-action@v1.17.0
         with:
-          ASSIGNEES: equisoft-actions/harmonie
+          TEAM_REVIEWERS: equisoft-actions/harmonie
           CONFIG_PATH: .github/sync/equisoft-actions.yml
           COMMIT_EACH_FILE: false
           COMMIT_PREFIX: 🎶
