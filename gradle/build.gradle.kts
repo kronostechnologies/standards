@@ -32,7 +32,7 @@ subprojects {
                     ?: System.getenv("GPR_USER")
                     ?: System.getenv("GHCR_USER")
                 password = project.findProperty("gpr.key")?.toString()
-                    ?: System.getenv("GPR_TOKEN")
+                    ?: System.getenv("GPR_KEY")
                     ?: System.getenv("GHCR_TOKEN")
             }
         }
@@ -71,7 +71,7 @@ subprojects {
                         ?: System.getenv("GPR_USER")
                         ?: System.getenv("GHCR_USER")
                     password = project.findProperty("gpr.write.key")?.toString()
-                        ?: System.getenv("GPR_TOKEN")
+                        ?: System.getenv("GPR_KEY")
                         ?: System.getenv("GHCR_TOKEN")
                 }
             }
@@ -128,7 +128,7 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        distributionSha256Sum = "c9490e938b221daf0094982288e4038deed954a3f12fb54cbf270ddf4e37d879"
-        gradleVersion = "7.3.3"
+        distributionSha256Sum = "cd5c2958a107ee7f0722004a12d0f8559b4564c34daad7df06cffd4d12a426d0"
+        gradleVersion = "7.4"
     }
 }

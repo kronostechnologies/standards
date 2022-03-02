@@ -27,7 +27,7 @@ pluginManagement {
             name = "github"
             credentials {
                 username = extra["gpr.user"]?.toString() ?: System.getenv("GPR_USER") ?: System.getenv("GHCR_USER")
-                password = extra["gpr.key"]?.toString() ?: System.getenv("GPR_TOKEN") ?: System.getenv("GHCR_TOKEN")
+                password = extra["gpr.key"]?.toString() ?: System.getenv("GPR_KEY") ?: System.getenv("GHCR_TOKEN")
             }
         }
     }

@@ -4,6 +4,7 @@ include(
     "global-conventions",
     "kotlin",
     "openapi-sdk",
+    "micronaut"
 )
 
 val isCiServer = System.getenv().containsKey("CI")
@@ -25,7 +26,7 @@ pluginManagement {
                     else System.getenv("GPR_USER") ?: System.getenv("GHCR_USER")
                 password =
                     if (extra.has("gpr.key")) extra["gpr.key"]?.toString()
-                    else System.getenv("GPR_TOKEN") ?: System.getenv("GHCR_TOKEN")
+                    else System.getenv("GPR_KEY") ?: System.getenv("GHCR_TOKEN")
             }
         }
     }
