@@ -17,6 +17,7 @@ abstract class GradleSdkGenerator(
         modelPackage.set(packageName.map { "$it.models" })
 
         configOptions.put("enumPropertyNaming", "UPPERCASE")
+        additionalProperties.put("gradleVersion", project.gradle.gradleVersion)
 
         doFirst {
             val path = outputDir.get()
