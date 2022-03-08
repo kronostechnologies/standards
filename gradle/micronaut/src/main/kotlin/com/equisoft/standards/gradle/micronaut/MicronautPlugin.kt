@@ -13,7 +13,9 @@ import org.graalvm.buildtools.gradle.dsl.GraalVMExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.provider.DefaultProvider
+import org.gradle.api.plugins.JavaPluginConvention
 import org.gradle.api.tasks.JavaExec
+import org.gradle.api.tasks.SourceSet
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JavaToolchainService
 import org.gradle.kotlin.dsl.configure
@@ -32,6 +34,7 @@ class MicronautPlugin : Plugin<Project> {
 
         configureExtensions(micronautSettingsExtension)
         configureTasks(micronautSettingsExtension)
+        configureAnnotationProcessing()
     }
 
     private fun Project.configureExtensions(micronautSettingsExtension: MicronautSettingsExtension) {
@@ -70,7 +73,7 @@ class MicronautPlugin : Plugin<Project> {
             }
 
             withType<DockerBuildImage> {
-                images.set(listOf("${rootProject.name}-${name}:${version}"))
+                images.set(listOf("${rootProject.name}-$name:$version"))
             }
 
             withType<JavaExec> {
@@ -125,6 +128,31 @@ class MicronautPlugin : Plugin<Project> {
                 }
             }
         }
+    }
+
+    private fun Project.configureAnnotationProcessing() {
+        val sourceSets = convention
+            .getPlugin(JavaPluginConvention::class.java)
+            .sourceSets
+        addGraalVMAnnotationProcessorDependency(sourceSets.filter { sourceSet -> SOURCE_SETS.contains(sourceSet.name) })
+    }
+
+    private fun Project.addGraalVMAnnotationProcessorDependency(sourceSets: Iterable<SourceSet>) {
+        CONFIGURATIONS.forEach {
+            configurations.findByName(it)?.run {
+                for (sourceSet in sourceSets) {
+                    this@addGraalVMAnnotationProcessorDependency.dependencies.add(
+                        this.name,
+                        "io.micronaut:micronaut-graal"
+                    )
+                }
+            }
+        }
+    }
+
+    companion object {
+        private val SOURCE_SETS: Set<String> = setOf("main", "test")
+        private val CONFIGURATIONS: Set<String> = setOf("kapt", "kaptTest")
     }
 }
 
