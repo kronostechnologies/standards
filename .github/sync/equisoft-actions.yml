@@ -5,3 +5,7 @@ equisoft-actions/semgrep:
 equisoft-actions/docker-sast:
   - source: bin/docker-sast.sh
     dest: files/docker-sast.sh
+
+equisoft-actions/docker-sbom:
+  - source: bin/docker-sbom.sh
+    dest: files/docker-sbom.sh
