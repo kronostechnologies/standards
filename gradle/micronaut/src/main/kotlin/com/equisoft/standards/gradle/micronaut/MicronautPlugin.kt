@@ -73,7 +73,10 @@ class MicronautPlugin : Plugin<Project> {
             }
 
             withType<DockerBuildImage> {
-                images.set(listOf("${rootProject.name}-$name:$version"))
+                val registry = findProperty("application.docker.registry")
+                val imageName = findProperty("application.docker.imageName") ?: "${rootProject.name}-${project.name}"
+                val fullImageName = listOfNotNull(registry, imageName).joinToString("/").toLowerCase()
+                images.set(listOf("$fullImageName:$version"))
             }
 
             withType<JavaExec> {
