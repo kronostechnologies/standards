@@ -22,7 +22,7 @@
     },
     {
       "matchDatasources": ["orb"],
-      "addLabels": ["circleci"]
+      "addLabels": ["orb"]
     },
 
     {
