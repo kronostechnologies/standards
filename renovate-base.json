@@ -2,6 +2,42 @@
   "extends": [
     "config:base"
   ],
+  "labels": ["dependency-update"],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "addLabels": ["docker"]
+    },
+    {
+      "matchManagers": ["terraform", "terraform-version"],
+      "addLabels": ["terraform"]
+    },
+    {
+      "matchManagers": ["circleci"],
+      "addLabels": ["circleci"]
+    },
+    {
+      "matchManagers": ["composer"],
+      "addLabels": ["composer"]
+    },
+    {
+      "matchDatasources": ["orb"],
+      "addLabels": ["circleci"]
+    },
+
+    {
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["minor"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["patch"]
+    }
+  ],
   "schedule": [
     "after 10pm every weekday",
     "before 5am every weekday",
@@ -26,11 +62,18 @@
     }
   ],
   "java": {
+    "addLabels": ["gradle"],
     "packageRules": [
       {
         "matchPackagePrefixes": ["com.equisoft"],
         "registryUrls": ["https://maven.pkg.github.com/kronostechnologies/*/"]
       }
     ]
+  },
+  "js": {
+    "addLabels": ["yarn"]
+  },
+  "php": {
+    "addLabels": ["composer"]
   }
 }
