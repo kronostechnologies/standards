@@ -6,37 +6,37 @@
   "packageRules": [
     {
       "matchDatasources": ["docker"],
-      "addLabels": ["docker"],
+      "addLabels": ["docker"]
     },
     {
       "matchManagers": ["terraform", "terraform-version"],
-      "addLabels": ["terraform"],
+      "addLabels": ["terraform"]
     },
     {
       "matchManagers": ["circleci"],
-      "addLabels": ["circleci"],
+      "addLabels": ["circleci"]
     },
     {
       "matchManagers": ["composer"],
-      "addLabels": ["composer"],
+      "addLabels": ["composer"]
     },
     {
       "matchDatasources": ["orb"],
-      "addLabels": ["circleci-orb"],
+      "addLabels": ["circleci"]
     },
 
     {
       "matchUpdateTypes": ["major"],
-      "addLabels": ["major"],
+      "addLabels": ["major"]
     },
     {
       "matchUpdateTypes": ["minor"],
-      "addLabels": ["minor"],
+      "addLabels": ["minor"]
     },
     {
       "matchUpdateTypes": ["patch"],
-      "addLabels": ["patch"],
-    },
+      "addLabels": ["patch"]
+    }
   ],
   "schedule": [
     "after 10pm every weekday",
@@ -71,9 +71,9 @@
     ]
   },
   "js": {
-    "addLabels": ["yarn"],
+    "addLabels": ["yarn"]
   },
   "php": {
-    "addLabels": ["composer"],
+    "addLabels": ["composer"]
   }
 }
