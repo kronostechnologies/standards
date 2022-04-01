@@ -1,11 +1,14 @@
 package com.equisoft.standards.kotlin
 
+import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.resources.TextResource
+import org.gradle.kotlin.dsl.dependencies
 import org.jmailen.gradle.kotlinter.KotlinterExtension
 import org.jmailen.gradle.kotlinter.KotlinterPlugin
 import java.io.InputStream
@@ -21,10 +24,8 @@ class KotlinStandardsPlugin : Plugin<Project> {
         plugins.apply(KotlinterPlugin::class.java)
         plugins.apply(DetektPlugin::class.java)
 
-        afterEvaluate {
-            configureDetekt()
-            configureKotlinter()
-        }
+        configureDetekt()
+        configureKotlinter()
 
         tasks.register("checkStatic") {
             staticChecks.forEach(::dependsOn)
@@ -45,6 +46,8 @@ class KotlinStandardsPlugin : Plugin<Project> {
     }
 
     private fun Project.configureDetekt() {
+        addDetektFormattingPlugin()
+
         extensions.configure(DetektExtension::class.java) {
             val detektConfigInputStream: InputStream = getDetektConfigInputStream()
             val configuration = String(detektConfigInputStream.use(InputStream::readBytes))
@@ -56,11 +59,18 @@ class KotlinStandardsPlugin : Plugin<Project> {
         }
 
         tasks.withType(Detekt::class.java) {
-            jvmTarget = "13"
+            jvmTarget = JavaVersion.current().majorVersion
             reports {
                 html.required.set(true)
                 sarif.required.set(true)
             }
+        }
+    }
+
+    private fun Project.addDetektFormattingPlugin() {
+        val detektVersion = VersionsCatalog.get("detekt")
+        dependencies {
+            CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
         }
     }
 
