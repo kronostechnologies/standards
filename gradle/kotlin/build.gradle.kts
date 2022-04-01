@@ -67,13 +67,15 @@ tasks {
     }
 
     register("generateVersions") {
-        File(sourceSets.main.get().output.resourcesDir, "versions.txt").writeText("""
+        doFirst {
+            File(sourceSets.main.get().output.resourcesDir, "versions.txt").writeText("""
             detekt:${detektVersion}
         """.trimIndent())
+        }
     }
 
     processResources {
-        dependsOn("generateVersions")
+        finalizedBy("generateVersions")
     }
 
     check {

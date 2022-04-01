@@ -11,6 +11,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+@SuppressWarnings("FunctionNaming")
 class KotlinStandardsPluginFunctionalTest {
     private lateinit var projectDir: File
     private lateinit var sourcesDir: File
@@ -41,12 +42,12 @@ class KotlinStandardsPluginFunctionalTest {
         projectDir.resolve("build.gradle.kts").writeText(
             """
                 plugins {
-                    kotlin("jvm") version "1.4.31"
+                    kotlin("jvm") version "1.6.20"
                     id("com.equisoft.standards.kotlin")
                 }
                 dependencies {
                     implementation("io.micronaut.test:micronaut-test-junit5:2.3.3")
-                    implementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+                    implementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
                 }
                 repositories {
                     mavenCentral()
