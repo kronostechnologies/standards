@@ -1,13 +1,13 @@
-val javaVersion = JavaVersion.VERSION_13
+val javaVersion = JavaVersion.VERSION_17
 
 plugins {
-    `kotlin-dsl` apply false
+    `kotlin-dsl` version "2.2.0" apply false
 
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.cyclonedx.bom") version "1.4.1"
     id("org.owasp.dependencycheck") version "6.4.1.1"
-    id("org.jmailen.kotlinter") version "3.7.0" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.19.0-RC2" apply false
+    id("org.jmailen.kotlinter") version "3.9.0" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.20.0-RC2" apply false
 }
 
 subprojects {
@@ -30,10 +30,10 @@ subprojects {
             credentials {
                 username = project.findProperty("gpr.user")?.toString()
                     ?: System.getenv("GPR_USER")
-                    ?: System.getenv("GHCR_USER")
+                        ?: System.getenv("GHCR_USER")
                 password = project.findProperty("gpr.key")?.toString()
                     ?: System.getenv("GPR_KEY")
-                    ?: System.getenv("GHCR_TOKEN")
+                        ?: System.getenv("GHCR_TOKEN")
             }
         }
     }
@@ -69,10 +69,10 @@ subprojects {
                     name = "gprWrite"
                     username = project.findProperty("gpr.write.user")?.toString()
                         ?: System.getenv("GPR_USER")
-                        ?: System.getenv("GHCR_USER")
+                            ?: System.getenv("GHCR_USER")
                     password = project.findProperty("gpr.write.key")?.toString()
                         ?: System.getenv("GPR_KEY")
-                        ?: System.getenv("GHCR_TOKEN")
+                            ?: System.getenv("GHCR_TOKEN")
                 }
             }
         }
@@ -82,7 +82,7 @@ subprojects {
         withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
                 jvmTarget = javaVersion.majorVersion
-                languageVersion = "1.5"
+                languageVersion = "1.6"
             }
         }
 
@@ -128,7 +128,6 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        distributionSha256Sum = "cd5c2958a107ee7f0722004a12d0f8559b4564c34daad7df06cffd4d12a426d0"
-        gradleVersion = "7.4"
+        gradleVersion = "7.4.2"
     }
 }

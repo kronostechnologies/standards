@@ -1,19 +1,24 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-version = "1.0.2-SNAPSHOT"
+version = "1.2.0-SNAPSHOT"
 
 val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
 
+val detektVersion = "1.20.0-RC2"
+
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.5.31"))
+    val kotlinVersion = "1.6.20"
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.7.0")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0-RC2")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.9.0")
 
-    implementation("com.pinterest.ktlint:ktlint-core:0.43.0")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
+    implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+
+    implementation("com.pinterest.ktlint:ktlint-core:0.45.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -59,6 +64,16 @@ tasks {
         group = "verification"
         testClassesDirs = functionalTestSourceSet.output.classesDirs
         classpath = functionalTestSourceSet.runtimeClasspath
+    }
+
+    register("generateVersions") {
+        File(sourceSets.main.get().output.resourcesDir, "versions.txt").writeText("""
+            detekt:${detektVersion}
+        """.trimIndent())
+    }
+
+    processResources {
+        dependsOn("generateVersions")
     }
 
     check {

@@ -62,7 +62,9 @@ formatting:
   active: true
   ImportOrdering:
     active: true
-    layout: 'idea'
+    layout: '*,java.**,javax.**,kotlin.**,^'
+  MaximumLineLength:
+    active: false
   MultiLineIfElse:
     active: true
   NoEmptyFirstLineInMethodBlock:
@@ -150,3 +152,6 @@ style:
     active: true
   UseRequireNotNull:
     active: true
+  VarCouldBeVal:
+    active: true
+    ignoreAnnotated: ["**.Inject"]
