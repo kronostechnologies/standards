@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
+
 val javaVersion = JavaVersion.VERSION_17
 
 plugins {
@@ -36,6 +38,10 @@ subprojects {
                         ?: System.getenv("GHCR_TOKEN")
             }
         }
+    }
+
+    dependencies {
+        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0-RC2")
     }
 
     configure<JavaPluginExtension> {
