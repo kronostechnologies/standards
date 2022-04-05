@@ -55,7 +55,6 @@
     {
       "hostType": "github",
       "matchHost": "https://api.github.com/",
-      "username": "renovate-bot",
       "encrypted": {
         "token": "wcFMA/xDdHCJBTolARAAlBXztVSgR4zmsgat/R3ILGmE0e3REV0rz99yvq6h8Mq4X73XxCiVyEUNLNbG9Ba8lGdmhYgM+jVol3B+nrpxZmVLKMWLQPUQcw/OILw/9D8cvRxqTs5KQz9rAfMns0AE9prnEuUBZIDZUyNKaOw7JaBrFd9kINlUsUGbwQkHS8TYKQBHd6Jtlats55HuXYn54lvHI9gXl+NykFWRxB0HQ4NFPylUdEKZrs81qsZuD7l3RV5Uw5HUV4nv9I7mU++4Zfmu4szdXlk2QydpepBQSd6xmdWj48ANmv5VcLrhXrciZ+bp/j5SLZ1Yonko2yL9Cq3LPx3Q9fYxNWddmbhAvId++4dO0JTRPbg2UACdUd9YDDXTuiTZ2cOauDeAgJkBFDISN0cvuJHsGUmOuUn6O9PboX+7x7EX8rLraUt6uU/FkI2tRr5NPb4qBXjpYqkqzxel5Pc2kLkur+NGIunB+4UN6bZA/8HRqs1Y8Oilkub5/rtJqqcjIIUd0BMHh9A6wUyejbwbCGA1v9HXuAUJYUfTf3wQSAkyaDVJgOR/V4Mq3o6ImRVYFEfCeb185QiaDLH5J59UcJSwL5LdC+jmy/l8/AyqGdO0BYM1h2goJ7BdoH7+JFQJDgg0ZVH/zSi4d3XrAAHLTg9aj0wfZYeCDN9aIBguj3OpNDa6WFQ+4FvSgQGkzTfcJQ8vs+3MBZLh/Vdxr/+NonQAEK8xOeXu4N/+rzUQkcieVMruF3RKgV6SrykKvKZFr3VmQNKTb0B4ZBt6l5rg9UCt+ki27Fa8Xv7qFntJlZ09Y7lVCHBJaUE3jXaMMTbAmrKfsO0ur9LGGZO+6Z0mGRD1P1VF272d4jbLsQ"
       }
