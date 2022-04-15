@@ -1,5 +1,0 @@
-kronostechnologies/actions:
-  - source: bin/gitleaks.bash
-    dest: scan-secrets/files/gitleaks.bash
-  - source: gitleaks.toml
-    dest: scan-secrets/files/gitleaks.toml
