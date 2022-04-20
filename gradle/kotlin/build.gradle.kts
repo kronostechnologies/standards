@@ -6,10 +6,10 @@ val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
 
-val detektVersion = "1.20.0-RC2"
+val detektVersion = "1.20.0"
 
 dependencies {
-    val kotlinVersion = "1.6.20"
+    val kotlinVersion = "1.6.21"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")

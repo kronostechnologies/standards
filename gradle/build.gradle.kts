@@ -9,7 +9,7 @@ plugins {
     id("org.cyclonedx.bom") version "1.4.1"
     id("org.owasp.dependencycheck") version "6.4.1.1"
     id("org.jmailen.kotlinter") version "3.9.0" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.20.0-RC2" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
 }
 
 subprojects {

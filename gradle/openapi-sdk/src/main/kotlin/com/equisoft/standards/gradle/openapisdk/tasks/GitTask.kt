@@ -23,9 +23,10 @@ abstract class GitTask : DefaultTask() {
 
     @get:Internal
     val uri: Provider<String> = host.map {
-        if (token.isPresent)
+        if (token.isPresent) {
             "https://${token.get()}@$it/${userId.get()}/${repoId.get()}.git"
-        else
+        } else {
             "git@$it:${userId.get()}/${repoId.get()}.git"
+        }
     }
 }
