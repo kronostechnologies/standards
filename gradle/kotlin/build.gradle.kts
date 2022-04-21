@@ -13,17 +13,17 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.9.0")
+    implementation("org.jmailen.gradle:kotlinter-gradle:3.10.0")
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
 
-    implementation("com.pinterest.ktlint:ktlint-core:0.45.1")
+    implementation("com.pinterest.ktlint:ktlint-core:0.45.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
-    val junit5Version = "5.8.1"
+    val junit5Version = "5.8.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }

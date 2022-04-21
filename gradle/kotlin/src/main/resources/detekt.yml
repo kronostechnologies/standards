@@ -154,4 +154,4 @@ style:
     active: true
   VarCouldBeVal:
     active: true
-    ignoreAnnotated: ["**.Inject"]
+    ignoreAnnotated: ["**.CommandLine.*", "**.Inject", "org.mockito.*"]
