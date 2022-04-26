@@ -6,7 +6,6 @@ import io.micronaut.gradle.MicronautApplicationPlugin
 import io.micronaut.gradle.MicronautExtension
 import io.micronaut.gradle.MicronautRuntime.NETTY
 import io.micronaut.gradle.MicronautTestRuntime.JUNIT_5
-import io.micronaut.gradle.aot.MicronautAotPlugin
 import io.micronaut.gradle.docker.MicronautDockerfile
 import io.micronaut.gradle.docker.NativeImageDockerfile
 import org.graalvm.buildtools.gradle.dsl.GraalVMExtension
@@ -28,7 +27,6 @@ class MicronautPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
         val micronautSettingsExtension = extensions.create<MicronautSettingsExtension>("micronautSettings")
 
-        plugins.apply(MicronautAotPlugin::class.java)
         plugins.apply(MicronautApplicationPlugin::class.java)
         plugins.apply(AllOpenGradleSubplugin::class.java)
 
