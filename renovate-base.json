@@ -39,9 +39,7 @@
     }
   ],
   "schedule": [
-    "after 10pm every weekday",
-    "before 5am every weekday",
-    "every weekend"
+    "every Sunday"
   ],
   "hostRules": [
     {
