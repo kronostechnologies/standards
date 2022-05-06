@@ -3,12 +3,22 @@ import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 val javaVersion = JavaVersion.VERSION_17
 
 plugins {
-    `kotlin-dsl` version "2.2.0" apply false
+    `kotlin-dsl` version "2.3.3" apply false
 
     id("com.github.ben-manes.versions") version "0.42.0"
     id("org.cyclonedx.bom") version "1.5.0"
     id("org.jmailen.kotlinter") version "3.10.0" apply false
     id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
+}
+
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion("1.6.21")
+            }
+        }
+    }
 }
 
 subprojects {
