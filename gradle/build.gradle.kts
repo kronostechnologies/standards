@@ -5,10 +5,9 @@ val javaVersion = JavaVersion.VERSION_17
 plugins {
     `kotlin-dsl` version "2.2.0" apply false
 
-    id("com.github.ben-manes.versions") version "0.39.0"
-    id("org.cyclonedx.bom") version "1.4.1"
-    id("org.owasp.dependencycheck") version "6.4.1.1"
-    id("org.jmailen.kotlinter") version "3.9.0" apply false
+    id("com.github.ben-manes.versions") version "0.42.0"
+    id("org.cyclonedx.bom") version "1.5.0"
+    id("org.jmailen.kotlinter") version "3.10.0" apply false
     id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
 }
 
@@ -41,7 +40,7 @@ subprojects {
     }
 
     dependencies {
-        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0-RC2")
+        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
     }
 
     configure<JavaPluginExtension> {

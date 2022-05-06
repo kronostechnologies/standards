@@ -2,8 +2,7 @@
 
 This project is a plugin that wraps :
 - [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin)
-- OWASP's [DependencyCheck](https://github.com/jeremylong/DependencyCheck)
-- [gradle-license-report](https://github.com/jk1/Gradle-License-Report)
+- [cyclonedx-gradle-plugin](https://github.com/CycloneDX/cyclonedx-gradle-plugin)
 
 ## Installation
 
@@ -38,25 +37,10 @@ plugins {
 }
 ```
 
-Make sure to create this file at the root of your gradle project:
-
-*owasp-suppressions.xml*
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-    <!-- https://jeremylong.github.io/DependencyCheck/general/suppression.html -->
-</suppressions>
-```
-
-This is the `DependencyCheck`'s suppressions file for the false positives. Global suppressions are also
-configured [here](https://github.com/kronostechnologies/standards/blob/master/gradle/owasp-suppressions.xml)
-
 ## Usage
 
-- Scan dependencies for known vulnerabilities: `./gradlew dependencyCheckAggregate`
-- Scan dependencies licenses: `./gradlew checkLicense`
 - List outdated dependencies: `./gradlew dependencyUpdates`
+- Generate CycloneDX BOM : `./gradlew cyclonedxBom`
 
 ## Continuous Integration
 
