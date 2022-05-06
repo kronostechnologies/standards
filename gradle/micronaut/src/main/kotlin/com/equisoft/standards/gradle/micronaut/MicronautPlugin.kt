@@ -116,7 +116,9 @@ class MicronautPlugin : Plugin<Project> {
                     buildArgs.add("--libc=glibc")
                     buildArgs.add("-H:+StaticExecutableWithDynamicLibC")
                     buildArgs.add("-H:+ReportExceptionStackTraces")
+                    buildArgs.add("-H:IncludeResources=splitversion.properties")
                     buildArgs.add("-R:-WriteableCodeCache")
+
                     fallback.set(false)
                     sharedLibrary.set(false)
                     javaLauncher.set(
