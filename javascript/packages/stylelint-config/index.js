@@ -1,6 +1,6 @@
 module.exports = {
     extends: [
-        'stylelint-config-standard',
+        'stylelint-config-standard-scss',
     ],
     plugins: ['stylelint-order'],
     rules: {
@@ -19,6 +19,7 @@ module.exports = {
         'order/properties-alphabetical-order': true,
 
         // stylelint-config-styled-components
+        'no-empty-first-line': null,
         'no-empty-source': null,
         'no-missing-end-of-source-newline': null,
         'property-no-vendor-prefix': true,
@@ -30,4 +31,10 @@ module.exports = {
         'no-extra-semicolons': null,
         'value-keyword-case': null,
     },
+    overrides: [
+        {
+            files: ['**/*.{js,jsx}', '**/*.{ts,tsx}'],
+            customSyntax: '@stylelint/postcss-css-in-js',
+        },
+    ],
 };

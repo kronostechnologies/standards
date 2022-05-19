@@ -1,9 +1,13 @@
 {
   "name": "@equisoft/stylelint-config",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Equisoft's stylelint configuration",
   "license": "MIT",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "formatter.js"
+  ],
   "homepage": "https://github.com/kronostechnologies/standards#readme",
   "author": {
     "name": "Equisoft inc.",
@@ -24,14 +28,20 @@
     "stylelint-config"
   ],
   "dependencies": {
-    "stylelint-config-standard": "~20.0.0"
+    "postcss-scss": "~4.0.4",
+    "stylelint-config-standard-scss": "~3.0.0",
+    "stylelint-junit-formatter": "~0.2.2",
+    "stylelint-sarif-formatter": "~1.0.7"
   },
   "devDependencies": {
-    "stylelint": "~13.8.0",
-    "stylelint-order": "~4.1.0"
+    "stylelint": "~14.8.2",
+    "stylelint-order": "~5.0.0"
   },
   "peerDependencies": {
-    "stylelint": "^13.8.0",
-    "stylelint-order": "^4.1.0"
+    "@stylelint/postcss-css-in-js": "^0",
+    "postcss": "^8",
+    "postcss-syntax": "^0",
+    "stylelint": "^14",
+    "stylelint-order": "^5"
   }
 }

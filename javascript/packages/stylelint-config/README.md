@@ -22,12 +22,21 @@ Then create a _.stylelintrc_ file that uses Equisoft's configuration:
 }
 ```
 
+Then create a javascript file to use the [custom formatter](./formatter.js):
+
+```javascript
+// scripts/stylelint-formatter.js
+const formatter = require('@equisoft/stylelint-config/formatter');
+
+module.exports = formatter;
+```
+
 Finally create a script in your _package.json_ to easily run stylelint:
 
 ```json
 {
   "scripts": {
-    "stylelint": "stylelint 'src/**/*.{css,scss,js,jsx,ts,tsx}'",
+    "stylelint": "stylelint --config .stylelintrc --custom-formatter scripts/stylelint-formatter.js 'src/**/*.{css,scss,js,jsx,ts,tsx}'",
     "stylelint:ci": "yarn stylelint"
   }
 }
@@ -36,20 +45,24 @@ Finally create a script in your _package.json_ to easily run stylelint:
 Now you can use `yarn stylelint` to validate the code style of your files!
 
 ## Continuous Integration
-We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
+We strongly suggest that you enforce code style checks on your CI. For example, on Github Actions you can add a configuration similar to this one to your workflow:
 
 ```yaml
-orbs:
-  eq: equisoft/build-tools@latest
+stylelint:
+  name: Stylelint
+  runs-on: ubuntu-latest
+  steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-jobs:
-  stylelint:
-    executor: node
-    steps:
-      - eq/with-yarn-cache
-      - run:
-          name: Stylelint
-          command: yarn stylelint:ci
+      - name: Setup asdf-vm
+        uses: equisoft-actions/with-asdf-vm@v1
+
+      - name: Install NPM dependencies
+        uses: equisoft-actions/yarn-install@v1
+
+      - name: Run Stylelint
+        uses: equisoft-actions/yarn-stylelint@v1
 ```
 
 ## Migrating an existing codebase
