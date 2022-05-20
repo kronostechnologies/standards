@@ -10,12 +10,18 @@ For react, you should instead look at [@equisoft/eslint-config-react](https://ww
 
 The versioning of this project respects [semver](https://semver.org/). That means your project's package.json can caret (`^`) import it.
 
+## Prerequisites
+
+```bash
+yarn add --dev eslint @microsoft/eslint-formatter-sarif eslint-import-resolver-node eslint-plugin-import yargs
+```
+
 ## Installation
 
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/eslint-config eslint
+yarn add --dev @equisoft/eslint-config
 ```
 
 Then create a _.eslintrc.json_ file that uses Equisoft's configuration:
@@ -32,7 +38,7 @@ Finally, create a script in your _package.json_ to easily run ESLint:
 {
   "scripts": {
     "eslint": "eslint src",
-    "eslint:ci": "yarn eslint --format junit -o build/tests/eslint/junit.xml"
+    "eslint:ci": "yarn eslint"
   }
 }
 ```
@@ -40,22 +46,23 @@ Finally, create a script in your _package.json_ to easily run ESLint:
 Now you can use `yarn eslint` to validate the code style of your Javascript files!
 
 ## Continuous Integration
-We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
+We strongly suggest that you enforce code style checks on your CI. For example, on Github Actions you can add a configuration similar to this one to your workflow:
 
 ```yaml
-orbs:
-  eq: equisoft/build-tools@latest
+eslint:
+  name: ESLint
+  steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-jobs:
-  eslint:
-    executor: node
-    steps:
-      - eq/with-yarn-cache
-      - run:
-          name: ESLint
-          command: yarn eslint:ci
-      - store_test_results:
-          path: build/tests
+      - name: Setup asdf-vm
+        uses: equisoft-actions/with-asdf-vm@v1
+
+      - name: Install NPM dependencies
+        uses: equisoft-actions/yarn-install@v1
+
+      - name: Run ESLint
+        uses: equisoft-actions/yarn-eslint@v2
 ```
 
 ## Migrating an existing codebase

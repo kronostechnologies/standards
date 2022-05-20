@@ -12,10 +12,12 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 
 ## Installation
 
+Install the [prerequisites](../eslint-config/README.md#prerequisities).
+
 Install the libraries in your project:
 
 ```bash
-yarn add --dev @equisoft/eslint-config-react eslint
+yarn add --dev @equisoft/eslint-config-react eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks  
 ```
 
 Then create a _.eslintrc.json_ file that uses Equisoft's configuration:
@@ -32,7 +34,7 @@ Finally create a script in your _package.json_ to easily run ESLint:
 {
   "scripts": {
     "eslint": "eslint src",
-    "eslint:ci": "yarn eslint --format junit -o build/tests/eslint/junit.xml"
+    "eslint:ci": "yarn eslint"
   }
 }
 ```
@@ -40,33 +42,7 @@ Finally create a script in your _package.json_ to easily run ESLint:
 Now you can use `yarn eslint` to validate the code style of your Javascript files!
 
 ## Continuous Integration
-We strongly suggest that you enforce code style checks on your CI. For example, on CircleCI you can add a configuration similar to this one to your _.circleci/config.yml_:
-
-```yaml
-orbs:
-  eq: equisoft/build-tools@latest
-
-jobs:
-  eslint:
-    executor: node
-    steps:
-      - eq/with-yarn-cache
-      - run:
-          name: ESLint
-          command: yarn eslint:ci
-      - store_test_results:
-          path: build/tests
-```
+See [here](../eslint-config/README.md#continuous-integration).
 
 ## Migrating an existing codebase
-
-ESLint supports exclusion of globs in _.eslintignore_. One way to gradually migrate a legacy code base to this configuration is to exclude all source files and add conforming files one at a time. To achieve this, add this to your _.eslintignore_:
-
-```
-src/**/*.js
-!src/contacts/**/*.js
-```
-
-Note how an entry prefixed by `!` is added to re-include some source files.
-
-For more information on this technique, you can read the [ESLint documentation](https://eslint.org/docs/user-guide/configuring#eslintignore).
+See [here](../eslint-config/README.md#migrating-an-existing-codebase).
