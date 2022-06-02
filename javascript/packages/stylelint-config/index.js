@@ -3,6 +3,7 @@ module.exports = {
         'stylelint-config-standard-scss',
     ],
     plugins: ['stylelint-order'],
+    processors: ["stylelint-processor-styled-components"],
     rules: {
         'at-rule-no-unknown': [
             true,
@@ -31,10 +32,4 @@ module.exports = {
         'no-extra-semicolons': null,
         'value-keyword-case': null,
     },
-    overrides: [
-        {
-            files: ['**/*.{js,jsx}', '**/*.{ts,tsx}'],
-            customSyntax: '@stylelint/postcss-css-in-js',
-        },
-    ],
 };
