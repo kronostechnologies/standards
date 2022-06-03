@@ -1,0 +1,16 @@
+--- tmp/openapi-templates/typescript-fetch/apis.mustache
++++ resources/patches/typescript-fetch/apis.mustache
+@@ -195,7 +195,12 @@
+         {{#isOAuth}}
+         if (this.configuration && this.configuration.accessToken) {
+             // oauth required
+-            headerParameters["Authorization"] = await this.configuration.accessToken("{{name}}", [{{#scopes}}"{{{scope}}}"{{^-last}}, {{/-last}}{{/scopes}}]);
++            const token = this.configuration.accessToken;
++            const tokenString = await token("{{name}}", [{{#scopes}}"{{{scope}}}"{{^-last}}, {{/-last}}{{/scopes}}]);
++
++            if (tokenString) {
++                headerParameters["Authorization"] = `Bearer ${tokenString}`;
++            }
+         }
+
+         {{/isOAuth}}
