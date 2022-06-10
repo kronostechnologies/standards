@@ -12,7 +12,7 @@ val openApiGenerator by configurations.creating {
 }
 
 dependencies {
-    val openApiVersion = "5.2.1"
+    val openApiVersion = "6.0.0"
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
