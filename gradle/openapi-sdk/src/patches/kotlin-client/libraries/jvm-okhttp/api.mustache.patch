@@ -1,14 +1,16 @@
---- tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/api.mustache	2021-08-18 20:34:55.434736250 -0400
-+++ resources/patches/kotlin-client/libraries/jvm-okhttp/api.mustache	2021-08-20 12:29:15.638660364 -0400
-@@ -17,7 +17,10 @@
+--- build/tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-10 09:00:06.787453220 -0400
++++ build/resources/patches/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-10 14:33:48.779906159 -0400
+@@ -47,7 +47,12 @@
  import {{packageName}}.infrastructure.toMultiValue
-
+ 
  {{#operations}}
--{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath) {
+-{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath) {
 +{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(
 +    basePath: kotlin.String = defaultBasePath,
-+    accessToken: String? = null{{! Equisoft: Add optional accessToken}}
++    accessToken: String? = null,{{! Equisoft: Add optional accessToken}}
++    client: OkHttpClient = ApiClient.defaultClient
 +) : ApiClient(basePath, accessToken) {
++
      companion object {
          @JvmStatic
          val defaultBasePath: String by lazy {
