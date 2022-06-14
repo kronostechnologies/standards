@@ -19,6 +19,7 @@ package org.openapitools.codegen.languages;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import io.swagger.v3.oas.models.media.ArraySchema;
+import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
 import org.apache.commons.io.FilenameUtils;
@@ -81,119 +82,119 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
         setSortModelPropertiesByRequiredFlag(true);
 
         languageSpecificPrimitives = new HashSet<>(Arrays.asList(
-                "kotlin.Byte",
-                "kotlin.ByteArray",
-                "kotlin.Short",
-                "kotlin.Int",
-                "kotlin.Long",
-                "kotlin.Float",
-                "kotlin.Double",
-                "kotlin.Boolean",
-                "kotlin.Char",
-                "kotlin.String",
-                "kotlin.Array",
-                "kotlin.collections.List",
-                "kotlin.collections.MutableList",
-                "kotlin.collections.Map",
-                "kotlin.collections.MutableMap",
-                "kotlin.collections.Set",
-                "kotlin.collections.MutableSet"
+            "kotlin.Byte",
+            "kotlin.ByteArray",
+            "kotlin.Short",
+            "kotlin.Int",
+            "kotlin.Long",
+            "kotlin.Float",
+            "kotlin.Double",
+            "kotlin.Boolean",
+            "kotlin.Char",
+            "kotlin.String",
+            "kotlin.Array",
+            "kotlin.collections.List",
+            "kotlin.collections.MutableList",
+            "kotlin.collections.Map",
+            "kotlin.collections.MutableMap",
+            "kotlin.collections.Set",
+            "kotlin.collections.MutableSet"
         ));
 
         // this includes hard reserved words defined by https://github.com/JetBrains/kotlin/blob/master/core/descriptors/src/org/jetbrains/kotlin/renderer/KeywordStringsGenerated.java
         // as well as keywords from https://kotlinlang.org/docs/reference/keyword-reference.html
         reservedWords = new HashSet<>(Arrays.asList(
-                "ApiResponse", // Used in the auto-generated api client
-                "abstract",
-                "actual",
-                "annotation",
-                "as",
-                "break",
-                "class",
-                "companion",
-                "const",
-                "constructor",
-                "continue",
-                "crossinline",
-                "data",
-                "delegate",
-                "do",
-                "dynamic",
-                "else",
-                "enum",
-                "expect",
-                "external",
-                "false",
-                "field",
-                "final",
-                "finally",
-                "for",
-                "fun",
-                "if",
-                "import",
-                "in",
-                "infix",
-                "init",
-                "inline",
-                "inner",
-                "interface",
-                "internal",
-                "is",
-                "it",
-                "lateinit",
-                "noinline",
-                "null",
-                "object",
-                "open",
-                "operator",
-                "out",
-                "override",
-                "package",
-                "param",
-                "private",
-                "property",
-                "protected",
-                "public",
-                "receiver",
-                "reified",
-                "return",
-                "sealed",
-                "setparam",
-                "super",
-                "suspend",
-                "tailrec",
-                "this",
-                "throw",
-                "true",
-                "try",
-                "typealias",
-                "typeof",
-                "val",
-                "value",
-                "var",
-                "vararg",
-                "when",
-                "where",
-                "while"
+            "ApiResponse", // Used in the auto-generated api client
+            "abstract",
+            "actual",
+            "annotation",
+            "as",
+            "break",
+            "class",
+            "companion",
+            "const",
+            "constructor",
+            "continue",
+            "crossinline",
+            "data",
+            "delegate",
+            "do",
+            "dynamic",
+            "else",
+            "enum",
+            "expect",
+            "external",
+            "false",
+            "field",
+            "final",
+            "finally",
+            "for",
+            "fun",
+            "if",
+            "import",
+            "in",
+            "infix",
+            "init",
+            "inline",
+            "inner",
+            "interface",
+            "internal",
+            "is",
+            "it",
+            "lateinit",
+            "noinline",
+            "null",
+            "object",
+            "open",
+            "operator",
+            "out",
+            "override",
+            "package",
+            "param",
+            "private",
+            "property",
+            "protected",
+            "public",
+            "receiver",
+            "reified",
+            "return",
+            "sealed",
+            "setparam",
+            "super",
+            "suspend",
+            "tailrec",
+            "this",
+            "throw",
+            "true",
+            "try",
+            "typealias",
+            "typeof",
+            "val",
+            "value",
+            "var",
+            "vararg",
+            "when",
+            "where",
+            "while"
         ));
 
         defaultIncludes = new HashSet<>(Arrays.asList(
-                "kotlin.Byte",
-                "kotlin.ByteArray",
-                "kotlin.Short",
-                "kotlin.Int",
-                "kotlin.Long",
-                "kotlin.Float",
-                "kotlin.Double",
-                "kotlin.Boolean",
-                "kotlin.Char",
-                "kotlin.Array",
-                "kotlin.collections.List",
-                "kotlin.collections.MutableList",
-                "kotlin.collections.Set",
-                "kotlin.collections.MutableSet",
-                "kotlin.collections.Map",
-                "kotlin.collections.MutableMap"
+            "kotlin.Byte",
+            "kotlin.ByteArray",
+            "kotlin.Short",
+            "kotlin.Int",
+            "kotlin.Long",
+            "kotlin.Float",
+            "kotlin.Double",
+            "kotlin.Boolean",
+            "kotlin.Char",
+            "kotlin.Array",
+            "kotlin.collections.List",
+            "kotlin.collections.MutableList",
+            "kotlin.collections.Set",
+            "kotlin.collections.MutableSet",
+            "kotlin.collections.Map",
+            "kotlin.collections.MutableMap"
         ));
 
         typeMapping = new HashMap<>();
@@ -706,7 +707,7 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
         if (modifiedName.matches("^\\d.*")) {
             final String modelName = "Model" + modifiedName; // e.g. 200Response => Model200Response (after camelize)
             LOGGER.warn("{} (model name starts with number) cannot be used as model name. Renamed to {}", name,
-                    modelName);
+                modelName);
             return modelName;
         }
 
@@ -827,8 +828,8 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
     protected boolean needToImport(String type) {
         // provides extra protection against improperly trying to import language primitives and java types
         boolean imports = !type.startsWith("kotlin.") && !type.startsWith("java.") &&
-                !defaultIncludes.contains(type) && !languageSpecificPrimitives.contains(type) &&
-                !type.contains(".");
+            !defaultIncludes.contains(type) && !languageSpecificPrimitives.contains(type) &&
+            !type.contains(".");
         return imports;
     }
 
@@ -842,16 +843,16 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
         // separately.
         // First find only the parent vars via baseName matching
         Map<String, CodegenProperty> allVarsMap = m.allVars.stream()
-                .collect(Collectors.toMap(CodegenProperty::getBaseName, Function.identity()));
+            .collect(Collectors.toMap(CodegenProperty::getBaseName, Function.identity()));
         allVarsMap.keySet()
-                .removeAll(m.vars.stream().map(CodegenProperty::getBaseName).collect(Collectors.toSet()));
+            .removeAll(m.vars.stream().map(CodegenProperty::getBaseName).collect(Collectors.toSet()));
         // Update the allVars
         allVarsMap.values().forEach(p -> p.isInherited = true);
         // Update any other vars (requiredVars, optionalVars)
         Stream.of(m.requiredVars, m.optionalVars)
-                .flatMap(List::stream)
-                .filter(p -> allVarsMap.containsKey(p.baseName))
-                .forEach(p -> p.isInherited = true);
+            .flatMap(List::stream)
+            .filter(p -> allVarsMap.containsKey(p.baseName))
+            .forEach(p -> p.isInherited = true);
         return m;
     }
 
@@ -1044,5 +1045,35 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
     @Override
     public GeneratorLanguage generatorLanguage() {
         return GeneratorLanguage.KOTLIN;
+    }
+
+    /**
+     * Equisoft Backport https://github.com/OpenAPITools/openapi-generator/pull/12594
+     */
+    @Override
+    protected void updateModelForObject(CodegenModel m, Schema schema) {
+        /**
+         *
+         * we have a custom version of this function so we only set isMap to true if
+         * ModelUtils.isMapSchema
+         * In other generators, isMap is true for all type object schemas
+         */
+        if (schema.getProperties() != null || schema.getRequired() != null && !(schema instanceof ComposedSchema)) {
+            // passing null to allProperties and allRequired as there's no parent
+            addVars(m, unaliasPropertySchema(schema.getProperties()), schema.getRequired(), null, null);
+        }
+        if (ModelUtils.isMapSchema(schema)) {
+            // an object or anyType composed schema that has additionalProperties set
+            addAdditionPropertiesToCodeGenModel(m, schema);
+        } else {
+            m.setIsMap(false);
+            if (ModelUtils.isFreeFormObject(openAPI, schema)) {
+                // non-composed object type with no properties + additionalProperties
+                // additionalProperties must be null, ObjectSchema, or empty Schema
+                addAdditionPropertiesToCodeGenModel(m, schema);
+            }
+        }
+        // process 'additionalProperties'
+        setAddProps(schema, m);
     }
 }
