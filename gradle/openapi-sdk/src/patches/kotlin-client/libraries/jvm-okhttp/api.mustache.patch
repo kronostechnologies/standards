@@ -1,5 +1,5 @@
---- build/tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-10 09:00:06.787453220 -0400
-+++ build/resources/patches/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-10 14:33:48.779906159 -0400
+--- build/tmp/openapi-templates/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-14 09:23:23.035125997 -0400
++++ build/resources/patches/kotlin-client/libraries/jvm-okhttp/api.mustache	2022-06-28 08:51:05.305066359 -0400
 @@ -47,7 +47,12 @@
  import {{packageName}}.infrastructure.toMultiValue
  
@@ -9,7 +9,7 @@
 +    basePath: kotlin.String = defaultBasePath,
 +    accessToken: String? = null,{{! Equisoft: Add optional accessToken}}
 +    client: OkHttpClient = ApiClient.defaultClient
-+) : ApiClient(basePath, accessToken) {
++) : ApiClient(basePath, accessToken, client) {
 +
      companion object {
          @JvmStatic
