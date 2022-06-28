@@ -172,7 +172,7 @@ public class InlineModelResolver {
             if (m.getAnyOf() != null && !m.getAnyOf().isEmpty()) {
                 return true;
             }
-            if (m.getOneOf() != null && !m.getOneOf().isEmpty()) {
+            if (m.getOneOf() != null && !m.getOneOf().isEmpty() && !isNullableOneOfComposedSchema(m)) {
                 return true;
             }
         }
@@ -322,7 +322,7 @@ public class InlineModelResolver {
                 }
                 m.setAnyOf(newAnyOf);
             }
-            if (m.getOneOf() != null) {
+            if (m.getOneOf() != null && !isNullableOneOfComposedSchema(m)) {
                 List<Schema> newOneOf = new ArrayList<Schema>();
                 for (Schema inner : m.getOneOf()) {
                     String schemaName = resolveModelName(inner.getTitle(), modelPrefix + "_oneOf");
@@ -866,5 +866,20 @@ public class InlineModelResolver {
         return name;
     }
 
+    /**
+     * Equisoft Nullable field monkey backport
+     */
+    private boolean isNullableOneOfComposedSchema(ComposedSchema schema) {
+        // OAS 3.0 oneOf with nullable attribute and single oneOf element
+        if (Boolean.TRUE.equals(schema.getNullable()) && schema.getOneOf() != null && schema.getOneOf().size() == 1) {
+            return true;
+        }
 
+        // OAS 3.1 nullable schema
+        if (ModelUtils.isNullableComposedSchema(schema)) {
+            return true;
+        }
+
+        return false;
+    }
 }
