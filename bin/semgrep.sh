@@ -68,7 +68,7 @@ case $language in
 esac
 
 docker run --rm -v "$target_dir:/src" \
-    returntocorp/semgrep:0.97.0 \
+    returntocorp/semgrep:0.103 \
     semgrep \
     --error \
     --sarif \
