@@ -17,12 +17,14 @@ const argv = yargs(hideBin(process.argv))
     .usage('Usage: $0 [options] <pattern> ... <pattern>')
     .help('h')
     .alias('h', 'help')
+    .option('config', { describe: 'eslint config file' })
     .option('fix', { describe: 'Fix found issues' })
     .option('quiet', { describe: 'Report only errors' })
     .demandCommand(1)
     .argv;
 
 const eslintConfig = {
+    config: argv.config,
     quiet: !!argv.quiet,
     fix: !!argv.fix,
     patterns: argv._,
@@ -46,15 +48,17 @@ function getLintDecorator() {
     const eslint = new ESLint({
         fix: eslintConfig.fix,
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        overrideConfigFile: eslintConfig.config,
     });
 
-    const results = getLintDecorator()(await eslint.lintFiles(eslintConfig.patterns)).map((result) => ({
+    const originalResults = getLintDecorator()(await eslint.lintFiles(eslintConfig.patterns));
+    const results = originalResults.map((result) => ({
         ...result,
         filePath: path.relative(currentDir, result.filePath),
     }));
 
     if (eslintConfig.fix) {
-        await ESLint.outputFixes(results);
+        await ESLint.outputFixes(originalResults);
     }
 
     const consoleFormatter = await eslint.loadFormatter();
@@ -80,12 +84,12 @@ function getLintDecorator() {
             const rejected = formatResults.filter((result) => result.status === 'rejected');
             if (rejected.length) {
                 rejected.forEach((reason) => console.error('Failed to create output file.', reason));
-                process.exit(1);
-            } else if (errorsCount) {
-                return process.exit(2);
-            } else {
-                return process.exit(0);
+                return process.exit(1);
             }
+            if (errorsCount) {
+                return process.exit(2);
+            }
+            return process.exit(0);
         })
         .catch((error) => {
             console.error('Failed to create output files.', error);

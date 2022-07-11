@@ -27,12 +27,13 @@
     "eslint": "eslint.js"
   },
   "scripts": {
-    "eslint": "./eslint.js"
+    "eslint": "./eslint.js --config index.js ./eslint.js"
   },
   "dependencies": {
     "eslint-config-airbnb-base": "^15.0.0"
   },
   "devDependencies": {
+    "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "eslint": "^8.15.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-plugin-import": "^2.26.0",
