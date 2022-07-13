@@ -2,7 +2,6 @@ package com.equisoft.standards.gradle.global
 
 import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import net.linguica.gradle.maven.settings.MavenSettingsPlugin
 import org.cyclonedx.gradle.CycloneDxPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,7 +14,6 @@ import org.gradle.kotlin.dsl.repositories
 class GlobalConventionsPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
         plugins.apply(VersionsPlugin::class.java)
-        plugins.apply(MavenSettingsPlugin::class.java)
         plugins.apply(CycloneDxPlugin::class.java)
 
         repositories {
