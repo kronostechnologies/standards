@@ -58,7 +58,17 @@
     ]
   },
   "js": {
-    "addLabels": ["yarn"]
+    "addLabels": ["yarn"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor"],
+        "groupName": "Yarn minors"
+      },
+      {
+        "matchUpdateTypes": ["patch"],
+        "groupName": "Yarn patches"
+      }
+    ]
   },
   "php": {
     "addLabels": ["composer"]
