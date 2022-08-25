@@ -18,6 +18,10 @@
       "addLabels": ["circleci"]
     },
     {
+      "matchManagers": ["github-actions"],
+      "groupName": "Github actions"
+    },
+    {
       "matchManagers": ["composer"],
       "addLabels": ["composer"]
     },
@@ -25,7 +29,6 @@
       "matchDatasources": ["orb"],
       "addLabels": ["orb"]
     },
-
     {
       "matchUpdateTypes": ["major"],
       "addLabels": ["major"]
