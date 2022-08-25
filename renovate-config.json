@@ -4,6 +4,8 @@
     "config:base"
   ],
   "labels": ["dependency-update"],
+  "automerge": false,
+  "platformAutomerge": true,
   "packageRules": [
     {
       "matchDatasources": ["docker"],
