@@ -42,12 +42,12 @@ class KotlinStandardsPluginFunctionalTest {
         projectDir.resolve("build.gradle.kts").writeText(
             """
                 plugins {
-                    kotlin("jvm") version "1.6.20"
+                    kotlin("jvm") version "1.7.10"
                     id("com.equisoft.standards.kotlin")
                 }
                 dependencies {
-                    implementation("io.micronaut.test:micronaut-test-junit5:2.3.3")
-                    implementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+                    implementation("io.micronaut.test:micronaut-test-junit5:3.5.0")
+                    implementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
                 }
                 repositories {
                     mavenCentral()

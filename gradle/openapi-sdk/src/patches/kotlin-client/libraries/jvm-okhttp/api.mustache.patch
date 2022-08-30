@@ -4,7 +4,7 @@
  import {{packageName}}.infrastructure.toMultiValue
  
  {{#operations}}
--{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath) {
+-{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
 +{{#nonPublicApi}}internal {{/nonPublicApi}}class {{classname}}(
 +    basePath: kotlin.String = defaultBasePath,
 +    accessToken: String? = null,{{! Equisoft: Add optional accessToken}}

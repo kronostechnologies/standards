@@ -332,7 +332,9 @@ public abstract class AbstractPhpCodegen extends DefaultCodegen implements Codeg
             String type = super.getTypeDeclaration(p);
             return (!languageSpecificPrimitives.contains(type))
                     ? "\\" + modelPackage + "\\" + type : type;
-        } else if (p instanceof ComposedSchema) {
+        }
+        // Begin Equisoft patch
+         else if (p instanceof ComposedSchema) {
             // Support nullable defined using oneOf construct
             ComposedSchema composedSchema = (ComposedSchema)p;
             Boolean isNullable = Boolean.TRUE.equals(p.getNullable())
@@ -349,6 +351,7 @@ public abstract class AbstractPhpCodegen extends DefaultCodegen implements Codeg
                 }
             }
         }
+        // End Equisoft patch
 
         return super.getTypeDeclaration(p);
     }

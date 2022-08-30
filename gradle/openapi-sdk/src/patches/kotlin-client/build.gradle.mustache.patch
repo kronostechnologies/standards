@@ -9,9 +9,13 @@
      distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
  }
  
-@@ -46,6 +46,12 @@
- apply plugin: 'kotlinx-serialization'
- {{/kotlinx_serialization}}
+@@ -11,2 +11,2 @@
+-    ext.kotlin_version = '1.5.10'
++    ext.kotlin_version = '1.7.10'
+     {{#jvm-ktor}}
+@@ -51,6 +51,12 @@
+ apply plugin: 'idea'
+ {{/idea}}
  
 +files(
 +    "local.build.gradle",

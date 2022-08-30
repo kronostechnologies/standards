@@ -124,35 +124,34 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
         // NOTE: TypeScript uses camel cased reserved words, while models are title cased. We don't want lowercase comparisons.
         reservedWords.addAll(Arrays.asList(
-                // local variable names used in API methods (endpoints)
-                "varLocalPath", "queryParameters", "headerParams", "formParams", "useFormData", "varLocalDeferred",
-                "requestOptions", "from",
-                // Typescript reserved words
-                "abstract", "await", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", "export", "extends", "false", "final", "finally", "float", "for", "function", "goto", "if", "implements", "import", "in", "instanceof", "int", "interface", "let", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "super", "switch", "synchronized", "this", "throw", "transient", "true", "try", "typeof", "var", "void", "volatile", "while", "with", "yield"));
+            // local variable names used in API methods (endpoints)
+            "varLocalPath", "queryParameters", "headerParams", "formParams", "useFormData", "varLocalDeferred",
+            "requestOptions", "from",
+            // Typescript reserved words
+            "abstract", "await", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", "export", "extends", "false", "final", "finally", "float", "for", "function", "goto", "if", "implements", "import", "in", "instanceof", "int", "interface", "let", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "super", "switch", "synchronized", "this", "throw", "transient", "true", "try", "typeof", "var", "void", "volatile", "while", "with", "yield"));
 
         languageSpecificPrimitives = new HashSet<>(Arrays.asList(
-                "string",
-                "String",
-                "boolean",
-                "Boolean",
-                "Double",
-                "Integer",
-                "Long",
-                "Float",
-                "Object",
-                "Array",
-                "Date",
-                "number",
-                "any",
-                "File",
-                "Error",
-                "Map",
-                "Set",
-                "null"
+            "string",
+            "String",
+            "boolean",
+            "Boolean",
+            "Double",
+            "Integer",
+            "Long",
+            "Float",
+            "Object",
+            "Array",
+            "Date",
+            "number",
+            "any",
+            "File",
+            "Error",
+            "Map",
+            "Set"
         ));
 
         languageGenericTypes = new HashSet<>(Arrays.asList(
-                "Array"
+            "Array"
         ));
 
         instantiationTypes.put("array", "Array");
@@ -185,16 +184,15 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         typeMapping.put("UUID", "string");
         typeMapping.put("Error", "Error");
         typeMapping.put("AnyType", "any");
-        typeMapping.put("null", "null");
 
 
         cliOptions.add(new CliOption(NPM_NAME, "The name under which you want to publish generated npm package." +
-                " Required to generate a full package"));
+            " Required to generate a full package"));
         cliOptions.add(new CliOption(NPM_VERSION, "The version of your npm package. If not provided, using the version from the OpenAPI specification file.").defaultValue(this.getNpmVersion()));
         cliOptions.add(new CliOption(NPM_REPOSITORY, "Use this property to set an url your private npmRepo in the package.json"));
         cliOptions.add(CliOption.newBoolean(SNAPSHOT,
-                "When setting this property to true, the version will be suffixed with -SNAPSHOT." + SNAPSHOT_SUFFIX_FORMAT.get().toPattern(),
-                false));
+            "When setting this property to true, the version will be suffixed with -SNAPSHOT." + SNAPSHOT_SUFFIX_FORMAT.get().toPattern(),
+            false));
 
         cliOptions.add(new CliOption(CodegenConstants.MODEL_PROPERTY_NAMING, CodegenConstants.MODEL_PROPERTY_NAMING_DESC).defaultValue("camelCase"));
         cliOptions.add(new CliOption(CodegenConstants.SUPPORTS_ES6, CodegenConstants.SUPPORTS_ES6_DESC).defaultValue("false"));
@@ -448,14 +446,14 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         if (sanName.matches("^\\d.*")) {
             String modelName = safePrefix + sanName; // e.g. 200Response => Model200Response
             LOGGER.warn("{} (model name starts with number) cannot be used as model name. Renamed to {}", sanName,
-                    modelName);
+                modelName);
             return modelName;
         }
 
         if (languageSpecificPrimitives.contains(sanName)) {
             String modelName = safePrefix + sanName;
             LOGGER.warn("{} (model name matches existing language type) cannot be used as a model name. Renamed to {}",
-                    sanName, modelName);
+                sanName, modelName);
             return modelName;
         }
 
@@ -544,10 +542,10 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         } else if (ModelUtils.isDateTimeSchema(p)) {
             return UNDEFINED_VALUE;
         } else if (ModelUtils.isNumberSchema(p)) {
-           if (p.getDefault() != null) {
-             return p.getDefault().toString();
-           }
-           return UNDEFINED_VALUE;
+            if (p.getDefault() != null) {
+                return p.getDefault().toString();
+            }
+            return UNDEFINED_VALUE;
         } else if (ModelUtils.isIntegerSchema(p)) {
             if (p.getDefault() != null) {
                 return p.getDefault().toString();
@@ -603,12 +601,12 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
     public void setModelPropertyNaming(String naming) {
         if ("original".equals(naming) || "camelCase".equals(naming) ||
-                "PascalCase".equals(naming) || "snake_case".equals(naming)) {
+            "PascalCase".equals(naming) || "snake_case".equals(naming)) {
             this.modelPropertyNaming = naming;
         } else {
             throw new IllegalArgumentException("Invalid model property naming '" +
-                    naming + "'. Must be 'original', 'camelCase', " +
-                    "'PascalCase' or 'snake_case'");
+                naming + "'. Must be 'original', 'camelCase', " +
+                "'PascalCase' or 'snake_case'");
         }
     }
 
@@ -628,8 +626,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
                 return underscore(name);
             default:
                 throw new IllegalArgumentException("Invalid model property naming '" +
-                        name + "'. Must be 'original', 'camelCase', " +
-                        "'PascalCase' or 'snake_case'");
+                    name + "'. Must be 'original', 'camelCase', " +
+                    "'PascalCase' or 'snake_case'");
         }
 
     }
@@ -713,7 +711,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
                 for (CodegenProperty var : cm.allVars) {
                     if (Boolean.TRUE.equals(var.isEnum)) {
                         var.datatypeWithEnum = var.datatypeWithEnum
-                                .replace(var.enumName, cm.classname + var.enumName);
+                            .replace(var.enumName, cm.classname + var.enumName);
                     }
                 }
             }
@@ -774,7 +772,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
     private String getDiscriminatorValue(CodegenModel model) {
         return model.vendorExtensions.containsKey(X_DISCRIMINATOR_TYPE) ?
-                (String) model.vendorExtensions.get(X_DISCRIMINATOR_TYPE) : model.classname;
+            (String) model.vendorExtensions.get(X_DISCRIMINATOR_TYPE) : model.classname;
     }
 
     @Override
@@ -819,8 +817,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
         String httpLibName = this.getHttpLibForFramework(additionalProperties.get(FRAMEWORK_SWITCH).toString());
         supportingFiles.add(new SupportingFile(
-              "http"  + File.separator + httpLibName + ".mustache",
-              "http", httpLibName + ".ts"
+            "http"  + File.separator + httpLibName + ".mustache",
+            "http", httpLibName + ".ts"
         ));
 
         Object propPlatform = additionalProperties.get(PLATFORM_SWITCH);
@@ -942,7 +940,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
     public String getModelName(Schema sc) {
         if (sc.get$ref() != null) {
-            Schema unaliasedSchema = unaliasSchema(sc, importMapping);
+            Schema unaliasedSchema = unaliasSchema(sc, schemaMapping);
             if (unaliasedSchema.get$ref() != null) {
                 return toModelName(ModelUtils.getSimpleRef(sc.get$ref()));
             }
@@ -1390,8 +1388,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
                 example = "789";
             }
         } else if (Boolean.TRUE.equals(p.isDouble)
-                || Boolean.TRUE.equals(p.isFloat)
-                || Boolean.TRUE.equals(p.isNumber)) {
+            || Boolean.TRUE.equals(p.isFloat)
+            || Boolean.TRUE.equals(p.isNumber)) {
             if (example == null) {
                 example = "3.4";
             }
@@ -1530,8 +1528,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
     @Override
     public String toOneOfName(List<String> names, ComposedSchema composedSchema) {
         List<String> types = getTypesFromSchemas(composedSchema.getOneOf());
-        // Null is already handled by the isNullable flag
-        types.removeIf(p -> p.equals("null"));
+
         return String.join(" | ", types);
     }
 
@@ -1551,8 +1548,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
      */
     protected List<String> getTypesFromSchemas(List<Schema> schemas) {
         List<Schema> filteredSchemas = schemas.size() > 1
-                ? schemas.stream().filter(schema -> !"AnyType".equals(super.getSchemaType(schema))).collect(Collectors.toList())
-                : schemas;
+            ? schemas.stream().filter(schema -> !"AnyType".equals(super.getSchemaType(schema))).collect(Collectors.toList())
+            : schemas;
 
         return filteredSchemas.stream().map(schema -> {
             String schemaType = getSchemaType(schema);
@@ -1571,12 +1568,35 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
             return;
         }
 
-        String[] parts = type.split("( [|&] )|[<>]");
+        String[] parts = splitComposedType(type);
         for (String s : parts) {
             if (needToImport(s)) {
                 m.imports.add(s);
             }
         }
+    }
+
+    @Override
+    protected void addImport(Set<String> importsToBeAddedTo, String type) {
+        if (type == null) {
+            return;
+        }
+
+        String[] parts = splitComposedType(type);
+        for (String s : parts) {
+            super.addImport(importsToBeAddedTo, s);
+        }
+    }
+
+    /**
+     * Split composed types
+     * e.g. TheFirstType | TheSecondType to TheFirstType and TheSecondType
+     *
+     * @param type String with composed types
+     * @return list of types
+     */
+    protected String[] splitComposedType(String type) {
+        return type.replace(" ","").split("[|&<>]");
     }
 
     @Override
