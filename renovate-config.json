@@ -56,6 +56,14 @@
           "https://maven.pkg.github.com/kronostechnologies/*/",
           "https://maven.pkg.github.com/equisoft/*/"
         ]
+      },
+      {
+        "matchUpdateTypes": ["minor"],
+        "groupName": "Gradle minors",
+      },
+      {
+        "matchUpdateTypes": ["patch"],
+        "groupName": "Gradle patches",
       }
     ]
   },
