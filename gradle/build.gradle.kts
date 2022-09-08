@@ -3,22 +3,12 @@ import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 val javaVersion = JavaVersion.VERSION_17
 
 plugins {
-    `kotlin-dsl` version "2.3.3" apply false
+    `kotlin-dsl` apply false
 
     id("com.github.ben-manes.versions") version "0.42.0"
     id("org.cyclonedx.bom") version "1.5.0"
     id("org.jmailen.kotlinter") version "3.10.0" apply false
     id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
-}
-
-allprojects {
-    configurations.all {
-        resolutionStrategy.eachDependency {
-            if (requested.group == "org.jetbrains.kotlin") {
-                useVersion("1.6.21")
-            }
-        }
-    }
 }
 
 subprojects {
@@ -84,10 +74,10 @@ subprojects {
                     name = "gprWrite"
                     username = project.findProperty("gpr.write.user")?.toString()
                         ?: System.getenv("GPR_USER")
-                            ?: System.getenv("GHCR_USER")
+                                ?: System.getenv("GHCR_USER")
                     password = project.findProperty("gpr.write.key")?.toString()
                         ?: System.getenv("GPR_KEY")
-                            ?: System.getenv("GHCR_TOKEN")
+                                ?: System.getenv("GHCR_TOKEN")
                 }
             }
         }
@@ -143,6 +133,6 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        gradleVersion = "7.5"
+        gradleVersion = "7.5.1"
     }
 }

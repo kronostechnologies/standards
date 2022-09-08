@@ -9,7 +9,7 @@ val functionalTestImplementation = configurations
 val detektVersion = "1.20.0"
 
 dependencies {
-    val kotlinVersion = "1.6.21"
+    val kotlinVersion = "1.7.10"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")

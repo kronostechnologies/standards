@@ -55,7 +55,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
     public static final String SNAPSHOT = "snapshot";
 
     public static final String MODEL_PROPERTY_NAMING_DESC_WITH_WARNING = CodegenConstants.MODEL_PROPERTY_NAMING_DESC
-            + ". Only change it if you provide your own run-time code for (de-)serialization of models";
+        + ". Only change it if you provide your own run-time code for (de-)serialization of models";
 
     public static final String NULL_SAFE_ADDITIONAL_PROPS = "nullSafeAdditionalProps";
     public static final String NULL_SAFE_ADDITIONAL_PROPS_DESC = "Set to make additional properties types declare that their indexer may return undefined";
@@ -81,23 +81,23 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         super();
 
         modifyFeatureSet(features -> features
-                .includeDocumentationFeatures(DocumentationFeature.Readme)
-                .wireFormatFeatures(EnumSet.of(WireFormatFeature.JSON, WireFormatFeature.XML))
-                .securityFeatures(EnumSet.noneOf(
-                        SecurityFeature.class
-                ))
-                .excludeGlobalFeatures(
-                        GlobalFeature.XMLStructureDefinitions,
-                        GlobalFeature.Callbacks,
-                        GlobalFeature.LinkObjects,
-                        GlobalFeature.ParameterStyling
-                )
-                .includeSchemaSupportFeatures(
-                        SchemaSupportFeature.Polymorphism
-                )
-                .includeClientModificationFeatures(
-                        ClientModificationFeature.BasePath
-                )
+            .includeDocumentationFeatures(DocumentationFeature.Readme)
+            .wireFormatFeatures(EnumSet.of(WireFormatFeature.JSON, WireFormatFeature.XML))
+            .securityFeatures(EnumSet.noneOf(
+                SecurityFeature.class
+            ))
+            .excludeGlobalFeatures(
+                GlobalFeature.XMLStructureDefinitions,
+                GlobalFeature.Callbacks,
+                GlobalFeature.LinkObjects,
+                GlobalFeature.ParameterStyling
+            )
+            .includeSchemaSupportFeatures(
+                SchemaSupportFeature.Polymorphism
+            )
+            .includeClientModificationFeatures(
+                ClientModificationFeature.BasePath
+            )
         );
 
         // clear import mapping (from default generator) as TS does not use it
@@ -111,37 +111,37 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
 
         // NOTE: TypeScript uses camel cased reserved words, while models are title cased. We don't want lowercase comparisons.
         reservedWords.addAll(Arrays.asList(
-                // local variable names used in API methods (endpoints)
-                "varLocalPath", "queryParameters", "headerParams", "formParams", "useFormData", "varLocalDeferred",
-                "requestOptions",
-                // Typescript reserved words
-                "abstract", "await", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", "export", "extends", "false", "final", "finally", "float", "for", "function", "goto", "if", "implements", "import", "in", "instanceof", "int", "interface", "let", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "super", "switch", "synchronized", "this", "throw", "transient", "true", "try", "typeof", "var", "void", "volatile", "while", "with", "yield"));
+            // local variable names used in API methods (endpoints)
+            "varLocalPath", "queryParameters", "headerParams", "formParams", "useFormData", "varLocalDeferred",
+            "requestOptions",
+            // Typescript reserved words
+            "abstract", "await", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", "export", "extends", "false", "final", "finally", "float", "for", "function", "goto", "if", "implements", "import", "in", "instanceof", "int", "interface", "let", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "super", "switch", "synchronized", "this", "throw", "transient", "true", "try", "typeof", "var", "void", "volatile", "while", "with", "yield"));
 
         languageSpecificPrimitives = new HashSet<>(Arrays.asList(
-                "string",
-                "String",
-                "boolean",
-                "Boolean",
-                "Double",
-                "Integer",
-                "Long",
-                "Float",
-                "Object",
-                "Array",
-                "ReadonlyArray",
-                "Date",
-                "number",
-                "any",
-                "File",
-                "Error",
-                "Map",
-                "object",
-                "Set",
-                "null"
+            "string",
+            "String",
+            "boolean",
+            "Boolean",
+            "Double",
+            "Integer",
+            "Long",
+            "Float",
+            "Object",
+            "Array",
+            "ReadonlyArray",
+            "Date",
+            "number",
+            "any",
+            "File",
+            "Error",
+            "Map",
+            "object",
+            "Set",
+            "null" // Equisoft patch
         ));
 
         languageGenericTypes = new HashSet<>(Collections.singletonList(
-                "Array"
+            "Array"
         ));
 
         instantiationTypes.put("array", "Array");
@@ -174,7 +174,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         typeMapping.put("URI", "string");
         typeMapping.put("Error", "Error");
         typeMapping.put("AnyType", "any");
-        typeMapping.put("null", "null");
+        typeMapping.put("null", "null"); // Equisoft patch
 
         cliOptions.add(new CliOption(CodegenConstants.ENUM_NAME_SUFFIX, CodegenConstants.ENUM_NAME_SUFFIX_DESC).defaultValue(this.enumSuffix));
         cliOptions.add(new CliOption(CodegenConstants.ENUM_PROPERTY_NAMING, CodegenConstants.ENUM_PROPERTY_NAMING_DESC).defaultValue(this.enumPropertyNaming.name()));
@@ -182,11 +182,11 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         cliOptions.add(new CliOption(CodegenConstants.SUPPORTS_ES6, CodegenConstants.SUPPORTS_ES6_DESC).defaultValue(String.valueOf(this.getSupportsES6())));
         cliOptions.add(new CliOption(CodegenConstants.PARAM_NAMING, CodegenConstants.PARAM_NAMING_DESC).defaultValue(this.paramNaming.name()));
         this.cliOptions.add(new CliOption(NPM_NAME, "The name under which you want to publish generated npm package." +
-                " Required to generate a full package"));
+            " Required to generate a full package"));
         this.cliOptions.add(new CliOption(NPM_VERSION, "The version of your npm package. If not provided, using the version from the OpenAPI specification file.").defaultValue(this.getNpmVersion()));
         this.cliOptions.add(CliOption.newBoolean(SNAPSHOT,
-                "When setting this property to true, the version will be suffixed with -SNAPSHOT." + SNAPSHOT_SUFFIX_FORMAT.get().toPattern(),
-                false));
+            "When setting this property to true, the version will be suffixed with -SNAPSHOT." + SNAPSHOT_SUFFIX_FORMAT.get().toPattern(),
+            false));
         this.cliOptions.add(new CliOption(NULL_SAFE_ADDITIONAL_PROPS, NULL_SAFE_ADDITIONAL_PROPS_DESC).defaultValue(String.valueOf(this.getNullSafeAdditionalProps())));
     }
 
@@ -239,12 +239,12 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
     @Override
     public String toModelImport(String name){
         if(isUnionType(name)){
-           LOGGER.warn("The import is a union type. Consider using the toModelImportMap method.");
-           return toModelImportMap(name).values().stream().collect(Collectors.joining("|"));
+            LOGGER.warn("The import is a union type. Consider using the toModelImportMap method.");
+            return toModelImportMap(name).values().stream().collect(Collectors.joining("|"));
         }
         if(isIntersectionType(name)){
-           LOGGER.warn("The import is a intersection type. Consider using the toModelImportMap method.");
-           return toModelImportMap(name).values().stream().collect(Collectors.joining("&"));
+            LOGGER.warn("The import is a intersection type. Consider using the toModelImportMap method.");
+            return toModelImportMap(name).values().stream().collect(Collectors.joining("&"));
         }
         return super.toModelImport(name);
     }
@@ -262,7 +262,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
     }
 
     private String[] splitComposedType (String name) {
-       return name.replace(" ","").split("[|&<>]");
+        return name.replace(" ","").split("[|&<>]");
     }
 
     private boolean isUnionType(String name){
@@ -408,14 +408,14 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         if (sanName.matches("^\\d.*")) {
             String modelName = safePrefix + sanName; // e.g. 200Response => Model200Response
             LOGGER.warn("{} (model name starts with number) cannot be used as model name. Renamed to {}", sanName,
-                    modelName);
+                modelName);
             return modelName;
         }
 
         if (languageSpecificPrimitives.contains(sanName)) {
             String modelName = safePrefix + sanName;
             LOGGER.warn("{} (model name matches existing language type) cannot be used as a model name. Renamed to {}",
-                    sanName, modelName);
+                sanName, modelName);
             return modelName;
         }
 
@@ -599,8 +599,8 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             modelPropertyNaming = MODEL_PROPERTY_NAMING_TYPE.valueOf(naming);
         } catch (IllegalArgumentException e) {
             String values = Stream.of(MODEL_PROPERTY_NAMING_TYPE.values())
-                    .map(value -> "'" + value.name() + "'")
-                    .collect(Collectors.joining(", "));
+                .map(value -> "'" + value.name() + "'")
+                .collect(Collectors.joining(", "));
 
             String msg = String.format(Locale.ROOT, "Invalid model property naming '%s'. Must be one of %s.", naming, values);
             throw new IllegalArgumentException(msg);
@@ -612,8 +612,8 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             paramNaming = PARAM_NAMING_TYPE.valueOf(naming);
         } catch (IllegalArgumentException e) {
             String values = Stream.of(PARAM_NAMING_TYPE.values())
-                    .map(value -> "'" + value.name() + "'")
-                    .collect(Collectors.joining(", "));
+                .map(value -> "'" + value.name() + "'")
+                .collect(Collectors.joining(", "));
 
             String msg = String.format(Locale.ROOT, "Invalid parameter naming '%s'. Must be one of %s.", naming, values);
             throw new IllegalArgumentException(msg);
@@ -640,8 +640,8 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
                 return underscore(name);
             default:
                 throw new IllegalArgumentException("Invalid param naming '" +
-                        name + "'. Must be 'original', 'camelCase', " +
-                        "'PascalCase' or 'snake_case'");
+                    name + "'. Must be 'original', 'camelCase', " +
+                    "'PascalCase' or 'snake_case'");
         }
 
     }
@@ -658,8 +658,8 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
                 return underscore(name);
             default:
                 throw new IllegalArgumentException("Invalid model property naming '" +
-                        name + "'. Must be 'original', 'camelCase', " +
-                        "'PascalCase' or 'snake_case'");
+                    name + "'. Must be 'original', 'camelCase', " +
+                    "'PascalCase' or 'snake_case'");
         }
 
     }
@@ -725,8 +725,8 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             enumPropertyNaming = ENUM_PROPERTY_NAMING_TYPE.valueOf(naming);
         } catch (IllegalArgumentException e) {
             String values = Stream.of(ENUM_PROPERTY_NAMING_TYPE.values())
-                    .map(value -> "'" + value.name() + "'")
-                    .collect(Collectors.joining(", "));
+                .map(value -> "'" + value.name() + "'")
+                .collect(Collectors.joining(", "));
 
             String msg = String.format(Locale.ROOT, "Invalid enum property naming '%s'. Must be one of %s.",naming, values);
             throw new IllegalArgumentException(msg);
@@ -785,7 +785,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
                 for (CodegenProperty var : cm.allVars) {
                     if (Boolean.TRUE.equals(var.isEnum)) {
                         var.datatypeWithEnum = var.datatypeWithEnum
-                                .replace(var.enumName, cm.classname + classEnumSeparator + var.enumName);
+                            .replace(var.enumName, cm.classname + classEnumSeparator + var.enumName);
                     }
                 }
             }
@@ -859,7 +859,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
 
     private String getDiscriminatorValue(CodegenModel model) {
         return model.vendorExtensions.containsKey(X_DISCRIMINATOR_TYPE) ?
-                (String) model.vendorExtensions.get(X_DISCRIMINATOR_TYPE) : model.classname;
+            (String) model.vendorExtensions.get(X_DISCRIMINATOR_TYPE) : model.classname;
     }
 
     @Override
@@ -925,7 +925,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
     public String toOneOfName(List<String> names, ComposedSchema composedSchema) {
         List<String> types = getTypesFromSchemas(composedSchema.getOneOf());
         // Null is already handled by the isNullable flag
-        types.removeIf(p -> p.equals("null"));
+        types.removeIf(p -> p.equals("null")); // Equisoft patch
         return String.join(" | ", types);
     }
 

@@ -42,6 +42,7 @@ public class InlineModelResolver {
     private Map<String, Schema> addedModels = new HashMap<>();
     private Map<String, String> generatedSignature = new HashMap<>();
     private Map<String, String> inlineSchemaNameMapping = new HashMap<>();
+    private Map<String, String> inlineSchemaNameDefaults = new HashMap<>();
     private Set<String> inlineSchemaNameMappingValues = new HashSet<>();
     public boolean resolveInlineEnums = false;
 
@@ -60,9 +61,18 @@ public class InlineModelResolver {
 
     final Logger LOGGER = LoggerFactory.getLogger(InlineModelResolver.class);
 
+    public InlineModelResolver() {
+        this.inlineSchemaNameDefaults.put("arrayItemSuffix", "_inner");
+        this.inlineSchemaNameDefaults.put("mapItemSuffix", "_value");
+    }
+
     public void setInlineSchemaNameMapping(Map inlineSchemaNameMapping) {
         this.inlineSchemaNameMapping = inlineSchemaNameMapping;
         this.inlineSchemaNameMappingValues = new HashSet<>(inlineSchemaNameMapping.values());
+    }
+
+    public void setInlineSchemaNameDefaults(Map inlineSchemaNameDefaults) {
+        this.inlineSchemaNameDefaults.putAll(inlineSchemaNameDefaults);
     }
 
     void flatten(OpenAPI openAPI) {
@@ -123,9 +133,9 @@ public class InlineModelResolver {
                 Map<String, Callback> callbacks = operation.getCallbacks();
                 if (callbacks != null) {
                     operations.addAll(callbacks.values().stream()
-                            .flatMap(callback -> callback.values().stream())
-                            .flatMap(pathItem -> pathItem.readOperations().stream())
-                            .collect(Collectors.toList()));
+                        .flatMap(callback -> callback.values().stream())
+                        .flatMap(pathItem -> pathItem.readOperations().stream())
+                        .collect(Collectors.toList()));
                 }
             }
 
@@ -172,7 +182,7 @@ public class InlineModelResolver {
             if (m.getAnyOf() != null && !m.getAnyOf().isEmpty()) {
                 return true;
             }
-            if (m.getOneOf() != null && !m.getOneOf().isEmpty() && !isNullableOneOfComposedSchema(m)) {
+            if (m.getOneOf() != null && !m.getOneOf().isEmpty() && !isNullableOneOfComposedSchema(m)) { // Equisoft patch
                 return true;
             }
         }
@@ -192,10 +202,10 @@ public class InlineModelResolver {
             // if ref already, no inline schemas should be present but check for
             // any to catch OpenAPI violations
             if (isModelNeeded(schema) || "object".equals(schema.getType()) ||
-                    schema.getProperties() != null || schema.getAdditionalProperties() != null ||
-                    schema instanceof ComposedSchema) {
+                schema.getProperties() != null || schema.getAdditionalProperties() != null ||
+                schema instanceof ComposedSchema) {
                 LOGGER.error("Illegal schema found with $ref combined with other properties," +
-                        " no properties should be defined alongside a $ref:\n " + schema.toString());
+                    " no properties should be defined alongside a $ref:\n " + schema.toString());
             }
             return;
         }
@@ -218,7 +228,7 @@ public class InlineModelResolver {
                     } else if (prop instanceof ComposedSchema) {
                         ComposedSchema m = (ComposedSchema) prop;
                         if (m.getAllOf() != null && m.getAllOf().size() == 1 &&
-                                !(m.getAllOf().get(0).getType() == null || "object".equals(m.getAllOf().get(0).getType()))) {
+                            !(m.getAllOf().get(0).getType() == null || "object".equals(m.getAllOf().get(0).getType()))) {
                             // allOf with only 1 type (non-model)
                             LOGGER.info("allOf schema used by the property `{}` replaced by its only item (a type)", propName);
                             props.put(propName, m.getAllOf().get(0));
@@ -230,7 +240,7 @@ public class InlineModelResolver {
             if (schema.getAdditionalProperties() != null) {
                 if (schema.getAdditionalProperties() instanceof Schema) {
                     Schema inner = (Schema) schema.getAdditionalProperties();
-                    String schemaName = resolveModelName(schema.getTitle(), modelPrefix + "_value");
+                    String schemaName = resolveModelName(schema.getTitle(), modelPrefix + this.inlineSchemaNameDefaults.get("mapItemSuffix"));
                     // Recurse to create $refs for inner models
                     gatherInlineModels(inner, schemaName);
                     if (isModelNeeded(inner)) {
@@ -243,13 +253,13 @@ public class InlineModelResolver {
         } else if (schema.getProperties() != null) {
             // If non-object type is specified but also properties
             LOGGER.error("Illegal schema found with non-object type combined with properties," +
-                    " no properties should be defined:\n " + schema.toString());
+                " no properties should be defined:\n " + schema.toString());
             return;
         } else if (schema.getAdditionalProperties() != null) {
             // If non-object type is specified but also additionalProperties
             LOGGER.error("Illegal schema found with non-object type combined with" +
-                    " additionalProperties, no additionalProperties should be defined:\n " +
-                    schema.toString());
+                " additionalProperties, no additionalProperties should be defined:\n " +
+                schema.toString());
             return;
         }
         // Check array items
@@ -262,10 +272,10 @@ public class InlineModelResolver {
             }*/
             if (items == null) {
                 LOGGER.error("Illegal schema found with array type but no items," +
-                        " items must be defined for array schemas:\n " + schema.toString());
+                    " items must be defined for array schemas:\n " + schema.toString());
                 return;
             }
-            String schemaName = resolveModelName(items.getTitle(), modelPrefix + "_inner");
+            String schemaName = resolveModelName(items.getTitle(), modelPrefix + this.inlineSchemaNameDefaults.get("arrayItemSuffix"));
 
             // Recurse to create $refs for inner models
             gatherInlineModels(items, schemaName);
@@ -322,7 +332,7 @@ public class InlineModelResolver {
                 }
                 m.setAnyOf(newAnyOf);
             }
-            if (m.getOneOf() != null && !isNullableOneOfComposedSchema(m)) {
+            if (m.getOneOf() != null && !isNullableOneOfComposedSchema(m)) { // Equisoft patch
                 List<Schema> newOneOf = new ArrayList<Schema>();
                 for (Schema inner : m.getOneOf()) {
                     String schemaName = resolveModelName(inner.getTitle(), modelPrefix + "_oneOf");
@@ -402,7 +412,7 @@ public class InlineModelResolver {
         }
 
         flattenContent(requestBody.getContent(),
-                (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_request");
+            (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_request");
     }
 
     /**
@@ -428,7 +438,7 @@ public class InlineModelResolver {
                 continue;
             }
             String schemaName = resolveModelName(parameterSchema.getTitle(),
-                    (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_" + parameter.getName() + "_parameter");
+                (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_" + parameter.getName() + "_parameter");
             // Recursively gather/make inline models within this schema if any
             gatherInlineModels(parameterSchema, schemaName);
             if (isModelNeeded(parameterSchema)) {
@@ -456,7 +466,7 @@ public class InlineModelResolver {
             ApiResponse response = responsesEntry.getValue();
 
             flattenContent(response.getContent(),
-                    (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_" + key + "_response");
+                (operation.getOperationId() == null ? modelName : operation.getOperationId()) + "_" + key + "_response");
         }
     }
 
@@ -494,9 +504,9 @@ public class InlineModelResolver {
         while (listIterator.hasNext()) {
             Schema component = listIterator.next();
             if ((component != null) &&
-                    (component.get$ref() == null) &&
-                    ((component.getProperties() != null && !component.getProperties().isEmpty()) ||
-                            (component.getEnum() != null && !component.getEnum().isEmpty()))) {
+                (component.get$ref() == null) &&
+                ((component.getProperties() != null && !component.getProperties().isEmpty()) ||
+                    (component.getEnum() != null && !component.getEnum().isEmpty()))) {
                 // If a `title` attribute is defined in the inline schema, codegen uses it to name the
                 // inline schema. Otherwise, we'll use the default naming such as InlineObject1, etc.
                 // We know that this is not the best way to name the model.
@@ -623,8 +633,8 @@ public class InlineModelResolver {
      */
     private String sanitizeName(final String name) {
         return name
-                .replaceAll("^[0-9]", "_$0") // e.g. 12object => _12object
-                .replaceAll("[^A-Za-z0-9]", "_"); // e.g. io.schema.User name => io_schema_User_name
+            .replaceAll("^[0-9]", "_$0") // e.g. 12object => _12object
+            .replaceAll("[^A-Za-z0-9]", "_"); // e.g. io.schema.User name => io_schema_User_name
     }
 
     /**
@@ -657,7 +667,7 @@ public class InlineModelResolver {
             String key = propertiesEntry.getKey();
             Schema property = propertiesEntry.getValue();
             if (property instanceof ObjectSchema && ((ObjectSchema) property).getProperties() != null
-                    && ((ObjectSchema) property).getProperties().size() > 0) {
+                && ((ObjectSchema) property).getProperties().size() > 0) {
                 ObjectSchema op = (ObjectSchema) property;
                 String modelName = resolveModelName(op.getTitle(), path + "_" + key);
                 Schema model = modelFromProperty(openAPI, op, modelName);
