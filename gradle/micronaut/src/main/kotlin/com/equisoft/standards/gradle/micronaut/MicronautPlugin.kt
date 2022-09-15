@@ -12,13 +12,14 @@ import org.graalvm.buildtools.gradle.dsl.GraalVMExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.provider.DefaultProvider
-import org.gradle.api.plugins.JavaPluginConvention
+import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.SourceSet
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JavaToolchainService
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.allopen.gradle.AllOpenGradleSubplugin
@@ -134,9 +135,7 @@ class MicronautPlugin : Plugin<Project> {
     }
 
     private fun Project.configureAnnotationProcessing() {
-        val sourceSets = convention
-            .getPlugin(JavaPluginConvention::class.java)
-            .sourceSets
+        val sourceSets = extensions.getByType(JavaPluginExtension::class).sourceSets
         addGraalVMAnnotationProcessorDependency(sourceSets.filter { sourceSet -> SOURCE_SETS.contains(sourceSet.name) })
     }
 
