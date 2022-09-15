@@ -6,7 +6,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
 
-    val micronautPluginVersion = "3.5.3"
+    val micronautPluginVersion = "3.6.0"
     implementation("io.micronaut.gradle:micronaut-docker-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-graalvm-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-gradle-plugin:$micronautPluginVersion")
