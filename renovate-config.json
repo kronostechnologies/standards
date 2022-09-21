@@ -65,23 +65,23 @@
           "com.equisoft",
           "io.equisoft"
         ],
-        "groupName": "Gradle minors",
+        "groupName": "Gradle minors"
       },
       {
         "matchPackagePrefixes": ["org.jetbrains.kotlin"],
-        "groupName": "Kotlin",
+        "groupName": "Kotlin"
       },
       {
         "matchPackagePrefixes": ["io.micronaut"],
-        "groupName": "Micronaut",
+        "groupName": "Micronaut"
       },
       {
         "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
-        "groupName": "Equisoft",
-      },,
+        "groupName": "Equisoft"
+      },
       {
         "matchUpdateTypes": ["patch"],
-        "groupName": "Gradle patches",
+        "groupName": "Gradle patches"
       }
     ]
   },
