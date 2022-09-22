@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  validate-renovate:
+    runs-on: ubuntu-latest
+    env:
+      FILES: renovate-config.json renovate-base.json
+      SCHEMA_URL: https://docs.renovatebot.com/renovate-schema.json
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: .github/workflows/validate-renovate.yaml
+      - run: pip install check-jsonschema
+      - run: |
+          curl -L -o renovate.schema "$SCHEMA_URL"
+          jq '. *= {"additionalProperties": false, "properties": {"$schema": {"type": "string", "format": "uri", "default": ""}}}' \
+            renovate.schema > /tmp/renovate.schema && mv /tmp/renovate.schema renovate.schema
+      - run: |
+          check-jsonschema --schemafile renovate.schema --output-format text $FILES
