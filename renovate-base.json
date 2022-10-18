@@ -28,23 +28,7 @@
     },
     {
       "hostType": "docker",
-      "matchHost": "611542441284.dkr.ecr.us-east-1.amazonaws.com/crm-base",
-      "username": "ASIAY4YWFDVCLUSQGNVN",
-      "encrypted": {
-        "password": "wcFMA/xDdHCJBTolAQ/9FDNp9Y5ckx2zyGfsNFTGynXjD4ORqH9Zfc+XQnpj2tdEogwGkcEdlAjjl+awr4u32FuYJObvzL8ge9hvdZXVo/qOPSb2d+LTRNPvl/SrXJB25Umbb1fInjh/37R47awu8yqlSKF8L+YDBNdbHRd6E/wdUaK5ZP1FKzdFdN8kuZ7mPL1eIsVD5ghylG4oS8g95OG7QbqvtAoRJ2UNqKMbkAPeUmR+ajG2+lXQ5gQopdEGlcxg8+8s3zKMiCb2/2cI6WmRhhv7noLtMHuFDvvL22qAw/TR+KIkNhJwC4p90uXPvSVowzdl3LDMf3G9ALeK0va0U44BI7OOLMFKznqzHLJg05RDLMsiDxeQEjzA2FB4nEfeVVwTTEhEulPPJayZtCvo07IyPZUTvosU8pRhqc4EINgh1dutZnphdWM2XNe42rlkQQSObrttT7WIweomhGQ4mP8cH5u/+KDWY4cqvikt792koDCZshOWK+48hJCbMSwnUc3p6i76RukFqIHsJAQbBJXRCVrGnrcFdO0ybI46+GCF39zqBVWWWksACRzmYBXvLPciCz9cHF9UOWsfPQ76xqD7hIQM6NtepxMCvXGqr0dCFyzNTlc00c/aRwLOkJcKhpQM7/lNq224e5X0LwvSjXNCXETQQqqtaXUdAbDGbo2J4odXjrmCLGUIyAXSgQEXns1S7MAYYoJ04KPRGU2PC2pewB0CNbdtBIBABx1mob9j30dQNPfhIZtWG4Dr0HWpXgaUKTeQrIuc3o0PHV8wi/ZDe1Sco2LYxZdVewHRrrdDx7GyUOvdka0ysHTvn2EyuBW8liEw5rA+oQQSyiFUdHG70kfBjl1fcgEx04o6Aw"
-      }
-    },
-    {
-      "hostType": "docker",
-      "matchHost": "611542441284.dkr.ecr.us-east-1.amazonaws.com/crm-cron-base",
-      "username": "ASIAY4YWFDVCLUSQGNVN",
-      "encrypted": {
-        "password": "wcFMA/xDdHCJBTolAQ/9FDNp9Y5ckx2zyGfsNFTGynXjD4ORqH9Zfc+XQnpj2tdEogwGkcEdlAjjl+awr4u32FuYJObvzL8ge9hvdZXVo/qOPSb2d+LTRNPvl/SrXJB25Umbb1fInjh/37R47awu8yqlSKF8L+YDBNdbHRd6E/wdUaK5ZP1FKzdFdN8kuZ7mPL1eIsVD5ghylG4oS8g95OG7QbqvtAoRJ2UNqKMbkAPeUmR+ajG2+lXQ5gQopdEGlcxg8+8s3zKMiCb2/2cI6WmRhhv7noLtMHuFDvvL22qAw/TR+KIkNhJwC4p90uXPvSVowzdl3LDMf3G9ALeK0va0U44BI7OOLMFKznqzHLJg05RDLMsiDxeQEjzA2FB4nEfeVVwTTEhEulPPJayZtCvo07IyPZUTvosU8pRhqc4EINgh1dutZnphdWM2XNe42rlkQQSObrttT7WIweomhGQ4mP8cH5u/+KDWY4cqvikt792koDCZshOWK+48hJCbMSwnUc3p6i76RukFqIHsJAQbBJXRCVrGnrcFdO0ybI46+GCF39zqBVWWWksACRzmYBXvLPciCz9cHF9UOWsfPQ76xqD7hIQM6NtepxMCvXGqr0dCFyzNTlc00c/aRwLOkJcKhpQM7/lNq224e5X0LwvSjXNCXETQQqqtaXUdAbDGbo2J4odXjrmCLGUIyAXSgQEXns1S7MAYYoJ04KPRGU2PC2pewB0CNbdtBIBABx1mob9j30dQNPfhIZtWG4Dr0HWpXgaUKTeQrIuc3o0PHV8wi/ZDe1Sco2LYxZdVewHRrrdDx7GyUOvdka0ysHTvn2EyuBW8liEw5rA+oQQSyiFUdHG70kfBjl1fcgEx04o6Aw"
-      }
-    },
-    {
-      "hostType": "docker",
-      "matchHost": "611542441284.dkr.ecr.us-east-1.amazonaws.com/crm-worker-base",
+      "matchHost": "https://611542441284.dkr.ecr.us-east-1.amazonaws.com",
       "username": "ASIAY4YWFDVCLUSQGNVN",
       "encrypted": {
         "password": "wcFMA/xDdHCJBTolAQ/9FDNp9Y5ckx2zyGfsNFTGynXjD4ORqH9Zfc+XQnpj2tdEogwGkcEdlAjjl+awr4u32FuYJObvzL8ge9hvdZXVo/qOPSb2d+LTRNPvl/SrXJB25Umbb1fInjh/37R47awu8yqlSKF8L+YDBNdbHRd6E/wdUaK5ZP1FKzdFdN8kuZ7mPL1eIsVD5ghylG4oS8g95OG7QbqvtAoRJ2UNqKMbkAPeUmR+ajG2+lXQ5gQopdEGlcxg8+8s3zKMiCb2/2cI6WmRhhv7noLtMHuFDvvL22qAw/TR+KIkNhJwC4p90uXPvSVowzdl3LDMf3G9ALeK0va0U44BI7OOLMFKznqzHLJg05RDLMsiDxeQEjzA2FB4nEfeVVwTTEhEulPPJayZtCvo07IyPZUTvosU8pRhqc4EINgh1dutZnphdWM2XNe42rlkQQSObrttT7WIweomhGQ4mP8cH5u/+KDWY4cqvikt792koDCZshOWK+48hJCbMSwnUc3p6i76RukFqIHsJAQbBJXRCVrGnrcFdO0ybI46+GCF39zqBVWWWksACRzmYBXvLPciCz9cHF9UOWsfPQ76xqD7hIQM6NtepxMCvXGqr0dCFyzNTlc00c/aRwLOkJcKhpQM7/lNq224e5X0LwvSjXNCXETQQqqtaXUdAbDGbo2J4odXjrmCLGUIyAXSgQEXns1S7MAYYoJ04KPRGU2PC2pewB0CNbdtBIBABx1mob9j30dQNPfhIZtWG4Dr0HWpXgaUKTeQrIuc3o0PHV8wi/ZDe1Sco2LYxZdVewHRrrdDx7GyUOvdka0ysHTvn2EyuBW8liEw5rA+oQQSyiFUdHG70kfBjl1fcgEx04o6Aw"
