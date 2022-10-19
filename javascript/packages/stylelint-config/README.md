@@ -22,21 +22,12 @@ Then create a _.stylelintrc_ file that uses Equisoft's configuration:
 }
 ```
 
-Then create a javascript file to use the [custom formatter](./formatter.js):
-
-```javascript
-// scripts/stylelint-formatter.js
-const formatter = require('@equisoft/stylelint-config/formatter');
-
-module.exports = formatter;
-```
-
 Finally create a script in your _package.json_ to easily run stylelint:
 
 ```json
 {
   "scripts": {
-    "stylelint": "stylelint --config .stylelintrc --custom-formatter scripts/stylelint-formatter.js 'src/**/*.{css,scss,js,jsx,ts,tsx}'",
+    "stylelint": "stylelint --config .stylelintrc --custom-formatter @equisoft/stylelint-config/formatter 'src/**/*.{css,scss,js,jsx,ts,tsx}'",
     "stylelint:ci": "yarn stylelint"
   }
 }

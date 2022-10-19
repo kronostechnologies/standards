@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Equisoft's stylelint configuration",
   "license": "MIT",
   "main": "index.js",
@@ -28,14 +28,14 @@
     "stylelint-config"
   ],
   "dependencies": {
-    "postcss-scss": "~4.0.4",
-    "stylelint-config-standard-scss": "~4.0.0",
+    "postcss-scss": "~4.0.5",
+    "stylelint-config-standard-scss": "~5.0.0",
     "stylelint-junit-formatter": "~0.2.2",
     "stylelint-processor-styled-components": "~1.10.0",
     "stylelint-sarif-formatter": "~1.0.7"
   },
   "devDependencies": {
-    "stylelint": "~14.8.5",
+    "stylelint": "~14.14.0",
     "stylelint-order": "~5.0.0"
   },
   "peerDependencies": {
