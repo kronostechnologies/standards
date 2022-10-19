@@ -15,6 +15,7 @@ module.exports = {
     ],
     rules: {
         'import/no-extraneous-dependencies': 'off',
+        'jsx-quotes': ['error', 'prefer-double'],
         'no-underscore-dangle': ['error', { 'allowAfterThis': true }],
         'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
         'react/destructuring-assignment': 'off',
