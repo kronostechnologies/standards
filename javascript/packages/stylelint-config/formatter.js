@@ -9,10 +9,12 @@ const { formatters: { string: stringFormatter, json: jsonFormatter } } = require
 const fs = require('fs');
 const path = require('path');
 
+const INIT_CWD = process.env.INIT_CWD;
+
 const formatters = [
-    { formatter: junitFormatter, destination: 'build/stylelint/junit.xml' },
-    { formatter: jsonFormatter, destination: 'build/stylelint/report.json' },
-    { formatter: sarifFormatter, destination: 'build/stylelint/report.sarif' },
+    { formatter: junitFormatter, destination: `${INIT_CWD}/build/stylelint/junit.xml` },
+    { formatter: jsonFormatter, destination: `${INIT_CWD}/build/stylelint/report.json` },
+    { formatter: sarifFormatter, destination: `${INIT_CWD}/build/stylelint/report.sarif` },
 ];
 
 module.exports = (results, returnResult) => {
