@@ -1,7 +1,7 @@
-version = "0.5.0-SNAPSHOT"
+version = "0.6.0-SNAPSHOT"
 
 dependencies {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.7.20"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")

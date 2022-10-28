@@ -1,6 +1,6 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-version = "1.2.0-SNAPSHOT"
+version = "1.3.0-SNAPSHOT"
 
 val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
@@ -9,7 +9,7 @@ val functionalTestImplementation = configurations
 val detektVersion = "1.20.0"
 
 dependencies {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.7.20"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
