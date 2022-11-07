@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config-typescript-react",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Equisoft's TypeScript ESLint configuration for React. Based on eslint-config-react",
   "license": "MIT",
   "main": "index.js",
@@ -25,6 +25,9 @@
     "react",
     "typescript"
   ],
+  "bin": {
+    "eslint": "eslint.js"
+  },
   "dependencies": {
     "@equisoft/eslint-config-react": "workspace:*",
     "@equisoft/eslint-config-typescript": "workspace:*"
