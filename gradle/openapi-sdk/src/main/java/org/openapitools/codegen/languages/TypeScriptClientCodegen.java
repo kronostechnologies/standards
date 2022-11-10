@@ -114,9 +114,6 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
         this.generatorMetadata = GeneratorMetadata.newBuilder(generatorMetadata).stability(Stability.EXPERIMENTAL).build();
 
-        // clear import mapping (from default generator) as TS does not use it
-        // at the moment
-        importMapping.clear();
         outputFolder = "generated-code" + File.separator + "typescript";
         embeddedTemplateDir = templateDir = "typescript";
 
@@ -147,7 +144,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
             "File",
             "Error",
             "Map",
-            "Set"
+            "Set",
+            "null"
         ));
 
         languageGenericTypes = new HashSet<>(Arrays.asList(
@@ -184,6 +182,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         typeMapping.put("UUID", "string");
         typeMapping.put("Error", "Error");
         typeMapping.put("AnyType", "any");
+        typeMapping.put("null", "null");
 
 
         cliOptions.add(new CliOption(NPM_NAME, "The name under which you want to publish generated npm package." +
@@ -237,7 +236,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         supportingFiles.add(new SupportingFile("types" + File.separator + "ObjectParamAPI.mustache", "types", "ObjectParamAPI.ts"));
 
         // models
-        setModelPackage("");
+        setModelPackage("models");
         supportingFiles.add(new SupportingFile("model" + File.separator + "ObjectSerializer.mustache", "models", "ObjectSerializer.ts"));
         modelTemplateFiles.put("model" + File.separator + "model.mustache", ".ts");
 
@@ -325,8 +324,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         // Add additional filename information for model imports in the apis
         List<Map<String, String>> imports = operations.getImports();
         for (Map<String, String> im : imports) {
-            im.put("filename", im.get("import").replace(".", "/"));
-            im.put("classname", getModelnameFromModelFilename(im.get("import")));
+            im.put("filename", im.get("import"));
         }
 
         OperationMap operationsMap = operations.getOperations();
@@ -360,11 +358,6 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         }
 
         return String.join(" | ", returnTypes);
-    }
-
-    private String getModelnameFromModelFilename(String filename) {
-        String name = filename.substring((modelPackage() + File.separator).length());
-        return camelize(name);
     }
 
     @Override
@@ -411,6 +404,11 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         fullModelName = addPrefix(fullModelName, modelNamePrefix);
         fullModelName = addSuffix(fullModelName, modelNameSuffix);
         return toTypescriptTypeName(fullModelName, "Model");
+    }
+
+    @Override
+    public String toModelImport(String name) {
+        return ".." + File.separator + modelPackage() + File.separator + toModelName(name);
     }
 
     protected String addPrefix(String name, String prefix) {
@@ -465,7 +463,6 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         // should be the same as the model name
         return toModelName(name);
     }
-
 
     @Override
     protected String getParameterDataType(Parameter parameter, Schema p) {
@@ -731,13 +728,12 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
                 HashMap<String, String> tsImport = new HashMap<>();
                 // TVG: This is used as class name in the import statements of the model file
                 tsImport.put("classname", im);
-                tsImport.put("filename", toModelFilename(im));
+                tsImport.put("filename", importMapping.getOrDefault(im, toModelImport(im)));
                 tsImports.add(tsImport);
             }
         }
         return tsImports;
     }
-
 
     @Override
     public Map<String, ModelsMap> postProcessAllModels(Map<String, ModelsMap> objs) {
@@ -809,7 +805,6 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
         // change package names
         apiPackage = this.apiPackage + ".apis";
-        modelPackage = this.modelPackage + ".models";
         testPackage = this.testPackage + ".tests";
 
         additionalProperties.putIfAbsent(FRAMEWORK_SWITCH, FRAMEWORKS[0]);
@@ -885,10 +880,10 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
         Schema inner;
         if (ModelUtils.isArraySchema(p)) {
             inner = ((ArraySchema) p).getItems();
-            return this.getSchemaType(p) + "<" + this.getTypeDeclaration(ModelUtils.unaliasSchema(this.openAPI, inner)) + ">";
+            return this.getSchemaType(p) + "<" + this.getTypeDeclaration(unaliasSchema(inner)) + ">";
         } else if (ModelUtils.isMapSchema(p)) {
-            inner = (Schema) p.getAdditionalProperties();
-            return "{ [key: string]: " + this.getTypeDeclaration(ModelUtils.unaliasSchema(this.openAPI, inner)) + "; }";
+            inner = getSchemaAdditionalProperties(p);
+            return "{ [key: string]: " + this.getTypeDeclaration(unaliasSchema(inner)) + "; }";
         } else if (ModelUtils.isFileSchema(p)) {
             return "HttpFile";
         } else if (ModelUtils.isBinarySchema(p)) {
@@ -940,7 +935,7 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
 
     public String getModelName(Schema sc) {
         if (sc.get$ref() != null) {
-            Schema unaliasedSchema = unaliasSchema(sc, schemaMapping);
+            Schema unaliasedSchema = unaliasSchema(sc);
             if (unaliasedSchema.get$ref() != null) {
                 return toModelName(ModelUtils.getSimpleRef(sc.get$ref()));
             }
@@ -1528,7 +1523,8 @@ public class TypeScriptClientCodegen extends DefaultCodegen implements CodegenCo
     @Override
     public String toOneOfName(List<String> names, ComposedSchema composedSchema) {
         List<String> types = getTypesFromSchemas(composedSchema.getOneOf());
-
+        // Null is already handled by the isNullable flag
+        types.removeIf(p -> p.equals("null"));
         return String.join(" | ", types);
     }
 

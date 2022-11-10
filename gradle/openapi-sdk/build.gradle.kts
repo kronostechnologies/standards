@@ -12,11 +12,11 @@ val openApiGenerator by configurations.creating {
 }
 
 dependencies {
-    val openApiVersion = "6.0.1"
+    val openApiVersion = "6.2.0"
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
     implementation("org.openapitools:openapi-generator-gradle-plugin:$openApiVersion")
-    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.5.0")
+    implementation("com.equisoft.openapi.generator.micronaut:micronaut-project-openapi-generator:0.6.0-SNAPSHOT")
 
     openApiGenerator("org.openapitools:openapi-generator:$openApiVersion")
 }
