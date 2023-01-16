@@ -43,6 +43,11 @@
     {
       "matchUpdateTypes": ["patch"],
       "addLabels": ["patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "automerge": false,
+      "addLabels": ["helm"]
     }
   ],
   "schedule": [
