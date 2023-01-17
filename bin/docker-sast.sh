@@ -45,5 +45,11 @@ output_file_path=$(realpath "$output_file")
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$output_file_path":/tmp/output.sarif \
   --user "$(id -u):$(id -g)" \
-  aquasec/trivy:0.31.3 \
-  --cache-dir /tmp/.cache image -f sarif -o /tmp/output.sarif "$target_image"
+  aquasec/trivy:0.36.1 \
+  image \
+  --cache-dir /tmp/.cache \
+  --security-checks vuln \
+  --vuln-type os \
+  -o /tmp/output.sarif \
+  --format sarif \
+  "$target_image"
