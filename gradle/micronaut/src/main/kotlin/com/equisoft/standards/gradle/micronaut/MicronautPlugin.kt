@@ -119,6 +119,8 @@ class MicronautPlugin : Plugin<Project> {
                     buildArgs.add("-H:+ReportExceptionStackTraces")
                     buildArgs.add("-H:IncludeResources=splitversion.properties")
                     buildArgs.add("-R:-WriteableCodeCache")
+                    val locationAwareLogger = "io.micrometer.common.util.internal.logging.LocationAwareSlf4JLogger"
+                    buildArgs.add("--initialize-at-build-time=$locationAwareLogger")
 
                     fallback.set(false)
                     sharedLibrary.set(false)

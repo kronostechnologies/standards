@@ -1,4 +1,4 @@
-version = "0.6.0-SNAPSHOT"
+version = "0.7.0-SNAPSHOT"
 
 dependencies {
     val kotlinVersion = "1.7.20"
@@ -6,13 +6,13 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
 
-    val micronautPluginVersion = "3.6.0"
+    val micronautPluginVersion = "3.7.0"
     implementation("io.micronaut.gradle:micronaut-docker-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-graalvm-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-gradle-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-minimal-plugin:$micronautPluginVersion")
-    implementation("com.bmuschko:gradle-docker-plugin:7.4.0")
-    implementation("org.graalvm.buildtools:native-gradle-plugin:0.9.13")
+    implementation("com.bmuschko:gradle-docker-plugin:8.1.0")
+    implementation("org.graalvm.buildtools:native-gradle-plugin:0.9.19")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
