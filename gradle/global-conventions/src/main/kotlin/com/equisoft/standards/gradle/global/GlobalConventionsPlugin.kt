@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.repositories
 
-@Suppress("LongMethod")
+@Suppress("ComplexMethod", "LongMethod")
 class GlobalConventionsPlugin : Plugin<Project> {
     override fun apply(project: Project): Unit = with(project) {
         plugins.apply(VersionsPlugin::class.java)
@@ -19,6 +19,16 @@ class GlobalConventionsPlugin : Plugin<Project> {
         repositories {
             mavenCentral()
             maven("https://maven.pkg.github.com/kronostechnologies/*/") {
+                credentials {
+                    username = project.findProperty("gpr.user")?.toString()
+                        ?: System.getenv("GPR_USER")
+                        ?: System.getenv("GHCR_USER")
+                    password = project.findProperty("gpr.key")?.toString()
+                        ?: System.getenv("GPR_KEY")
+                        ?: System.getenv("GHCR_TOKEN")
+                }
+            }
+            maven("https://maven.pkg.github.com/equisoft/*/") {
                 credentials {
                     username = project.findProperty("gpr.user")?.toString()
                         ?: System.getenv("GPR_USER")
