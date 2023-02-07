@@ -16,12 +16,6 @@ class KotlinSdkGenerator(
     override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         super.assembleSdk(this)
 
-        configOptions.putAll(
-            project.provider {
-                mapOf(
-                    COLLECTION_TYPE to CollectionType.LIST.value,
-                )
-            }
-        )
+        configOptions.put(COLLECTION_TYPE, CollectionType.LIST.value)
     }
 }
