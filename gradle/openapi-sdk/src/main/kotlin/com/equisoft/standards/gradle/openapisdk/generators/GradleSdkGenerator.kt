@@ -3,7 +3,8 @@ package com.equisoft.standards.gradle.openapisdk.generators
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
 import com.equisoft.standards.gradle.openapisdk.exec
 import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
-import org.openapitools.codegen.CodegenConstants.*
+import org.openapitools.codegen.CodegenConstants.ENUM_PROPERTY_NAMING
+import org.openapitools.codegen.CodegenConstants.ENUM_UNKNOWN_DEFAULT_CASE
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 abstract class GradleSdkGenerator(
@@ -11,6 +12,7 @@ abstract class GradleSdkGenerator(
     generatorName: String,
     openApiSdk: OpenApiSdkExtension
 ) : SdkGenerator(displayName, generatorName, openApiSdk) {
+    @Suppress("LongMethod")
     override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         packageName.set(groupId)
         apiPackage.set(packageName)

@@ -17,6 +17,7 @@ class PhpSdkGenerator(
     generatorName = "php",
     openApiSdk
 ) {
+    @Suppress("LongMethod")
     override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
         invokerPackage.set(groupId.map(::transformGroupIdToPhpNamespace))
