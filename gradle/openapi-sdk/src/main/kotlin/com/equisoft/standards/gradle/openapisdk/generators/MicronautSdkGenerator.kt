@@ -1,6 +1,8 @@
 package com.equisoft.standards.gradle.openapisdk.generators
 
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
+import org.openapitools.codegen.CodegenConstants
+import org.openapitools.codegen.CodegenConstants.ENUM_UNKNOWN_DEFAULT_CASE
 import org.openapitools.codegen.languages.AbstractJavaCodegen.OPENAPI_NULLABLE
 import org.openapitools.codegen.languages.AbstractJavaCodegen.SUPPORT_ASYNC
 import org.openapitools.codegen.languages.MicronautCodegen.CLIENT_ID
@@ -31,7 +33,7 @@ class MicronautSdkGenerator(
                     OPENAPI_NULLABLE to "false",
                     SUPPORT_ASYNC to "false",
                     USE_GENERIC_RESPONSE to "true",
-                    USE_OPTIONAL to "false",
+                    USE_OPTIONAL to "false"
                 )
             }
         )
