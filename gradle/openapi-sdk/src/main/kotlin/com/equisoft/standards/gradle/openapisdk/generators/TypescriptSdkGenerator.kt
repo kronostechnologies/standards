@@ -4,6 +4,10 @@ import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
 import com.equisoft.standards.gradle.openapisdk.exec
 import com.equisoft.standards.gradle.openapisdk.kebabToUpperCamelCase
 import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
+import org.openapitools.codegen.CodegenConstants.ENUM_PROPERTY_NAMING
+import org.openapitools.codegen.CodegenConstants.ENUM_UNKNOWN_DEFAULT_CASE
+import org.openapitools.codegen.CodegenConstants.SUPPORTS_ES6
+import org.openapitools.codegen.languages.AbstractTypeScriptClientCodegen.NPM_NAME
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 class TypescriptSdkGenerator(
@@ -13,6 +17,7 @@ class TypescriptSdkGenerator(
     generatorName = "typescript-fetch",
     openApiSdk
 ) {
+    @Suppress("LongMethod")
     override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
         invokerPackage.set(id)
@@ -20,11 +25,12 @@ class TypescriptSdkGenerator(
         configOptions.set(
             project.provider {
                 mapOf(
-                    "enumPropertyNaming" to "original",
-                    "npmName" to id.get(), // npmName is required for the project's structure to be generated (ie src/)
-                    "supportsES6" to "true",
+                    ENUM_PROPERTY_NAMING to "original",
+                    NPM_NAME to id.get(), // npmName is required for the project's structure to be generated (ie src/)
+                    SUPPORTS_ES6 to "true",
                     "typescriptThreePlus" to "true",
                     "variableNamingConvention" to "camelCase",
+                    ENUM_UNKNOWN_DEFAULT_CASE to "true",
                 )
             }
         )

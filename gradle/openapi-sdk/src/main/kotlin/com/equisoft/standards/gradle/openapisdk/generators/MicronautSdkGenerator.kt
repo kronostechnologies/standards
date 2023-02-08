@@ -31,7 +31,7 @@ class MicronautSdkGenerator(
                     OPENAPI_NULLABLE to "false",
                     SUPPORT_ASYNC to "false",
                     USE_GENERIC_RESPONSE to "true",
-                    USE_OPTIONAL to "false",
+                    USE_OPTIONAL to "false"
                 )
             }
         )

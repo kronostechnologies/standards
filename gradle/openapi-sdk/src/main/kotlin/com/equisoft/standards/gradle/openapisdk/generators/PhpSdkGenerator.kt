@@ -4,6 +4,8 @@ import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
 import com.equisoft.standards.gradle.openapisdk.exec
 import com.equisoft.standards.gradle.openapisdk.kebabToUpperCamelCase
 import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
+import org.openapitools.codegen.CodegenConstants.ENUM_UNKNOWN_DEFAULT_CASE
+import org.openapitools.codegen.languages.PhpClientCodegen.VARIABLE_NAMING_CONVENTION
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 private const val TLD_LENGTH: Int = 4
@@ -15,11 +17,19 @@ class PhpSdkGenerator(
     generatorName = "php",
     openApiSdk
 ) {
+    @Suppress("LongMethod")
     override fun assembleSdk(task: GenerateTask): Unit = with(task) {
         packageName.set(openApiSdk.projectKey.map { "${it.kebabToUpperCamelCase()} SDK" })
         invokerPackage.set(groupId.map(::transformGroupIdToPhpNamespace))
 
-        configOptions.put("variableNamingConvention", "camelCase")
+        configOptions.putAll(
+            project.provider {
+                mapOf(
+                    VARIABLE_NAMING_CONVENTION to "camelCase",
+                    ENUM_UNKNOWN_DEFAULT_CASE to "true",
+                )
+            }
+        )
 
         doFirst {
             val path = outputDir.get()
