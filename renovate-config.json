@@ -96,10 +96,12 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["minor"],
+        "excludePackageNames": ["@equisoft/design-elements-react"],
         "groupName": "Yarn minors"
       },
       {
         "matchUpdateTypes": ["patch"],
+        "excludePackageNames": ["@equisoft/design-elements-react"],
         "groupName": "Yarn patches"
       }
     ]
