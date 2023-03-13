@@ -95,14 +95,36 @@
     "addLabels": ["yarn"],
     "packageRules": [
       {
+        "matchUpdateTypes": ["patch"],
+        "groupName": "Yarn patches"
+      },
+      {
         "matchUpdateTypes": ["minor"],
-        "excludePackageNames": ["@equisoft/design-elements-react"],
         "groupName": "Yarn minors"
       },
       {
-        "matchUpdateTypes": ["patch"],
-        "excludePackageNames": ["@equisoft/design-elements-react"],
-        "groupName": "Yarn patches"
+        "matchPackageNames" ["@equisoft/design-elements-react"],
+        "groupName": "Equisoft Design System"
+      },
+      {
+        "matchUpdateTypes": ["minor", "major"],
+        "matchPackageNames": [
+          "i18next",
+          "i18next-browser-languagedetector",
+          "i18next-locize-backend",
+          "react-i18next"
+        ],
+        "groupName": "i18next"
+      },
+      {
+        "matchUpdateTypes": ["minor", "major"],
+        "matchPackageNames": [
+          "history",
+          "react-router",
+          "react-router-dom",
+          "react-router-native"
+        ],
+        "groupName": "react-router"
       }
     ]
   },
