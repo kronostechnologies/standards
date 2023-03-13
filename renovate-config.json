@@ -103,7 +103,7 @@
         "groupName": "Yarn minors"
       },
       {
-        "matchPackageNames" ["@equisoft/design-elements-react"],
+        "matchPackageNames": ["@equisoft/design-elements-react"],
         "groupName": "Equisoft Design System"
       },
       {
