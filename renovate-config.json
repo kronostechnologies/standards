@@ -53,6 +53,27 @@
   "schedule": [
     "on sunday"
   ],
+  "docker": {
+    "addLabels": ["docker"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["major", "minor", "patch"],
+        "prPriority": 5
+      },
+      {
+        "matchUpdateTypes": ["minor"],
+        "groupName": "Docker minor"
+      },
+      {
+        "matchUpdateTypes": ["patch"],
+        "groupName": "Docker patch"
+      },
+      {
+        "matchUpdateTypes": ["major"],
+        "automerge": false
+      }
+    ]
+  },
   "java": {
     "addLabels": ["gradle"],
     "packageRules": [
@@ -88,6 +109,10 @@
       {
         "matchUpdateTypes": ["patch"],
         "groupName": "Gradle patches"
+      },
+      {
+        "matchUpdateTypes": ["major"],
+        "automerge": false
       }
     ]
   },
@@ -125,10 +150,36 @@
           "react-router-native"
         ],
         "groupName": "react-router"
+      },
+      {
+        "matchUpdateTypes": ["major"],
+        "automerge": false
       }
     ]
   },
   "php": {
-    "addLabels": ["composer"]
+    "addLabels": ["composer"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor"],
+        "excludePackageNames": [
+          "ocramius/proxy-manager",
+          "vimeo/psalm"
+        ],
+        "groupName": "PHP minors"
+      },
+      {
+        "matchUpdateTypes": ["patch"],
+        "excludePackageNames": [
+          "ocramius/proxy-manager",
+          "vimeo/psalm"
+        ],
+        "groupName": "PHP patches"
+      },
+      {
+        "matchUpdateTypes": ["major"],
+        "automerge": false
+      }
+    ]
   }
 }
