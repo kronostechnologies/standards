@@ -5,6 +5,7 @@
   ],
   "labels": ["dependency-update"],
   "automerge": true,
+  "automergeStrategy": "squash",
   "automergeType": "pr",
   "platformAutomerge": true,
   "lockFileMaintenance": {
