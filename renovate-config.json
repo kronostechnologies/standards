@@ -7,6 +7,9 @@
   "automerge": true,
   "automergeType": "pr",
   "platformAutomerge": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchDatasources": ["docker"],
@@ -34,7 +37,8 @@
     },
     {
       "matchUpdateTypes": ["major"],
-      "addLabels": ["major"]
+      "addLabels": ["major"],
+      "automerge": false
     },
     {
       "matchUpdateTypes": ["minor"],
@@ -69,8 +73,7 @@
         "groupName": "Docker patch"
       },
       {
-        "matchUpdateTypes": ["major"],
-        "automerge": false
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -111,8 +114,7 @@
         "groupName": "Gradle patches"
       },
       {
-        "matchUpdateTypes": ["major"],
-        "automerge": false
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -152,8 +154,7 @@
         "groupName": "react-router"
       },
       {
-        "matchUpdateTypes": ["major"],
-        "automerge": false
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -177,8 +178,7 @@
         "groupName": "PHP patches"
       },
       {
-        "matchUpdateTypes": ["major"],
-        "automerge": false
+        "matchUpdateTypes": ["major"]
       }
     ]
   }
