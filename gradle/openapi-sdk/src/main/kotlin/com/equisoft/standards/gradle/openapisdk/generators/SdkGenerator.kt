@@ -5,9 +5,11 @@ import com.equisoft.standards.gradle.openapisdk.createOutput
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.ASSEMBLE
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.BUILD
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.CHECK
+import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.INIT
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.PUBLISH
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.SYNC
 import com.equisoft.standards.gradle.openapisdk.tasks.CheckSdkTask
+import com.equisoft.standards.gradle.openapisdk.tasks.InitSdkTask
 import com.equisoft.standards.gradle.openapisdk.tasks.PublishSdkTask
 import com.equisoft.standards.gradle.openapisdk.tasks.SyncRepositoryTask
 import org.gradle.api.Task
@@ -32,13 +34,25 @@ abstract class SdkGenerator(
     abstract fun checkSdk(task: CheckSdkTask)
 
     fun registerTasks(tasks: TaskContainer): Map<SdkTask, TaskProvider<*>> = with(tasks) {
+        val init = registerInit()
         val sync = registerSync()
         val assemble = registerAssemble(sync.second)
         val check = registerCheck(assemble.second)
         val build = registerBuild(assemble.second, check.second)
         val publish = registerPublish(assemble.second, check.second)
 
-        return mapOf(sync, assemble, check, build, publish)
+        return mapOf(init, sync, assemble, check, build, publish)
+    }
+
+    private fun TaskContainer.registerInit() = registerSdkTask<InitSdkTask>(INIT) {
+        group = taskGroup
+        onlyIf { openApiSdk.git.enable.get() }
+
+        target.set(outputDirectory)
+        host.set(openApiSdk.git.host)
+        userId.set(openApiSdk.git.userId)
+        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        token.set(openApiSdk.git.token)
     }
 
     private fun TaskContainer.registerSync() = registerSdkTask<SyncRepositoryTask>(SYNC) {
@@ -130,6 +144,7 @@ abstract class SdkGenerator(
 enum class SdkTask(
     private val prefix: String,
 ) {
+    INIT("init"),
     SYNC("sync"),
     ASSEMBLE("assemble"),
     CHECK("check"),
