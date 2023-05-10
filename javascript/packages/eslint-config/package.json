@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
-    "eslint": "^8.15.0",
-    "eslint-import-resolver-node": "^0.3.6",
-    "eslint-plugin-import": "^2.26.0",
-    "yargs": "^17.5.1"
+    "eslint": "^8.40.0",
+    "eslint-import-resolver-node": "^0.3.7",
+    "eslint-plugin-import": "^2.27.5",
+    "yargs": "^17.7.2"
   },
   "peerDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3",
