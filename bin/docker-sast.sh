@@ -48,7 +48,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   aquasec/trivy:0.41.0 \
   image \
   --cache-dir /tmp/.cache \
-  --security-checks vuln \
+  --scanners vuln \
   --vuln-type os \
   -o /tmp/output.sarif \
   --format sarif \
