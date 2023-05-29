@@ -45,7 +45,7 @@ output_file_path=$(realpath "$output_file")
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$output_file_path":/tmp/output.sarif \
   --user "$(id -u):$(id -g)" \
-  aquasec/trivy:0.36.1 \
+  aquasec/trivy:0.41.0 \
   image \
   --cache-dir /tmp/.cache \
   --security-checks vuln \
