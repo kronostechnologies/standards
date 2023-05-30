@@ -182,5 +182,16 @@
         "matchUpdateTypes": ["major"]
       }
     ]
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
+        "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
+      ],
+      "matchStrings": [
+        "#\\s?renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s(ARG|ENV) .*?_VERSION=(?<currentValue>.*)\\s"
+      ]
+    }
+  ]
 }
