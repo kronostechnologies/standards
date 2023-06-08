@@ -42,7 +42,7 @@ class KotlinStandardsPluginFunctionalTest {
         projectDir.resolve("build.gradle.kts").writeText(
             """
                 plugins {
-                    kotlin("jvm") version "1.7.20"
+                    kotlin("jvm") version "1.8.21"
                     id("com.equisoft.standards.kotlin")
                 }
                 dependencies {

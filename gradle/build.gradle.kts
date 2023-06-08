@@ -1,6 +1,7 @@
 import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 
 val javaVersion = JavaVersion.VERSION_17
+val detektVersion = "1.23.0"
 
 plugins {
     `kotlin-dsl` apply false
@@ -8,7 +9,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.42.0"
     id("org.cyclonedx.bom") version "1.5.0"
     id("org.jmailen.kotlinter") version "3.10.0" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
 }
 
 subprojects {
@@ -40,7 +41,8 @@ subprojects {
     }
 
     dependencies {
-        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
+        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
     }
 
     configure<JavaPluginExtension> {
@@ -133,6 +135,6 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        gradleVersion = "7.5.1"
+        gradleVersion = "8.1.1"
     }
 }

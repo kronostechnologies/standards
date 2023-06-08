@@ -6,10 +6,10 @@ val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
 
-val detektVersion = "1.20.0"
+val detektVersion = "1.23.0"
 
 dependencies {
-    val kotlinVersion = "1.7.20"
+    val kotlinVersion = "1.8.21"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
@@ -17,8 +17,9 @@ dependencies {
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+    implementation("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
 
-    implementation("com.pinterest.ktlint:ktlint-core:0.45.2")
+    implementation("com.pinterest.ktlint:ktlint-core:0.49.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
