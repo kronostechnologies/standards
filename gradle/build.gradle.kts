@@ -40,7 +40,6 @@ subprojects {
 
     dependencies {
         CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
-        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
     }
 
     configure<JavaPluginExtension> {

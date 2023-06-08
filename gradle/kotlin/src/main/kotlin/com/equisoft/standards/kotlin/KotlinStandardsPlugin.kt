@@ -57,7 +57,6 @@ class KotlinStandardsPlugin : Plugin<Project> {
         val detektVersion = VersionsCatalog.get("detekt")
         dependencies {
             CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
-            CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
         }
     }
 

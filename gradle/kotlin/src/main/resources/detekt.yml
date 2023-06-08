@@ -157,12 +157,3 @@ style:
   VarCouldBeVal:
     active: true
     ignoreAnnotated: ["**.CommandLine.*", "**.Inject", "org.mockito.*"]
-
-libraries:
-  active: true
-  ForbiddenPublicDataClass:
-    active: true
-  LibraryCodeMustSpecifyReturnType:
-    active: false
-  LibraryEntitiesShouldNotBePublic:
-    active: false

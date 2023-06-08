@@ -16,7 +16,6 @@ dependencies {
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
-    implementation("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
