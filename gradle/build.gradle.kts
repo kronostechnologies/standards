@@ -8,7 +8,6 @@ plugins {
 
     id("com.github.ben-manes.versions") version "0.42.0"
     id("org.cyclonedx.bom") version "1.5.0"
-    id("org.jmailen.kotlinter") version "3.10.0" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
 }
 
@@ -20,7 +19,6 @@ subprojects {
         plugin("org.gradle.java-gradle-plugin")
         plugin("org.gradle.kotlin.kotlin-dsl")
         plugin("org.gradle.maven-publish")
-        plugin("org.jmailen.kotlinter")
         plugin("io.gitlab.arturbosch.detekt")
     }
 
@@ -61,12 +59,6 @@ subprojects {
         config = files("$rootDir/kotlin/src/main/resources/detekt.yml")
     }
 
-
-    configure<org.jmailen.gradle.kotlinter.KotlinterExtension> {
-        reporters = arrayOf("checkstyle", "plain", "sarif")
-        disabledRules = arrayOf("import-ordering")
-    }
-
     configure<PublishingExtension> {
         repositories {
             maven {
@@ -103,7 +95,7 @@ subprojects {
 
         register("checkStatic") {
             group = "verification"
-            dependsOn("lintKotlin", "detekt")
+            dependsOn("detekt")
         }
 
         named("build") {

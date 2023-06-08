@@ -11,7 +11,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@SuppressWarnings("FunctionNaming")
+@SuppressWarnings("FunctionNaming", "LargeClass")
 class KotlinStandardsPluginFunctionalTest {
     private lateinit var projectDir: File
     private lateinit var sourcesDir: File
@@ -62,60 +62,7 @@ class KotlinStandardsPluginFunctionalTest {
     }
 
     @Nested
-    inner class Kotlinter {
-        @BeforeTest
-        fun setUp() {
-            runner = runner.appendArguments("-xdetektMain", "-xdetektTest")
-        }
-
-        @Test
-        fun `check should run kotlinter`() {
-            val result = runner.build("check")
-
-            assertKotlinterSuccess(result)
-        }
-
-        @Test
-        fun `checkStatic should run kotlinter`() {
-            val result = runner.build("checkStatic")
-
-            assertKotlinterSuccess(result)
-        }
-
-        @Test
-        fun `kotlinter should ignore import-ordering`() {
-            writeSource(
-                "IgnoreImportOrder.kt",
-                """
-                /* ktlint-disable no-unused-imports */
-                import io.micronaut.test.annotation.MicronautTest
-                import org.junit.jupiter.api.Assertions.assertEquals
-                import org.junit.jupiter.api.Test
-                import javax.inject.Inject
-
-                class IgnoreImportOrder
-                """.trimIndent()
-            )
-
-            val result = runner.build("checkStatic")
-
-            assertKotlinterSuccess(result)
-        }
-
-        private fun assertKotlinterSuccess(result: BuildResult) {
-            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlinMain")?.outcome, ":lintKotlinMain")
-            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlinTest")?.outcome, ":lintKotlinTest")
-            assertEquals(TaskOutcome.SUCCESS, result.task(":lintKotlin")?.outcome, ":lintKotlin")
-        }
-    }
-
-    @Nested
     inner class Detekt {
-        @BeforeTest
-        fun setUp() {
-            runner = runner.appendArguments("-xlintKotlin")
-        }
-
         @Test
         fun `check should run detekt`() {
             val result = runner.build("check")

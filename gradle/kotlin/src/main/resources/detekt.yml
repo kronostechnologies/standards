@@ -60,11 +60,15 @@ exceptions:
 
 formatting:
   active: true
+  ClassName:
+    active: true
   ImportOrdering:
     active: true
     layout: '*,java.**,javax.**,kotlin.**,^'
   MaximumLineLength:
-    active: false
+    active: true
+    maxLineLength: 120
+    ignoreBackTickedIdentifier: true
   MultiLineIfElse:
     active: true
   NoEmptyFirstLineInMethodBlock:
@@ -77,6 +81,10 @@ formatting:
     active: true
   SpacingBetweenDeclarationsWithComments:
     active: true
+  TrailingCommaOnCallSite:
+    active: false
+  TrailingCommaOnDeclarationSite:
+    active: false
 
 naming:
   active: true

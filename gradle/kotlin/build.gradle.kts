@@ -13,13 +13,10 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.10.0")
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
-
-    implementation("com.pinterest.ktlint:ktlint-core:0.49.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
