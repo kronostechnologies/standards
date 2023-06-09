@@ -20,9 +20,4 @@ class KotlinStandardsPluginTest {
     fun `detekt plugin should be registered`() {
         assertTrue(project.plugins.hasPlugin("io.gitlab.arturbosch.detekt"))
     }
-
-    @Test
-    fun `kotlinter plugin should be registered`() {
-        assertTrue(project.plugins.hasPlugin("org.jmailen.kotlinter"))
-    }
 }

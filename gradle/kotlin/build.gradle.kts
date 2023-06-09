@@ -1,24 +1,21 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-version = "1.3.0-SNAPSHOT"
+version = "2.1.0-SNAPSHOT"
 
 val functionalTestImplementation = configurations
     .create("functionalTestImplementation")
     .extendsFrom(configurations.getByName("testImplementation"))
 
-val detektVersion = "1.20.0"
+val detektVersion = "1.23.0"
 
 dependencies {
-    val kotlinVersion = "1.7.20"
+    val kotlinVersion = "1.8.21"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jmailen.gradle:kotlinter-gradle:3.10.0")
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
     implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
-
-    implementation("com.pinterest.ktlint:ktlint-core:0.45.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

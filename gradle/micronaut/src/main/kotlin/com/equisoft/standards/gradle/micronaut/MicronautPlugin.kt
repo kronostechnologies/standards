@@ -60,7 +60,9 @@ class MicronautPlugin : Plugin<Project> {
                 )
                 runCommand("useradd app && chown app -R /home/app")
                 user("app")
-                instruction("""HEALTHCHECK --interval=10s --timeout=3s --start-period=10s CMD curl --fail http://127.0.0.1:8081/health | grep '"status":"UP"' """) // ktlint-disable max-line-length
+
+                @Suppress("ArgumentListWrapping", "MaxLineLength")
+                instruction("""HEALTHCHECK --interval=10s --timeout=3s --start-period=10s CMD curl --fail http://127.0.0.1:8081/health | grep '"status":"UP"' """)
                 exposedPorts.set(micronautSettingsExtension.exposedPorts)
                 configureDockerfile(this)
             }

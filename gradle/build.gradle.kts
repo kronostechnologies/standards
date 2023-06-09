@@ -1,14 +1,14 @@
 import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 
 val javaVersion = JavaVersion.VERSION_17
+val detektVersion = "1.23.0"
 
 plugins {
     `kotlin-dsl` apply false
 
     id("com.github.ben-manes.versions") version "0.42.0"
     id("org.cyclonedx.bom") version "1.5.0"
-    id("org.jmailen.kotlinter") version "3.10.0" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.20.0" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
 }
 
 subprojects {
@@ -19,7 +19,6 @@ subprojects {
         plugin("org.gradle.java-gradle-plugin")
         plugin("org.gradle.kotlin.kotlin-dsl")
         plugin("org.gradle.maven-publish")
-        plugin("org.jmailen.kotlinter")
         plugin("io.gitlab.arturbosch.detekt")
     }
 
@@ -40,7 +39,7 @@ subprojects {
     }
 
     dependencies {
-        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
+        CONFIGURATION_DETEKT_PLUGINS("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
     }
 
     configure<JavaPluginExtension> {
@@ -57,12 +56,6 @@ subprojects {
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
         buildUponDefaultConfig = true
         config = files("$rootDir/kotlin/src/main/resources/detekt.yml")
-    }
-
-
-    configure<org.jmailen.gradle.kotlinter.KotlinterExtension> {
-        reporters = arrayOf("checkstyle", "plain", "sarif")
-        disabledRules = arrayOf("import-ordering")
     }
 
     configure<PublishingExtension> {
@@ -101,7 +94,7 @@ subprojects {
 
         register("checkStatic") {
             group = "verification"
-            dependsOn("lintKotlin", "detekt")
+            dependsOn("detekt")
         }
 
         named("build") {
@@ -133,6 +126,6 @@ tasks {
 
     wrapper {
         distributionType = Wrapper.DistributionType.ALL
-        gradleVersion = "7.5.1"
+        gradleVersion = "8.1.1"
     }
 }
