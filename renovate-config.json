@@ -72,9 +72,6 @@
       {
         "matchUpdateTypes": ["patch"],
         "groupName": "Docker patch"
-      },
-      {
-        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -82,7 +79,7 @@
     "addLabels": ["gradle"],
     "packageRules": [
       {
-        "matchPackagePrefixes": ["com.equisoft"],
+        "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
         "registryUrls": [
           "https://maven.pkg.github.com/kronostechnologies/*/",
           "https://maven.pkg.github.com/equisoft/*/"
@@ -90,32 +87,26 @@
       },
       {
         "matchUpdateTypes": ["minor"],
-        "excludePackagePrefixes": [
-          "org.jetbrains.kotlin",
-          "io.micronaut",
-          "com.equisoft",
-          "io.equisoft"
-        ],
         "groupName": "Gradle minors"
       },
       {
+        "matchUpdateTypes": ["major", "minor"],
         "matchPackagePrefixes": ["org.jetbrains.kotlin"],
         "groupName": "Kotlin"
       },
       {
+        "matchUpdateTypes": ["major", "minor"],
         "matchPackagePrefixes": ["io.micronaut"],
         "groupName": "Micronaut"
       },
       {
+        "matchUpdateTypes": ["minor"],
         "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
         "groupName": "Equisoft"
       },
       {
         "matchUpdateTypes": ["patch"],
         "groupName": "Gradle patches"
-      },
-      {
-        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -131,11 +122,12 @@
         "groupName": "Yarn minors"
       },
       {
+        "matchUpdateTypes": ["major"],
         "matchPackageNames": ["@equisoft/design-elements-react"],
         "groupName": "Equisoft Design System"
       },
       {
-        "matchUpdateTypes": ["minor", "major"],
+        "matchUpdateTypes": ["major", "minor"],
         "matchPackageNames": [
           "i18next",
           "i18next-browser-languagedetector",
@@ -145,7 +137,7 @@
         "groupName": "i18next"
       },
       {
-        "matchUpdateTypes": ["minor", "major"],
+        "matchUpdateTypes": ["major", "minor"],
         "matchPackageNames": [
           "history",
           "react-router",
@@ -153,9 +145,6 @@
           "react-router-native"
         ],
         "groupName": "react-router"
-      },
-      {
-        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -164,22 +153,21 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["minor"],
-        "excludePackageNames": [
-          "ocramius/proxy-manager",
-          "vimeo/psalm"
-        ],
         "groupName": "PHP minors"
       },
       {
         "matchUpdateTypes": ["patch"],
-        "excludePackageNames": [
-          "ocramius/proxy-manager",
-          "vimeo/psalm"
-        ],
         "groupName": "PHP patches"
       },
       {
-        "matchUpdateTypes": ["major"]
+        "matchUpdateTypes": ["minor", "patch"],
+        "matchPackageNames": ["ocramius/proxy-manager"],
+        "groupName": "proxy-manager"
+      },
+      {
+        "matchUpdateTypes": ["minor", "patch"],
+        "matchPackageNames": ["vimeo/psalm"],
+        "groupName": "psalm"
       }
     ]
   },
