@@ -1,8 +1,8 @@
 version = "1.2.0-SNAPSHOT"
 
 dependencies {
-    implementation("com.github.ben-manes:gradle-versions-plugin:0.42.0")
-    implementation("org.cyclonedx:cyclonedx-gradle-plugin:1.7.1")
+    implementation("com.github.ben-manes:gradle-versions-plugin:0.47.0")
+    implementation("org.cyclonedx:cyclonedx-gradle-plugin:1.7.4")
 }
 
 gradlePlugin {

@@ -6,8 +6,8 @@ val detektVersion = "1.23.0"
 plugins {
     `kotlin-dsl` apply false
 
-    id("com.github.ben-manes.versions") version "0.42.0"
-    id("org.cyclonedx.bom") version "1.5.0"
+    id("com.github.ben-manes.versions") version "0.47.0"
+    id("org.cyclonedx.bom") version "1.7.4"
     id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
 }
 

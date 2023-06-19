@@ -1,6 +1,7 @@
 package com.equisoft.standards.gradle.openapisdk.generators
 
 import com.equisoft.standards.gradle.openapisdk.OpenApiSdkExtension
+import com.equisoft.standards.gradle.openapisdk.capitalize
 import com.equisoft.standards.gradle.openapisdk.createOutput
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.ASSEMBLE
 import com.equisoft.standards.gradle.openapisdk.generators.SdkTask.BUILD
@@ -25,7 +26,7 @@ abstract class SdkGenerator(
     protected val openApiSdk: OpenApiSdkExtension
 ) {
     private val taskGroup = "${OpenApiGeneratorPlugin.pluginGroup}/$displayName SDK"
-    private val outputDirectory = openApiSdk.outputDir.dir(displayName.toLowerCase())
+    private val outputDirectory = openApiSdk.outputDir.dir(displayName.lowercase())
 
     abstract fun assembleSdk(task: GenerateTask)
 
@@ -49,7 +50,7 @@ abstract class SdkGenerator(
         host.set(openApiSdk.git.host)
         userId.set(openApiSdk.git.userId)
         token.set(openApiSdk.git.token)
-        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.lowercase()}" })
     }
 
     /**
@@ -114,7 +115,7 @@ abstract class SdkGenerator(
         host.set(openApiSdk.git.host)
         userId.set(openApiSdk.git.userId)
         token.set(openApiSdk.git.token)
-        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.toLowerCase()}" })
+        repoId.set(openApiSdk.projectKey.map { "$it-sdk-${displayName.lowercase()}" })
         if (project.extra.has("is-release") && project.extra.get("is-release") == "true") {
             tag.set("v${project.version}")
         }
@@ -137,5 +138,5 @@ enum class SdkTask(
     PUBLISH("publish");
 
     fun toTaskName(): String = toTaskName("")
-    fun toTaskName(name: String): String = "${prefix}${name.toLowerCase().capitalize()}Sdk"
+    fun toTaskName(name: String): String = "${prefix}${name.lowercase().capitalize()}Sdk"
 }

@@ -40,8 +40,8 @@ class KotlinStandardsPlugin : Plugin<Project> {
             val configResource: TextResource = project.resources.text.fromString(configuration)
 
             buildUponDefaultConfig = true
-            config = files(file(configResource))
-            source = files(file("src/main/kotlin"), file("src/test/kotlin"))
+            config.from(files(file(configResource)))
+            source.from(files(file("src/main/kotlin"), file("src/test/kotlin")))
         }
 
         tasks.withType(Detekt::class.java) {
