@@ -11,7 +11,7 @@ dependencies {
     implementation("io.micronaut.gradle:micronaut-graalvm-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-gradle-plugin:$micronautPluginVersion")
     implementation("io.micronaut.gradle:micronaut-minimal-plugin:$micronautPluginVersion")
-    implementation("com.bmuschko:gradle-docker-plugin:9.3.1")
+    implementation("com.bmuschko:gradle-docker-plugin:8.1.0")
     implementation("org.graalvm.buildtools:native-gradle-plugin:0.9.23")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
