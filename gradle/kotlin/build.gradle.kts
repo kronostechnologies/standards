@@ -9,7 +9,7 @@ val functionalTestImplementation = configurations
 val detektVersion = "1.23.0"
 
 dependencies {
-    val kotlinVersion = "1.8.21"
+    val kotlinVersion = "1.8.22"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlinVersion"))
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
@@ -20,7 +20,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
-    val junit5Version = "5.8.2"
+    val junit5Version = "5.9.3"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }

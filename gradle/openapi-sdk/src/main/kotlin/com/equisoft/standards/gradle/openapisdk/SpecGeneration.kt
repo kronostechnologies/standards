@@ -39,7 +39,7 @@ private fun configureMicronautOpenApi(project: Project, openApiSdk: OpenApiSdkEx
     tasks {
         register<WriteProperties>("generateOpenapiProperties") {
             group = OpenApiGeneratorPlugin.pluginGroup
-            outputFile = openApiSdk.openApiPropertiesFile.get().asFile
+            destinationFile.set(openApiSdk.openApiPropertiesFile.get().asFile)
 
             property("micronaut.openapi.expand.api.version", version)
             property("mapping.path", "docs/openapi")
