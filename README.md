@@ -2,12 +2,9 @@
 
 ## Supported languages
 
-### Kotlin
+### Kotlin and Java
 
-Located under [kotlin](gradle/kotlin/README.md).
-
-The plugin is available on the Gradle Plugins Portal: 
-[com.equisoft.standards.kotlin](https://plugins.gradle.org/plugin/com.equisoft.standards.kotlin)
+Located in [standards-jvm](https://github.com/kronostechnologies/standards-jvm/tree/README.md).
 
 ### PHP
 
