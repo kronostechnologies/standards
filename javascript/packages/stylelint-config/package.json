@@ -35,7 +35,7 @@
     "stylelint-sarif-formatter": "~1.0.7"
   },
   "devDependencies": {
-    "stylelint": "~14.14.1",
+    "stylelint": "~15.10.1",
     "stylelint-order": "~5.0.0"
   },
   "peerDependencies": {
