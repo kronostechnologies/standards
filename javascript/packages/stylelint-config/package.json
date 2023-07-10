@@ -28,20 +28,24 @@
     "stylelint-config"
   ],
   "dependencies": {
-    "postcss-scss": "~4.0.6",
-    "stylelint-config-standard-scss": "~5.0.0",
+    "stylelint-config-standard-scss": "~10.0.0",
     "stylelint-junit-formatter": "~0.2.2",
-    "stylelint-processor-styled-components": "~1.10.0",
-    "stylelint-sarif-formatter": "~1.0.7"
+    "stylelint-order": "~6.0.3",
+    "stylelint-sarif-formatter": "~1.0.7",
+    "stylelint-stylistic": "~0.4.3"
   },
   "devDependencies": {
-    "stylelint": "~14.14.1",
-    "stylelint-order": "~5.0.0"
+    "stylelint": "~15.10.1"
   },
   "peerDependencies": {
     "postcss": "^8",
-    "postcss-syntax": "^0",
-    "stylelint": "^14",
-    "stylelint-order": "^5"
+    "postcss-scss": "^4",
+    "postcss-styled-syntax": "^0",
+    "stylelint": "^15"
+  },
+  "peerDependenciesMeta": {
+    "postcss-scss": {
+      "optional": true
+    }
   }
 }
