@@ -11,7 +11,7 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 Install the libraries in your project:
 
 ```bash
-yarn add --dev stylelint stylelint-order @equisoft/stylelint-config postcss
+yarn add --dev stylelint stylelint-order @equisoft/stylelint-config postcss postcss-styled-syntax
 ```
 
 Then create a _.stylelintrc_ file that uses Equisoft's configuration:
