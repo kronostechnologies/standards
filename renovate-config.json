@@ -79,6 +79,11 @@
     "addLabels": ["gradle"],
     "packageRules": [
       {
+        "matchDataSources": ["gradle"],
+        "matchPackagePatterns": ["com\\.equisoft\\.standards:"],
+        "replacementNameTemplate": "{{{replace 'com\\.equisoft\\.standards:' 'com.equisoft.standards.gradle:' packageName}}}"
+      },
+      {
         "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
         "registryUrls": [
           "https://maven.pkg.github.com/kronostechnologies/*/",
