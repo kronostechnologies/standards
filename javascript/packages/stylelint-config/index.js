@@ -49,13 +49,20 @@ module.exports = {
             ],
             customSyntax: 'postcss-styled-syntax',
             rules: {
+                // https://github.com/hudochenkov/postcss-styled-syntax/issues/2
                 'stylistic/indentation': null,
+                'stylistic/no-eol-whitespace': [
+                    true,
+                    {
+                        ignore: ['empty-lines'],
+                    },
+                ],
                 'stylistic/max-line-length': null,
 
                 // stylelint-config-styled-components
-                'no-empty-first-line': null,
+                'stylistic/no-empty-first-line': null,
                 'no-empty-source': null,
-                'no-missing-end-of-source-newline': null,
+                'stylistic/no-missing-end-of-source-newline': null,
                 'property-no-vendor-prefix': true,
                 'value-no-vendor-prefix': true,
             },
