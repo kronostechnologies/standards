@@ -26,7 +26,8 @@
     },
     {
       "matchManagers": ["github-actions"],
-      "groupName": "Github actions"
+      "groupName": "Github actions",
+      "commitMessageExtra": ""
     },
     {
       "matchManagers": ["composer"],
@@ -67,11 +68,13 @@
       },
       {
         "matchUpdateTypes": ["minor"],
-        "groupName": "Docker minor"
+        "groupName": "Docker minor",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["patch"],
-        "groupName": "Docker patch"
+        "groupName": "Docker patch",
+        "commitMessageExtra": ""
       }
     ]
   },
@@ -92,7 +95,8 @@
       },
       {
         "matchUpdateTypes": ["minor"],
-        "groupName": "Gradle minors"
+        "groupName": "Gradle minors",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["major", "minor"],
@@ -107,11 +111,13 @@
       {
         "matchUpdateTypes": ["minor"],
         "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
-        "groupName": "Equisoft"
+        "groupName": "Equisoft minors",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["patch"],
-        "groupName": "Gradle patches"
+        "groupName": "Gradle patches",
+        "commitMessageExtra": ""
       }
     ]
   },
@@ -120,11 +126,13 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["patch"],
-        "groupName": "Yarn patches"
+        "groupName": "Yarn patches",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["minor"],
-        "groupName": "Yarn minors"
+        "groupName": "Yarn minors",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["major"],
@@ -139,7 +147,8 @@
           "i18next-locize-backend",
           "react-i18next"
         ],
-        "groupName": "i18next"
+        "groupName": "i18next",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["major", "minor"],
@@ -149,7 +158,8 @@
           "react-router-dom",
           "react-router-native"
         ],
-        "groupName": "react-router"
+        "groupName": "react-router",
+        "commitMessageExtra": ""
       }
     ]
   },
@@ -158,11 +168,13 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["minor"],
-        "groupName": "PHP minors"
+        "groupName": "PHP minors",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["patch"],
-        "groupName": "PHP patches"
+        "groupName": "PHP patches",
+        "commitMessageExtra": ""
       },
       {
         "matchUpdateTypes": ["minor", "patch"],
