@@ -88,9 +88,13 @@
     },
     {
       "matchCategories": ["js"],
+      "matchPackageNames": ["@equisoft/design-elements-react"],
+      "addLabels": ["equisoft"]
+    },
+    {
+      "matchCategories": ["js"],
       "matchUpdateTypes": ["major"],
       "matchPackageNames": ["@equisoft/design-elements-react"],
-      "addLabels": ["equisoft"],
       "groupName": "Equisoft Design System"
     },
     {
@@ -103,6 +107,7 @@
         "react-i18next"
       ],
       "groupName": "i18next",
+      "separateMultipleMajor": false,
       "commitMessageExtra": ""
     },
     {
@@ -115,6 +120,7 @@
         "react-router-native"
       ],
       "groupName": "react-router",
+      "separateMultipleMajor": false,
       "commitMessageExtra": ""
     },
 
