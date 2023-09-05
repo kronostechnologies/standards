@@ -7,7 +7,7 @@
   "automergeType": "pr",
   "platformAutomerge": true,
   "separateMajorMinor": true,
-  "separateMinorPatch": true,
+  "separateMinorPatch": false,
   "separateMultipleMajor": true,
   "lockFileMaintenance": { "enabled": true },
   "schedule": ["on sunday"],
