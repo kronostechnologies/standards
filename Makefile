@@ -15,11 +15,11 @@ check: check.workflows check.renovate
 
 .PHONY: check.workflows
 check.workflows:
-	@command -v act >/dev/null 2>&1 || $(call exit_error, "act is not installed")
+	@actionlint -color
 
 .PHONY: check.renovate
 check.renovate:
-	npx --package="renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict renovate-base.json renovate-config.json
+	@npx --package="renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict renovate-base.json renovate-config.json
 
 .PHONY: test
 test:
