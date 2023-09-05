@@ -14,15 +14,5 @@ jobs:
       SCHEMA_URL: https://docs.renovatebot.com/renovate-schema.json
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          cache: pip
-          cache-dependency-path: .github/workflows/validate-renovate.yaml
-      - run: pip install check-jsonschema
-      - run: |
-          curl -L -o renovate.schema "$SCHEMA_URL"
-          jq '. *= {"additionalProperties": false, "properties": {"$schema": {"type": "string", "format": "uri", "default": ""}}}' \
-            renovate.schema > /tmp/renovate.schema && mv /tmp/renovate.schema renovate.schema
-      - run: |
-          check-jsonschema --schemafile renovate.schema --output-format text $FILES
+      - uses: equisoft-actions/with-asdf-vm@v1
+      - run: make check.renovate

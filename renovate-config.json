@@ -1,195 +1,143 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:recommended"],
   "labels": ["dependency-update"],
   "automerge": true,
   "automergeStrategy": "squash",
   "automergeType": "pr",
   "platformAutomerge": true,
-  "lockFileMaintenance": {
-    "enabled": true
-  },
+  "separateMajorMinor": true,
+  "separateMinorPatch": true,
+  "separateMultipleMajor": true,
+  "lockFileMaintenance": { "enabled": true },
+  "schedule": ["on sunday"],
   "packageRules": [
+    { "matchCategories": ["docker"], "addLabels": ["docker"], "prPriority": 5 },
+    { "matchCategories": ["helm"], "addLabels": ["helm"], "automerge": false },
+    { "matchCategories": ["java"], "addLabels": ["jvm"] },
     {
-      "matchDatasources": ["docker"],
-      "addLabels": ["docker"]
+      "matchCategories": ["java"],
+      "addLabels": ["equisoft"],
+      "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
+      "registryUrls": [
+        "https://maven.pkg.github.com/kronostechnologies/*/",
+        "https://maven.pkg.github.com/equisoft/*/"
+      ]
     },
-    {
-      "matchManagers": ["terraform", "terraform-version"],
-      "addLabels": ["terraform"]
-    },
-    {
-      "matchManagers": ["circleci"],
-      "addLabels": ["circleci"]
-    },
+    { "matchCategories": ["js"], "addLabels": ["yarn"] },
+    { "matchCategories": ["php"], "addLabels": ["php"] },
+    { "matchCategories": ["terraform"], "addLabels": ["terraform"] },
+
     {
       "matchManagers": ["github-actions"],
+      "addLabels": ["ci"],
       "groupName": "Github actions",
+      "pinDigests": false,
+      "commitMessageExtra": ""
+    },
+
+    { "matchUpdateTypes": ["patch"], "addLabels": ["patch"] },
+    { "matchUpdateTypes": ["minor"], "addLabels": ["minor"] },
+    { "matchUpdateTypes": ["major"], "addLabels": ["major"], "automerge": false },
+
+    {
+      "matchCategories": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Docker minors and patches",
+      "commitMessageExtra": ""
+    },
+
+    {
+      "matchCategories": ["java"],
+      "matchPackagePatterns": ["com\\.equisoft\\.standards:"],
+      "replacementNameTemplate": "{{{replace 'com\\.equisoft\\.standards:' 'com.equisoft.standards.gradle:' packageName}}}"
+    },
+    {
+      "matchCategories": ["java"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Gradle minors and patches",
       "commitMessageExtra": ""
     },
     {
-      "matchManagers": ["composer"],
-      "addLabels": ["composer"]
+      "matchCategories": ["java"],
+      "matchUpdateTypes": ["major", "minor"],
+      "matchPackagePrefixes": ["org.jetbrains.kotlin"],
+      "groupName": "Kotlin",
+      "commitMessageExtra": null
     },
     {
-      "matchDatasources": ["orb"],
-      "addLabels": ["orb"]
+      "matchCategories": ["java"],
+      "matchUpdateTypes": ["major", "minor"],
+      "matchPackagePrefixes": ["io.micronaut"],
+      "groupName": "Micronaut",
+      "commitMessageExtra": null
     },
     {
+      "matchCategories": ["java"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
+      "groupName": "Equisoft dependencies",
+      "commitMessageExtra": ""
+    },
+
+    {
+      "matchCategories": ["js"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Yarn minors and patches",
+      "commitMessageExtra": ""
+    },
+    {
+      "matchCategories": ["js"],
       "matchUpdateTypes": ["major"],
-      "addLabels": ["major"],
-      "automerge": false
+      "matchPackageNames": ["@equisoft/design-elements-react"],
+      "addLabels": ["equisoft"],
+      "groupName": "Equisoft Design System"
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "addLabels": ["minor"]
+      "matchCategories": ["js"],
+      "matchUpdateTypes": ["major", "minor"],
+      "matchPackageNames": [
+        "i18next",
+        "i18next-browser-languagedetector",
+        "i18next-locize-backend",
+        "react-i18next"
+      ],
+      "groupName": "i18next",
+      "commitMessageExtra": ""
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "addLabels": ["patch"]
+      "matchCategories": ["js"],
+      "matchUpdateTypes": ["major", "minor"],
+      "matchPackageNames": [
+        "history",
+        "react-router",
+        "react-router-dom",
+        "react-router-native"
+      ],
+      "groupName": "react-router",
+      "commitMessageExtra": ""
+    },
+
+    {
+      "matchCategories": ["php"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "PHP minors and patches",
+      "commitMessageExtra": ""
     },
     {
-      "matchDatasources": ["helm"],
-      "automerge": false,
-      "addLabels": ["helm"]
+      "matchCategories": ["php"],
+      "matchPackageNames": ["ocramius/proxy-manager"],
+      "groupName": "proxy-manager"
+    },
+    {
+      "matchCategories": ["php"],
+      "matchPackageNames": ["vimeo/psalm"],
+      "groupName": "psalm"
     }
   ],
-  "schedule": [
-    "on sunday"
-  ],
-  "docker": {
-    "addLabels": ["docker"],
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["major", "minor", "patch"],
-        "prPriority": 5
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "groupName": "Docker minor",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["patch"],
-        "groupName": "Docker patch",
-        "commitMessageExtra": ""
-      }
-    ]
-  },
-  "java": {
-    "addLabels": ["gradle"],
-    "packageRules": [
-      {
-        "matchDataSources": ["gradle"],
-        "matchPackagePatterns": ["com\\.equisoft\\.standards:"],
-        "replacementNameTemplate": "{{{replace 'com\\.equisoft\\.standards:' 'com.equisoft.standards.gradle:' packageName}}}"
-      },
-      {
-        "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
-        "registryUrls": [
-          "https://maven.pkg.github.com/kronostechnologies/*/",
-          "https://maven.pkg.github.com/equisoft/*/"
-        ]
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "groupName": "Gradle minors",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["major", "minor"],
-        "matchPackagePrefixes": ["org.jetbrains.kotlin"],
-        "groupName": "Kotlin"
-      },
-      {
-        "matchUpdateTypes": ["major", "minor"],
-        "matchPackagePrefixes": ["io.micronaut"],
-        "groupName": "Micronaut"
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "matchPackagePrefixes": ["com.equisoft", "io.equisoft"],
-        "groupName": "Equisoft minors",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["patch"],
-        "groupName": "Gradle patches",
-        "commitMessageExtra": ""
-      }
-    ]
-  },
-  "js": {
-    "addLabels": ["yarn"],
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["patch"],
-        "groupName": "Yarn patches",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "groupName": "Yarn minors",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["major"],
-        "matchPackageNames": ["@equisoft/design-elements-react"],
-        "groupName": "Equisoft Design System"
-      },
-      {
-        "matchUpdateTypes": ["major", "minor"],
-        "matchPackageNames": [
-          "i18next",
-          "i18next-browser-languagedetector",
-          "i18next-locize-backend",
-          "react-i18next"
-        ],
-        "groupName": "i18next",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["major", "minor"],
-        "matchPackageNames": [
-          "history",
-          "react-router",
-          "react-router-dom",
-          "react-router-native"
-        ],
-        "groupName": "react-router",
-        "commitMessageExtra": ""
-      }
-    ]
-  },
-  "php": {
-    "addLabels": ["composer"],
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["minor"],
-        "groupName": "PHP minors",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["patch"],
-        "groupName": "PHP patches",
-        "commitMessageExtra": ""
-      },
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "matchPackageNames": ["ocramius/proxy-manager"],
-        "groupName": "proxy-manager"
-      },
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "matchPackageNames": ["vimeo/psalm"],
-        "groupName": "psalm"
-      }
-    ]
-  },
   "regexManagers": [
     {
+      "customType": "regex",
       "fileMatch": [
         "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
         "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
