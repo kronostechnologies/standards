@@ -13,5 +13,3 @@ equisoft-actions/docker-sbom:
 equisoft-actions/scan-secrets:
   - source: bin/gitleaks.bash
     dest: files/gitleaks.bash
-  - source: gitleaks.toml
-    dest: files/gitleaks.toml

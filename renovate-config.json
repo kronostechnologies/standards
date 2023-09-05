@@ -8,7 +8,7 @@
   "platformAutomerge": true,
   "separateMajorMinor": true,
   "separateMinorPatch": false,
-  "separateMultipleMajor": true,
+  "separateMultipleMajor": false,
   "lockFileMaintenance": { "enabled": true },
   "schedule": ["on sunday"],
   "packageRules": [
@@ -88,9 +88,13 @@
     },
     {
       "matchCategories": ["js"],
+      "matchPackageNames": ["@equisoft/design-elements-react"],
+      "addLabels": ["equisoft"]
+    },
+    {
+      "matchCategories": ["js"],
       "matchUpdateTypes": ["major"],
       "matchPackageNames": ["@equisoft/design-elements-react"],
-      "addLabels": ["equisoft"],
       "groupName": "Equisoft Design System"
     },
     {
