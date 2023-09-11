@@ -1,7 +1,3 @@
-equisoft-actions/semgrep:
-  - source: bin/semgrep.sh
-    dest: files/semgrep.bash
-
 equisoft-actions/docker-sast:
   - source: bin/docker-sast.sh
     dest: files/docker-sast.sh
@@ -9,7 +5,3 @@ equisoft-actions/docker-sast:
 equisoft-actions/docker-sbom:
   - source: bin/docker-sbom.sh
     dest: files/docker-sbom.sh
-
-equisoft-actions/scan-secrets:
-  - source: bin/gitleaks.bash
-    dest: files/gitleaks.bash

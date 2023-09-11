@@ -38,16 +38,3 @@ Use the configuration located under
 [javascript/packages/eslint-config-typescript-react](javascript/packages/eslint-config-typescript-react/README.md) 
 instead.
 
-## Renovate
-
-To include a Renovatebot preset:
-
-```json
-{
-  "extends": [
-    "github>kronostechnologies/standards:renovate-base"
-  ]
-}
-```
-
-Credentials for the `maven.pkg.github.com` host rule are restricted to kronostechnologies organization.

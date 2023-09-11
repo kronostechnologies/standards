@@ -11,15 +11,11 @@ setup:
 	@$(setup_asdf)
 
 .PHONY: check
-check: check.workflows check.renovate
+check: check.workflows
 
 .PHONY: check.workflows
 check.workflows:
 	@actionlint -color
-
-.PHONY: check.renovate
-check.renovate:
-	@npx --package="renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict renovate-base.json renovate-config.json
 
 .PHONY: test
 test:
