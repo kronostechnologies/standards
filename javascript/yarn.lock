@@ -41,11 +41,11 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.20.7":
-  version: 7.23.1
-  resolution: "@babel/runtime@npm:7.23.1"
+  version: 7.23.2
+  resolution: "@babel/runtime@npm:7.23.2"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 0cd0d43e6e7dc7f9152fda8c8312b08321cda2f56ef53d6c22ebdd773abdc6f5d0a69008de90aa41908d00e2c1facb24715ff121274e689305c858355ff02c70
+  checksum: 6c4df4839ec75ca10175f636d6362f91df8a3137f86b38f6cd3a4c90668a0fe8e9281d320958f4fbd43b394988958585a17c3aab2a4ea6bf7316b22916a371fb
   languageName: node
   linkType: hard
 
@@ -892,9 +892,9 @@ __metadata:
   linkType: hard
 
 "css-functions-list@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "css-functions-list@npm:3.2.0"
-  checksum: fe912ea852fad500aef9a4f04db9a0371c7b0eb1ac1a45fbd8df0156ae0538cee7492ebd620b9bb502fe5bf2b5ed3bf3c16b6659cf67c7144eff0b597bcc3891
+  version: 3.2.1
+  resolution: "css-functions-list@npm:3.2.1"
+  checksum: 57d7deb3b05e84d95b88ba9b3244cf60d33b40652b3357f084c805b24a9febda5987ade44ef25a56be41e73249a7dcc157abd704d8a0e998b2c1c2e2d5de6461
   languageName: node
   linkType: hard
 
@@ -977,13 +977,13 @@ __metadata:
   linkType: hard
 
 "define-data-property@npm:^1.0.1":
-  version: 1.1.0
-  resolution: "define-data-property@npm:1.1.0"
+  version: 1.1.1
+  resolution: "define-data-property@npm:1.1.1"
   dependencies:
     get-intrinsic: ^1.2.1
     gopd: ^1.0.1
     has-property-descriptors: ^1.0.0
-  checksum: 7ad4ee84cca8ad427a4831f5693526804b62ce9dfd4efac77214e95a4382aed930072251d4075dc8dc9fc949a353ed51f19f5285a84a788ba9216cc51472a093
+  checksum: a29855ad3f0630ea82e3c5012c812efa6ca3078d5c2aa8df06b5f597c1cde6f7254692df41945851d903e05a1668607b6d34e778f402b9ff9ffb38111f1a3f0d
   languageName: node
   linkType: hard
 
@@ -1567,9 +1567,9 @@ __metadata:
   linkType: hard
 
 "function-bind@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "function-bind@npm:1.1.1"
-  checksum: b32fbaebb3f8ec4969f033073b43f5c8befbb58f1a79e12f1d7490358150359ebd92f49e72ff0144f65f2c48ea2a605bff2d07965f548f6474fd8efd95bf361a
+  version: 1.1.2
+  resolution: "function-bind@npm:1.1.2"
+  checksum: 2b0ff4ce708d99715ad14a6d1f894e2a83242e4a52ccfcefaee5e40050562e5f6dafc1adbb4ce2d4ab47279a45dc736ab91ea5042d843c3c092820dfe032efb1
   languageName: node
   linkType: hard
 
@@ -1953,7 +1953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.11.0, is-core-module@npm:^2.13.0, is-core-module@npm:^2.5.0, is-core-module@npm:^2.9.0":
+"is-core-module@npm:^2.11.0, is-core-module@npm:^2.13.0, is-core-module@npm:^2.5.0":
   version: 2.13.0
   resolution: "is-core-module@npm:2.13.0"
   dependencies:
@@ -2514,9 +2514,9 @@ __metadata:
   linkType: hard
 
 "object-inspect@npm:^1.12.3, object-inspect@npm:^1.9.0":
-  version: 1.12.3
-  resolution: "object-inspect@npm:1.12.3"
-  checksum: dabfd824d97a5f407e6d5d24810d888859f6be394d8b733a77442b277e0808860555176719c5905e765e3743a7cada6b8b0a3b85e5331c530fd418cc8ae991db
+  version: 1.13.0
+  resolution: "object-inspect@npm:1.13.0"
+  checksum: 21353e910a3079466cb44adca71d8bef15bd8b87e518eb68bb33d82c5c70b83193993edce432cc92268f7dd02c4a8ab338663a011844367d0bd0559f6dde1fed
   languageName: node
   linkType: hard
 
@@ -2921,54 +2921,54 @@ __metadata:
   linkType: hard
 
 "resolve@npm:^1.22.4":
-  version: 1.22.6
-  resolution: "resolve@npm:1.22.6"
+  version: 1.22.8
+  resolution: "resolve@npm:1.22.8"
   dependencies:
     is-core-module: ^2.13.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: d13bf66d4e2ee30d291491f16f2fa44edd4e0cefb85d53249dd6f93e70b2b8c20ec62f01b18662e3cd40e50a7528f18c4087a99490048992a3bb954cf3201a5b
+  checksum: f8a26958aa572c9b064562750b52131a37c29d072478ea32e129063e2da7f83e31f7f11e7087a18225a8561cfe8d2f0df9dbea7c9d331a897571c0a2527dbb4c
   languageName: node
   linkType: hard
 
 "resolve@npm:^2.0.0-next.4":
-  version: 2.0.0-next.4
-  resolution: "resolve@npm:2.0.0-next.4"
-  dependencies:
-    is-core-module: ^2.9.0
-    path-parse: ^1.0.7
-    supports-preserve-symlinks-flag: ^1.0.0
-  bin:
-    resolve: bin/resolve
-  checksum: c438ac9a650f2030fd074219d7f12ceb983b475da2d89ad3d6dd05fbf6b7a0a8cd37d4d10b43cb1f632bc19f22246ab7f36ebda54d84a29bfb2910a0680906d3
-  languageName: node
-  linkType: hard
-
-"resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>":
-  version: 1.22.6
-  resolution: "resolve@patch:resolve@npm%3A1.22.6#~builtin<compat/resolve>::version=1.22.6&hash=c3c19d"
+  version: 2.0.0-next.5
+  resolution: "resolve@npm:2.0.0-next.5"
   dependencies:
     is-core-module: ^2.13.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 9d3b3c67aefd12cecbe5f10ca4d1f51ea190891096497c43f301b086883b426466918c3a64f1bbf1788fabb52b579d58809614006c5d0b49186702b3b8fb746a
+  checksum: a73ac69a1c4bd34c56b213d91f5b17ce390688fdb4a1a96ed3025cc7e08e7bfb90b3a06fcce461780cb0b589c958afcb0080ab802c71c01a7ecc8c64feafc89f
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^2.0.0-next.4#~builtin<compat/resolve>":
-  version: 2.0.0-next.4
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=c3c19d"
+"resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>":
+  version: 1.22.8
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#~builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
   dependencies:
-    is-core-module: ^2.9.0
+    is-core-module: ^2.13.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 4bf9f4f8a458607af90518ff73c67a4bc1a38b5a23fef2bb0ccbd45e8be89820a1639b637b0ba377eb2be9eedfb1739a84cde24fe4cd670c8207d8fea922b011
+  checksum: 5479b7d431cacd5185f8db64bfcb7286ae5e31eb299f4c4f404ad8aa6098b77599563ac4257cb2c37a42f59dfc06a1bec2bcf283bb448f319e37f0feb9a09847
+  languageName: node
+  linkType: hard
+
+"resolve@patch:resolve@^2.0.0-next.4#~builtin<compat/resolve>":
+  version: 2.0.0-next.5
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.5#~builtin<compat/resolve>::version=2.0.0-next.5&hash=c3c19d"
+  dependencies:
+    is-core-module: ^2.13.0
+    path-parse: ^1.0.7
+    supports-preserve-symlinks-flag: ^1.0.0
+  bin:
+    resolve: bin/resolve
+  checksum: 064d09c1808d0c51b3d90b5d27e198e6d0c5dad0eb57065fd40803d6a20553e5398b07f76739d69cbabc12547058bec6b32106ea66622375fb0d7e8fca6a846c
   languageName: node
   linkType: hard
 
