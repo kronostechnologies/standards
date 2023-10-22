@@ -35,7 +35,7 @@
     "stylelint-stylistic": "~0.4.3"
   },
   "devDependencies": {
-    "stylelint": "~15.10.1"
+    "stylelint": "~15.11.0"
   },
   "peerDependencies": {
     "postcss": "^8",
