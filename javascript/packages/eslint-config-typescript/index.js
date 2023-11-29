@@ -29,6 +29,9 @@ module.exports = {
         'no-useless-constructor': 'off',
         '@typescript-eslint/no-useless-constructor': 'error',
 
+        'no-empty-function': 'off',
+        '@typescript-eslint/no-empty-function': 'error',
+        
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
 
