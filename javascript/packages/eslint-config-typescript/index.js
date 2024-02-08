@@ -31,7 +31,7 @@ module.exports = {
 
         'no-empty-function': 'off',
         '@typescript-eslint/no-empty-function': 'error',
-        
+
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
 
@@ -55,8 +55,14 @@ module.exports = {
     },
     overrides: [
         {
-            'files': ['*.ts', '*.tsx'],
-            'rules': {
+            files: ['*.spec.ts', '*.spec.tsx', '*.test.ts', '*.test.tsx'],
+            rules: {
+                '@typescript-eslint/no-empty-function': 'off',
+            }
+        },
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
                 '@typescript-eslint/explicit-function-return-type': ['error',
                     {
                         allowExpressions: true,

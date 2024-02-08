@@ -1,8 +1,8 @@
 module.exports = {
     extends: [
-        'stylelint-stylistic/config',
+        '@stylistic/stylelint-config',
     ],
-    plugins: ['stylelint-order', 'stylelint-stylistic'],
+    plugins: ['stylelint-order'],
     rules: {
         'at-rule-no-unknown': [
             true,
@@ -12,7 +12,7 @@ module.exports = {
         ],
         'font-weight-notation': 'numeric',
 
-        'stylistic/indentation': 4,
+        '@stylistic/indentation': 4,
 
         'order/order': [
             'custom-properties',
@@ -23,7 +23,7 @@ module.exports = {
         // https://github.com/stylelint/stylelint/issues/4953
         // https://github.com/stylelint/stylelint/pull/4944
         'function-name-case': null,
-        'stylistic/no-extra-semicolons': null,
+        '@stylistic/no-extra-semicolons': null,
         'value-keyword-case': null,
     },
     overrides: [
@@ -35,6 +35,9 @@ module.exports = {
                 '**/*.less',
             ],
             extends: ['stylelint-config-standard-scss'],
+            rules: {
+                'scss/load-no-partial-leading-underscore': null,
+            }
         },
         {
             files: [
@@ -50,19 +53,20 @@ module.exports = {
             customSyntax: 'postcss-styled-syntax',
             rules: {
                 // https://github.com/hudochenkov/postcss-styled-syntax/issues/2
-                'stylistic/indentation': null,
-                'stylistic/no-eol-whitespace': [
+                '@stylistic/indentation': null,
+                '@stylistic/no-eol-whitespace': [
                     true,
                     {
                         ignore: ['empty-lines'],
                     },
                 ],
-                'stylistic/max-line-length': null,
+                '@stylistic/max-line-length': null,
 
                 // stylelint-config-styled-components
-                'stylistic/no-empty-first-line': null,
+                '@stylistic/no-empty-first-line': null,
+                '@stylistic/string-quotes': 'single',
                 'no-empty-source': null,
-                'stylistic/no-missing-end-of-source-newline': null,
+                '@stylistic/no-missing-end-of-source-newline': null,
                 'property-no-vendor-prefix': true,
                 'value-no-vendor-prefix': true,
             },
