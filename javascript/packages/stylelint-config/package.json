@@ -46,7 +46,7 @@
     "postcss": "^8",
     "postcss-scss": "^4",
     "postcss-styled-syntax": "^0",
-    "stylelint": "^15"
+    "stylelint": "^16"
   },
   "peerDependenciesMeta": {
     "postcss-scss": {
