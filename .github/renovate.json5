@@ -6,6 +6,7 @@
   ],
   lockFileMaintenance: {
     enabled: true,
+    commitMessageAction: "lock file maintenance",
     commitMessagePrefix: "deps:"
   },
   packageRules: [
