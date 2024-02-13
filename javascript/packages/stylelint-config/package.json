@@ -19,7 +19,8 @@
     "email": "services.administratifs@equisoft.com"
   },
   "repository": {
-    "directory": "packages/javascript/stylelint-config",
+    "directory": "javascript/packages/stylelint-config",
+    "sourceDirectory": "javascript/packages/stylelint-config",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
