@@ -4,10 +4,6 @@ on:
       - master
       - dev/QCTECH-1055
 
-permissions:
-  contents: write
-  pull-requests: write
-
 name: release-please
 
 jobs:

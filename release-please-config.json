@@ -20,9 +20,6 @@
   "include-component-in-tag": true,
   "separate-pull-requests": true,
   "packages": {
-    ".": {
-      "release-type": "node"
-    },
     "javascript/packages/eslint-config": {
       "component": "eslint-config",
       "release-type": "node"
