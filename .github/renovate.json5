@@ -7,7 +7,7 @@
   packageRules: [
     {
       matchFileNames: ["javascript/**"],
-      semanticCommitScope: "{{groupName}}"
+      semanticCommitScope: "{{groupName}}{{#if isLockfileUpdate}}lockfile{{/if}}"
     },
     {
       additionalBranchPrefix: "eslint-",
