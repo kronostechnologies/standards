@@ -1,4 +1,31 @@
 {
-    $schema: "https://docs.renovatebot.com/renovate-schema.json",
-    extends: ["local>kronostechnologies/renovate-config"],
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "local>kronostechnologies/renovate-config",
+    ":semanticCommitTypeAll(deps)"
+  ],
+  packageRules: [
+    {
+      matchFileNames: ["javascript/**"],
+      semanticCommitScope: "{{groupName}}"
+    },
+    {
+      additionalBranchPrefix: "eslint-",
+      description: "Group dependencies targeting eslint configs packages",
+      matchFileNames: ["javascript/packages/eslint*/"],
+      groupName: "eslint-configs",
+    },
+    {
+      additionalBranchPrefix: "stylelint-",
+      description: "Group dependencies targeting stylelint config package",
+      matchFileNames: ["javascript/packages/stylelint*/"],
+      groupName: "stylelint-config"
+    },
+    {
+      additionalBranchPrefix: "typescript-",
+      description: "Group dependencies targeting typescript config package",
+      matchFileNames: ["javascript/packages/typescript*/"],
+      groupName: "typescript-config"
+    }
+  ]
 }
