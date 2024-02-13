@@ -4,5 +4,5 @@
   "javascript/packages/eslint-config-typescript": "3.0.3",
   "javascript/packages/eslint-config-typescript-react": "3.0.3",
   "javascript/packages/stylelint-config": "3.0.1",
-  "javascript/packages/typescript-config": "2.0.0"
+  "javascript/packages/typescript-config": "2.0.1"
 }
