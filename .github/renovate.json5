@@ -6,9 +6,7 @@
   ],
   lockFileMaintenance: {
     enabled: true,
-    extends: [
-      ":semanticCommitScopeDisabled"
-    ]
+    commitMessagePrefix: "deps:"
   },
   packageRules: [
     {
