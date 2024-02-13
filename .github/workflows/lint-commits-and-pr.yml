@@ -1,0 +1,26 @@
+name: Lint commit messages and PR titles
+
+on:
+  - pull_request
+  - merge_group
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: equisoft-actions/lint-commits@dev/commitlint
+
+      - name: Lint pull request title
+        if: github.event_name == 'pull_request'
+        uses: equisoft-actions/action-pr-title@v1
+        with:
+          regex: '(feat|feature|fix|perf|revert|docs|style|chore|deps|refactor|test|build|ci)(\(.*\)){0,1}: .*'
+          format: 'feat(optional component): any text for description'
