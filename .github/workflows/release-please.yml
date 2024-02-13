@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+      - master
+      - dev/QCTECH-1055
+
+name: release-please
+
+jobs:
+  release-please:
+    environment: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          target-branch: ${{ github.ref_name }}
+          token: ${{ secrets.ADMIN_PAT }}
