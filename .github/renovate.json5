@@ -4,16 +4,22 @@
     "local>kronostechnologies/renovate-config",
     ":semanticCommitTypeAll(deps)"
   ],
+  lockFileMaintenance: {
+    enabled: true,
+    extends: [
+      ":semanticCommitScopeDisabled"
+    ]
+  },
   packageRules: [
     {
       matchFileNames: ["javascript/**"],
-      semanticCommitScope: "{{groupName}}{{#if isLockfileUpdate}}lockfile{{/if}}"
+      semanticCommitScope: "{{groupName}}"
     },
     {
       additionalBranchPrefix: "eslint-",
       description: "Group dependencies targeting eslint configs packages",
       matchFileNames: ["javascript/packages/eslint*/"],
-      groupName: "eslint-configs",
+      groupName: "eslint-configs"
     },
     {
       additionalBranchPrefix: "stylelint-",
