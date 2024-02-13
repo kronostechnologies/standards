@@ -1,0 +1,68 @@
+{
+  "bootstrap-sha": "64abe7c3b317ca3d7b8b7c35928f10fe555fb46e",
+  "changelog-sections": [
+    { "type": "feat", "section": "Features" },
+    { "type": "feature", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "deps", "section": "Dependencies updates" },
+    { "type": "perf", "section": "Performance Improvements" },
+    { "type": "revert", "section": "Reverts" },
+    { "type": "docs", "section": "Documentation", "hidden": true },
+    { "type": "style", "section": "Styles", "hidden": true },
+    { "type": "chore", "section": "Miscellaneous Chores" },
+    { "type": "refactor", "section": "Code Refactoring", "hidden": true },
+    { "type": "test", "section": "Tests", "hidden": true },
+    { "type": "build", "section": "Build System", "hidden": true },
+    { "type": "ci", "section": "Continuous Integration", "hidden": true }
+  ],
+  "group-pull-request-title-pattern": "chore: release ${component} ${version}",
+  "pull-request-title-pattern": "chore: release ${component} ${version}",
+  "include-component-in-tag": true,
+  "separate-pull-requests": true,
+  "packages": {
+    ".": {
+      "release-type": "node"
+    },
+    "javascript/packages/eslint-config": {
+      "component": "eslint-config",
+      "release-type": "node"
+    },
+    "javascript/packages/eslint-config-react": {
+      "component": "eslint-config-react",
+      "release-type": "node"
+    },
+    "javascript/packages/eslint-config-typescript": {
+      "component": "eslint-config-typescript",
+      "release-type": "node"
+    },
+    "javascript/packages/eslint-config-typescript-react": {
+      "component": "eslint-config-typescript-react",
+      "release-type": "node"
+    },
+    "javascript/packages/stylelint-config": {
+      "component": "stylelint-config",
+      "release-type": "node"
+    },
+    "javascript/packages/typescript-config": {
+      "component": "typescript-config",
+      "release-type": "node"
+    }
+  },
+  "plugins": [
+    "sentence-case",
+    {
+      "type": "linked-versions",
+      "groupName": "eslint",
+      "components": [
+        "eslint-config",
+        "eslint-config-react",
+        "eslint-config-typescript",
+        "eslint-config-typescript-react"
+      ]
+    },
+    {
+      "type": "node-workspace",
+      "updatePeerDependencies": true
+    }
+  ]
+}
