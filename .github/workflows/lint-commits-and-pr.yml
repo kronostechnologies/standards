@@ -4,10 +4,6 @@ on:
   - pull_request
   - merge_group
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   commitlint:
     runs-on: ubuntu-latest
@@ -16,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: equisoft-actions/lint-commits@dev/commitlint
+      - uses: equisoft-actions/lint-commits@v2
 
       - name: Lint pull request title
         if: github.event_name == 'pull_request'
