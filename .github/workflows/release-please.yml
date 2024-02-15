@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
-          target-branch: ${{ github.ref_name }}
+          target-branch: dev/QCTECH-1055
           token: ${{ secrets.ADMIN_PAT }}
