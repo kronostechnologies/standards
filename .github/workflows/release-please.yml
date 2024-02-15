@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-      - dev/QCTECH-1055
+      - dev/QCTECH-1055-2
 
 name: release-please
 
