@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-      - dev/QCTECH-1055
+      - test
 
 name: release-please
 
@@ -12,6 +12,55 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v4
+        id: release
         with:
           target-branch: ${{ github.ref_name }}
           token: ${{ secrets.ADMIN_PAT }}
+
+      # The next 2 steps are a workaround to ensure release-please-action fixes manifest conflicts
+      - name: Get pending PRs
+        shell: bash
+        id: check-pending-prs
+        env:
+          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          pending_prs=$(gh pr list --repo "$REPO" --label "autorelease: pending" --state open --json number --jq '.[].number')
+          need_rebase=""
+
+          if [[ -n "$pending_prs" ]]; then
+              for pr_num in $pending_prs; do
+                  echo "Checking pr: $pr_num"
+                  mergeable=$(gh pr view --repo "$REPO" "$pr_num" --json mergeable --jq '.mergeable')
+                  echo "mergeable status: $mergeable"
+                  if [[ "$mergeable" != "MERGEABLE" ]]; then
+                      echo "pr: $pr_num is not MERGEABLE."
+                      echo "removing 'autorelease: pending' label from pr: $pr_num"
+                      gh pr edit --repo "$REPO" "$pr_num" --remove-label "autorelease: pending"
+                      need_rebase=true
+                  fi
+              done
+          else
+              echo "No pending PRs found."
+              exit 0
+          fi
+
+          if [[ -n "$need_rebase" ]]; then
+              echo "not MERGEABLE status PRs found."
+              echo "need_rebase=$need_rebase" >> "$GITHUB_OUTPUT"
+          else
+              echo "All pending PRs are MERGEABLE."
+          fi
+
+      - uses: google-github-actions/release-please-action@v4
+        if: steps.check-pending-prs.outputs.need_rebase == 'true'
+        with:
+          target-branch: ${{ github.ref_name }}
+          token: ${{ secrets.ADMIN_PAT }}
+
+      - name: Publish to npm
+        if: steps.release.outputs.releases_created
+        shell: bash
+        run: |
+          # yarn workspaces foreach -Atv --include '@equisoft/*' npm publish --access public --tag next
