@@ -1,6 +1,7 @@
 name: Validate actions workflows
 
 on:
+  merge_group:
   push:
     branches:
       - master
