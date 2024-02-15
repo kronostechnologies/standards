@@ -48,6 +48,10 @@
   "plugins": [
     "sentence-case",
     {
+      "type": "node-workspace",
+      "merge": false
+    },
+    {
       "type": "linked-versions",
       "groupName": "eslint",
       "components": [

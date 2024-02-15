@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-      - dev/QCTECH-1055
+      - test
 
 name: release-please
 
@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
-          target-branch: ${{ github.ref_name }}
+          target-branch: test
           token: ${{ secrets.ADMIN_PAT }}
