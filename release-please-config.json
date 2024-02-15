@@ -1,4 +1,5 @@
 {
+  "always-link-local": false,
   "bootstrap-sha": "64abe7c3b317ca3d7b8b7c35928f10fe555fb46e",
   "changelog-sections": [
     { "type": "feat", "section": "Features" },
@@ -18,31 +19,25 @@
   "group-pull-request-title-pattern": "chore: release ${component} ${version}",
   "pull-request-title-pattern": "chore: release ${component} ${version}",
   "include-component-in-tag": true,
-  "separate-pull-requests": true,
+  "separate-pull-requests": false,
   "packages": {
     "javascript/packages/eslint-config": {
-      "component": "eslint-config",
-      "release-type": "node"
+      "component": "eslint-config"
     },
     "javascript/packages/eslint-config-react": {
-      "component": "eslint-config-react",
-      "release-type": "node"
+      "component": "eslint-config-react"
     },
     "javascript/packages/eslint-config-typescript": {
-      "component": "eslint-config-typescript",
-      "release-type": "node"
+      "component": "eslint-config-typescript"
     },
     "javascript/packages/eslint-config-typescript-react": {
-      "component": "eslint-config-typescript-react",
-      "release-type": "node"
+      "component": "eslint-config-typescript-react"
     },
     "javascript/packages/stylelint-config": {
-      "component": "stylelint-config",
-      "release-type": "node"
+      "component": "stylelint-config"
     },
     "javascript/packages/typescript-config": {
-      "component": "typescript-config",
-      "release-type": "node"
+      "component": "typescript-config"
     }
   },
   "plugins": [
@@ -50,11 +45,28 @@
     {
       "type": "linked-versions",
       "groupName": "eslint",
+      "merge": false,
       "components": [
         "eslint-config",
         "eslint-config-react",
         "eslint-config-typescript",
         "eslint-config-typescript-react"
+      ]
+    },
+    {
+      "type": "linked-versions",
+      "groupName": "stylelint",
+      "merge": false,
+      "components": [
+        "stylelint-config"
+      ]
+    },
+    {
+      "type": "linked-versions",
+      "groupName": "typescript-config",
+      "merge": false,
+      "components": [
+        "typescript-config"
       ]
     }
   ]
