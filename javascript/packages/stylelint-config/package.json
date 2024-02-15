@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Equisoft's stylelint configuration",
   "license": "MIT",
   "main": "index.js",
