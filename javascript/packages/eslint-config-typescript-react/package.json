@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config-typescript-react",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Equisoft's TypeScript ESLint configuration for React. Based on eslint-config-react",
   "license": "MIT",
   "main": "index.js",
@@ -29,8 +29,8 @@
     "eslint": "eslint.js"
   },
   "dependencies": {
-    "@equisoft/eslint-config-react": "3.0.6",
-    "@equisoft/eslint-config-typescript": "3.0.6"
+    "@equisoft/eslint-config-react": "3.0.7",
+    "@equisoft/eslint-config-typescript": "3.0.7"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.1",
