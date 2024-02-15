@@ -11,7 +11,8 @@
     "email": "services.administratifs@equisoft.com"
   },
   "repository": {
-    "directory": "packages/javascript/eslint-config-typescript",
+    "directory": "javascript/packages/eslint-config-typescript",
+    "sourceDirectory": "javascript/packages/eslint-config-typescript",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
