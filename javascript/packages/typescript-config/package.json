@@ -11,7 +11,8 @@
     "email": "services.administratifs@equisoft.com"
   },
   "repository": {
-    "directory": "packages/javascript/typescript-config",
+    "directory": "javascript/packages/typescript-config",
+    "sourceDirectory": "javascript/packages/typescript-config",
     "type": "git",
     "url": "https://github.com/kronostechnologies/standards.git"
   },
