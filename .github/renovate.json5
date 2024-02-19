@@ -11,6 +11,10 @@
   },
   packageRules: [
     {
+      matchFileNames: ["javascript/yarn.lock"],
+      commitMessagePrefix: "deps:"
+    },
+    {
       matchFileNames: ["javascript/**"],
       semanticCommitScope: "{{groupName}}"
     },
