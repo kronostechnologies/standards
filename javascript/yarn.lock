@@ -49,7 +49,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^2.3.2, @csstools/css-parser-algorithms@npm:^2.5.0":
+"@csstools/css-parser-algorithms@npm:^2.5.0":
   version: 2.5.0
   resolution: "@csstools/css-parser-algorithms@npm:2.5.0"
   peerDependencies:
@@ -58,14 +58,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^2.2.1, @csstools/css-tokenizer@npm:^2.2.3":
+"@csstools/css-tokenizer@npm:^2.2.3":
   version: 2.2.3
   resolution: "@csstools/css-tokenizer@npm:2.2.3"
   checksum: 10c0/557266ec52e8b36c19008a5bbd7151effba085cdd6d68270c01afebf914981caac698eda754b2a530a8a9947a3dd70e3f3a39a5e037c4170bb2a055a92754acb
   languageName: node
   linkType: hard
 
-"@csstools/media-query-list-parser@npm:^2.1.5, @csstools/media-query-list-parser@npm:^2.1.7":
+"@csstools/media-query-list-parser@npm:^2.1.7":
   version: 2.1.7
   resolution: "@csstools/media-query-list-parser@npm:2.1.7"
   peerDependencies:
@@ -355,20 +355,20 @@ __metadata:
   linkType: hard
 
 "@stylistic/stylelint-plugin@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stylistic/stylelint-plugin@npm:2.0.0"
+  version: 2.1.0
+  resolution: "@stylistic/stylelint-plugin@npm:2.1.0"
   dependencies:
-    "@csstools/css-parser-algorithms": "npm:^2.3.2"
-    "@csstools/css-tokenizer": "npm:^2.2.1"
-    "@csstools/media-query-list-parser": "npm:^2.1.5"
+    "@csstools/css-parser-algorithms": "npm:^2.5.0"
+    "@csstools/css-tokenizer": "npm:^2.2.3"
+    "@csstools/media-query-list-parser": "npm:^2.1.7"
     is-plain-object: "npm:^5.0.0"
-    postcss-selector-parser: "npm:^6.0.13"
+    postcss-selector-parser: "npm:^6.0.15"
     postcss-value-parser: "npm:^4.2.0"
     style-search: "npm:^0.1.0"
-    stylelint: "npm:^16.0.2"
+    stylelint: "npm:^16.2.1"
   peerDependencies:
     stylelint: ^16.0.2
-  checksum: 10c0/ee4efd618a0879bcee3ae53bfaf27d8af366330a23cb9a468e9edf7f1aff3d16e50762214230f8a4f0b9d5e7630fac3c3674cf87cb36417198c310088ecea12d
+  checksum: 10c0/06cc520035d156fd448de4addd59609216c320f6f8605ea0e04f5ed4ba4e680446759b445b9a38b0bedc681181093c00a9df3000b48422215162a751cc52afd2
   languageName: node
   linkType: hard
 
@@ -2814,7 +2814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.13, postcss-selector-parser@npm:^6.0.15":
+"postcss-selector-parser@npm:^6.0.15":
   version: 6.0.15
   resolution: "postcss-selector-parser@npm:6.0.15"
   dependencies:
@@ -3392,7 +3392,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^16.0.2, stylelint@npm:~16.2.1":
+"stylelint@npm:^16.2.1, stylelint@npm:~16.2.1":
   version: 16.2.1
   resolution: "stylelint@npm:16.2.1"
   dependencies:
