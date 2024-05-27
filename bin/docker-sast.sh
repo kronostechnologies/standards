@@ -7,6 +7,8 @@
 set -eo pipefail
 
 DEFAULT_OUTPUT_FILE="./docker-sast.sarif"
+# renovate: datasource=docker depName=aquasec/trivy
+TRIVY_VERSION="0.41.0"
 
 usage() {
   echo "Usage: $0 [-o result-file] [image-to-scan]"
@@ -45,7 +47,7 @@ output_file_path=$(realpath "$output_file")
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$output_file_path":/tmp/output.sarif \
   --user "$(id -u):$(id -g)" \
-  aquasec/trivy:0.41.0 \
+  "aquasec/trivy:$TRIVY_VERSION" \
   image \
   --cache-dir /tmp/.cache \
   --scanners vuln \
