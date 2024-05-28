@@ -16,7 +16,7 @@ jobs:
       - name: "Sync files to equisoft-actions/*"
         uses: BetaHuhn/repo-file-sync-action@v1.21.1
         with:
-          TEAM_REVIEWERS: equisoft-actions/harmonie
+          TEAM_REVIEWERS: equisoft-actions/harmony
           CONFIG_PATH: .github/sync/equisoft-actions.yml
           COMMIT_EACH_FILE: false
           COMMIT_PREFIX: 🎶
