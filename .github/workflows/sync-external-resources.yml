@@ -30,7 +30,7 @@ jobs:
     needs: sync
     steps:
       - name: Post workflow status
-        uses: equisoft-actions/notify-workflow-status@v1.3.0
+        uses: equisoft-actions/notify-workflow-status@v1.4.0
         with:
           needs: ${{ toJSON(needs) }}
           slack-webhook-url: ${{ secrets.OPS_CI_WEBHOOK_URL }}
