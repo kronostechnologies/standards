@@ -8,7 +8,7 @@ set -eo pipefail
 
 DEFAULT_OUTPUT_FILE="./docker-sast.sarif"
 # renovate: datasource=docker depName=aquasec/trivy
-TRIVY_VERSION="0.52.2"
+TRIVY_VERSION="0.53.0"
 
 usage() {
   echo "Usage: $0 [-o result-file] [image-to-scan]"
