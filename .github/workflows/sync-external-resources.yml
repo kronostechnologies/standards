@@ -28,9 +28,11 @@ jobs:
     name: Notify
     runs-on: ubuntu-latest
     needs: sync
+    if: always()
     steps:
       - name: Post workflow status
-        uses: equisoft-actions/notify-workflow-status@v2.0.1
+        uses: equisoft-actions/notify-workflow-status@v2
         with:
           needs: ${{ toJSON(needs) }}
-          slack-webhook-url: ${{ secrets.OPS_CI_WEBHOOK_URL }}
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-channel: ${{ github.event.repository.custom_properties.ci_slack_channel }}
