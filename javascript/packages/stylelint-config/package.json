@@ -41,7 +41,7 @@
     "stylelint-sarif-formatter": "~1.0.7"
   },
   "devDependencies": {
-    "stylelint": "~16.6.0"
+    "stylelint": "~16.7.0"
   },
   "peerDependencies": {
     "postcss": "^8",
