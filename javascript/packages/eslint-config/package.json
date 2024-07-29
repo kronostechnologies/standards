@@ -35,14 +35,14 @@
   },
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
-    "eslint": "^8.56.0",
+    "eslint": "^9.0.0",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-import": "^2.29.1",
     "yargs": "^17.7.2"
   },
   "peerDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3",
-    "eslint": "^8",
+    "eslint": "^8 || ^9.0.0",
     "eslint-import-resolver-node": "^0.3",
     "eslint-plugin-import": "^2",
     "yargs": "^17"
