@@ -46,12 +46,13 @@ output_file_path=$(realpath "$output_file")
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$output_file_path":/tmp/output.sarif \
-  --user "$(id -u):$(id -g)" \
+  -u $(id -u):$(id -g) \
   "aquasec/trivy:$TRIVY_VERSION" \
   image \
   --cache-dir /tmp/.cache \
   --scanners vuln \
-  --vuln-type os \
+  --pkg-types os \
+  --db-repository public.ecr.aws/aquasecurity/trivy-db \
   -o /tmp/output.sarif \
   --format sarif \
   "$target_image"
