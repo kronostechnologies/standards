@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config-react",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "Equisoft's React ESLint config, based on eslint-config-airbnb",
   "main": "index.js",
   "license": "MIT",
