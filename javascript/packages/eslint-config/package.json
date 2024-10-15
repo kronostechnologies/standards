@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "Equisoft's ESLint configuration. Based on eslint-config-airbnb-base",
   "license": "MIT",
   "main": "index.js",
