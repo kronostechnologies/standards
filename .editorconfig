@@ -506,6 +506,7 @@ ij_php_uses_weight = 28
 ij_php_var_weight = 28
 ij_php_variable_naming_style = mixed
 ij_php_version_weight = 28
+ij_php_spaces_around_pipe_in_union_type = true
 
 ; Python
 [*.py]
