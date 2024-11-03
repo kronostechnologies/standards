@@ -1,4 +1,4 @@
 actionlint 1.7.3
-nodejs 20.18.0
+nodejs 22.11.0
 shellcheck 0.10.0
 yarn 1.22.19
