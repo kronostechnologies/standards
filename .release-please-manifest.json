@@ -1,8 +1,8 @@
 {
-  "javascript/packages/eslint-config": "3.0.8",
-  "javascript/packages/eslint-config-react": "3.0.8",
-  "javascript/packages/eslint-config-typescript": "3.0.8",
-  "javascript/packages/eslint-config-typescript-react": "3.0.8",
+  "javascript/packages/eslint-config": "3.0.9",
+  "javascript/packages/eslint-config-react": "3.0.9",
+  "javascript/packages/eslint-config-typescript": "3.0.9",
+  "javascript/packages/eslint-config-typescript-react": "3.0.9",
   "javascript/packages/stylelint-config": "4.0.12",
   "javascript/packages/typescript-config": "2.0.0"
 }
