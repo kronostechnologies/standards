@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.9](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v3.0.8...eslint-config-react@v3.0.9) (2025-03-19)
+
+
+### Miscellaneous Chores
+
+* **eslint-config-react:** Synchronize eslint versions
+
 ## [3.0.8](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v3.0.7...eslint-config-react@v3.0.8) (2024-10-15)
 
 
