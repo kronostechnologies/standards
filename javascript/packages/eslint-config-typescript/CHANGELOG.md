@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.9](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v3.0.8...eslint-config-typescript@v3.0.9) (2025-03-19)
+
+
+### Dependencies updates
+
+* Update dependency eslint-import-resolver-typescript to v4 ([#543](https://github.com/kronostechnologies/standards/issues/543)) ([a4a6b6e](https://github.com/kronostechnologies/standards/commit/a4a6b6e3b19b265e259c19a3bd72944dfe083d1e))
+
 ## [3.0.8](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v3.0.7...eslint-config-typescript@v3.0.8) (2024-10-15)
 
 
