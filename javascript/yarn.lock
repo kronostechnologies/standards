@@ -203,7 +203,7 @@ __metadata:
     eslint-plugin-import: ^2
     yargs: ^17
   bin:
-    eslint: eslint.js
+    eq-eslint: eslint.js
   languageName: unknown
   linkType: soft
 

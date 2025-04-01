@@ -25,7 +25,7 @@
     "equisoft"
   ],
   "bin": {
-    "eslint": "eslint.js"
+    "eq-eslint": "eslint.js"
   },
   "scripts": {
     "eslint": "./eslint.js --config index.js ./eslint.js"
