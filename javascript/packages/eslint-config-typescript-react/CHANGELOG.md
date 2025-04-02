@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript-react@v3.0.9...eslint-config-typescript-react@v4.0.0) (2025-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** rename eslint bin to eq-eslint ([#554](https://github.com/kronostechnologies/standards/issues/554))
+
+### Features
+
+* **eslint:** Rename eslint bin to eq-eslint ([#554](https://github.com/kronostechnologies/standards/issues/554)) ([91a9f2d](https://github.com/kronostechnologies/standards/commit/91a9f2dc0cc4f0908887bd559fa3a8377dc374f5))
+
 ## [3.0.9](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript-react@v3.0.8...eslint-config-typescript-react@v3.0.9) (2025-03-19)
 
 
