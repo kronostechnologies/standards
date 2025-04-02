@@ -26,7 +26,7 @@
     "react"
   ],
   "bin": {
-    "eslint": "eslint.js"
+    "eq-eslint": "eslint.js"
   },
   "dependencies": {
     "@equisoft/eslint-config": "workspace:*",
