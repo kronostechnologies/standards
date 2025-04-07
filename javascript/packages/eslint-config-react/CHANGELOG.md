@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v4.0.0...eslint-config-react@v4.0.1) (2025-04-07)
+
+
+### Bug Fixes
+
+* **eslint-config:** Add missing shebang ([#557](https://github.com/kronostechnologies/standards/issues/557)) ([7c5614f](https://github.com/kronostechnologies/standards/commit/7c5614f8005c566d4356fbfe1a0d4c7da9c4a046))
+
 ## [4.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v3.0.9...eslint-config-react@v4.0.0) (2025-04-02)
 
 
