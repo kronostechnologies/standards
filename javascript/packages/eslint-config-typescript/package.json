@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/eslint-config-typescript",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Equisoft's TypeScript ESLint configuration. Based on eslint-config",
   "license": "MIT",
   "main": "index.js",

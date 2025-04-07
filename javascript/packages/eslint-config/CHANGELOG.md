@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config@v4.0.0...eslint-config@v4.0.1) (2025-04-07)
+
+
+### Miscellaneous Chores
+
+* **eslint-config:** Synchronize eslint versions
+
 ## [4.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config@v3.0.9...eslint-config@v4.0.0) (2025-04-02)
 
 
