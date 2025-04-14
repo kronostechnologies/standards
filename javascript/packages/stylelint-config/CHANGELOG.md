@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.14](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.13...stylelint-config@v4.0.14) (2025-04-14)
+
+
+### Dependencies updates
+
+* Update Yarn minors and patches ([#560](https://github.com/kronostechnologies/standards/issues/560)) ([79088c1](https://github.com/kronostechnologies/standards/commit/79088c1358a54c6182f771bb05dd9f78962e5cff))
+
 ## [4.0.13](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.12...stylelint-config@v4.0.13) (2025-04-01)
 
 
