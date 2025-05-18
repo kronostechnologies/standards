@@ -1455,8 +1455,8 @@ __metadata:
   linkType: hard
 
 "eslint-import-resolver-typescript@npm:^4.0.0":
-  version: 4.3.4
-  resolution: "eslint-import-resolver-typescript@npm:4.3.4"
+  version: 4.3.5
+  resolution: "eslint-import-resolver-typescript@npm:4.3.5"
   dependencies:
     debug: "npm:^4.4.0"
     get-tsconfig: "npm:^4.10.0"
@@ -1473,7 +1473,7 @@ __metadata:
       optional: true
     eslint-plugin-import-x:
       optional: true
-  checksum: 10c0/dba14e699855a7c32756e5c5258075e787a6e7938123ace553d69e8f84cefb4e6364fb1935d6d5500f96de82cee79662fee1e826fa45c0672a83841c27cf6abe
+  checksum: 10c0/cc8f6e858b45d3a261dce4fec250a82f07c7356784ac8234cda9706386408a96c767599f2d0b9b84492bc79bed0eb24f6f376825662b8c4c66397738b5acba67
   languageName: node
   linkType: hard
 
@@ -3573,9 +3573,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended-scss@npm:^15.0.0":
-  version: 15.0.0
-  resolution: "stylelint-config-recommended-scss@npm:15.0.0"
+"stylelint-config-recommended-scss@npm:^15.0.1":
+  version: 15.0.1
+  resolution: "stylelint-config-recommended-scss@npm:15.0.1"
   dependencies:
     postcss-scss: "npm:^4.0.9"
     stylelint-config-recommended: "npm:^16.0.0"
@@ -3586,7 +3586,7 @@ __metadata:
   peerDependenciesMeta:
     postcss:
       optional: true
-  checksum: 10c0/653d6760e26ac8fa11b55ac57617c86554fb77c5537319734dd437b7c8be07560c860fbe4daa5dd7d2d21834efc4ba853c6794207920765c325449d852ac40ce
+  checksum: 10c0/8c5854e143145241dbff3d921298eb59e837aa695c0e6d7f08acf75de81f3f8307d39a931781bf8ac7cbe6bf9079a402fee89566206e9cfb1d728ef6b6486890
   languageName: node
   linkType: hard
 
@@ -3600,10 +3600,10 @@ __metadata:
   linkType: hard
 
 "stylelint-config-standard-scss@npm:~15.0.0":
-  version: 15.0.0
-  resolution: "stylelint-config-standard-scss@npm:15.0.0"
+  version: 15.0.1
+  resolution: "stylelint-config-standard-scss@npm:15.0.1"
   dependencies:
-    stylelint-config-recommended-scss: "npm:^15.0.0"
+    stylelint-config-recommended-scss: "npm:^15.0.1"
     stylelint-config-standard: "npm:^38.0.0"
   peerDependencies:
     postcss: ^8.3.3
@@ -3611,7 +3611,7 @@ __metadata:
   peerDependenciesMeta:
     postcss:
       optional: true
-  checksum: 10c0/96c9193b37bef83664829c35dea0a2aeb890ff6984e805146fe9ca8238ca05504e1c29bdc1b1e74a4aa939fa73a98106378f39bc178b8f12d8bdcd90ce1cbb84
+  checksum: 10c0/85b4c85a9ecd97176ac104fb4590cd48047b6253b830d08749c024752b9bc8871bbf69eca592769d69cd4c6e3f90005960630f1c2cdaf85dbfabdb5621ecc55f
   languageName: node
   linkType: hard
 
