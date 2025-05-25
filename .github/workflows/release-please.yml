@@ -61,7 +61,7 @@ jobs:
           fi
 
       - name: Rebase release-please PRs
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         if: steps.check-pending-prs.outputs.need_rebase == 'true'
         with:
           target-branch: ${{ github.ref_name }}
