@@ -48,6 +48,6 @@
     "eslint-plugin-jsx-a11y": "^6",
     "eslint-plugin-react": "^7",
     "eslint-plugin-react-hooks": "^4 || ^5.0.0",
-    "yargs": "^17"
+    "yargs": "^17 || ^18.0.0"
   }
 }
