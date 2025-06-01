@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.2](https://github.com/kronostechnologies/standards/compare/eslint-config@v4.0.1...eslint-config@v4.0.2) (2025-06-01)
+
+
+### Dependencies updates
+
+* Update dependency yargs to v18 ([#587](https://github.com/kronostechnologies/standards/issues/587)) ([9ad3a38](https://github.com/kronostechnologies/standards/commit/9ad3a38909970d3774fb7e8a31591c6b8fe2f109))
+
 ## [4.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config@v4.0.0...eslint-config@v4.0.1) (2025-04-07)
 
 
