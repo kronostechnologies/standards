@@ -47,6 +47,6 @@
     "eslint-import-resolver-node": "^0.3",
     "eslint-import-resolver-typescript": "^3 || ^4.0.0",
     "eslint-plugin-import": "^2",
-    "yargs": "^17"
+    "yargs": "^17 || ^18.0.0"
   }
 }
