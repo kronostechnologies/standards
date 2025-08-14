@@ -13,7 +13,7 @@ The versioning of this project respects [semver](https://semver.org/). That mean
 ## Prerequisites
 
 ```bash
-yarn add --dev eslint @microsoft/eslint-formatter-sarif eslint-import-resolver-node eslint-plugin-import yargs
+yarn add --dev eslint @microsoft/eslint-formatter-sarif eslint-import-resolver-node eslint-plugin-import yargs @stylistic/eslint-plugin
 ```
 
 ## Installation
