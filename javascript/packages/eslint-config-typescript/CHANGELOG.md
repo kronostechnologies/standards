@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v4.0.2...eslint-config-typescript@v5.0.0) (2025-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config:** replace indent rule by stylistic ([#617](https://github.com/kronostechnologies/standards/issues/617))
+
+### Features
+
+* **eslint-config:** Replace indent rule by stylistic ([#617](https://github.com/kronostechnologies/standards/issues/617)) ([d31c1e2](https://github.com/kronostechnologies/standards/commit/d31c1e2af2239a939d061b77aed04911c1643daf))
+
 ## [4.0.2](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v4.0.1...eslint-config-typescript@v4.0.2) (2025-06-01)
 
 
