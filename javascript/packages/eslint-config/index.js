@@ -8,6 +8,7 @@ module.exports = {
     },
     plugins: [
         'eslint-plugin-import',
+        '@stylistic',
     ],
     rules: {
         'arrow-parens': ['error', 'always'],
@@ -15,7 +16,8 @@ module.exports = {
         'import/extensions': 'off',
         'import/prefer-default-export': 'off',
         'import/no-default-export': ['error'],
-        'indent': ['error', 4, { 'SwitchCase': 1 }],
+        'indent': 'off',
+        '@stylistic/indent': ['error', 4, { 'SwitchCase': 1 }],
         'lines-between-class-members': [
             'error', 'always', { 'exceptAfterSingleLine': true },
         ],
