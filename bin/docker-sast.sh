@@ -44,15 +44,16 @@ touch "$output_file"
 
 output_file_path=$(realpath "$output_file")
 
+output_tmp_dir=${TMPDIR:-/tmp}
+
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$output_file_path":/tmp/output.sarif \
-  -u $(id -u):$(id -g) \
+  -v "$output_file_path":${output_tmp_dir}/output.sarif \
   "aquasec/trivy:$TRIVY_VERSION" \
   image \
   --cache-dir /tmp/.cache \
   --scanners vuln \
   --pkg-types os \
   --db-repository public.ecr.aws/aquasecurity/trivy-db \
-  -o /tmp/output.sarif \
+  -o ${output_tmp_dir}/output.sarif \
   --format sarif \
   "$target_image"
