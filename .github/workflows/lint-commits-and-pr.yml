@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: equisoft-actions/lint-commits@v3
+      - uses: equisoft-actions/lint-commits@v4
 
       - name: Lint pull request title
         if: github.event_name == 'pull_request'
