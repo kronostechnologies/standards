@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.24](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.23...stylelint-config@v4.0.24) (2025-09-15)
+
+
+### Dependencies updates
+
+* Update dependency stylelint-config-standard-scss to v16 ([#631](https://github.com/kronostechnologies/standards/issues/631)) ([83220e8](https://github.com/kronostechnologies/standards/commit/83220e8ed973fcbb83e1fd67cf00a904e969c472))
+
 ## [4.0.23](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.22...stylelint-config@v4.0.23) (2025-09-07)
 
 
