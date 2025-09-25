@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config@v5.0.0...eslint-config@v6.0.0) (2025-09-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config-typescript:** require @typescript-eslint 8+ only and replace removed rules ([#641](https://github.com/kronostechnologies/standards/issues/641))
+
+### Features
+
+* **eslint-config-typescript:** Require [@typescript-eslint](https://github.com/typescript-eslint) 8+ only and replace removed rules ([#641](https://github.com/kronostechnologies/standards/issues/641)) ([5fa7fd4](https://github.com/kronostechnologies/standards/commit/5fa7fd4a8b8b26ac0396029dfc0ebe708985580c))
+
 ## [5.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config@v4.0.2...eslint-config@v5.0.0) (2025-08-14)
 
 
