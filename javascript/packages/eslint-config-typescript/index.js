@@ -32,11 +32,16 @@ module.exports = {
         'no-empty-function': 'off',
         '@typescript-eslint/no-empty-function': 'error',
 
+        '@typescript-eslint/no-empty-object-type': [
+            'error',
+            { 'allowInterfaces': 'always', 'allowObjectTypes': 'always' },
+        ],
+
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
 
         'space-infix-ops': 'off',
-        '@typescript-eslint/space-infix-ops': ['error'],
+        '@stylistic/space-infix-ops': ['error'],
 
         '@typescript-eslint/explicit-function-return-type': 'off', // See overrides
         '@typescript-eslint/ban-types': 'off',

@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
-    "@stylistic/eslint-plugin": "^5.2.3",
+    "@stylistic/eslint-plugin": "^5.4.0",
     "eslint": "^8.57.1",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-import": "^2.32.0",
@@ -47,6 +47,6 @@
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3",
     "eslint-plugin-import": "^2",
-    "yargs": "^17 || ^18.0.0"
+    "yargs": "^18.0.0"
   }
 }
