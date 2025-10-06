@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript-react@v6.0.0...eslint-config-typescript-react@v6.0.1) (2025-10-06)
+
+
+### Dependencies updates
+
+* Update dependency eslint-plugin-react-hooks to v6 ([#647](https://github.com/kronostechnologies/standards/issues/647)) ([d8e0d98](https://github.com/kronostechnologies/standards/commit/d8e0d9898996ea5082fb91b468667c33d99defe7))
+
 ## [6.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript-react@v5.0.0...eslint-config-typescript-react@v6.0.0) (2025-09-25)
 
 

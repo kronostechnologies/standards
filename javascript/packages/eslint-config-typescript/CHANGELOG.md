@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v6.0.0...eslint-config-typescript@v6.0.1) (2025-10-06)
+
+
+### Miscellaneous Chores
+
+* **eslint-config-typescript:** Synchronize eslint versions
+
 ## [6.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-typescript@v5.0.0...eslint-config-typescript@v6.0.0) (2025-09-25)
 
 
