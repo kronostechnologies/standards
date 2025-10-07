@@ -89,7 +89,11 @@ jobs:
                 }
               }
 
-              updated = requests.put(page_url, json=new_content, auth=(envs['user'], envs['token'])).json()
+              updated = requests.put(
+                page_url,
+                json=new_content,
+                auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN'])
+              ).json()
               link = updated['_links']['base'] + updated['_links']['webui']
               print(f'Uploaded content successfully to page {link}')
             except Exception:
