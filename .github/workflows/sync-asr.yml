@@ -67,11 +67,14 @@ jobs:
                 file_content = f.read()
 
               page_url = f"https://{envs['CONFLUENCE_SUBDOMAIN']}.atlassian.net/wiki/rest/api/content/{mapping['page_id']}"
-              page_content = requests.get(
+              response = requests.get(
                 page_url,
                 auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN']),
                 headers={ 'Accept': 'application/json' }
-              ).json()
+              )
+              print(response)
+              response.raise_for_status()
+              page_content = response.json()
 
               html = markdown(file_content, extensions=[GithubFlavoredMarkdownExtension()])
               new_content = {
