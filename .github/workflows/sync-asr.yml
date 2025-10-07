@@ -44,7 +44,7 @@ jobs:
           from mdx_gfm import GithubFlavoredMarkdownExtension
 
           mappings = [
-            { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '1234567890' },
+            { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '52232304' },
           ]
 
           envs: Dict[str, str] = { }
@@ -57,13 +57,16 @@ jobs:
             envs[key] = value
 
           for mapping in mappings:
-            print(f'Processing file {mapping['file']} to page {mapping['page_id']}')
+            file = mapping['file']
+            page_id = mapping['page_id']
+
+            print(f'Processing file {file} to page {page_id}')
 
             try:
-              with open(join(envs['GITHUB_WORKSPACE'], mapping['file'])) as f:
+              with open(join(envs['GITHUB_WORKSPACE'], file)) as f:
                 file_content = f.read()
 
-              page_url = f"https://{envs['CONFLUENCE_SUBDOMAIN']}.atlassian.net/wiki/rest/api/content/{mapping['page_id']}"
+              page_url = f"https://{envs['CONFLUENCE_SUBDOMAIN']}.atlassian.net/wiki/rest/api/content/{page_id}"
               response = requests.get(
                 page_url,
                 auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN']),
@@ -90,6 +93,6 @@ jobs:
               link = updated['_links']['base'] + updated['_links']['webui']
               print(f'Uploaded content successfully to page {link}')
             except Exception:
-              print(f'Failed to process file {envs["FILE"]} to page {envs["PAGE_ID"]}')
+              print(f'Failed to process file {file} to page {page_id}')
               traceback.print_exc()
               exit(1)
