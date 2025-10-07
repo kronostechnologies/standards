@@ -73,15 +73,22 @@ jobs:
     needs:
       - release-please
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node.js for publishing
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.tool-versions'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Publish to npm
         shell: bash
         working-directory: javascript
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           PATHS=(${{ join(fromJSON(needs.release-please.outputs.paths_released), ' ') }})
           INCLUDE_OPTS=()
@@ -91,6 +98,4 @@ jobs:
             INCLUDE_OPTS+=(--include "$package" )
           done
 
-          echo -e "npmRegistries: \n  //registry.yarnpkg.com:\n    npmAlwaysAuth: true\n    npmAuthToken: ${NPM_TOKEN}" >> ~/.yarnrc.yml
           yarn workspaces foreach -Atv "${INCLUDE_OPTS[@]}" npm publish --access public --tolerate-republish
-
