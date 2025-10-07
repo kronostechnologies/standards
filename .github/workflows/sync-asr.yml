@@ -1,0 +1,96 @@
+name: Synchronize ASR to Confluence
+
+on:
+  push:
+    branches:
+      - master
+      - dev/adrs
+    paths:
+      - asr/
+      - .github/workflows/sync-asr.yml
+
+jobs:
+  sync-asr:
+    runs-on: ubuntu-latest
+    environment: confluence
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown requests py-gfm
+
+      - name: Synchronize ASR to Confluence
+        shell: python
+        env:
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_SUBDOMAIN: ${{ secrets.CONFLUENCE_SUBDOMAIN }}
+          CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
+        run: |
+          from os import environ
+          from os.path import join
+          import traceback
+          from typing import Dict
+
+          import requests
+          from markdown import markdown
+          from mdx_gfm import GithubFlavoredMarkdownExtension
+
+          mappings = [
+            { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '1234567890' },
+          ]
+
+          envs: Dict[str, str] = { }
+          for key in ['CONFLUENCE_SUBDOMAIN', 'CONFLUENCE_USERNAME', 'CONFLUENCE_API_TOKEN',
+                      'GITHUB_WORKSPACE']:
+            value = environ.get(key.upper())
+            if not value:
+              print(f'Missing value for {key}')
+              exit(1)
+            envs[key] = value
+
+          for mapping in mappings:
+            envs['FILE'] = mapping['file']
+            envs['PAGE_ID'] = mapping['page_id']
+
+            print(f'Processing file {envs["FILE"]} to page {envs["PAGE_ID"]}')
+
+            try:
+              with open(join(envs['GITHUB_WORKSPACE'], mapping['file'])) as f:
+                file_content = f.read()
+
+              page_url = f"https://{envs['CONFLUENCE_SUBDOMAIN']}.atlassian.net/wiki/rest/api/content/{mapping['page_id']}"
+              page_content = requests.get(
+                page_url,
+                auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN']),
+                headers={ 'Accept': 'application/json' }
+              ).json()
+
+              html = markdown(file_content, extensions=[GithubFlavoredMarkdownExtension()])
+              new_content = {
+                'id': page_content['id'],
+                'type': page_content['type'],
+                'title': page_content['title'],
+                'version': { 'number': page_content['version']['number'] + 1 },
+                'body': {
+                  'editor': {
+                    'value': html,
+                    'representation': 'editor'
+                  }
+                }
+              }
+
+              updated = requests.put(page_url, json=new_content, auth=(envs['user'], envs['token'])).json()
+              link = updated['_links']['base'] + updated['_links']['webui']
+              print(f'Uploaded content successfully to page {link}')
+            except Exception:
+              print(f'Failed to process file {envs["FILE"]} to page {envs["PAGE_ID"]}')
+              traceback.print_exc()
+              exit(1)
