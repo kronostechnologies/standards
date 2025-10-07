@@ -21,9 +21,9 @@ commits that are present in the main branch or release branches (
 See [ASR-01_repository-management.md](ASR-01_repository-management.md)). Only authorized release operators will have
 permissions to create new tags.
 
-To limit overhead, we will not track versions in package management files (e.g., package.json, gradle.build). When a new
-version is tagged, automated tools will update these files as part of the release process and include them in build
-artifacts.
+To limit overhead, we will not track versions in package management files (e.g., `package.json`, `gradle.build`,
+`composer.json`). When a new version is tagged, automated tools will update these files as part of the release process
+and include them in build artifacts.
 
 ## Consequences
 

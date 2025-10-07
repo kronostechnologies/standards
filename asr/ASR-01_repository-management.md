@@ -25,6 +25,8 @@ the following key practices:
       after successful reviews and tests. Feature flags should be favored over release branches when possible.
     - *Feature branches* will be prefixed with "feature/" and will be created for specific features or bug fixes. These
       branches will be merged into the development branch after successful code reviews and testing.
+        - Feature banches should be avoided in favor of feature flags when possible.
+          See [ASR-12](ASR-12_feature-flags.md) for more details.
     - *Development branches* will be prefixed with "dev/" and will be used for ongoing development work.
 3. **Code Reviews**: All code changes will undergo peer reviews to maintain code quality and share knowledge among team
    members.
