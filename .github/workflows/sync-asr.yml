@@ -57,10 +57,7 @@ jobs:
             envs[key] = value
 
           for mapping in mappings:
-            envs['FILE'] = mapping['file']
-            envs['PAGE_ID'] = mapping['page_id']
-
-            print(f'Processing file {envs["FILE"]} to page {envs["PAGE_ID"]}')
+            print(f'Processing file {mapping['file']} to page {mapping['page_id']}')
 
             try:
               with open(join(envs['GITHUB_WORKSPACE'], mapping['file'])) as f:
@@ -72,7 +69,6 @@ jobs:
                 auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN']),
                 headers={ 'Accept': 'application/json' }
               )
-              print(response)
               response.raise_for_status()
               page_content = response.json()
 
