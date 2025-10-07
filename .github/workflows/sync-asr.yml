@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - dev/adrs
     paths:
       - asr/
       - .github/workflows/sync-asr.yml
@@ -45,6 +44,18 @@ jobs:
 
           mappings = [
             { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '52232304' },
+            { 'file': 'asr/ASR-01_repository-management.md', 'page_id': '52232256' },
+            { 'file': 'asr/ASR-02_project-onboarding.md', 'page_id': '52232315' },
+            { 'file': 'asr/ASR-03_project-versioning.md', 'page_id': '586682102' },
+            { 'file': 'asr/ASR-04_project-ownership.md', 'page_id': '586746913' },
+            { 'file': 'asr/ASR-05_languages-selection-and-libraries.md', 'page_id': '52232264' },
+            { 'file': 'asr/ASR-06_continuous-integration.md', 'page_id': '52232268' },
+            { 'file': 'asr/ASR-07_code-style.md', 'page_id': '52232262' },
+            { 'file': 'asr/ASR-08_code-quality-analysis.md', 'page_id': '52232349' },
+            { 'file': 'asr/ASR-09_unit-tests.md', 'page_id': '52232266' },
+            { 'file': 'asr/ASR-10_static-application-security-testing.md', 'page_id': '586682076' },
+            { 'file': 'asr/ASR-11_software-composition-analysis.md', 'page_id': '586715089' },
+            { 'file': 'asr/ASR-12_feature-flags.md', 'page_id': '52232379' },
           ]
 
           envs: Dict[str, str] = { }
