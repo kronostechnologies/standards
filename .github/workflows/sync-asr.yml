@@ -1,0 +1,113 @@
+name: Synchronize ASR to Confluence
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - asr/
+      - .github/workflows/sync-asr.yml
+
+jobs:
+  sync-asr:
+    runs-on: ubuntu-latest
+    environment: confluence
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown requests py-gfm
+
+      - name: Synchronize ASR to Confluence
+        shell: python
+        env:
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_SUBDOMAIN: ${{ secrets.CONFLUENCE_SUBDOMAIN }}
+          CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
+        run: |
+          from os import environ
+          from os.path import join
+          import traceback
+          from typing import Dict
+
+          import requests
+          from markdown import markdown
+          from mdx_gfm import GithubFlavoredMarkdownExtension
+
+          mappings = [
+            { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '52232304' },
+            { 'file': 'asr/ASR-01_repository-management.md', 'page_id': '52232256' },
+            { 'file': 'asr/ASR-02_project-onboarding.md', 'page_id': '52232315' },
+            { 'file': 'asr/ASR-03_project-versioning.md', 'page_id': '586682102' },
+            { 'file': 'asr/ASR-04_project-ownership.md', 'page_id': '586746913' },
+            { 'file': 'asr/ASR-05_languages-selection-and-libraries.md', 'page_id': '52232264' },
+            { 'file': 'asr/ASR-06_continuous-integration.md', 'page_id': '52232268' },
+            { 'file': 'asr/ASR-07_code-style.md', 'page_id': '52232262' },
+            { 'file': 'asr/ASR-08_code-quality-analysis.md', 'page_id': '52232349' },
+            { 'file': 'asr/ASR-09_unit-tests.md', 'page_id': '52232266' },
+            { 'file': 'asr/ASR-10_static-application-security-testing.md', 'page_id': '586682076' },
+            { 'file': 'asr/ASR-11_software-composition-analysis.md', 'page_id': '586715089' },
+            { 'file': 'asr/ASR-12_feature-flags.md', 'page_id': '52232379' },
+          ]
+
+          envs: Dict[str, str] = { }
+          for key in ['CONFLUENCE_SUBDOMAIN', 'CONFLUENCE_USERNAME', 'CONFLUENCE_API_TOKEN',
+                      'GITHUB_WORKSPACE']:
+            value = environ.get(key.upper())
+            if not value:
+              print(f'Missing value for {key}')
+              exit(1)
+            envs[key] = value
+
+          for mapping in mappings:
+            file = mapping['file']
+            page_id = mapping['page_id']
+
+            print(f'Processing file {file} to page {page_id}')
+
+            try:
+              with open(join(envs['GITHUB_WORKSPACE'], file)) as f:
+                file_content = f.read()
+
+              page_url = f"https://{envs['CONFLUENCE_SUBDOMAIN']}.atlassian.net/wiki/rest/api/content/{page_id}"
+              response = requests.get(
+                page_url,
+                auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN']),
+                headers={ 'Accept': 'application/json' }
+              )
+              response.raise_for_status()
+              page_content = response.json()
+
+              html = markdown(file_content, extensions=[GithubFlavoredMarkdownExtension()])
+              new_content = {
+                'id': page_content['id'],
+                'type': page_content['type'],
+                'title': page_content['title'],
+                'version': { 'number': page_content['version']['number'] + 1 },
+                'body': {
+                  'editor': {
+                    'value': html,
+                    'representation': 'editor'
+                  }
+                }
+              }
+
+              updated = requests.put(
+                page_url,
+                json=new_content,
+                auth=(envs['CONFLUENCE_USERNAME'], envs['CONFLUENCE_API_TOKEN'])
+              ).json()
+              link = updated['_links']['base'] + updated['_links']['webui']
+              print(f'Uploaded content successfully to page {link}')
+            except Exception:
+              print(f'Failed to process file {file} to page {page_id}')
+              traceback.print_exc()
+              exit(1)
