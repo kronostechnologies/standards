@@ -40,7 +40,7 @@ jobs:
 
           import requests
           from markdown import markdown
-          from mdx_gfm import GithubFlavoredMarkdownExtension
+          from mdx_partial_gfm import PartialGithubFlavoredMarkdownExtension
 
           mappings = [
             { 'file': 'asr/ASR-00_record-architecturally-significant-requirements.md', 'page_id': '52232304' },
@@ -86,7 +86,7 @@ jobs:
               response.raise_for_status()
               page_content = response.json()
 
-              html = markdown(file_content, extensions=[GithubFlavoredMarkdownExtension()])
+              html = markdown(file_content, extensions=[PartialGithubFlavoredMarkdownExtension()])
               new_content = {
                 'id': page_content['id'],
                 'type': page_content['type'],
