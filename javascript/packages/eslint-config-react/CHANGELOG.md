@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.2](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.1...eslint-config-react@v6.0.2) (2025-10-14)
+
+
+### Dependencies updates
+
+* Update dependency eslint-plugin-react-hooks to v7 ([#656](https://github.com/kronostechnologies/standards/issues/656)) ([a1a3cd6](https://github.com/kronostechnologies/standards/commit/a1a3cd6827ed777d61a19814a4257375f1e98b14))
+
 ## [6.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.0...eslint-config-react@v6.0.1) (2025-10-06)
 
 

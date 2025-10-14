@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.2](https://github.com/kronostechnologies/standards/compare/eslint-config@v6.0.1...eslint-config@v6.0.2) (2025-10-14)
+
+
+### Miscellaneous Chores
+
+* **eslint-config:** Synchronize eslint versions
+
 ## [6.0.1](https://github.com/kronostechnologies/standards/compare/eslint-config@v6.0.0...eslint-config@v6.0.1) (2025-10-06)
 
 
