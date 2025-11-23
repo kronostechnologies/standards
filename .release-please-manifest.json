@@ -3,6 +3,6 @@
   "javascript/packages/eslint-config-react": "6.0.2",
   "javascript/packages/eslint-config-typescript": "6.0.2",
   "javascript/packages/eslint-config-typescript-react": "6.0.2",
-  "javascript/packages/stylelint-config": "4.0.25",
+  "javascript/packages/stylelint-config": "4.0.26",
   "javascript/packages/typescript-config": "2.0.0"
 }
