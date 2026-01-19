@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.0.0](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.26...stylelint-config@v5.0.0) (2026-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **stylelint-config:** update dependency stylelint to v17 ([#696](https://github.com/kronostechnologies/standards/issues/696))
+
+### Dependencies updates
+
+* **stylelint-config:** Update dependency stylelint to v17 ([#696](https://github.com/kronostechnologies/standards/issues/696)) ([b5a1a1f](https://github.com/kronostechnologies/standards/commit/b5a1a1ff56d29746a1f2020fe9e0a0db929a2067))
+* Update dependency @stylistic/stylelint-config to v4 ([#694](https://github.com/kronostechnologies/standards/issues/694)) ([5a3b786](https://github.com/kronostechnologies/standards/commit/5a3b786de8a7526091c5b50516221de256c02997))
+* Update dependency @stylistic/stylelint-plugin to v5 ([#695](https://github.com/kronostechnologies/standards/issues/695)) ([82ee6f6](https://github.com/kronostechnologies/standards/commit/82ee6f6e852668c36c42b3f55a7ebef181d9b336))
+* Update dependency stylelint-config-standard-scss to v17 ([#697](https://github.com/kronostechnologies/standards/issues/697)) ([56d72f1](https://github.com/kronostechnologies/standards/commit/56d72f159787bb53feb247c910ae57591d378132))
+
 ## [4.0.26](https://github.com/kronostechnologies/standards/compare/stylelint-config@v4.0.25...stylelint-config@v4.0.26) (2025-11-23)
 
 
