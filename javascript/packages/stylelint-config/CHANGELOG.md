@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.0](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.0.3...stylelint-config@v5.1.0) (2026-03-16)
+
+
+### Features
+
+* Update dependency stylelint-order to v8 ([#725](https://github.com/kronostechnologies/standards/issues/725)) ([9d4744b](https://github.com/kronostechnologies/standards/commit/9d4744b36737fd30f4f526815d088520bb17e1f2))
+
 ## [5.0.3](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.0.2...stylelint-config@v5.0.3) (2026-03-09)
 
 
