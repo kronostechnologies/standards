@@ -409,7 +409,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@equisoft/stylelint-config@workspace:packages/stylelint-config"
   dependencies:
-    "@stylistic/stylelint-config": "npm:^4.0.0"
+    "@stylistic/stylelint-config": "npm:^5.0.0"
     "@stylistic/stylelint-plugin": "npm:^5.0.0"
     stylelint: "npm:~17.6.0"
     stylelint-config-standard-scss: "npm:~17.0.0"
@@ -643,18 +643,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylistic/stylelint-config@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@stylistic/stylelint-config@npm:4.0.0"
+"@stylistic/stylelint-config@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@stylistic/stylelint-config@npm:5.0.0"
   dependencies:
-    "@stylistic/stylelint-plugin": "npm:^5.0.0"
+    "@stylistic/stylelint-plugin": "npm:^5.1.0"
   peerDependencies:
-    stylelint: ^17.0.0
-  checksum: 10c0/acebbe63fc70093d46e9fe3df09a925ab8329effc9e6f9f25182fe34d2ebf4308ae71a2203f5b836390cd77389bf44577a654511ae28b5fc852f8c2be1c557d9
+    stylelint: ^17.6.0
+  checksum: 10c0/e46437a530e56c7ea09eb26462f15e806ff7cd09394fe79c7cb8a6968f0df347c6742f3cc0cf7fac493f719490da3bb6ecd265b2698efb93f1c84146d24c74f8
   languageName: node
   linkType: hard
 
 "@stylistic/stylelint-plugin@npm:^5.0.0":
+  version: 5.1.0
+  resolution: "@stylistic/stylelint-plugin@npm:5.1.0"
+  dependencies:
+    "@csstools/css-parser-algorithms": "npm:^4.0.0"
+    "@csstools/css-tokenizer": "npm:^4.0.0"
+    "@csstools/media-query-list-parser": "npm:^5.0.0"
+    postcss: "npm:^8.5.8"
+    postcss-selector-parser: "npm:^7.1.1"
+    postcss-value-parser: "npm:^4.2.0"
+    style-search: "npm:^0.1.0"
+  peerDependencies:
+    stylelint: ^17.6.0
+  checksum: 10c0/7094f5d31092653c7d0d83ed7baacdcc6a781837fc78c12dd4bc66bef1f1179e63e5a9499d6531c84176a8548ad354e97915765a0eb93b1e50163f2ae5363a2d
+  languageName: node
+  linkType: hard
+
+"@stylistic/stylelint-plugin@npm:^5.1.0":
   version: 5.1.0
   resolution: "@stylistic/stylelint-plugin@npm:5.1.0"
   dependencies:
