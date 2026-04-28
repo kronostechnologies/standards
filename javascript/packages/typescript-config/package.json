@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/typescript-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Equisoft's standard Typescript configuration.",
   "license": "MIT",
   "main": "tslint.json",
