@@ -4,6 +4,7 @@
     'local>kronostechnologies/renovate-config',
     ':semanticCommitTypeAll(deps)',
   ],
+  commitMessagePrefix: "",
   lockFileMaintenance: {
     enabled: true,
     commitMessageAction: 'lock file maintenance',
