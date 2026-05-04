@@ -4,7 +4,6 @@
     'local>kronostechnologies/renovate-config',
     ':semanticCommitTypeAll(deps)',
   ],
-  commitMessagePrefix: null,
   lockFileMaintenance: {
     enabled: true,
     commitMessageAction: 'lock file maintenance',
@@ -23,6 +22,10 @@
     },
   ],
   packageRules: [
+    {
+      matchUpdateTypes: ['major'],
+      commitMessagePrefix: null,
+    },
     {
       matchFileNames: [
         'javascript/yarn.lock',
