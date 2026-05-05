@@ -33,6 +33,11 @@ The following standards apply per ecosystem:
 * The `uv.lock` file MUST be generated and committed to version control to guarantee deterministic environments.
 * Projects MUST explicitly configure Renovate to monitor and update dependencies in the `uv` ecosystem.
 
+### PHP (Composer)
+* Projects MUST use Composer for managing PHP dependencies.
+* The `composer.lock` file MUST be committed to version control and kept up to date.
+* When specifying dependencies in `composer.json`, exact versions SHOULD be preferred.
+
 ## Consequences
 * **Improved Security:** Reduces the risk of supply chain attacks by preventing sudden shifts to compromised dependency versions.
 * **Delayed Adoption:** The 7-day stability rule means projects will intentionally not receive immediate updates for newly released third-party dependencies, sacrificing bleeding-edge access for stability.
