@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.3](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.2...eslint-config-react@v6.0.3) (2026-05-25)
+
+
+### Dependencies updates
+
+* Update dependency eslint-import-resolver-node ([#767](https://github.com/kronostechnologies/standards/issues/767)) ([52e13aa](https://github.com/kronostechnologies/standards/commit/52e13aa801c7682a54c2a0d87117f283728b2744))
+
 ## [6.0.2](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.1...eslint-config-react@v6.0.2) (2025-10-14)
 
 
