@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/stylelint-config",
-  "version": "5.2.5",
+  "version": "5.2.6",
   "description": "Equisoft's stylelint configuration",
   "license": "MIT",
   "main": "index.js",
@@ -41,7 +41,7 @@
     "stylelint-sarif-formatter": "~1.0.7"
   },
   "devDependencies": {
-    "stylelint": "~17.12.0"
+    "stylelint": "~17.11.0"
   },
   "peerDependencies": {
     "postcss": "^8",
