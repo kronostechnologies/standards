@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.8](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.7...stylelint-config@v5.2.8) (2026-06-14)
+
+
+### Dependencies updates
+
+* Update Yarn minors and patches ([#779](https://github.com/kronostechnologies/standards/issues/779)) ([0233dd9](https://github.com/kronostechnologies/standards/commit/0233dd9a1e9aa0ad6898fc8252dae422dfa2c086))
+
 ## [5.2.7](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.6...stylelint-config@v5.2.7) (2026-06-01)
 
 
