@@ -14,6 +14,10 @@ check: check.workflows
 check.workflows:
 	@actionlint -color
 
+.PHONY: generate.agents
+generate.agents:
+	@bash bin/generate_agents_md.sh
+
 .PHONY: test
 test:
 
