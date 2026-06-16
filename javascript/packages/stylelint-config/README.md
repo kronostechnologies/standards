@@ -36,7 +36,7 @@ Finally create a script in your _package.json_ to easily run stylelint:
 Now you can use `yarn stylelint` to validate the code style of your files!
 
 ## Continuous Integration
-We strongly suggest that you enforce code style checks on your CI. For example, on Github Actions you can add a configuration similar to this one to your workflow:
+We strongly suggest that you enforce code style checks on your CI. For example, on GitHub Actions you can add a configuration similar to this one to your workflow:
 
 ```yaml
 stylelint:
