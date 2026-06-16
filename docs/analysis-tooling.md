@@ -20,23 +20,23 @@
 
 ## Summary
 
-|                                          |                | **Quality**        |                    |                      |                        | **Software Composition Analysis** |              |                   | **Security**  |                                                                   |              |
-|:-----------------------------------------|:---------------|:-------------------|:-------------------|:---------------------|:-----------------------|:----------------------------------|:-------------|:------------------|:--------------|:------------------------------------------------------------------|:-------------|
-|                                          |                | **Code Style**     | **Code Quality**   | **Test Runner**      | **Test Coverage**      | **SBOM\***                        | **Licenses** | **Vulnerabilities** | **Secrets** | **SAST[^1]**                                                      | **DAST[^2]** |
-| **Frequency**                            | *Pull request* | All                | All                | All                  | All                    | All (except Trivy)                | All          | Optional          | All           | Optional                                                          | No           |
-|                                          | *Push to main* | Yes                | Yes                | Yes                  | Yes                    | Yes                               | Yes          | Yes               | Yes           | Yes[^1]                                                           | No           |
-|                                          | *Commit*       | Head               | Head               | Head                 | Head                   | Head                              | Head         | Head              | All           | Head                                                              | Head         |
-|                                          | *Tags*         | v\*                | v\*                | v\*                  | v\*                    | v\*                               | v\*          | v\*               | v\*           | v\*                                                               | v\*          |
-|                                          | *Schedule*     | No                 | No                 | No                   | No                     | No                                | No           | Hourly            | No            | Daily[^1]                                                         | Daily        |
-| [**C#**](#c)[^3]                         |                |                    |                    |                      |                        | [Github Dependency Graph][gdg]    | [Github Dependency Graph][gdg] | [Github Dependency Graph][gdg] | [GHAS][ghas] | [CodeQL](https://codeql.github.com/)                              |              |
-| [**Docker**](#docker)                    |                | [Hadolint](https://github.com/hadolint/hadolint) | [Hadolint](https://github.com/hadolint/hadolint) | | | [Trivy](https://github.com/aquasecurity/trivy) | | | | [Trivy](https://github.com/aquasecurity/trivy)                    |              |
-| [**Golang**](#golang)                    |                | [gofumpt](https://github.com/mvdan/gofumpt) | [go vet](https://pkg.go.dev/cmd/vet) | | | [Github Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
-| [**Helm**](#helm)                        |                | [Helm lint](https://helm.sh/docs/helm/helm_lint/) | [Helm lint](https://helm.sh/docs/helm/helm_lint/) | | | | | | | [Checkov](https://www.checkov.io/)                                |              |
+|                                          |                | **Quality**        |                    |                                    |                        | **Software Composition Analysis** |              |                   | **Security**  |                                                                   |              |
+|:-----------------------------------------|:---------------|:-------------------|:-------------------|:-----------------------------------|:-----------------------|:----------------------------------|:-------------|:------------------|:--------------|:------------------------------------------------------------------|:-------------|
+|                                          |                | **Code Style**     | **Code Quality**   | **Test Runner**                    | **Test Coverage**      | **SBOM\***                        | **Licenses** | **Vulnerabilities** | **Secrets** | **SAST[^1]**                                                      | **DAST[^2]** |
+| **Frequency**                            | *Pull request* | All                | All                | All                                | All                    | All (except Trivy)                | All          | Optional          | All           | Optional                                                          | No           |
+|                                          | *Push to main* | Yes                | Yes                | Yes                                | Yes                    | Yes                               | Yes          | Yes               | Yes           | Yes[^1]                                                           | No           |
+|                                          | *Commit*       | Head               | Head               | Head                               | Head                   | Head                              | Head         | Head              | All           | Head                                                              | Head         |
+|                                          | *Tags*         | v\*                | v\*                | v\*                                | v\*                    | v\*                               | v\*          | v\*               | v\*           | v\*                                                               | v\*          |
+|                                          | *Schedule*     | No                 | No                 | No                                 | No                     | No                                | No           | Hourly            | No            | Daily[^1]                                                         | Daily        |
+| [**C#**](#c)[^3]                         |                |                    |                    |                                    |                        | [GitHub Dependency Graph][gdg]    | [GitHub Dependency Graph][gdg] | [GitHub Dependency Graph][gdg] | [GHAS][ghas] | [CodeQL](https://codeql.github.com/)                              |              |
+| [**Docker**](#docker)                    |                | [Hadolint](https://github.com/hadolint/hadolint) | [Hadolint](https://github.com/hadolint/hadolint) |                                    | | [Trivy](https://github.com/aquasecurity/trivy) | | | | [Trivy](https://github.com/aquasecurity/trivy)                    |              |
+| [**Golang**](#golang)                    |                | [gofumpt](https://github.com/mvdan/gofumpt) | [go vet](https://pkg.go.dev/cmd/vet) |                                    | | [GitHub Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
+| [**Helm**](#helm)                        |                | [Helm lint](https://helm.sh/docs/helm/helm_lint/) | [Helm lint](https://helm.sh/docs/helm/helm_lint/) |                                    | | | | | | [Checkov](https://www.checkov.io/)                                |              |
 | [**Kotlin**](#kotlin-gradle)             |                | [Detekt](https://github.com/detekt/detekt) | [Detekt](https://github.com/detekt/detekt) | [JUnit](https://junit.org/junit5/) | [JaCoCo](https://www.eclemma.org/jacoco/) | [CycloneDX Gradle](https://github.com/CycloneDX/cyclonedx-gradle-plugin) | | | | [CodeQL](https://codeql.github.com/)                              |              |
-| [**PHP**](#php-composer)                 |                | [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) | [Psalm](https://psalm.dev/) | [PHPUnit](https://phpunit.de/) | [PHPUnit](https://phpunit.readthedocs.io/en/9.5/code-coverage-analysis.html) | [Github Dependency Graph][gdg] | | | | [Psalm Taint Analysis](https://psalm.dev/docs/security_analysis/) |              |
-| [**Python**](#python)                    |                | [pycodestyle](https://pycodestyle.pycqa.org/) | [pytype](https://google.github.io/pytype/) | [pytest](https://docs.pytest.org/) | | [Github Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
-| [**Terraform**](#terraform)              |                | [tflint](https://github.com/terraform-linters/tflint) | [tflint](https://github.com/terraform-linters/tflint) | | | | | | | [Checkov](https://www.checkov.io/)                                |              |
-| [**Javascript / Typescript / CSS**](#typescript-yarn) |                | [ESLint](https://eslint.org/) <br> [StyleLint](https://stylelint.io/) | [ESLint](https://eslint.org/) <br> [StyleLint](https://stylelint.io/) | [Jest](https://jestjs.io/) <br> [Mocha](https://github.com/mochajs/mocha) | [Jest](https://jestjs.io/) <br> [Mocha](https://github.com/mochajs/mocha) | [Github Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
+| [**PHP**](#php-composer)                 |                | [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) | [Psalm](https://psalm.dev/) | [PHPUnit](https://phpunit.de/)     | [PHPUnit](https://phpunit.readthedocs.io/en/9.5/code-coverage-analysis.html) | [GitHub Dependency Graph][gdg] | | | | [Psalm Taint Analysis](https://psalm.dev/docs/security_analysis/) |              |
+| [**Python**](#python)                    |                | [pycodestyle](https://pycodestyle.pycqa.org/) | [pytype](https://google.github.io/pytype/) | [pytest](https://docs.pytest.org/) | | [GitHub Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
+| [**Terraform**](#terraform)              |                | [tflint](https://github.com/terraform-linters/tflint) | [tflint](https://github.com/terraform-linters/tflint) |                                    | | | | | | [Checkov](https://www.checkov.io/)                                |              |
+| [**Javascript / Typescript / CSS**](#typescript-yarn) |                | [ESLint](https://eslint.org/) <br> [StyleLint](https://stylelint.io/) | [ESLint](https://eslint.org/) <br> [StyleLint](https://stylelint.io/) | [Jest](https://jestjs.io/)         | [Jest](https://jestjs.io/) | [GitHub Dependency Graph][gdg] | | | | [CodeQL](https://codeql.github.com/)                              |              |
 
 [^1]: If a SAST scan is unreasonably long for a specific tool or codebase, we will scope down from continuous scans to daily scans.
 [^2]: Dynamic application security testing (DAST) has yet to be tackled.
@@ -48,9 +48,9 @@
 > [!IMPORTANT]
 > ### Software Bill of Material
 >
-> [Github Dependency Graph][gdg] (GDG) scans automatically most dependency trees. If an environment cannot be scanned automatically by Github Dependency Graph, extra tooling is at our disposal to generate graphs in CycloneDX format. These files can be uploaded to github with [sbom-dependency-submission-action](https://github.com/evryfs/sbom-dependency-submission-action).
+> [GitHub Dependency Graph][gdg] (GDG) scans automatically most dependency trees. If an environment cannot be scanned automatically by GitHub Dependency Graph, extra tooling is at our disposal to generate graphs in CycloneDX format. These files can be uploaded to GitHub with [sbom-dependency-submission-action](https://github.com/evryfs/sbom-dependency-submission-action).
 >
-> At this time, only **Docker** and **Gradle** are not automatically scanned by Github Dependency Graph.
+> At this time, only **Docker** and **Gradle** are not automatically scanned by GitHub Dependency Graph.
 
 ## Processes
 
@@ -58,7 +58,7 @@
 
 An *alert* as referenced below translates to:
 
-1. A dashboard URL pointing to either [Github Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) or [Github Dependency Graph][gdg].
+1. A dashboard URL pointing to either [GitHub Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) or [GitHub Dependency Graph][gdg].
 2. A Slack message in the [#compliance-feed](https://equisoft.slack.com/archives/C03TZQ0KGL8) channel.
 3. A Jira ticket with the "github-url" field containing the dashboard URL.
 
@@ -70,7 +70,7 @@ An *alert* as referenced below translates to:
 ### Software Composition Analysis (SCA)
 
 1. A Software Bill of Material (SBOM) must be calculated for every pull request and default branch.
-2. All SBOMs must be published to [Github Dependency Graph][gdg] (GDG).
+2. All SBOMs must be published to [GitHub Dependency Graph][gdg] (GDG).
 3. A pull request should block the merge option if it introduces dependencies that have:
    1. Known vulnerabilities
    2. An invalid or non-compliant license
@@ -88,7 +88,7 @@ An *alert* as referenced below translates to:
 #### Static Application Security Testing (SAST)
 
 1. Each default branch should be scanned daily with our preferred SAST scanning tools.
-2. Each SARIF report must be uploaded to Github Advanced Security.
+2. Each SARIF report must be uploaded to GitHub Advanced Security.
 3. Every issue with a severity of **high** or **critical** must trigger an *alert*.
 
 ## Tools
@@ -97,9 +97,9 @@ An *alert* as referenced below translates to:
 
 | **Tool** | **Scan type** | **Outcome** | **Implementation** |
 |:---------|:--------------|:------------|:-------------------|
-| Github Actions | | - Consumes events from [Github Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) and [Github Dependency Graph][gdg]. <br> - Creates an *alert* for each vulnerable dependency. <br> - Creates an *alert* for each high or critical defect. <br> - Creates an *alert* for each unauthorized or invalid license. | - [Compliance repository](https://github.com/equisoft/compliance) <br> - [Github webhook to actions bridge](https://github.com/equisoft/github-webhook-to-action-bridge) |
-| [Github Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) (GHAS) | - Security operation center <br> - Secret scan | - All security scans (SAST) produced by default branches are published here. <br> - Shipping code is blocked until all potential secret leakages are resolved. <br><br> Github Advanced Security offers additional built-in protections: <br> 1. Commits cannot be pushed at all if a secret is detected. This essentially removes the leak whatsoever. Maintainers can bypass this protection. <br> 2. Detected secrets in *public repositories* can be automatically revoked. See [secret-scanning-partner-program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program). | [Dashboard homepage](https://github.com/enterprises/equisoft/security) |
-| [Github Dependency Graph][gdg] (GDG) | Dependency scan | - All SBOM produced by default branches are published here. <br> - Alerts and creates a critical defect when a vulnerable dependency is detected. | - [Dashboard homepage](https://github.com/orgs/kronostechnologies/insights/dependencies) <br> - [SBOM submission action](https://github.com/evryfs/sbom-dependency-submission-action) |
+| GitHub Actions | | - Consumes events from [GitHub Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) and [GitHub Dependency Graph][gdg]. <br> - Creates an *alert* for each vulnerable dependency. <br> - Creates an *alert* for each high or critical defect. <br> - Creates an *alert* for each unauthorized or invalid license. | - [Compliance repository](https://github.com/equisoft/compliance) <br> - [GitHub webhook to actions bridge](https://github.com/equisoft/github-webhook-to-action-bridge) |
+| [GitHub Advanced Security](https://docs.github.com/en/code-security/getting-started/github-security-features) (GHAS) | - Security operation center <br> - Secret scan | - All security scans (SAST) produced by default branches are published here. <br> - Shipping code is blocked until all potential secret leakages are resolved. <br><br> GitHub Advanced Security offers additional built-in protections: <br> 1. Commits cannot be pushed at all if a secret is detected. This essentially removes the leak whatsoever. Maintainers can bypass this protection. <br> 2. Detected secrets in *public repositories* can be automatically revoked. See [secret-scanning-partner-program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program). | [Dashboard homepage](https://github.com/enterprises/equisoft/security) |
+| [GitHub Dependency Graph][gdg] (GDG) | Dependency scan | - All SBOM produced by default branches are published here. <br> - Alerts and creates a critical defect when a vulnerable dependency is detected. | - [Dashboard homepage](https://github.com/orgs/kronostechnologies/insights/dependencies) <br> - [SBOM submission action](https://github.com/evryfs/sbom-dependency-submission-action) |
 
 ### C\#
 
