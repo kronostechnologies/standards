@@ -1,3 +1,26 @@
+---
+name: Regenerate ASR Instructions
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "asr/**"
+      - "!asr/ASR-13_ai_features_constraints.md"
+      - "!asr/ASR-XX_template.md"
+      - "!asr/index.md"
+      - "docs/**"
+      - "!docs/instructions/**"
+      - "prompts/generate-agents-md.md"
+      - ".github/workflows/generate-agents-md.yml"
+
+safe-outputs:
+    create-pull-request:
+      title-prefix: "QCTECH-5463 "
+
+---
+
 You are a technical writer generating an `asr.instructions.md` file for an organization's standards repository.
 Your task is to produce a single, self-contained Markdown document that AI coding agents will follow
 when working in any repository within the organization. Be concise but thorough, ensuring all relevant
@@ -10,6 +33,7 @@ ASRs and engineering documentation are synthesized into clear guidelines.
 2. Synthesize them into a single `asr.instructions.md` file using the structure and conventions described below.
 3. Write the result to `docs/instructions/asr.instructions.md`. Overwrite the existing file.
 4. Do NOT modify `AGENTS.md` at the repository root — it is manually maintained and references this generated file.
+5. Open a pull request with the changes, with a description that references this workflow.
 
 ## Output Structure
 
@@ -28,22 +52,22 @@ The file MUST contain the following sections in this exact order:
 - **Prohibited Patterns** subsection prefixed with:
   `> These conventions are enforced by the per-language tooling above (ESLint, Detekt, Stylelint, etc.) and are not defined in a standalone ASR.`
   Include these exact rules:
-  - No `any` or unchecked type assertions in TypeScript
-  - No suppressing linter/compiler warnings without explanatory comment
-  - No committing secrets/credentials/API keys
-  - No TODO/FIXME without Jira ticket identifier
-  - No disabling CI checks, CODEOWNERS, or branch protections
-  - No System.out/println/console.log for logging
-  - No silent exception catching
+    - No `any` or unchecked type assertions in TypeScript
+    - No suppressing linter/compiler warnings without explanatory comment
+    - No committing secrets/credentials/API keys
+    - No TODO/FIXME without Jira ticket identifier
+    - No disabling CI checks, CODEOWNERS, or branch protections
+    - No System.out/println/console.log for logging
+    - No silent exception catching
 - **Code Style Preferences** subsection with the same `>` prefix about tooling enforcement:
-  - Prefer immutability (val/const)
-  - Prefer data class for DTOs in Kotlin
-  - Named exports in TypeScript
-  - File naming: kebab-case.ts, PascalCase.kt
-  - Prefer early returns
-  - Structured logging (key-value pairs)
-  - Sealed classes/Result for expected failures in Kotlin
-  - Explicit error types/discriminated unions in TypeScript
+    - Prefer immutability (val/const)
+    - Prefer data class for DTOs in Kotlin
+    - Named exports in TypeScript
+    - File naming: kebab-case.ts, PascalCase.kt
+    - Prefer early returns
+    - Structured logging (key-value pairs)
+    - Sealed classes/Result for expected failures in Kotlin
+    - Explicit error types/discriminated unions in TypeScript
 
 ### Project Setup & Conventions
 - From ASR-02: Makefile, .tool-versions, required tools (Git, Docker, Make, asdf-vm).
