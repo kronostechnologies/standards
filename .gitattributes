@@ -6,3 +6,5 @@ gradlew text eol=lf
 Makefile whitespace=indent-with-non-tab,space-before-tab,tabwidth=4,-tab-in-indent -filter
 **/.yarn/**/*.js linguist-vendored linguist-generated=true
 .pnp.js linguist-vendored linguist-generated=true
+
+.github/workflows/*.lock.yml linguist-generated=true merge=ours
