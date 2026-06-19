@@ -1,0 +1,3 @@
+equisoft-actions/yarn-config:
+  - source: .yarnrc.yml
+    dest: files/.yarnrc.yml
