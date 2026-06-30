@@ -23,7 +23,7 @@ rapid delivery of new features and bug fixes.
 
 All future ASRs that cover validations of the code will include a section about their integration in the CI pipeline.
 
-Github Actions will be used as the CI tool to implement and manage the CI pipeline.
+GitHub Actions will be used as the CI tool to implement and manage the CI pipeline.
 
 ## Consequences
 
