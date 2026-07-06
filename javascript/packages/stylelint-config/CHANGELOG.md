@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.9](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.8...stylelint-config@v5.2.9) (2026-07-06)
+
+
+### Dependencies updates
+
+* Update dependency stylelint ([#794](https://github.com/kronostechnologies/standards/issues/794)) ([126485e](https://github.com/kronostechnologies/standards/commit/126485e7e6111a8c9e22dc1253dc187dbe200768))
+
 ## [5.2.8](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.7...stylelint-config@v5.2.8) (2026-06-14)
 
 
