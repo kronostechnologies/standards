@@ -33,6 +33,9 @@ The CI will fail if there are any critical or high-severity vulnerabilities intr
 
 Violations will be required to be fixed before the pull request can be merged.
 
+SAST results for default branches must be retained and available in GitHub Advanced Security for a minimum of 15 months
+to satisfy SOC 2 compliance requirements.
+
 ## Consequences
 
 - Enhanced Security: Implementing SAST will help identify and mitigate security vulnerabilities early in the development

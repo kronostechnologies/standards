@@ -16,7 +16,7 @@ align with the overall architectural goals of the organization.
 To address these challenges, we have decided to implement a standardized repository management strategy that includes
 the following key practices:
 
-1. **Centralized Repository**: All code will be stored in a centralized version control system (e.g., Github) to
+1. **Centralized Repository**: All code will be stored in a centralized version control system (e.g., GitHub) to
    facilitate collaboration and ensure a single source of truth.
 2. **Branching Strategy**: We will adopt a consistent branching strategy to manage development and releases effectively.
     - The *main branch* will be protected and only allow merges through pull requests after successful reviews, tests
