@@ -9,19 +9,19 @@ engineering documentation. You **must** follow these rules when generating, modi
 ## Languages & Stack
 
 **Primary languages:** Kotlin (backend), TypeScript (frontend).  
-**PHP** is **legacy only** — no new PHP projects or features shall be started in PHP.
+**PHP** is **legacy only** — do not start new PHP projects or add new PHP features.
 
 ### Language Selection Criteria (ASR-05)
 
-A language must satisfy all the following to be adopted:
+A language must satisfy all of the following criteria to be adopted:
 
 - **Compile-time** execution model
 - **Strongly typed** with static analysis support
 - **Null-safe** (built-in null safety preferred)
-- Easy to learn with good documentation
-- Reasonable public library ecosystem
-- Strong, active community with regular updates
-- Strong tooling support (IDE, IntelliSense, CLI)
+- Easy to learn with accessible, high-quality documentation
+- Reasonable public library and project ecosystem
+- Strong, active community with regular updates and support
+- Rich tooling support (IDE, IntelliSense, CLI)
 
 ### Per-Language Tooling
 
@@ -63,14 +63,14 @@ A language must satisfy all the following to be adopted:
 
 ### Required Tools (ASR-02)
 
-Every developer workstation and CI environment must have at least the following tools installed:
+Every developer workstation and CI environment must have the following tools installed:
 
 | Tool | Purpose |
 |---|---|
 | **Git** | Version control |
 | **Docker** | Containerized dependencies and builds |
 | **Make** | Standardized task runner |
-| **asdf-vm** | Language/tool version management |
+| **asdf-vm** | Language and tool version management |
 
 - Every repository **must** include a `.tool-versions` file specifying exact tool versions for asdf-vm.
 - Every repository **must** include a `Makefile` with the standard targets below.
@@ -81,7 +81,7 @@ All targets must be **idempotent**. If a target is not applicable (e.g., `compil
 
 | Target | Description |
 |---|---|
-| `all` | Default target. Runs `setup`, `check`, `test`, `compile`, and `package`. Run this after cloning to verify the repository is in a stable state. |
+| `all` | Default target. Runs `setup`, `check`, `test`, `compile`, and `package`. Run after cloning to verify the repository is in a stable state. |
 | `setup` | Brings the repository into a usable state: checks prerequisites, installs asdf-vm tool versions, installs dependencies. |
 | `check` | Runs all static checks (linting, type-checking, style). Fails on any violation. |
 | `test` | Runs all tests. Fails on any test failure. |
@@ -127,7 +127,7 @@ All targets must be **idempotent**. If a target is not applicable (e.g., `compil
 - Versions are tracked as **Git tags**, not in package manifests (`package.json`, `build.gradle`, `composer.json`).
 - Only **Release Operators** may create version tags.
 - Tags must be created against commits on `main` or a `release/` branch.
-- Major releases are **only** for breaking public API changes; major visual changes or dependency updates without API impact are minor releases.
+- Major releases are **only** for breaking public API changes; major visual changes or dependency updates that do not affect the public API are minor releases.
 
 ---
 
@@ -147,9 +147,9 @@ All targets must be **idempotent**. If a target is not applicable (e.g., `compil
 
 ### Unit Tests (ASR-09)
 
-- All unit tests **must pass** on every pull request — no skipping or ignoring tests.
+- All unit tests **must pass** on every pull request — tests must never be ignored or skipped in CI.
 - **Minimum 80% code coverage** for all new code and significant changes.
-- Tests must be **isolated** from external dependencies (databases, external services); use mocking/stubbing.
+- Tests must be **isolated** from external dependencies (databases, external services); use mocking and stubbing.
 - Tests must follow the **Arrange–Act–Assert (AAA)** pattern and focus on a single aspect per test.
 - **JaCoCo** coverage reports are generated and uploaded to GitHub by each pipeline run.
 
@@ -162,11 +162,11 @@ All targets must be **idempotent**. If a target is not applicable (e.g., `compil
 
 ### Software Composition Analysis / SCA (ASR-11)
 
-- An **SBOM (Software Bill of Materials)** is generated on every pipeline run and published to **GitHub Dependency Graph**.
+- An **SBOM (Software Bill of Materials)** is generated on every pipeline run and published to the **GitHub Dependency Graph**.
 - CI **blocks merge** if a pull request introduces:
   - A dependency with **critical or high-severity vulnerabilities**
   - A dependency with a **non-compliant license**
-- Secret scanning is handled via **GHAS**; all commits are scanned automatically. Potential leaks trigger an alert.
+- **Secret scanning** is handled via **GHAS**; all commits are scanned automatically and potential leaks trigger an alert.
 
 ---
 
@@ -177,7 +177,7 @@ All targets must be **idempotent**. If a target is not applicable (e.g., `compil
 - **All dependencies must be pinned to exact versions** (or commit SHAs for GitHub Actions).
 - **Lockfiles must be committed** to version control and kept up to date.
 - **Stability period:** Third-party dependencies must reach a minimum of **7 stability days** before adoption or update (enforced via Renovate `minimumReleaseAge`).
-- **Renovate** is the organization-standard tool for automated dependency lifecycle management. It must be configured and running in every repository.
+- **Renovate** is the organization-standard tool for automated dependency lifecycle management and must be configured and running in every repository.
 
 ### Internal Package Exemptions
 
@@ -189,13 +189,13 @@ The following internal packages are **exempt** from pinning validations, SHA req
 
 ### Per-Ecosystem Rules
 
-| Ecosystem | Package Manager | Lockfile                                                  | Pinning Requirement |
-|---|---|-----------------------------------------------------------|---|
-| **JS / TS** | **Yarn Berry** | `yarn.lock` (must be committed)                           | Exact versions in `package.json`; ranges allowed for libraries if lockfile is committed |
-| **PHP** _(legacy)_ | Composer | `composer.lock` (must be committed)                       | Exact versions in `composer.json`; if impossible, use branch + commit SHA |
-| **Python** | **uv** | `uv.lock` (must be committed)                             | Exact versions; Renovate must be configured for the `uv` ecosystem |
-| **Kotlin / Java** | Gradle | Gradle lockfiles (optional due to lack of proper tooling) | Gradle Version Catalogs (`libs.versions.toml`) strongly recommended |
-| **GitHub Actions** | — | —                                                         | **Must pin to exact commit SHA** (not a floating tag); e.g., `uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1` |
+| Ecosystem | Package Manager | Lockfile | Pinning Requirement |
+|---|---|---|---|
+| **JS / TS** | **Yarn Berry** | `yarn.lock` (must be committed) | Exact versions in `package.json`; ranges allowed for published libraries if lockfile is committed |
+| **PHP** _(legacy)_ | Composer | `composer.lock` (must be committed) | Exact versions in `composer.json`; if not possible, use branch name + commit SHA |
+| **Python** | **uv** | `uv.lock` (must be committed) | Exact versions; Renovate must be explicitly configured for the `uv` ecosystem |
+| **Kotlin / Java** | Gradle | Gradle lockfiles (strongly recommended; commit if generated) | Gradle Version Catalogs (`libs.versions.toml`) strongly recommended; dependency locking must be enabled |
+| **GitHub Actions** | — | — | **Must pin to exact commit SHA**, not a floating tag; e.g., `uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1` |
 
 ---
 
@@ -205,7 +205,8 @@ The following internal packages are **exempt** from pinning validations, SHA req
 
 - **Split.io** is the organization-standard feature flag management system.
 - Feature flags are preferred over feature branches and release branches for isolating in-progress work.
-- All applications must integrate with the Split.io SDK to evaluate flags at runtime.
+- All applications must integrate with the **Split.io SDK** to evaluate flags at runtime.
+- Feature flags must be periodically reviewed and removed when no longer relevant.
 
 ### Targeting Attributes
 
