@@ -194,7 +194,7 @@ The following internal packages are **exempt** from pinning validations, SHA req
 | **JS / TS** | **Yarn Berry** | `yarn.lock` (must be committed) | Exact versions in `package.json`; ranges allowed for published libraries if lockfile is committed |
 | **PHP** _(legacy)_ | Composer | `composer.lock` (must be committed) | Exact versions in `composer.json`; if not possible, use branch name + commit SHA |
 | **Python** | **uv** | `uv.lock` (must be committed) | Exact versions; Renovate must be explicitly configured for the `uv` ecosystem |
-| **Kotlin / Java** | Gradle | Gradle lockfiles (strongly recommended; commit if generated) | Gradle Version Catalogs (`libs.versions.toml`) strongly recommended; dependency locking must be enabled |
+| **Kotlin / Java** | Gradle | Gradle lockfiles (optional due to lack of proper tooling) | Gradle Version Catalogs (`libs.versions.toml`) strongly recommended |
 | **GitHub Actions** | — | — | **Must pin to exact commit SHA**, not a floating tag; e.g., `uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1` |
 
 ---
