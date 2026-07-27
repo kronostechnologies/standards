@@ -25,4 +25,5 @@ The Confluence [version](https://equisoft.atlassian.net/wiki/spaces/HRMI/pages/5
 | ASR-12 | Feature Flags | [ASR-12_feature-flags.md](ASR-12_feature-flags.md) |
 | ASR-13 | AI Features Constraints and Compliance | [ASR-13_ai_features_constraints.md](ASR-13_ai_features_constraints.md) |
 | ASR-14 | Dependency Pinning | [ASR-14_dependency_pinning.md](ASR-14_dependency_pinning.md) |
+| ASR-15 | REST API Design | [ASR-15_rest-api-design.md](ASR-15_rest-api-design.md) |
 
