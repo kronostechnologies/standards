@@ -40,6 +40,10 @@
     "javascript/packages/typescript-config": {
       "component": "typescript-config",
       "separate-pull-requests": true
+    },
+    "javascript/packages/webpack-config": {
+      "component": "webpack-config",
+      "separate-pull-requests": true
     }
   },
   "plugins": [
