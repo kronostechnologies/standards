@@ -23,6 +23,7 @@ tmp/
 
 # Output
 build/
+dist/
 
 .env
 .envrc

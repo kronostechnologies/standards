@@ -1,0 +1,66 @@
+{
+  "name": "@equisoft/webpack-config",
+  "version": "0.0.0",
+  "description": "Standard Webpack configurations used across Equisoft AWT repositories.",
+  "license": "MIT",
+  "homepage": "https://github.com/kronostechnologies/standards#readme",
+  "author": {
+    "name": "Equisoft inc.",
+    "url": "https://www.equisoft.com/",
+    "email": "services.administratifs@equisoft.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kronostechnologies/standards/issues"
+  },
+  "repository": {
+    "directory": "javascript/packages/webpack-config",
+    "sourceDirectory": "javascript/packages/webpack-config",
+    "type": "git",
+    "url": "https://github.com/kronostechnologies/standards.git"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@equisoft/eslint-config-typescript": "workspace:*",
+    "@equisoft/typescript-config": "workspace:*",
+    "@microsoft/eslint-formatter-sarif": "3.1.0",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "24.13.3",
+    "@typescript-eslint/eslint-plugin": "8.67.0",
+    "@typescript-eslint/parser": "8.67.0",
+    "eslint": "8.57.1",
+    "eslint-import-resolver-node": "0.4.0",
+    "eslint-import-resolver-typescript": "4.4.5",
+    "eslint-plugin-import": "2.32.0",
+    "html-webpack-plugin": "5.6.8",
+    "posthtml": "0.16.0",
+    "posthtml-expressions": "1.11.4",
+    "tapable": "2.3.3",
+    "typescript": "6.0.3",
+    "webpack": "5.109.2",
+    "yargs": "18.1.0"
+  },
+  "peerDependencies": {
+    "html-webpack-plugin": "^5.0.0",
+    "posthtml": "^0.16.0",
+    "posthtml-expressions": "^1.11.0",
+    "typescript": "*",
+    "webpack": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "eslint": "eq-eslint src",
+    "eslint:ci": "yarn eslint",
+    "test": "echo No tests",
+    "test:ci": "yarn test"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

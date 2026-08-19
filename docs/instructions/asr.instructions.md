@@ -185,6 +185,7 @@ The following internal packages are **exempt** from pinning validations, SHA req
 
 - `@equisoft/*`
 - `@kronostechnologies/*`
+- `@wealthelements/*`
 - `equisoft-actions` (internal GitHub Actions)
 
 ### Per-Ecosystem Rules
