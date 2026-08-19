@@ -3,6 +3,11 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 name: release-please
 
 concurrency:
@@ -90,6 +95,32 @@ jobs:
         uses: equisoft-actions/yarn-install@v1
         with:
           working-directory: javascript
+
+      - name: Ensure released packages exist on npm
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATHS=(${{ join(fromJSON(needs.release-please.outputs.paths_released), ' ') }})
+          missing=()
+
+          for path in "${PATHS[@]}"; do
+            package=${path/javascript\/packages/"@equisoft"}
+            encoded=${package/\//%2f}
+            status=$(curl -sSL -o /dev/null -w '%{http_code}' "https://registry.npmjs.org/${encoded}")
+            echo "$package: HTTP $status"
+            if [[ "$status" == "404" ]]; then
+              missing+=("$package")
+            fi
+          done
+
+          if [[ ${#missing[@]} -gt 0 ]]; then
+            echo "::error::The following packages do not exist on npm yet: ${missing[*]}"
+            echo "::error::npm trusted publishing (OIDC) cannot be used for a package's first release."
+            echo "::error::Publish the first version manually with a granular npm token, configure the"
+            echo "::error::trusted publisher on npmjs.com, then re-run this job."
+            echo "::error::See javascript/README.md for the full procedure."
+            exit 1
+          fi
 
       - name: Publish to npm
         shell: bash
