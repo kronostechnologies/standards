@@ -1,6 +1,6 @@
 {
   "name": "@equisoft/webpack-config",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Standard Webpack configurations used across Equisoft AWT repositories.",
   "license": "MIT",
   "homepage": "https://github.com/kronostechnologies/standards#readme",
