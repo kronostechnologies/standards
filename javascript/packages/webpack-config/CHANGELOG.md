@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.0.0...webpack-config@v1.1.0) (2026-08-19)
+## 1.0.0 (2026-08-19)
 
 
 ### Features
@@ -10,7 +10,7 @@
 
 ### Miscellaneous Chores
 
-* Release  webpack-config 1.0.0 ([#819](https://github.com/kronostechnologies/standards/issues/819)) ([b96b7cd](https://github.com/kronostechnologies/standards/commit/b96b7cd45baf82eff33e53973006041857e59fa0))
+* Release webpack-config 1.0.0 ([#819](https://github.com/kronostechnologies/standards/issues/819)) ([b96b7cd](https://github.com/kronostechnologies/standards/commit/b96b7cd45baf82eff33e53973006041857e59fa0))
 
 ## 1.0.0 (2026-08-19)
 
