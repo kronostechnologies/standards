@@ -1,3 +1,3 @@
 # Webpack Configs
 
-Standard Webpack configurations used across Equisoft AWT repositories.
+Shared Webpack plugins and configurations used across Equisoft AWT repositories.
