@@ -39,7 +39,7 @@
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-import": "2.32.0",
     "html-webpack-plugin": "5.6.8",
-    "posthtml": "0.16.0",
+    "posthtml": "0.16.7",
     "posthtml-expressions": "1.11.4",
     "tapable": "2.3.3",
     "typescript": "6.0.3",
