@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.1.0...webpack-config@v1.1.1) (2026-08-24)
+
+
+### Dependencies updates
+
+* Update dependency posthtml ([#825](https://github.com/kronostechnologies/standards/issues/825)) ([e419eb0](https://github.com/kronostechnologies/standards/commit/e419eb04834c66edcc33ad5ac4286b27fc919799))
+
 ## [1.1.0](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.0.0...webpack-config@v1.1.0) (2026-08-20)
 
 
