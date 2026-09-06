@@ -32,8 +32,8 @@
     "@microsoft/eslint-formatter-sarif": "3.1.0",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/node": "24.13.3",
-    "@typescript-eslint/eslint-plugin": "8.67.0",
-    "@typescript-eslint/parser": "8.67.0",
+    "@typescript-eslint/eslint-plugin": "8.68.0",
+    "@typescript-eslint/parser": "8.68.0",
     "eslint": "8.57.1",
     "eslint-import-resolver-node": "0.4.0",
     "eslint-import-resolver-typescript": "4.4.5",
@@ -43,7 +43,7 @@
     "posthtml-expressions": "1.11.4",
     "tapable": "2.3.3",
     "typescript": "6.0.3",
-    "webpack": "5.109.2",
+    "webpack": "5.110.2",
     "yargs": "18.1.0"
   },
   "peerDependencies": {
