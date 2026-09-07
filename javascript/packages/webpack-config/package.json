@@ -42,7 +42,7 @@
     "posthtml": "0.16.7",
     "posthtml-expressions": "1.11.4",
     "tapable": "2.3.3",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "webpack": "5.110.2",
     "yargs": "18.1.0"
   },
