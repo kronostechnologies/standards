@@ -8,3 +8,10 @@ Makefile whitespace=indent-with-non-tab,space-before-tab,tabwidth=4,-tab-in-inde
 .pnp.js linguist-vendored linguist-generated=true
 
 .github/workflows/*.lock.yml linguist-generated=true
+
+# Files deployed by `apm install` -- generated from APM package dependencies, not authored here.
+/apm.lock.yaml linguist-generated=true
+/.github/instructions/** linguist-generated=true
+/.github/prompts/** linguist-generated=true
+/.github/agents/** linguist-generated=true
+/.agents/skills/** linguist-generated=true

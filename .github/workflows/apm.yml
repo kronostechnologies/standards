@@ -10,7 +10,10 @@ on:
       - .github/instructions/**
       - .github/prompts/**
       - .github/agents/**
+      - .github/mcp.json
+      - .github/workflows/apm.yml
       - .agents/**
+      - .apm-local/**
   pull_request:
     paths:
       - apm.yml
@@ -18,7 +21,10 @@ on:
       - .github/instructions/**
       - .github/prompts/**
       - .github/agents/**
+      - .github/mcp.json
+      - .github/workflows/apm.yml
       - .agents/**
+      - .apm-local/**
   workflow_dispatch: { }
 
 permissions:
