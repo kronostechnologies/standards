@@ -1,3 +1,10 @@
+> [!WARNING]
+> **Frozen — will go stale.** This file is a pre-APM artifact kept only so repositories still
+> consuming it by raw URL don't 404. It is no longer regenerated from the ASRs. New content lives
+> in the `org-standards` [APM](https://microsoft.github.io/apm/) package
+> (`kronostechnologies/agent-toolkit/plugins/org-standards`) — migrate to that instead of pointing
+> at this raw URL. See `AGENTS.md` for the recommended migration path.
+
 # Organization Standards — ASR Instructions
 
 This file defines technical standards and constraints for AI coding agents working in any repository within the
