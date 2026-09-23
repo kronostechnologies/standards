@@ -5,8 +5,8 @@ applyTo: "**/*.js,**/*.jsx,**/*.mjs,**/*.cjs,**/*.ts,**/*.tsx"
 
 # Frontend Standards
 
-These rules apply to JavaScript, TypeScript and React (Yarn) projects, in addition to the org-wide
-`asr.instructions.md` (installed alongside this package via the `org-standards` APM dependency).
+These rules apply to JavaScript, TypeScript and React (Yarn) projects, in addition to the
+org-wide instructions installed alongside this package via the `org-standards` APM dependency.
 
 Per ASR-05, **TypeScript is the preferred language** for new frontend/Node.js code — plain
 JavaScript is supported for **legacy usages only** (existing `.js`/`.jsx`/`.mjs`/`.cjs` files);
@@ -46,4 +46,4 @@ do not start new modules in plain JavaScript.
 - Exact versions in `package.json`; ranges allowed for published libraries if the lockfile is
   committed
 - `@equisoft/*` / `@kronostechnologies/*` / `@wealthelements/*` internal packages are exempt from
-  the 7-day stability rule (see org-wide `asr.instructions.md`)
+  the 7-day stability rule (see `dependencies.instructions.md`)

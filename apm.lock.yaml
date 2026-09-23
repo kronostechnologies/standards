@@ -4,9 +4,9 @@ dependencies:
 - repo_url: kronostechnologies/agent-toolkit
   name: apm-usage
   host: github.com
-  resolved_commit: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  resolved_ref: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  version: 0.2.0
+  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  version: 0.2.1
   virtual_path: plugins/apm-usage
   is_virtual: true
   package_type: apm_package
@@ -15,9 +15,9 @@ dependencies:
   - .agents/skills/apm-dependencies/SKILL.md
   - .github/instructions/apm-managed-files.instructions.md
   deployed_file_hashes:
-    .agents/skills/apm-dependencies/SKILL.md: sha256:1eb0ecab1ecaa703129ff52c74ea6a70eff268e05f89b1e843a775626f3c9e67
-    .github/instructions/apm-managed-files.instructions.md: sha256:eb113c8092868075d7175ab34d2315aec7dc6cdbab431647d8b0145dbb971cbb
-  content_hash: sha256:e4db943983afd9898d1432ee159bdc17d681b4f453d2b58bb9eb14e5d1ae9291
+    .agents/skills/apm-dependencies/SKILL.md: sha256:1f2e19a1b8d387538d05ebceb15ba47e336b1c7255a59ad50d4ddf9cfa3a3f0f
+    .github/instructions/apm-managed-files.instructions.md: sha256:5242347722ecfe68a8de650f0cb6d8b0d1cbb32522fa3b7d417012f11c91d5d0
+  content_hash: sha256:c367c9ac657fc225efa0acec9031a3b0926a3437994046a4828cebe6716fea12
 - repo_url: kronostechnologies/agent-toolkit
   name: code-review
   host: github.com
@@ -37,9 +37,9 @@ dependencies:
 - repo_url: kronostechnologies/agent-toolkit
   name: frontend
   host: github.com
-  resolved_commit: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  resolved_ref: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  version: 0.2.0
+  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  version: 0.2.1
   virtual_path: plugins/frontend
   is_virtual: true
   package_type: apm_package
@@ -49,8 +49,8 @@ dependencies:
   - .github/instructions/frontend.instructions.md
   deployed_file_hashes:
     .agents/skills/eslint-config-setup/SKILL.md: sha256:b99124d6449d2393d31490214ea4824c9e13d0f3e6a63c9f62b008b0e2491119
-    .github/instructions/frontend.instructions.md: sha256:1b4f472b701702e73608e398479a0e5a685a82859997e470ba973e46d5b53f93
-  content_hash: sha256:06cdab687372e27668e84a2403655b6f51145d5b4cb7bba6f00b3c03fa806be8
+    .github/instructions/frontend.instructions.md: sha256:6c5356661365afbda51b6225e396e709e7712d3463c99a30d4d57fecf20772cd
+  content_hash: sha256:50f5b8626e24a6093d71b8efed810e10da891ca035d1f3ef1044a939529b59bf
 - repo_url: kronostechnologies/agent-toolkit
   name: org-standards
   host: github.com
@@ -82,9 +82,9 @@ dependencies:
 - repo_url: kronostechnologies/agent-toolkit
   name: php-backend
   host: github.com
-  resolved_commit: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  resolved_ref: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  version: 0.2.0
+  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
+  version: 0.2.1
   virtual_path: plugins/php-backend
   is_virtual: true
   package_type: apm_package
@@ -94,8 +94,8 @@ dependencies:
   - .github/instructions/php-backend.instructions.md
   deployed_file_hashes:
     .agents/skills/psalm-baseline/SKILL.md: sha256:864432e752556a25676d176ae2c838f82523a50200c07ad20a5bbc772110f37f
-    .github/instructions/php-backend.instructions.md: sha256:2af5e61fe851956866d5d50661ed8584c4fd99d27ad161da511a26065cd7de37
-  content_hash: sha256:04d41147f050f642f64873ef9ee821cec89acc691e2e0afefe9db5514bf694e6
+    .github/instructions/php-backend.instructions.md: sha256:702502f1efb892ddddcaeddf67dce11d36d1de69fe0002b7237bc945acf96bc1
+  content_hash: sha256:f4817781fea4c7b96fbd967b3de5f45e9b1257d3c8adf597e15b5bdceca087c9
 deployments:
 - kind: project-relative
   target: copilot
@@ -114,7 +114,7 @@ deployments:
   owners:
   - kronostechnologies/agent-toolkit/plugins/apm-usage
   active_owner: kronostechnologies/agent-toolkit/plugins/apm-usage
-  content_hash: sha256:1eb0ecab1ecaa703129ff52c74ea6a70eff268e05f89b1e843a775626f3c9e67
+  content_hash: sha256:1f2e19a1b8d387538d05ebceb15ba47e336b1c7255a59ad50d4ddf9cfa3a3f0f
 - kind: project-relative
   target: copilot
   value: .agents/skills/eslint-config-setup
@@ -204,7 +204,7 @@ deployments:
   owners:
   - kronostechnologies/agent-toolkit/plugins/apm-usage
   active_owner: kronostechnologies/agent-toolkit/plugins/apm-usage
-  content_hash: sha256:eb113c8092868075d7175ab34d2315aec7dc6cdbab431647d8b0145dbb971cbb
+  content_hash: sha256:5242347722ecfe68a8de650f0cb6d8b0d1cbb32522fa3b7d417012f11c91d5d0
 - kind: project-relative
   target: copilot
   value: .github/instructions/ci-workflows.instructions.md
@@ -231,7 +231,7 @@ deployments:
   owners:
   - kronostechnologies/agent-toolkit/plugins/frontend
   active_owner: kronostechnologies/agent-toolkit/plugins/frontend
-  content_hash: sha256:1b4f472b701702e73608e398479a0e5a685a82859997e470ba973e46d5b53f93
+  content_hash: sha256:6c5356661365afbda51b6225e396e709e7712d3463c99a30d4d57fecf20772cd
 - kind: project-relative
   target: copilot
   value: .github/instructions/org-standards.instructions.md
@@ -249,7 +249,7 @@ deployments:
   owners:
   - kronostechnologies/agent-toolkit/plugins/php-backend
   active_owner: kronostechnologies/agent-toolkit/plugins/php-backend
-  content_hash: sha256:2af5e61fe851956866d5d50661ed8584c4fd99d27ad161da511a26065cd7de37
+  content_hash: sha256:702502f1efb892ddddcaeddf67dce11d36d1de69fe0002b7237bc945acf96bc1
 - kind: project-relative
   target: copilot
   value: .github/instructions/project-setup.instructions.md

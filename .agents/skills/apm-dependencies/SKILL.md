@@ -20,8 +20,8 @@ diagnose a failing `apm audit` / APM CI check.
    (or vice versa) fails `apm audit`'s drift check.
 4. A package can pull in others transitively via its own `path:` dependencies (e.g.
    `kotlin-backend`, `frontend`, and `php-backend` all depend on `org-standards` this way) — you do not
-   need to depend on `org-standards` directly to receive `asr.instructions.md`, though depending on
-   it explicitly is fine and keeps intent clear.
+   need to depend on `org-standards` directly to receive its org-wide instructions, though
+   depending on it explicitly is fine and keeps intent clear.
 
 ## Diagnosing `apm audit --ci` failures
 
