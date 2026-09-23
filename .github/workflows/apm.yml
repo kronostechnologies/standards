@@ -2,9 +2,8 @@ name: APM
 
 on:
   push:
-    branches:
-      - main
     paths:
+      - .apm-version
       - apm.yml
       - apm.lock.yaml
       - .github/instructions/**
@@ -16,6 +15,7 @@ on:
       - .apm-local/**
   pull_request:
     paths:
+      - .apm-version
       - apm.yml
       - apm.lock.yaml
       - .github/instructions/**
