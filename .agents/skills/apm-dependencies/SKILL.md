@@ -42,10 +42,11 @@ diagnose a failing `apm audit` / APM CI check.
 
 ## Private-repo access in CI
 
-- Use the shared composite action `kronostechnologies/agent-toolkit/.github/actions/setup-apm`
-  (reference it pinned by commit SHA). It reads this repo's `.apm-version` file and mints a
-  short-lived GitHub App token, exported as `GITHUB_APM_PAT`, scoped to `agent-toolkit` and
-  `.github-private`.
+- Use the shared composite action `equisoft-actions/setup-apm` (reference it by its floating
+  major tag, e.g. `@v1` — `equisoft-actions` is exempt from SHA-pinning). It reads the consuming
+  repo's `.apm-version` file and mints a short-lived GitHub App token, exported as
+  `GITHUB_APM_PAT`, scoped by the action's `owner`/`repositories` inputs (defaulting to
+  `kronostechnologies`/`agent-toolkit,.github-private`).
 - The default `GITHUB_TOKEN` **cannot** read another private repository in the same org — not even
   with the repo's Settings → Actions → General → Access set to "organization" (that setting only
   covers reusable-workflow/action sharing, not git clones or API reads). A GitHub App token or PAT

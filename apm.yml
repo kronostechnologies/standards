@@ -6,8 +6,8 @@ targets:
   - copilot
 dependencies:
   apm:
-    - kronostechnologies/agent-toolkit/plugins/org-standards#11ab52ba400c35ef801f78b719f015a50e86dbf0
-    - kronostechnologies/agent-toolkit/plugins/apm-usage#11ab52ba400c35ef801f78b719f015a50e86dbf0
-    - kronostechnologies/agent-toolkit/plugins/code-review#11ab52ba400c35ef801f78b719f015a50e86dbf0
-    - kronostechnologies/agent-toolkit/plugins/frontend#11ab52ba400c35ef801f78b719f015a50e86dbf0
-    - kronostechnologies/agent-toolkit/plugins/php-backend#11ab52ba400c35ef801f78b719f015a50e86dbf0
+    - kronostechnologies/agent-toolkit/plugins/org-standards#91314a25e56ef1d0add99d68b1caeafcd9c79448
+    - kronostechnologies/agent-toolkit/plugins/apm-usage#91314a25e56ef1d0add99d68b1caeafcd9c79448
+    - kronostechnologies/agent-toolkit/plugins/code-review#91314a25e56ef1d0add99d68b1caeafcd9c79448
+    - kronostechnologies/agent-toolkit/plugins/frontend#91314a25e56ef1d0add99d68b1caeafcd9c79448
+    - kronostechnologies/agent-toolkit/plugins/php-backend#91314a25e56ef1d0add99d68b1caeafcd9c79448
