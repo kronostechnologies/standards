@@ -1,0 +1,13 @@
+$schema: https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+name: standards
+version: 0.0.0
+license: UNLICENSED
+targets:
+  - copilot
+dependencies:
+  apm:
+    - kronostechnologies/agent-toolkit/plugins/org-standards#11ab52ba400c35ef801f78b719f015a50e86dbf0
+    - kronostechnologies/agent-toolkit/plugins/apm-usage#11ab52ba400c35ef801f78b719f015a50e86dbf0
+    - kronostechnologies/agent-toolkit/plugins/code-review#11ab52ba400c35ef801f78b719f015a50e86dbf0
+    - kronostechnologies/agent-toolkit/plugins/frontend#11ab52ba400c35ef801f78b719f015a50e86dbf0
+    - kronostechnologies/agent-toolkit/plugins/php-backend#11ab52ba400c35ef801f78b719f015a50e86dbf0
