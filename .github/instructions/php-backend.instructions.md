@@ -5,8 +5,8 @@ applyTo: "**/*.php,**/phpcs.xml,**/psalm.xml,**/phpunit.xml"
 
 # PHP Backend Standards
 
-These rules apply to PHP/Composer backend projects, in addition to the org-wide
-`asr.instructions.md` (installed alongside this package via the `org-standards` APM dependency).
+These rules apply to PHP/Composer backend projects, in addition to the org-wide instructions
+installed alongside this package via the `org-standards` APM dependency.
 
 Per ASR-05, **PHP is legacy only** — do not start new PHP projects or add new PHP features;
 changes should be limited to maintenance, bug fixes, and incremental modernization of existing
@@ -62,6 +62,6 @@ code.
 
 - **Composer** is the package manager; `composer.lock` must be committed
 - Exact versions in `composer.json`; if an exact version isn't possible, pin to a branch name
-  plus commit SHA (see org-wide `asr.instructions.md`, ASR-14)
+  plus commit SHA (see `dependencies.instructions.md`, ASR-14)
 - Internal Equisoft/Kronos Composer packages (e.g. `kronostechnologies/*`, `equisoft/*` on
   Packagist) are exempt from the 7-day stability rule
