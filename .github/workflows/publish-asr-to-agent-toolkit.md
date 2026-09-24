@@ -25,11 +25,21 @@ checkout:
   - fetch-depth: 1
   - repository: kronostechnologies/agent-toolkit
     path: ./agent-toolkit
-    github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+    github-app:
+      client-id: ${{ vars.APM_APP_ID }}
+      private-key: ${{ secrets.APM_APP_PRIVATE_KEY }}
+      repositories:
+        - agent-toolkit
     current: true
 
 safe-outputs:
-  github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+  github-app:
+    client-id: ${{ vars.APM_APP_ID }}
+    private-key: ${{ secrets.APM_APP_PRIVATE_KEY }}
+    owner: kronostechnologies
+    repositories:
+      - standards
+      - agent-toolkit
   create-pull-request:
     target-repo: "kronostechnologies/agent-toolkit"
     base-branch: "main"
