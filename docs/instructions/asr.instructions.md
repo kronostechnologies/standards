@@ -13,18 +13,6 @@ engineering documentation. You **must** follow these rules when generating, modi
 
 ---
 
-## Topic Instruction Files
-
-Some ASRs are large enough that always loading their full guidance here would waste context on tasks that
-don't need it. Those ASRs instead get a short digest below, plus a dedicated file you **must** fetch and read
-before working on the matching topic:
-
-| Topic | Load when | URL |
-|---|---|---|
-| REST API Design (ASR-15) | Designing, implementing, reviewing or modifying any HTTP API, OpenAPI specification, or generated client | `https://raw.githubusercontent.com/kronostechnologies/standards/master/docs/instructions/rest-api.instructions.md` |
-
----
-
 ## Languages & Stack
 
 **Primary languages:** Kotlin (backend), TypeScript (frontend).  
@@ -240,32 +228,3 @@ You must expose the following attributes to Split.io for flag targeting:
 | **site** | `ca`, `us`, or a dedicated customer identifier. |
 | **lang** | User language preference in ISO 639-1 format (e.g., `fr`, `en`). |
 | **organizations** | Comma-separated list of organization IDs the current user belongs to. |
-
----
-
-## REST API Design (ASR-15)
-
-Applies to **all new HTTP APIs**. Existing APIs migrate opportunistically, at the latest at their next major
-version. Internal BFF endpoints (consumed only by their own frontend, deployed in lockstep) are exempt from
-**versioning** only.
-
-- **Versioning:** major version as the first path segment, from the first release (`/v1/users`). Resources are
-  plural nouns, no verbs in CRUD paths, max two nesting levels; public identifiers are **UUIDs**.
-- **Casing:** camelCase for path segments, path/query parameters and JSON properties; `SCREAMING_SNAKE_CASE`
-  enum values; `Kebab-Case` headers.
-- **Status codes:** application-returned codes are restricted to
-  `200, 201, 202, 204, 304, 400, 401, 403, 404, 409, 412, 422, 428, 429, 500, 503`.
-- **Errors:** all application `4xx`/`5xx` use RFC 9457 `application/problem+json`, with a machine-readable
-  `SCREAMING_SNAKE_CASE` `code` and a `traceId` on every error.
-- **Collections:** always an object with an `items` array and a `pagination` member — never a bare array.
-  Paginate every unbounded collection from its first release.
-- **Writes:** `PATCH` is JSON Merge Patch (RFC 7396) only, `application/merge-patch+json`. Server-managed
-  properties (IDs, audit timestamps, computed values) must never be settable through a write body.
-- **Contract:** OpenAPI 3.x is the contract; **Spectral** (`spectral:oas`) runs in CI under ASR-08 zero
-  tolerance.
-
-Before designing, implementing, reviewing or modifying any HTTP API, OpenAPI specification, or generated
-client, you **must** read the full guidance in
-[`rest-api.instructions.md`](https://raw.githubusercontent.com/kronostechnologies/standards/master/docs/instructions/rest-api.instructions.md).
-The digest above is not sufficient on its own — it omits bulk operations, asynchronous operations, caching,
-idempotency, versioning breaking-change rules, and the full error/data-format specifications.
