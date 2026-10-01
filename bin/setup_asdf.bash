@@ -28,7 +28,7 @@ awk '{print $1;}' .tool-versions | while read -r tool; do
       echo . $asdf_java_path/set-java-home.bash >> ~/.bashrc
     fi
 
-    if [ -f ~/.zshrc ] && ! grep -q set-java-home.zshrc ~/.zshrc; then
+    if [ -f ~/.zshrc ] && ! grep -q set-java-home.zsh ~/.zshrc; then
       echo . $asdf_java_path/set-java-home.zsh >> ~/.zshrc
     fi
   fi
