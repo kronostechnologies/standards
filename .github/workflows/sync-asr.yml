@@ -5,8 +5,10 @@ on:
     branches:
       - master
     paths:
-      - asr/
+      - asr/**
+      - bin/sync_asr.py
       - .github/workflows/sync-asr.yml
+  workflow_dispatch:
 
 jobs:
   sync-asr:
