@@ -54,9 +54,9 @@ try:
         f"{base_url}/{parent_id}",
         json=new_parent_content,
         auth=auth
-    ).json()
-    if 'statusCode' in parent_update_resp and parent_update_resp['statusCode'] >= 400:
-        print(f"Failed to update parent page: {parent_update_resp}")
+    )
+    if not parent_update_resp.ok:
+        print(f"Failed to update parent page: {parent_update_resp.status_code} {parent_update_resp.text}")
         exit(1)
     print(f"Uploaded content successfully to parent page {parent_id}")
 except Exception:
@@ -107,14 +107,15 @@ for file_name in files:
                 }
             }
 
-            updated = requests.put(
+            update_resp = requests.put(
                 page_url,
                 json=new_content,
                 auth=auth
-            ).json()
-            if 'statusCode' in updated and updated['statusCode'] >= 400:
-                print(f'Failed to update page {title}: {updated}')
+            )
+            if not update_resp.ok:
+                print(f'Failed to update page {title}: {update_resp.status_code} {update_resp.text}')
                 exit(1)
+            updated = update_resp.json()
             link = updated['_links']['base'] + updated['_links']['webui']
             print(f'Uploaded content successfully to page {link}')
         else:
@@ -130,14 +131,15 @@ for file_name in files:
                     }
                 }
             }
-            created = requests.post(
+            create_resp = requests.post(
                 base_url,
                 json=new_content,
                 auth=auth
-            ).json()
-            if 'statusCode' in created and created['statusCode'] >= 400:
-                print(f'Failed to create page {title}: {created}')
+            )
+            if not create_resp.ok:
+                print(f'Failed to create page {title}: {create_resp.status_code} {create_resp.text}')
                 exit(1)
+            created = create_resp.json()
             link = created.get('_links', { }).get('base', '') + created.get('_links', { }).get('webui', '')
             print(f'Created new page successfully: {link}')
 
