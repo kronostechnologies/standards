@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.1.5...webpack-config@v1.1.6) (2026-10-05)
+
+
+### Dependencies updates
+
+* Update Yarn minors and patches ([#858](https://github.com/kronostechnologies/standards/issues/858)) ([852552c](https://github.com/kronostechnologies/standards/commit/852552ce5ae0b96a4183936ba266cea5fba9c84c))
+
 ## [1.1.5](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.1.4...webpack-config@v1.1.5) (2026-09-28)
 
 
