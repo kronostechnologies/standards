@@ -23,12 +23,19 @@ To streamline the onboarding process, we will implement the following practices:
     - Make
     - asdf-vm
 
-   Through Docker and adsf-vm, we can manage most dependencies and tools required for development without requiring
+   Through Docker and asdf-vm, we can manage most dependencies and tools required for development without requiring
    developers to install them directly on their machines.
 2. Each repository must include a `Makefile` that defines pre-defined tasks to set up the development environment, run
    tests, and build the application.
 3. Each repository must include an `.tool-versions` file that specifies the required versions of languages and tools
-   used in the project. This file will be used by asdf-vm to automatically install and manage the required versions.
+   used in the project. This file is the single source of truth for these versions and is used by asdf-vm to install
+   and manage them. Do not duplicate tool version pins in setup scripts, Makefiles, or CI configuration.
+4. PHP is the exception: because its runtime is too heavy to manage through asdf-vm, projects must provide PHP through
+   a container image pinned to an exact PHP version instead of listing it in `.tool-versions`.
+5. Yarn is managed through Corepack, not asdf-vm. JavaScript projects using Yarn may declare its exact Yarn Berry
+   version in the `packageManager` field of `package.json`; Corepack must be enabled in local setup and CI and invoked
+   with `corepack yarn` so it selects that version. Do not list Yarn in `.tool-versions`, install Yarn through asdf
+   (including Yarn Classic), or commit a Yarn release binary.
 
 ### Makefile Targets
 
@@ -53,5 +60,6 @@ The following targets must always be defined for all repositories:
 - Developers can get a project up and running with a single command: `make all`.
 - The real tooling is hidden behind asdf-vm and may lack standardization across projects. However, this allows projects
   to be updated independently.
+- Tool versions have one source of truth in `.tool-versions`, with PHP and Yarn handled by their explicit exceptions.
 - Developers need to install the required tools. However, these tools should already be installed as part
   of https://github.com/kronostechnologies/bootcamp setup.
