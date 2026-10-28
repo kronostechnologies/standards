@@ -18,6 +18,11 @@ Focus on:
   SHA), dependencies with known critical/high vulnerabilities, non-compliant licenses.
 - **Dependency management (ASR-14):** unpinned versions, missing/uncommitted lockfiles, internal
   package exemptions applied incorrectly.
+- **REST API design (ASR-15):** when the diff touches HTTP endpoints, OpenAPI specifications or
+  generated clients, load the `rest-api-design` skill from `org-standards` if installed, and its
+  relevant references. Check path and property casing, status codes, RFC 9457 errors, collection
+  envelopes, JSON Merge Patch semantics, and versioning against the ASR before reporting. If the
+  skill is unavailable, state that ASR-15 compliance could not be checked; do not guess its rules.
 - **Repository conventions (ASR-01/ASR-03/ASR-04):** version tags used instead of manifest
   version bumps, PR titles missing a Jira ticket identifier, CODEOWNERS gaps.
 - **Prohibited patterns:** `TODO`/`FIXME` without a Jira ticket, silent exception swallowing,

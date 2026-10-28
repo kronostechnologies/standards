@@ -1,12 +1,12 @@
-lockfile_version: '1'
-apm_version: 0.31.0
+lockfile_version: '2'
+apm_version: 0.33.0
 dependencies:
 - repo_url: kronostechnologies/agent-toolkit
   name: apm-usage
   host: github.com
-  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  version: 0.2.1
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
   virtual_path: plugins/apm-usage
   is_virtual: true
   package_type: apm_package
@@ -15,15 +15,18 @@ dependencies:
   - .agents/skills/apm-dependencies/SKILL.md
   - .github/instructions/apm-managed-files.instructions.md
   deployed_file_hashes:
-    .agents/skills/apm-dependencies/SKILL.md: sha256:1f2e19a1b8d387538d05ebceb15ba47e336b1c7255a59ad50d4ddf9cfa3a3f0f
+    .agents/skills/apm-dependencies/SKILL.md: sha256:60404deea0fb461ae5b49a28911db7b10af909640c907074d2caf44d1ae5dc0e
     .github/instructions/apm-managed-files.instructions.md: sha256:5242347722ecfe68a8de650f0cb6d8b0d1cbb32522fa3b7d417012f11c91d5d0
-  content_hash: sha256:c367c9ac657fc225efa0acec9031a3b0926a3437994046a4828cebe6716fea12
+  content_hash: sha256:4c5e2d124de70baaa7a4b9de21f96e6b925a42c8aa10c6456d6bc1acacc88d48
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:36+00:00'
 - repo_url: kronostechnologies/agent-toolkit
   name: code-review
   host: github.com
-  resolved_commit: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  resolved_ref: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  version: 0.2.0
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
   virtual_path: plugins/code-review
   is_virtual: true
   package_type: apm_package
@@ -31,15 +34,18 @@ dependencies:
   - .github/agents/asr-reviewer.agent.md
   - .github/prompts/review-pr.prompt.md
   deployed_file_hashes:
-    .github/agents/asr-reviewer.agent.md: sha256:e249341be2d92a54f36e5ea31364d3980e25b8f79dd646556a5f1d4a2f0ef7a4
+    .github/agents/asr-reviewer.agent.md: sha256:2b1963978addbce4b721df88e8c68144eec9dad270c717f3823f20ec3b736f1c
     .github/prompts/review-pr.prompt.md: sha256:1893583af80019ae8c16caede62564ba99c70c33a12e966e5b2fa8413472a57a
-  content_hash: sha256:4dcfec0de14a0e13aa297eb64d833d835ad05ed02355f771bce0109a74044ec7
+  content_hash: sha256:02b7701cc0eb473af5899fcd910c56d0d46e7a6a0ba7104c1078ea6e59dc3780
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:36+00:00'
 - repo_url: kronostechnologies/agent-toolkit
   name: frontend
   host: github.com
-  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  version: 0.2.1
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
   virtual_path: plugins/frontend
   is_virtual: true
   package_type: apm_package
@@ -50,13 +56,70 @@ dependencies:
   deployed_file_hashes:
     .agents/skills/eslint-config-setup/SKILL.md: sha256:b99124d6449d2393d31490214ea4824c9e13d0f3e6a63c9f62b008b0e2491119
     .github/instructions/frontend.instructions.md: sha256:6c5356661365afbda51b6225e396e709e7712d3463c99a30d4d57fecf20772cd
-  content_hash: sha256:50f5b8626e24a6093d71b8efed810e10da891ca035d1f3ef1044a939529b59bf
+  content_hash: sha256:9651770bf50d10f1a5e73026fdfd82c59da3f1236f3d67f72362233a1327caef
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:36+00:00'
+- repo_url: kronostechnologies/agent-toolkit
+  name: jira
+  host: github.com
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
+  virtual_path: plugins/jira
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/jira-context
+  - .agents/skills/jira-context/SKILL.md
+  - .agents/skills/jira-sdlc
+  - .agents/skills/jira-sdlc/SKILL.md
+  - .agents/skills/jql
+  - .agents/skills/jql/SKILL.md
+  - .agents/skills/ticket-conventions
+  - .agents/skills/ticket-conventions/SKILL.md
+  - .agents/skills/ticket-to-implementation
+  - .agents/skills/ticket-to-implementation/SKILL.md
+  - .agents/skills/update-ticket
+  - .agents/skills/update-ticket/SKILL.md
+  - .agents/skills/write-ticket
+  - .agents/skills/write-ticket/SKILL.md
+  - .github/agents/initiative-planner.agent.md
+  - .github/agents/jira-assistant.agent.md
+  - .github/agents/ticket-refiner.agent.md
+  - .github/instructions/jira-code-review.instructions.md
+  - .github/prompts/create-ticket.prompt.md
+  - .github/prompts/plan-initiative.prompt.md
+  - .github/prompts/refine-ticket.prompt.md
+  - .github/prompts/start-ticket.prompt.md
+  - .github/prompts/update-ticket.prompt.md
+  deployed_file_hashes:
+    .agents/skills/jira-context/SKILL.md: sha256:a74d1c249aa269dcce7f39de9b6e1f4a2dd02c2f21ef054d84dca897e4912215
+    .agents/skills/jira-sdlc/SKILL.md: sha256:1cad068e199c43360243b1c26dd60a6952390573fa91a677ace9553f97a3dc0e
+    .agents/skills/jql/SKILL.md: sha256:9fb014b414fca9c0e8771bfd35a99753837f4430139eea0564a6dfc6d879562a
+    .agents/skills/ticket-conventions/SKILL.md: sha256:be94c82ae57682ccd62f6b00bcccadb55b4e308e140bed2c7274fc39fe3f7970
+    .agents/skills/ticket-to-implementation/SKILL.md: sha256:968f0665dfd036813612ab1152d56c56c82f645d9a741e034b2ab6e5614b8c25
+    .agents/skills/update-ticket/SKILL.md: sha256:8be20d0cf54e63c539669f9d2eadcffdb16c8f3e9b736a15c709145e5c8cab0e
+    .agents/skills/write-ticket/SKILL.md: sha256:7524eb682448af057db40d1609e583e97b01c31d658906440bdae5174f5b2136
+    .github/agents/initiative-planner.agent.md: sha256:7765cddf2b94c3510ea17a9dcb7f714839fc5a913e02c6dd6c7a92c297bcf08c
+    .github/agents/jira-assistant.agent.md: sha256:e22eb6c91bfce3e9c42b2f6ce77b2d62d495c01f8b5964e0a5a8d95b93c7c28c
+    .github/agents/ticket-refiner.agent.md: sha256:efc53a2050e284bee70bc1aa8f6f5c9bf821ad910ca038f5003b501fb5588d11
+    .github/instructions/jira-code-review.instructions.md: sha256:1153c9eaa1c1c9e426d824d5d75f79c191f8992e47f8f21f8fa189d354299555
+    .github/prompts/create-ticket.prompt.md: sha256:25dba77e721d4153b43b54452e224d094738195af32e447a5f379d71f70ff441
+    .github/prompts/plan-initiative.prompt.md: sha256:a442422693d737ff906b0a08c15b5fae4881801491b7f04eba76ca75d20b423b
+    .github/prompts/refine-ticket.prompt.md: sha256:a5d9a427c572344b033faab3ffb7c2f6fa517fa0a393f84398d8060c15e018ae
+    .github/prompts/start-ticket.prompt.md: sha256:bfca5fc35e2f242e90ecd2974cdce77ccb16b1ff7e38be9a5b55cd31938e5fb9
+    .github/prompts/update-ticket.prompt.md: sha256:7c7a831ad6663b2f3531e76e3c293d3f00c4f14e3bc70cce582a6cbec72d1ce6
+  content_hash: sha256:ec23d08c6b5d6269bb1b9013bd24625cf576d7a6f89fdf17e89f36e539bd5ec6
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:39+00:00'
 - repo_url: kronostechnologies/agent-toolkit
   name: org-standards
   host: github.com
-  resolved_commit: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  resolved_ref: 91314a25e56ef1d0add99d68b1caeafcd9c79448
-  version: 1.1.0
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
   virtual_path: plugins/org-standards
   is_virtual: true
   package_type: apm_package
@@ -65,26 +128,46 @@ dependencies:
   - .agents/skills/feature-flags/SKILL.md
   - .agents/skills/release-and-versioning
   - .agents/skills/release-and-versioning/SKILL.md
+  - .agents/skills/rest-api-design
+  - .agents/skills/rest-api-design/SKILL.md
+  - .agents/skills/rest-api-design/references/bulk-and-async.md
+  - .agents/skills/rest-api-design/references/caching-concurrency-idempotency.md
+  - .agents/skills/rest-api-design/references/errors.md
+  - .agents/skills/rest-api-design/references/openapi-contract.md
+  - .agents/skills/rest-api-design/references/pagination-and-data-formats.md
+  - .agents/skills/rest-api-design/references/versioning.md
   - .github/instructions/ci-workflows.instructions.md
   - .github/instructions/dependencies.instructions.md
   - .github/instructions/org-standards.instructions.md
   - .github/instructions/project-setup.instructions.md
+  - .github/instructions/rest-api.instructions.md
   - .github/instructions/testing.instructions.md
   deployed_file_hashes:
     .agents/skills/feature-flags/SKILL.md: sha256:ac8b376aaae431311cf4cd101f0ef93c7e53fa2f00be3d3075e265f6af7f2fbc
     .agents/skills/release-and-versioning/SKILL.md: sha256:de479a78cd47a4e76e4d8f42806866d51dbe35124ca50ea1167df00d552ea573
+    .agents/skills/rest-api-design/SKILL.md: sha256:06961c8239549d3688c8f771c1827ae64f67bbc3f1108d31edcce03a6e0ab499
+    .agents/skills/rest-api-design/references/bulk-and-async.md: sha256:a96026709bd3cfd1058ce98fead7bff4621d4d2eae3b7c33e61ce6a9f218bdfe
+    .agents/skills/rest-api-design/references/caching-concurrency-idempotency.md: sha256:039ae22d77508fbe9eead9db5215df341319c6c97d9f894fc8b09c5e4e12840c
+    .agents/skills/rest-api-design/references/errors.md: sha256:7884538a6f1517cfc674f4ccd1d6b871c1f7a2745b628c753c6dd9dfb209b722
+    .agents/skills/rest-api-design/references/openapi-contract.md: sha256:df783db48f8cd76c90fd94ea032eb7739684c5dd312f4a3a46e50064750c1f2f
+    .agents/skills/rest-api-design/references/pagination-and-data-formats.md: sha256:7bd8b97fc806a2d90d2e73b6cc8a48e361949976521a7705eec6b90afb66d465
+    .agents/skills/rest-api-design/references/versioning.md: sha256:4a1c5be0a38b6e0a0e8cbe4196fd2d7ba57fd7a763d8243fb87382c3e589c6bc
     .github/instructions/ci-workflows.instructions.md: sha256:6bbb6b4568c59fa3a5a797a3fd0128476f2cfebc902ea2f13e1c28737fa397a1
     .github/instructions/dependencies.instructions.md: sha256:b548710de7c022d9c198eff2046202bda15b5f346818378c1ea1de1d6c9363dc
-    .github/instructions/org-standards.instructions.md: sha256:8c065b0447b062c933053c435e57b491789e47d0bcfac828bbadcfab4e6b8fcb
+    .github/instructions/org-standards.instructions.md: sha256:05ba47fc1bb4c097abb26654a039614cf2786b026a23a90cd008adf3000a94f3
     .github/instructions/project-setup.instructions.md: sha256:68839387f8eb5f3bf40a89dd114c40282b70a83a935240a202a9e02495dbf54e
+    .github/instructions/rest-api.instructions.md: sha256:7fb6c6d6ea9438453ff0fe7f1c9104d3c588509cad71a10e2e2f5ba829661f48
     .github/instructions/testing.instructions.md: sha256:1454aa61e7d4e0133389fc9099b4ec63052d240a807da9a9a89d593efe60b7a0
-  content_hash: sha256:7f7e7e58f153b966843a0a05f9aed0441281ac60b728fb98170f024299df917d
+  content_hash: sha256:f882b473d2850d012cf053be925063bbc5ee20b3c1628bd6b4fc820fb5417441
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:36+00:00'
 - repo_url: kronostechnologies/agent-toolkit
   name: php-backend
   host: github.com
-  resolved_commit: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  resolved_ref: 06356abb168e413c68b9ae56ae5d98020a56c8d3
-  version: 0.2.1
+  resolved_commit: d959fbfb35ed469aa24de3fca327396b28bbdaa7
+  resolved_ref: v1.3.0
+  version: 1.3.0
   virtual_path: plugins/php-backend
   is_virtual: true
   package_type: apm_package
@@ -95,7 +178,10 @@ dependencies:
   deployed_file_hashes:
     .agents/skills/psalm-baseline/SKILL.md: sha256:864432e752556a25676d176ae2c838f82523a50200c07ad20a5bbc772110f37f
     .github/instructions/php-backend.instructions.md: sha256:702502f1efb892ddddcaeddf67dce11d36d1de69fe0002b7237bc945acf96bc1
-  content_hash: sha256:f4817781fea4c7b96fbd967b3de5f45e9b1257d3c8adf597e15b5bdceca087c9
+  content_hash: sha256:b365bb58b9bd2ec036898a5b74e31c8dd3bc18e2b8014a90e046fb3ab4d99136
+  constraint: 1.3.0
+  resolved_tag: v1.3.0
+  resolved_at: '2026-10-20T13:45:39+00:00'
 deployments:
 - kind: project-relative
   target: copilot
@@ -114,7 +200,7 @@ deployments:
   owners:
   - kronostechnologies/agent-toolkit/plugins/apm-usage
   active_owner: kronostechnologies/agent-toolkit/plugins/apm-usage
-  content_hash: sha256:1f2e19a1b8d387538d05ebceb15ba47e336b1c7255a59ad50d4ddf9cfa3a3f0f
+  content_hash: sha256:60404deea0fb461ae5b49a28911db7b10af909640c907074d2caf44d1ae5dc0e
 - kind: project-relative
   target: copilot
   value: .agents/skills/eslint-config-setup
@@ -153,6 +239,60 @@ deployments:
   content_hash: sha256:ac8b376aaae431311cf4cd101f0ef93c7e53fa2f00be3d3075e265f6af7f2fbc
 - kind: project-relative
   target: copilot
+  value: .agents/skills/jira-context
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jira-context/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:a74d1c249aa269dcce7f39de9b6e1f4a2dd02c2f21ef054d84dca897e4912215
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jira-sdlc
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jira-sdlc/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:1cad068e199c43360243b1c26dd60a6952390573fa91a677ace9553f97a3dc0e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jql
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jql/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:9fb014b414fca9c0e8771bfd35a99753837f4430139eea0564a6dfc6d879562a
+- kind: project-relative
+  target: copilot
   value: .agents/skills/psalm-baseline
   runtime: null
   scope: project
@@ -189,13 +329,184 @@ deployments:
   content_hash: sha256:de479a78cd47a4e76e4d8f42806866d51dbe35124ca50ea1167df00d552ea573
 - kind: project-relative
   target: copilot
+  value: .agents/skills/rest-api-design
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:06961c8239549d3688c8f771c1827ae64f67bbc3f1108d31edcce03a6e0ab499
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/bulk-and-async.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:a96026709bd3cfd1058ce98fead7bff4621d4d2eae3b7c33e61ce6a9f218bdfe
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/caching-concurrency-idempotency.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:039ae22d77508fbe9eead9db5215df341319c6c97d9f894fc8b09c5e4e12840c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/errors.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:7884538a6f1517cfc674f4ccd1d6b871c1f7a2745b628c753c6dd9dfb209b722
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/openapi-contract.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:df783db48f8cd76c90fd94ea032eb7739684c5dd312f4a3a46e50064750c1f2f
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/pagination-and-data-formats.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:7bd8b97fc806a2d90d2e73b6cc8a48e361949976521a7705eec6b90afb66d465
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rest-api-design/references/versioning.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:4a1c5be0a38b6e0a0e8cbe4196fd2d7ba57fd7a763d8243fb87382c3e589c6bc
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-conventions
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-conventions/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:be94c82ae57682ccd62f6b00bcccadb55b4e308e140bed2c7274fc39fe3f7970
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-to-implementation
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-to-implementation/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:968f0665dfd036813612ab1152d56c56c82f645d9a741e034b2ab6e5614b8c25
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/update-ticket
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/update-ticket/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:8be20d0cf54e63c539669f9d2eadcffdb16c8f3e9b736a15c709145e5c8cab0e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/write-ticket
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/write-ticket/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:7524eb682448af057db40d1609e583e97b01c31d658906440bdae5174f5b2136
+- kind: project-relative
+  target: copilot
   value: .github/agents/asr-reviewer.agent.md
   runtime: null
   scope: project
   owners:
   - kronostechnologies/agent-toolkit/plugins/code-review
   active_owner: kronostechnologies/agent-toolkit/plugins/code-review
-  content_hash: sha256:e249341be2d92a54f36e5ea31364d3980e25b8f79dd646556a5f1d4a2f0ef7a4
+  content_hash: sha256:2b1963978addbce4b721df88e8c68144eec9dad270c717f3823f20ec3b736f1c
+- kind: project-relative
+  target: copilot
+  value: .github/agents/initiative-planner.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:7765cddf2b94c3510ea17a9dcb7f714839fc5a913e02c6dd6c7a92c297bcf08c
+- kind: project-relative
+  target: copilot
+  value: .github/agents/jira-assistant.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:e22eb6c91bfce3e9c42b2f6ce77b2d62d495c01f8b5964e0a5a8d95b93c7c28c
+- kind: project-relative
+  target: copilot
+  value: .github/agents/ticket-refiner.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:efc53a2050e284bee70bc1aa8f6f5c9bf821ad910ca038f5003b501fb5588d11
 - kind: project-relative
   target: copilot
   value: .github/instructions/apm-managed-files.instructions.md
@@ -234,13 +545,22 @@ deployments:
   content_hash: sha256:6c5356661365afbda51b6225e396e709e7712d3463c99a30d4d57fecf20772cd
 - kind: project-relative
   target: copilot
+  value: .github/instructions/jira-code-review.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:1153c9eaa1c1c9e426d824d5d75f79c191f8992e47f8f21f8fa189d354299555
+- kind: project-relative
+  target: copilot
   value: .github/instructions/org-standards.instructions.md
   runtime: null
   scope: project
   owners:
   - kronostechnologies/agent-toolkit/plugins/org-standards
   active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
-  content_hash: sha256:8c065b0447b062c933053c435e57b491789e47d0bcfac828bbadcfab4e6b8fcb
+  content_hash: sha256:05ba47fc1bb4c097abb26654a039614cf2786b026a23a90cd008adf3000a94f3
 - kind: project-relative
   target: copilot
   value: .github/instructions/php-backend.instructions.md
@@ -261,6 +581,15 @@ deployments:
   content_hash: sha256:68839387f8eb5f3bf40a89dd114c40282b70a83a935240a202a9e02495dbf54e
 - kind: project-relative
   target: copilot
+  value: .github/instructions/rest-api.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/org-standards
+  active_owner: kronostechnologies/agent-toolkit/plugins/org-standards
+  content_hash: sha256:7fb6c6d6ea9438453ff0fe7f1c9104d3c588509cad71a10e2e2f5ba829661f48
+- kind: project-relative
+  target: copilot
   value: .github/instructions/testing.instructions.md
   runtime: null
   scope: project
@@ -270,6 +599,33 @@ deployments:
   content_hash: sha256:1454aa61e7d4e0133389fc9099b4ec63052d240a807da9a9a89d593efe60b7a0
 - kind: project-relative
   target: copilot
+  value: .github/prompts/create-ticket.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:25dba77e721d4153b43b54452e224d094738195af32e447a5f379d71f70ff441
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/plan-initiative.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:a442422693d737ff906b0a08c15b5fae4881801491b7f04eba76ca75d20b423b
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/refine-ticket.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:a5d9a427c572344b033faab3ffb7c2f6fa517fa0a393f84398d8060c15e018ae
+- kind: project-relative
+  target: copilot
   value: .github/prompts/review-pr.prompt.md
   runtime: null
   scope: project
@@ -277,3 +633,40 @@ deployments:
   - kronostechnologies/agent-toolkit/plugins/code-review
   active_owner: kronostechnologies/agent-toolkit/plugins/code-review
   content_hash: sha256:1893583af80019ae8c16caede62564ba99c70c33a12e966e5b2fa8413472a57a
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/start-ticket.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:bfca5fc35e2f242e90ecd2974cdce77ccb16b1ff7e38be9a5b55cd31938e5fb9
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/update-ticket.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - kronostechnologies/agent-toolkit/plugins/jira
+  active_owner: kronostechnologies/agent-toolkit/plugins/jira
+  content_hash: sha256:7c7a831ad6663b2f3531e76e3c293d3f00c4f14e3bc70cce582a6cbec72d1ce6
+- kind: uri
+  target: mcp
+  value: com.atlassian/atlassian-mcp-server
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+mcp_servers:
+- com.atlassian/atlassian-mcp-server
+mcp_configs:
+  com.atlassian/atlassian-mcp-server:
+    name: com.atlassian/atlassian-mcp-server
+mcp_target_servers:
+  copilot:
+  - com.atlassian/atlassian-mcp-server
+mcp_config_provenance:
+  com.atlassian/atlassian-mcp-server: jira

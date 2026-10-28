@@ -8,9 +8,8 @@ applyTo: "**"
 This file defines core technical standards and constraints for AI coding agents working in any
 repository within **Equisoft AWT**. All guidelines are derived from Architecturally Significant
 Requirements (ASRs) and engineering documentation. You **must** follow these rules when
-generating, modifying, or reviewing code. Ecosystem-specific rules (per-language tooling, style,
-and prohibited patterns) live in separate scoped instruction files that load automatically when
-you're touching matching files — see "Where to find more" below.
+generating, modifying, or reviewing code. Ecosystem-specific rules live in separate scoped
+instruction files (listed at the end of this file) that load automatically when relevant.
 
 ## Languages & Stack
 
@@ -36,16 +35,25 @@ A language must satisfy all of the following criteria to be adopted:
 - No disabling CI checks, CODEOWNERS, or branch protections
 - No silent exception catching (empty catch blocks or swallowed errors)
 
+## REST APIs (ASR-15)
+
+When designing, implementing, reviewing or modifying any HTTP API, OpenAPI specification, or
+generated client, you **must** load the `rest-api-design` skill first.
+
 ## Where to find more
 
-- **CI/CD, code quality gating, and security scanning** — `ci-workflows.instructions.md` (loads
-  automatically when editing `.github/workflows/**` or `.github/actions/**`)
+- **CI/CD and security scanning** — `ci-workflows.instructions.md` (loads automatically when
+  editing `.github/workflows/**` or `.github/actions/**`)
 - **Dependency pinning, lockfiles, and stability rules** — `dependencies.instructions.md` (loads
   automatically when editing package manifests/lockfiles)
 - **Unit testing requirements** — `testing.instructions.md` (loads automatically when editing test
   files)
 - **Repository onboarding (required tools, Makefile targets)** — `project-setup.instructions.md`
   (loads automatically when editing `Makefile` or `.tool-versions`)
+- **REST API contract pointer** — `rest-api.instructions.md` (loads automatically when editing
+  OpenAPI/Swagger specifications or Spectral configuration)
+- **REST API design (ASR-15)** — the `rest-api-design` skill (invoke for HTTP API, route, OpenAPI
+  or SDK work)
 - **Feature flags (Split.io)** — the `feature-flags` skill (invoke when adding or reviewing a
   feature flag)
 - **Branching, code review, release & versioning** — the `release-and-versioning` skill (invoke

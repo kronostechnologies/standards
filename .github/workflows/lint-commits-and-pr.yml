@@ -8,15 +8,15 @@ jobs:
   commitlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
-      - uses: equisoft-actions/lint-commits@v4
+      - uses: equisoft-actions/lint-commits@v4.1.0
 
       - name: Lint pull request title
         if: github.event_name == 'pull_request'
-        uses: equisoft-actions/action-pr-title@v1
+        uses: equisoft-actions/action-pr-title@v1.4.0
         with:
           regex: '(feat|feature|fix|perf|revert|docs|style|chore|deps|refactor|test|build|ci)(\(.*\)){0,1}!?: .*'
           format: 'feat(optional component): any text for description'

@@ -40,9 +40,9 @@ To bootstrap a new package:
 
    ```shell
    cd javascript
-   yarn install --immutable
-   yarn workspaces foreach -Atv --include @equisoft/<package> run build
-   YARN_NPM_AUTH_TOKEN=<token> yarn workspaces foreach -Atv --include @equisoft/<package> \
+   corepack yarn install --immutable
+   corepack yarn workspaces foreach -Atv --include @equisoft/<package> run build
+   YARN_NPM_AUTH_TOKEN=<token> corepack yarn workspaces foreach -Atv --include @equisoft/<package> \
        npm publish --access public --tolerate-republish
    ```
 

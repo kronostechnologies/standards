@@ -91,6 +91,13 @@ jobs:
           node-version-file: '.tool-versions'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install and enable Corepack
+        run: |
+          if ! command -v corepack > /dev/null; then
+            npm install --global corepack
+          fi
+          corepack enable
+
       - name: Install NPM dependencies
         uses: equisoft-actions/yarn-install@v1
         with:
@@ -134,5 +141,5 @@ jobs:
             INCLUDE_OPTS+=(--include "$package" )
           done
 
-          yarn workspaces foreach -Atv "${INCLUDE_OPTS[@]}" run build
-          yarn workspaces foreach -Atv "${INCLUDE_OPTS[@]}" npm publish --access public --tolerate-republish
+          corepack yarn workspaces foreach -Atv "${INCLUDE_OPTS[@]}" run build
+          corepack yarn workspaces foreach -Atv "${INCLUDE_OPTS[@]}" npm publish --access public --tolerate-republish
