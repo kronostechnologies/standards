@@ -98,7 +98,7 @@ jobs:
           repositories: agent-toolkit
           github-api-url: ${{ github.api_url }}
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
 
@@ -158,7 +158,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
 
@@ -175,9 +175,9 @@ jobs:
             await main();
 
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup-cli@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
-          version: v0.92.0
+          version: v0.93.5
 
       - name: Create missing labels in target repository
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -218,7 +218,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
 
@@ -235,9 +235,9 @@ jobs:
             await main();
 
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup-cli@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
-          version: v0.92.0
+          version: v0.93.5
 
       - name: Restore activity report logs cache
         id: activity_report_logs_cache
@@ -328,7 +328,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
 
@@ -345,9 +345,9 @@ jobs:
             await main();
 
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@ebb97091a4afcc9bf2d594071dbabe861e9a34fc # v0.92.5
+        uses: github/gh-aw-actions/setup-cli@9b6239065cc3a210544331a9a1888be1b11c9686 # v0.93.6
         with:
-          version: v0.92.0
+          version: v0.93.5
 
       - name: Validate workflows and file issue on findings
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
