@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.2.12](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.11...stylelint-config@v5.2.12) (2026-11-16)
+
+
+### Dependencies updates
+
+* Update dependency @stylistic/stylelint-config to v6 ([#888](https://github.com/kronostechnologies/standards/issues/888)) ([2f5d19a](https://github.com/kronostechnologies/standards/commit/2f5d19a7b8de03befddb2369ee380ecffba549c5))
+* Update dependency @stylistic/stylelint-plugin to v6 ([#889](https://github.com/kronostechnologies/standards/issues/889)) ([b9cd69a](https://github.com/kronostechnologies/standards/commit/b9cd69afaf5a9eff9876eb2ce6cf4a0a897179a3))
+
 ## [5.2.11](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.10...stylelint-config@v5.2.11) (2026-10-13)
 
 
