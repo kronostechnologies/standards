@@ -3,7 +3,7 @@
 > consuming it by raw URL don't 404. It is no longer regenerated from the ASRs. New content lives
 > in the `org-standards` [APM](https://microsoft.github.io/apm/) package
 > (`kronostechnologies/agent-toolkit/plugins/org-standards`) — migrate to that instead of pointing
-> at this raw URL. See `AGENTS.md` for the recommended migration path.
+> at this raw URL.
 
 # Organization Standards — ASR Instructions
 
