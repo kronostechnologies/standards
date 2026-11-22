@@ -5,52 +5,39 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/agentics-maintenance-kronostechnologies-agent-toolkit.yml':
         - 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
-        - 'actions/cache@v6.1.0'
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510'
         - 'actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3'
-        - 'actions/github-script@v9.0.0'
-        - 'github/gh-aw-actions@406c7719e31d7fe354224d4bb8fe3d4aeb47da1c'
+        - 'github/gh-aw-actions@862164f9ffbcce2e24e5397da938e3b19f839dce'
     '.github/workflows/apm.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'equisoft-actions/setup-apm@v1.0.0'
     '.github/workflows/lint-commits-and-pr.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'equisoft-actions/action-pr-title@v1.4.0'
         - 'equisoft-actions/lint-commits@v4.1.0'
     '.github/workflows/publish-asr-to-agent-toolkit.lock.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510'
         - 'actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333'
         - 'actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3'
-        - 'actions/github-script@v9.0.0'
         - 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1'
         - 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9'
-        - 'github/gh-aw-actions@406c7719e31d7fe354224d4bb8fe3d4aeb47da1c'
+        - 'github/gh-aw-actions@862164f9ffbcce2e24e5397da938e3b19f839dce'
     '.github/workflows/release-please.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1'
         - 'equisoft-actions/yarn-install@v1'
         - 'googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7'
-        - 'googleapis/release-please-action@v5.0.0'
     '.github/workflows/sync-asr.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0'
     '.github/workflows/sync-external-resources.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'betahuhn/repo-file-sync-action@8b92be3375cf1d1b0cd579af488a9255572e4619'
-        - 'betahuhn/repo-file-sync-action@v1.21.1'
         - 'equisoft-actions/notify-workflow-status@v2.2.7'
     '.github/workflows/validate-workflows.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'actions/checkout@v7.0.1'
         - 'equisoft-actions/with-asdf-vm@v2.3.5'
 dependencies:
     'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9':
@@ -58,17 +45,7 @@ dependencies:
         commit: 'sha1-55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
         owner_id: 44036562
         repo_id: 215566462
-    'actions/cache@v6.1.0':
-        ref: 'v6.1.0'
-        commit: 'sha1-55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
-        owner_id: 44036562
-        repo_id: 215566462
     'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
-        ref: 'v7.0.1'
-        commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
-        owner_id: 44036562
-        repo_id: 197814629
-    'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
@@ -98,11 +75,6 @@ dependencies:
         commit: 'sha1-3a2844b7e9c422d3c10d287c895573f7108da1b3'
         owner_id: 44036562
         repo_id: 205262760
-    'actions/github-script@v9.0.0':
-        ref: 'v9.0.0'
-        commit: 'sha1-3a2844b7e9c422d3c10d287c895573f7108da1b3'
-        owner_id: 44036562
-        repo_id: 205262760
     'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1':
         ref: 'v7.1.0'
         commit: 'sha1-949feb2413d6458794dcd2491c4babbbce0c15c1'
@@ -124,11 +96,6 @@ dependencies:
         owner_id: 17869024
         repo_id: 225084930
     'betahuhn/repo-file-sync-action@8b92be3375cf1d1b0cd579af488a9255572e4619':
-        ref: 'v1.21.1'
-        commit: 'sha1-8b92be3375cf1d1b0cd579af488a9255572e4619'
-        owner_id: 51766171
-        repo_id: 327705279
-    'betahuhn/repo-file-sync-action@v1.21.1':
         ref: 'v1.21.1'
         commit: 'sha1-8b92be3375cf1d1b0cd579af488a9255572e4619'
         owner_id: 51766171
@@ -183,17 +150,12 @@ dependencies:
         uses:
             - 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
             - 'equisoft-actions/yarn-config@v1'
-    'github/gh-aw-actions@406c7719e31d7fe354224d4bb8fe3d4aeb47da1c':
-        ref: 'v1.2.1'
-        commit: 'sha1-406c7719e31d7fe354224d4bb8fe3d4aeb47da1c'
+    'github/gh-aw-actions@862164f9ffbcce2e24e5397da938e3b19f839dce':
+        ref: 'v1.2.3'
+        commit: 'sha1-862164f9ffbcce2e24e5397da938e3b19f839dce'
         owner_id: 9919
         repo_id: 1156386970
     'googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7':
-        ref: 'v5.0.0'
-        commit: 'sha1-45996ed1f6d02564a971a2fa1b5860e934307cf7'
-        owner_id: 16785467
-        repo_id: 262236530
-    'googleapis/release-please-action@v5.0.0':
         ref: 'v5.0.0'
         commit: 'sha1-45996ed1f6d02564a971a2fa1b5860e934307cf7'
         owner_id: 16785467
