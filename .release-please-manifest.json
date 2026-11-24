@@ -5,5 +5,5 @@
   "javascript/packages/eslint-config-typescript-react": "7.0.0",
   "javascript/packages/stylelint-config": "6.0.0",
   "javascript/packages/typescript-config": "2.0.1",
-  "javascript/packages/webpack-config": "1.1.8"
+  "javascript/packages/webpack-config": "2.0.0"
 }
