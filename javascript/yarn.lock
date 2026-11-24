@@ -370,7 +370,7 @@ __metadata:
     postcss: ^8
     postcss-scss: ^4
     postcss-styled-syntax: ^0
-    stylelint: ^18.0.0
+    stylelint: ^18
   peerDependenciesMeta:
     postcss-scss:
       optional: true
