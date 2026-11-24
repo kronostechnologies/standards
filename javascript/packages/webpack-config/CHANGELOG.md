@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.0.0](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.1.8...webpack-config@v2.0.0) (2026-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency @stylistic/eslint-plugin to v6 ([#891](https://github.com/kronostechnologies/standards/issues/891))
+
+### Dependencies updates
+
+* **deps:** Update node.js to v26 ([#881](https://github.com/kronostechnologies/standards/issues/881)) ([a6e072e](https://github.com/kronostechnologies/standards/commit/a6e072ea3775f00d768ae2bffc92b12694666649))
+* Update dependency @stylistic/eslint-plugin to v6 ([#891](https://github.com/kronostechnologies/standards/issues/891)) ([2ac7c0e](https://github.com/kronostechnologies/standards/commit/2ac7c0e0442ed0756e609eedff8ca61cd719be9f))
+* Update Yarn minors and patches ([#871](https://github.com/kronostechnologies/standards/issues/871)) ([67adbc1](https://github.com/kronostechnologies/standards/commit/67adbc11950fd25f041b6081b90714bc27548cf5))
+* Update Yarn minors and patches ([#879](https://github.com/kronostechnologies/standards/issues/879)) ([b399a84](https://github.com/kronostechnologies/standards/commit/b399a84779cd63841e986329d8437815a52f154d))
+* Update Yarn minors and patches ([#896](https://github.com/kronostechnologies/standards/issues/896)) ([0e329b6](https://github.com/kronostechnologies/standards/commit/0e329b64474627ca3a53dd510d44065472cca46a))
+
 ## [1.1.8](https://github.com/kronostechnologies/standards/compare/webpack-config@v1.1.7...webpack-config@v1.1.8) (2026-10-19)
 
 
