@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.0.0](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.3...eslint-config-react@v7.0.0) (2026-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency @stylistic/eslint-plugin to v6 ([#891](https://github.com/kronostechnologies/standards/issues/891))
+
+### Dependencies updates
+
+* Update dependency @stylistic/eslint-plugin to v6 ([#891](https://github.com/kronostechnologies/standards/issues/891)) ([2ac7c0e](https://github.com/kronostechnologies/standards/commit/2ac7c0e0442ed0756e609eedff8ca61cd719be9f))
+
 ## [6.0.3](https://github.com/kronostechnologies/standards/compare/eslint-config-react@v6.0.2...eslint-config-react@v6.0.3) (2026-05-25)
 
 
