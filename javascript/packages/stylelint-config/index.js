@@ -1,3 +1,5 @@
+const { defineStylistic, rules: stylisticRules } = require('@stylistic/stylelint-config');
+
 module.exports = {
     extends: [
         '@stylistic/stylelint-config',
@@ -12,8 +14,6 @@ module.exports = {
         ],
         'font-weight-notation': 'numeric',
 
-        '@stylistic/indentation': 4,
-
         'order/order': [
             'custom-properties',
             'declarations',
@@ -23,8 +23,10 @@ module.exports = {
         // https://github.com/stylelint/stylelint/issues/4953
         // https://github.com/stylelint/stylelint/pull/4944
         'function-name-case': null,
-        '@stylistic/no-extra-semicolons': null,
         'value-keyword-case': null,
+
+        '@stylistic/indentation': 4,
+        '@stylistic/no-extra-semicolons': null,
     },
     overrides: [
         {
@@ -52,23 +54,41 @@ module.exports = {
             ],
             customSyntax: 'postcss-styled-syntax',
             rules: {
+                'no-empty-source': null,
+                'property-no-vendor-prefix': true,
+                'value-no-vendor-prefix': true,
+
+                // Use the styled-components version of each base rule from stylistic
+                ...defineStylistic({
+                    syntax: 'styled',
+                    rules: stylisticRules,
+                }),
+
+                // Note: null overrides must target each syntax in which they were declared.
+
                 // https://github.com/hudochenkov/postcss-styled-syntax/issues/2
                 '@stylistic/indentation': null,
+                '@stylistic/styled/indentation': null,
+
+                '@stylistic/max-line-length': null,
+                '@stylistic/styled/max-line-length': null,
+
+                '@stylistic/no-empty-first-line': null,
+                '@stylistic/styled/no-empty-first-line': null,
+
+                '@stylistic/no-extra-semicolons': null,
+                '@stylistic/styled/no-extra-semicolons': null,
+
+                '@stylistic/no-missing-end-of-source-newline': null,
+                '@stylistic/styled/no-missing-end-of-source-newline': null,
+
                 '@stylistic/no-eol-whitespace': [
                     true,
                     {
                         ignore: ['empty-lines'],
                     },
                 ],
-                '@stylistic/max-line-length': null,
-
-                // stylelint-config-styled-components
-                '@stylistic/no-empty-first-line': null,
                 '@stylistic/string-quotes': 'single',
-                'no-empty-source': null,
-                '@stylistic/no-missing-end-of-source-newline': null,
-                'property-no-vendor-prefix': true,
-                'value-no-vendor-prefix': true,
             },
         },
     ],
