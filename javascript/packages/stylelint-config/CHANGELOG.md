@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/kronostechnologies/standards/compare/stylelint-config@v6.0.0...stylelint-config@v6.0.1) (2026-11-26)
+
+
+### Bug Fixes
+
+* Properly apply stylistic overrides for v6 ([#900](https://github.com/kronostechnologies/standards/issues/900)) ([868b5df](https://github.com/kronostechnologies/standards/commit/868b5df1d62c037aa9e827cf4fb3834be33f9594))
+
 ## [6.0.0](https://github.com/kronostechnologies/standards/compare/stylelint-config@v5.2.11...stylelint-config@v6.0.0) (2026-11-24)
 
 
