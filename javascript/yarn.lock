@@ -359,7 +359,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@equisoft/stylelint-config@workspace:packages/stylelint-config"
   dependencies:
-    "@stylistic/stylelint-config": "npm:^6.0.0"
+    "@stylistic/stylelint-config": "npm:^6.1.0"
     "@stylistic/stylelint-plugin": "npm:^6.0.0"
     stylelint: "npm:~18.0.0"
     stylelint-config-standard-scss: "npm:~18.0.0"
@@ -610,7 +610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylistic/stylelint-config@npm:^6.0.0":
+"@stylistic/stylelint-config@npm:^6.1.0":
   version: 6.1.0
   resolution: "@stylistic/stylelint-config@npm:6.1.0"
   dependencies:
